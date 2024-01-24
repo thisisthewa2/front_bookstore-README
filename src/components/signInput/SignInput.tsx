@@ -13,10 +13,10 @@ params:
 returns: component
 */
 
-import { useState } from 'react';
+import { InputHTMLAttributes, useState } from 'react';
 import Image from 'next/image';
 
-interface InputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   placeholder: string;
   register: any;
@@ -24,6 +24,7 @@ interface InputProps {
   isError?: any;
   pattern?: any;
   validate?: any;
+  classNames?: string;
 }
 
 function TextInput({
@@ -34,6 +35,8 @@ function TextInput({
   isError,
   pattern,
   validate,
+  classNames,
+  ...props
 }: InputProps) {
   return (
     <div className="relative w-full">
@@ -46,10 +49,9 @@ function TextInput({
           pattern: { ...pattern },
           validate: { ...validate },
         })}
-        className={`py-12 w-full
-        autofill:bg-white 
-        border-b border-gray-3 focus:border-green ${isError ? 'border-red' : ''}
-        outline-none`}
+        className={`py-12 w-full autofill:bg-white border-b border-gray-3 focus:border-green
+          ${isError ? 'border-red' : ''} outline-none ${classNames}`}
+        {...props}
       />
     </div>
   );
@@ -63,11 +65,13 @@ function PasswordInput({
   isError,
   pattern,
   validate,
+  classNames,
+  ...props
 }: InputProps) {
   const [isView, setIsView] = useState(false);
 
   return (
-    <div className="relative  w-full">
+    <div className="relative w-full">
       <button type="button" className="absolute top-18 right-14">
         <Image
           onClick={() => setIsView(!isView)}
@@ -86,10 +90,9 @@ function PasswordInput({
           pattern: { ...pattern },
           validate: { ...validate },
         })}
-        className={`py-12 w-full
-        autofill:bg-white 
-        border-b border-gray-3 focus:border-green ${isError ? 'border-red' : ''}
-        outline-none`}
+        className={`py-12 w-full autofill:bg-white border-b border-gray-3 focus:border-green
+          ${isError ? 'border-red' : ''} outline-none ${classNames}`}
+        {...props}
       />
     </div>
   );

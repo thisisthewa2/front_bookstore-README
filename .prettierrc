@@ -1,10 +1,10 @@
 {
-  "printWidth": 80,
-  "tabWidth": 2,
-  "singleQuote": true,
-  "semi": true,
-  "useTabs": false,
-  "quoteProps": "as-needed",
-  "bracketSameLine": true,
-  "plugins": ["prettier-plugin-classnames"]
+	"printWidth": 80,
+	"tabWidth": 2,
+	"singleQuote": true,
+	"semi": true,
+	"useTabs": false,
+	"quoteProps": "as-needed",
+	"bracketSameLine": true,
+	"plugins": ["prettier-plugin-classnames"]
 }
