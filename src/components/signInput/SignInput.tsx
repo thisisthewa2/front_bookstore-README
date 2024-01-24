@@ -18,8 +18,8 @@ import Image from 'next/image';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
-  placeholder: string;
-  register: any;
+  placeholder?: string;
+  register?: any;
   isRequired?: any;
   isError?: any;
   pattern?: any;
@@ -38,6 +38,7 @@ function TextInput({
   classNames,
   ...props
 }: InputProps) {
+  console.log(isError);
   return (
     <div className="relative w-full">
       <input
@@ -45,12 +46,12 @@ function TextInput({
         type="text"
         placeholder={placeholder}
         {...register(id, {
-          required: { isRequired },
-          pattern: { ...pattern },
-          validate: { ...validate },
+          required: isRequired,
+          pattern: pattern,
+          validate: validate,
         })}
         className={`py-12 w-full autofill:bg-white border-b border-gray-3 focus:border-green
-          ${isError ? 'border-red' : ''} outline-none ${classNames}`}
+          ${isError && 'border-red focus:border-red'} outline-none ${classNames}`}
         {...props}
       />
     </div>

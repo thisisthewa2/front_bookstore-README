@@ -1,10 +1,15 @@
 import Image from 'next/image';
 import CameraImageIcon from '@/public/icons/CameraImageIcon.svg';
 import { FormProvider, useForm } from 'react-hook-form';
-import { EditProfileType } from '@/types/editProfileTypes';
-import { ChangeEvent, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import DefaultUserProfile from '@/public/images/DefaultUserProfile.png';
 import { TextInput } from '../signInput/SignInput';
+import RegisterButton from '../button/registerButton';
+
+interface EditProfileType {
+  ImageUrl?: string | null;
+  nickname: string;
+}
 
 interface EditProfileProps {
   initialProfileImageUrl?: string | null;
@@ -19,29 +24,23 @@ function EditProfile({
 }: EditProfileProps) {
   const imageUploaderRef = useRef<HTMLInputElement>(null);
   const [profileImageUrl, setProfileImageUrl] = useState<string>(
-    initialProfileImageUrl,
+    initialProfileImageUrl || '',
   );
-
   const method = useForm<EditProfileType>({
-    mode: 'onBlur',
+    mode: 'onSubmit',
     defaultValues: {
       ImageUrl: initialProfileImageUrl,
-      nickname: initialProfileImageUrl,
+      nickname: initialNickname,
     },
   });
   const {
     register,
     handleSubmit,
-    setError,
-    getValues,
     formState: { errors },
   } = method;
 
   const onSubmit = () => {
-    setError('nickname', {
-      type: 'manual',
-      message: '닉네임은 3자 이상, 8자 이하로 지어주세요.',
-    });
+    // profileImageUrl과 watch('ninckname')을  post 할거에용
   };
 
   const handleClickInput = () => {
@@ -66,18 +65,17 @@ function EditProfile({
     return Promise.resolve();
   };
 
-  const postProfileImage = async (imageFile: File) => {
-    if (!imageFile) return;
-    // 회원정보 api가 완성되면 post request를 보낼거에용
-  };
-
   return (
     <FormProvider {...method}>
-      <div className="w-440 h-745 bg-white border rounded-[10px] border-gray-4 mobile:border-none">
+      <div
+        className="max-w-440 max-h-745 bg-white border rounded-[10px] border-gray-1
+          mobile:border-none">
         <div className="flex-center mb-40">
           <h1 className="text-20 font-bold"> 프로필 수정</h1>
         </div>
-        <form className="flex flex-col m-40" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="flex flex-col m-40 gap-40 mobile:m-15"
+          onSubmit={handleSubmit(onSubmit)}>
           <div>
             <h2 className="font-bold mb-20">프로필 이미지</h2>
             <div>
@@ -112,34 +110,35 @@ function EditProfile({
               </div>
             </div>
           </div>
-          <div className="mb-40">
+          <div>
             <label className="text-gray-7 text-16 font-bold text-left w-full">
               이메일
             </label>
             <TextInput
               id="email"
-              placeholder={email}
               register={register}
-              isRequired={false}
-              pattern={/[a-z0-9]+@[a-z]+.[a-z]{2,3}/i}
-              isError={errors.nickname}
+              value={email}
               readOnly
+              classNames="text-gray-2 focus:border-gray-3"
             />
           </div>
-          <div className="mb-40">
-            <label className="text-gray-7 text-16 font-bold text-left w-full">
+          <div>
+            <label className="text-[#363636] text-16 font-bold text-left w-full">
               닉네임
             </label>
-            <p className="text-gray-4 text-15 text-left w-full">
+            <p className="text-[#767676] text-15 text-left w-full">
               다른 유저와 중복되지 않는 닉네임
             </p>
             <TextInput
               id="nickname"
-              placeholder={initialNickname}
               register={register}
               isRequired={true}
-              pattern={/^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]{3,8}$/i}
+              pattern={{
+                value: /^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]{3,8}$/i,
+                message: '닉네임은 3자 이상, 8자 이하로 지어주세요.',
+              }}
               isError={errors.nickname}
+              defaultValue={initialNickname}
             />
             {errors.nickname?.message && (
               <p className="text-14 text-red w-full text-left">
@@ -147,6 +146,7 @@ function EditProfile({
               </p>
             )}
           </div>
+          <RegisterButton type="submit">회원정보 수정</RegisterButton>
         </form>
       </div>
     </FormProvider>
