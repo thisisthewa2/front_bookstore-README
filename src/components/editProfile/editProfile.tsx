@@ -10,7 +10,6 @@ interface EditProfileType {
   ImageUrl?: string | null;
   nickname: string;
 }
-
 interface EditProfileProps {
   initialProfileImageUrl?: string | null;
   initialNickname: string;

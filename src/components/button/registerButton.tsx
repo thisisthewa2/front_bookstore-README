@@ -1,4 +1,3 @@
-import { type } from 'os';
 import React, { MouseEventHandler } from 'react';
 
 type ButtonProps = {

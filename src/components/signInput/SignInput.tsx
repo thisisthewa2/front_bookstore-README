@@ -38,7 +38,6 @@ function TextInput({
   classNames,
   ...props
 }: InputProps) {
-  console.log(isError);
   return (
     <div className="relative w-full">
       <input
