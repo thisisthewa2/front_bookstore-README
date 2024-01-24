@@ -86,7 +86,7 @@ function EditProfile({
                   alt="프로필 이미지"
                   width={200}
                   height={200}
-                  className="rounded-full max-w-200 max-h-200"
+                  className="rounded-full max-w-200 max-h-200 object-cover"
                 />
                 <input
                   type="file"
