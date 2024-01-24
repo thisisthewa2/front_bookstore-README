@@ -25,8 +25,8 @@ const config: Config = {
   ],
   theme: {
     screens: {
-      mobile: '360px',
-      tablet: '768px',
+      mobile: { min: '375px', max: '767px' },
+      tablet: { min: '768px', max: '1199px' },
       pc: '1200px',
     },
     extend: {
