@@ -3,8 +3,8 @@ import CameraImageIcon from '@/public/icons/CameraImageIcon.svg';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useRef, useState } from 'react';
 import DefaultUserProfile from '@/public/images/DefaultUserProfile.png';
-import { TextInput } from '../signInput/SignInput';
-import RegisterButton from '../button/registerButton';
+import { TextInput } from '@/components/signInput/SignInput';
+import RegisterButton from '@/components/button/registerButton';
 
 interface EditProfileType {
   ImageUrl?: string | null;
