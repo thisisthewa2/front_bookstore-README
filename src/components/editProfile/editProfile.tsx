@@ -26,7 +26,6 @@ function EditProfile({
   const {
     register,
     handleSubmit,
-    getValues,
     formState: { errors },
   } = method;
 
