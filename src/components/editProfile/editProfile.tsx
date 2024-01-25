@@ -5,16 +5,7 @@ import { useRef, useState } from 'react';
 import DefaultUserProfile from '@/public/images/DefaultUserProfile.png';
 import { TextInput } from '@/components/signInput/SignInput';
 import RegisterButton from '@/components/button/registerButton';
-
-interface EditProfileType {
-  ImageUrl?: string | null;
-  nickname: string;
-}
-interface EditProfileProps {
-  initialProfileImageUrl?: string | null;
-  initialNickname: string;
-  email: string;
-}
+import { EditProfileProps, EditProfileType } from '@/types/editProfileTypes';
 
 function EditProfile({
   initialProfileImageUrl,
@@ -110,7 +101,7 @@ function EditProfile({
             </div>
           </div>
           <div>
-            <label className="text-gray-7 text-16 font-bold text-left w-full">
+            <label className="text-black text-16 font-bold text-left w-full">
               이메일
             </label>
             <TextInput
@@ -122,10 +113,10 @@ function EditProfile({
             />
           </div>
           <div>
-            <label className="text-[#363636] text-16 font-bold text-left w-full">
+            <label className="text-black text-16 font-bold text-left w-full">
               닉네임
             </label>
-            <p className="text-[#767676] text-15 text-left w-full">
+            <p className="text-gray-3 text-15 text-left w-full">
               다른 유저와 중복되지 않는 닉네임
             </p>
             <TextInput

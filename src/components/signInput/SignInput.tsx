@@ -86,9 +86,9 @@ function PasswordInput({
         type={isView ? 'text' : 'password'}
         placeholder={placeholder}
         {...register(id, {
-          required: { isRequired },
-          pattern: { ...pattern },
-          validate: { ...validate },
+          required: isRequired,
+          pattern: pattern,
+          validate: validate,
         })}
         className={`py-12 w-full autofill:bg-white border-b border-gray-3 focus:border-green
           ${isError ? 'border-red' : ''} outline-none ${classNames}`}
