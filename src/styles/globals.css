@@ -38,7 +38,7 @@ body {
     text-align: left;
   }
   input::placeholder {
-    color: black;
+    color: --gray-3;
   }
   .flex-center {
     @apply flex items-center justify-center;

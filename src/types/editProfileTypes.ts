@@ -13,7 +13,3 @@ export interface EditPasswordType {
   password: string;
   checkPassword: string;
 }
-
-export interface EditPasswordProps {
-  initialPassword: string;
-}

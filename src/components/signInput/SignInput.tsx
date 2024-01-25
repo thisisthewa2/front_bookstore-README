@@ -20,7 +20,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   placeholder?: string;
   register?: any;
-  isRequired?: any;
+  requiredMessage?: string;
   isError?: any;
   pattern?: any;
   validate?: any;
@@ -31,7 +31,7 @@ function TextInput({
   id,
   placeholder,
   register,
-  isRequired,
+  requiredMessage,
   isError,
   pattern,
   validate,
@@ -45,7 +45,7 @@ function TextInput({
         type="text"
         placeholder={placeholder}
         {...register(id, {
-          required: isRequired,
+          required: requiredMessage,
           pattern: pattern,
           validate: validate,
         })}
@@ -61,7 +61,7 @@ function PasswordInput({
   id,
   placeholder,
   register,
-  isRequired,
+  requiredMessage,
   isError,
   pattern,
   validate,
@@ -75,10 +75,10 @@ function PasswordInput({
       <button type="button" className="absolute top-18 right-14">
         <Image
           onClick={() => setIsView(!isView)}
-          src={isView ? 'icons/eye-open.svg' : 'icons/eye-close.svg'}
+          src={isView ? 'icons/EyeOpen.svg' : 'icons/EyeClose.svg'}
           alt="eye"
-          width={16}
-          height={16}
+          width={24}
+          height={24}
         />
       </button>
       <input
@@ -86,7 +86,7 @@ function PasswordInput({
         type={isView ? 'text' : 'password'}
         placeholder={placeholder}
         {...register(id, {
-          required: isRequired,
+          required: requiredMessage,
           pattern: pattern,
           validate: validate,
         })}

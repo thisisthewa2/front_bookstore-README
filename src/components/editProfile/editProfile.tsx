@@ -26,11 +26,20 @@ function EditProfile({
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = method;
 
+  const NICKNAME_RULES = {
+    required: '닉네임을 입력해주세요',
+    pattern: {
+      value: /^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]{3,8}$/i,
+      message: '닉네임은 3자 이상, 8자 이하로 지어주세요.',
+    },
+  };
+
   const onSubmit = () => {
-    // profileImageUrl과 watch('ninckname')을  post 할거에용
+    // 프로필url과 닉네임을 서버로 보낼거에용
   };
 
   const handleClickInput = () => {
@@ -59,12 +68,12 @@ function EditProfile({
     <FormProvider {...method}>
       <div
         className="max-w-440 max-h-745 bg-white border rounded-[10px] border-gray-1
-          mobile:border-none">
+          mobile:border-none p-40">
         <div className="flex-center mb-40">
           <h1 className="text-20 font-bold"> 프로필 수정</h1>
         </div>
         <form
-          className="flex flex-col m-40 gap-40 mobile:m-15"
+          className="flex flex-col gap-40 mobile:m-15"
           onSubmit={handleSubmit(onSubmit)}>
           <div>
             <h2 className="font-bold mb-20">프로필 이미지</h2>
@@ -122,10 +131,10 @@ function EditProfile({
             <TextInput
               id="nickname"
               register={register}
-              isRequired={true}
+              requiredMessage={NICKNAME_RULES.required}
               pattern={{
-                value: /^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]{3,8}$/i,
-                message: '닉네임은 3자 이상, 8자 이하로 지어주세요.',
+                value: NICKNAME_RULES.pattern.value,
+                message: NICKNAME_RULES.pattern.message,
               }}
               isError={errors.nickname}
               defaultValue={initialNickname}
