@@ -1,8 +1,13 @@
 import Image, { StaticImageData } from 'next/image';
 import DefaultImage from '@/public/images/SampleBookCover4.jpeg';
-import BookLabel from '@/public/icons/BookLabelIcon.svg';
 import { useRef, useState } from 'react';
 import { THOUSAND_UNIT } from 'src/constants/price';
+
+const BookLabelIcon = ({ fill ='#66C57B'}) => (
+   <svg width="26" height="34" viewBox="0 0 26 34" fill="cover" xmlns="http://www.w3.org/2000/svg">
+    <path id="Vector" d="M26 34L13 24.5556L0 34V3.77778C0 2.77585 0.391325 1.81496 1.08789 1.10649C1.78445 0.398015 2.7292 0 3.71429 0H22.2857C23.2708 0 24.2155 0.398015 24.9121 1.10649C25.6087 1.81496 26 2.77585 26 3.77778V34Z" fill={fill} />
+</svg>
+);
 
 interface PreviewBookInfoProps {
   image?: string | StaticImageData; // TODO: 테스트 후 수정하기(string타입 필요없을지도?)
@@ -62,7 +67,7 @@ function PreviewBookInfo({
 
   const handleImageLoaded = () => {
     setImageLoaded(true);
-    if ((bookImageRef.current?.height || 0) > imageSize.heightNumber, isLabelMove) {
+    if ((bookImageRef.current?.height || 0) > imageSize.heightNumber && isLabelMove) {
       setIsLabelMove(true);
     }
   };
@@ -88,20 +93,14 @@ function PreviewBookInfo({
               ref={bookImageRef}
               onLoad={handleImageLoaded}
             />
-
             {ranking && (
               <div
                 className={`absolute left-17 ${isLabelMove && size !== 'lg' ? 'top-[-3px]' : 'top-[-2px]'}`}>
-                <Image
-                  src={BookLabel}
-                  alt="베스트셀러 라벨 아이콘"
-                  width={26}
-                  height={34}
-                />
+                <BookLabelIcon fill={ranking > 10 ? '#ABABAB' : undefined } />
                 <span
                   className={`text-white text-13 font-bold absolute top-0 left-10 ${
-                    ranking > 9 && 'tracking-[-0.5px] left-5'
-                  }`}>
+                    ranking > 9 && 'tracking-[-0.5px] left-5' 
+                  } ${ranking > 99 && 'tracking-[-0.5px] left-0'}`}>
                   {ranking}
                 </span>
               </div>
