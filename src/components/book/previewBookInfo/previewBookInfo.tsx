@@ -2,6 +2,7 @@ import Image, { StaticImageData } from 'next/image';
 import DefaultImage from '@/public/images/SampleBookCover4.jpeg';
 import BookLabel from '@/public/icons/BookLabelIcon.svg';
 import { useRef, useState } from 'react';
+import { THOUSAND_UNIT } from 'src/constants/price';
 
 interface PreviewBookInfoProps {
   image?: string | StaticImageData; // TODO: 테스트 후 수정하기(string타입 필요없을지도?)
@@ -10,6 +11,8 @@ interface PreviewBookInfoProps {
   authorList?: string[];
   ranking?: number;
   size: 'sm' | 'md' | 'lg';
+  price?: number;
+  category?: string;
 }
 
 function PreviewBookInfo({
@@ -19,6 +22,8 @@ function PreviewBookInfo({
   ranking,
   alignCenter,
   size = 'md',
+  price,
+  category,
 }: PreviewBookInfoProps) {
   const bookImageRef = useRef<HTMLImageElement>(null);
   const [isLabelMove, setIsLabelMove] = useState(false);
@@ -113,8 +118,18 @@ function PreviewBookInfo({
         </p>
       )}
       {authorList && (
-        <div className="text-gray-3 text-14 hover:text-gray-7 truncate">
+        <div className="text-gray-3 text-14 truncate">
           {authorList.join(', ')}
+        </div>
+      )}
+      {category && (
+        <div className="text-gray-3 text-14 ">
+          [{category}]
+        </div>
+      )}
+       {price && (
+        <div className="text-black text-14 font-bold mt-4">
+          {price.toString().replace(THOUSAND_UNIT,",")}
         </div>
       )}
     </div>
