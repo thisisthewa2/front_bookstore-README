@@ -10,7 +10,7 @@ const BookLabelIcon = ({ fill ='#66C57B'}) => (
 );
 
 interface PreviewBookInfoProps {
-  image?: StaticImageData; // TODO: 테스트 후 수정하기(string타입 필요없을지도?)
+  image?: string | StaticImageData; 
   title?: string;
   alignCenter?: boolean;
   authorList?: string[];
@@ -19,6 +19,8 @@ interface PreviewBookInfoProps {
   price?: number;
   category?: string;
 }
+
+
 
 function PreviewBookInfo({
   image,
@@ -33,37 +35,44 @@ function PreviewBookInfo({
   const bookImageRef = useRef<HTMLImageElement>(null);
   const [isLabelMove, setIsLabelMove] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
-  const IMAGE_SIZE = {
+  const [rawImageSize, setRawImageSize] = useState({width: 0, height:0})
+ const IMAGE_SIZE = {
     lg: {
-      width: 'w-192',
-      height: 'h-291',
-      tabletWidth: 'w-157',
-      tabletHeight: 'h-239',
-      mobileWidth: 'w-160',
-      mobileHeight: 'h-230',
+      pc: 'w-192 h-291',
+      tablet: 'tablet:w-157 tablet:h-239',
+     mobile: 'mobile:w-160 mobile:h-230',
+      widthOnly : 'w-192 tablet:w-157 mobile:w-160',
       heightNumber: 291,
     },
     md: {
-      width: 'w-163',
-      height: 'h-248',
-      tabletWidth: 'w-122',
-      tabletHeight: 'h-186',
-      mobileWidth: 'w-142',
-      mobileHeight: 'h-204',
+      pc: 'w-163 h-248',
+      tablet: 'tablet:w-122 tablet:h-186',
+      mobile: 'mobile:w-142 mobile:h-204',
+      widthOnly: 'w-163 tablet:w-122 mobile:w-142',
       heightNumber: 248,
     },
     sm: {
-      width: 'w-112',
-      height: 'h-172',
-      tabletWidth: 'w-122',
-      tabletHeight: 'h-167',
-      mobileWidth: 'w-93',
-      mobileHeight: 'h-144',
+      pc: 'w-112 h-172',
+      tablet: 'tablet:w-122 tablet:h-167',
+      mobile: 'mobile:w-93 mobile:h-144',
+      widthOnly: 'w-112 tablet:w-122 mobile:w-93',
       heightNumber: 172,
     },
   };
-
   const imageSize = IMAGE_SIZE[size];
+  const STYLE = {
+    img: `${IMAGE_SIZE[size].pc} ${IMAGE_SIZE[size].tablet} ${IMAGE_SIZE[size].mobile}`,
+    width: `${IMAGE_SIZE[size].widthOnly}`
+};
+  
+ 
+  interface RawImageSize {
+    naturalWidth: number;
+    naturalHeight: number;
+  }
+   const handleSetting = ({naturalWidth,naturalHeight}: RawImageSize) => {
+    setRawImageSize({width: naturalWidth, height: naturalHeight});
+  }
 
   const handleImageLoaded = () => {
     setImageLoaded(true);
@@ -74,14 +83,12 @@ function PreviewBookInfo({
 
   return (
     <div
-      className={`flex ${imageSize.width} mobile:${imageSize.mobileWidth}
-        tablet:${imageSize.tabletWidth} flex-col`}>
+      className={`flex ${STYLE.width} flex-col`}>
       <div
-        className={`${imageSize.height} mobile:${imageSize.mobileWidth}
-          tablet:${imageSize.tabletHeight} flex relative justify-center items-end`}>
+        className={`${STYLE.img} flex relative justify-center items-end`}>
         <div className="relative">
           <div
-            className={`flex items-end h-${
+            className={`flex items-end min-w-${rawImageSize.width} h-${
               imageLoaded &&
               (bookImageRef.current?.height || 0) > imageSize.heightNumber
                 ? `${imageSize.heightNumber} `
@@ -92,6 +99,7 @@ function PreviewBookInfo({
               alt="책 미리보기 이미지"
               ref={bookImageRef}
               onLoad={handleImageLoaded}
+              onLoadingComplete={(img) => handleSetting(img)}
             />
             {ranking && (
               <div

@@ -76,7 +76,7 @@ function TestPage() {
         authorList={['이승연', '작가얌', '작가2', '작가3']}
         size="sm"
         ranking={100}
-        image={TestImage4}
+        image={TestImage1}
       />
     </div>
   );
