@@ -3,9 +3,10 @@
 
 interface BookAuthorProps {
   authorList?: string[] | null;
+  publisher?: string;
 }
 
-function BookAuthor({ authorList }: BookAuthorProps) {
+function BookAuthor({ authorList, publisher }: BookAuthorProps) {
   if (!authorList || authorList.length < 1) return;
   return (
     <div className="flex-center gap-4">
@@ -16,6 +17,7 @@ function BookAuthor({ authorList }: BookAuthorProps) {
           </span>
         );
       })}
+      {publisher && <span className="text-gray-3 text-14">| {publisher}</span>}
     </div>
   );
 }

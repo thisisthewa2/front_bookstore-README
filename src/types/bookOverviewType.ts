@@ -8,6 +8,9 @@ interface BookOverviewType {
     price: number;
     authors: string[];
     rank?: number;
+    publisher: string;
+    rating: number;
+    issueDate?: number;
   };
   like: {
     userLiked: boolean;

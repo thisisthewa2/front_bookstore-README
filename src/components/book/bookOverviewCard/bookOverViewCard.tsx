@@ -5,6 +5,7 @@ import { THOUSAND_UNIT } from 'src/constants/price';
 import Image from 'next/image';
 import LikeButton from '@/components/button/likeButton';
 import { useEffect, useState } from 'react';
+import BookRating from '../bookRating/bookRating';
 
 function BookOverviewCard({ book, like }: BookOverviewType) {
   const [isLiked, setIsLiked] = useState(like.userLiked || false);
@@ -33,7 +34,10 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
           className="text-15 font-normal truncate whitespace-nowrap min-w-250">
           {book.title}
         </div>
-        <BookAuthor authorList={book.authors} />
+
+        <BookAuthor authorList={book.authors} publisher={book.publisher} />
+        <BookRating rating={book.rating} />
+
         <div className="flex-center flex-col gap-10 whitespace-nowrap mobile:flex-row">
           <div role="price-div" className="text-black text-14 font-bold mt-4">
             {book.price.toString().replace(THOUSAND_UNIT, ',')}원

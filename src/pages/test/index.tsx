@@ -13,6 +13,8 @@ const testData1 = {
     price: 30000,
     authors: ['김웹', '박프론트'],
     rank: 1,
+    publisher: '출판사',
+    rating: 4,
   },
   like: {
     userLiked: true,
@@ -27,6 +29,8 @@ const testData2 = {
     price: 25000,
     authors: ['이자바', '최스크립트'],
     rank: 3,
+    publisher: '출판사2222',
+    rating: 5,
   },
   like: {
     userLiked: false,
@@ -42,6 +46,8 @@ const testData3 = {
     price: 28000,
     authors: ['정디자인', '한웹'],
     rank: 5,
+    publisher: '출판사1931990',
+    rating: 1.5,
   },
   like: {
     userLiked: true,
