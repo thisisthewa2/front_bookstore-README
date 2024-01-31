@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from 'next/image';
 import DefaultImage from '@/public/images/SampleBookCover4.jpeg';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { THOUSAND_UNIT } from 'src/constants/price';
 
 const BookLabelIcon = ({ fill ='#66C57B'}) => (
@@ -20,8 +20,6 @@ interface PreviewBookInfoProps {
   category?: string;
 }
 
-
-
 function PreviewBookInfo({
   image,
   title,
@@ -33,6 +31,8 @@ function PreviewBookInfo({
   category,
 }: PreviewBookInfoProps) {
   const bookImageRef = useRef<HTMLImageElement>(null);
+  const imageBoxRef = useRef<HTMLDivElement>(null);
+  const [imageBoxHeight, setImageBoxHeight] = useState(0);
   const [isLabelMove, setIsLabelMove] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [rawImageSize, setRawImageSize] = useState({width: 0, height:0})
@@ -40,31 +40,31 @@ function PreviewBookInfo({
     lg: {
       pc: 'w-192 h-291',
       tablet: 'tablet:w-157 tablet:h-239',
-     mobile: 'mobile:w-160 mobile:h-230',
+      mobile: 'mobile:w-160 mobile:h-230',
       widthOnly : 'w-192 tablet:w-157 mobile:w-160',
-     heightNumber: {pc: 291, tablet: 239, mobile: 160},
+      heightNumber: {pc: 291, tablet: 239, mobile: 160},
     },
     md: {
       pc: 'w-163 h-248',
       tablet: 'tablet:w-122 tablet:h-186',
       mobile: 'mobile:w-142 mobile:h-204',
       widthOnly: 'w-163 tablet:w-122 mobile:w-142',
-       heightNumber: {pc: 248, tablet: 186, mobile: 142},
+      heightNumber: {pc: 248, tablet: 186, mobile: 142},
     },
     sm: {
       pc: 'w-112 h-172',
       tablet: 'tablet:w-122 tablet:h-167',
       mobile: 'mobile:w-93 mobile:h-144',
       widthOnly: 'w-112 tablet:w-122 mobile:w-93',
-       heightNumber: {pc: 172, tablet: 167, mobile: 93},
+      heightNumber: {pc: 172, tablet: 167, mobile: 93},
     },
   };
   const imageSize = IMAGE_SIZE[size];
   const STYLE = {
     img: `${IMAGE_SIZE[size].pc} ${IMAGE_SIZE[size].tablet} ${IMAGE_SIZE[size].mobile}`,
     width: `${IMAGE_SIZE[size].widthOnly}`,
-    height: `h${IMAGE_SIZE[size].heightNumber.pc} tablet:h-${IMAGE_SIZE[size].heightNumber.tablet} mobile:h-${IMAGE_SIZE[size].heightNumber.mobile} `
-};
+    height: `h-${IMAGE_SIZE[size].heightNumber.pc} tablet:h-${IMAGE_SIZE[size].heightNumber.tablet} mobile:h-${IMAGE_SIZE[size].heightNumber.mobile} `
+  };
   
   interface RawImageSize {
     naturalWidth: number;
@@ -81,19 +81,31 @@ function PreviewBookInfo({
     }
   };
 
+  useEffect(() => {
+    setImageBoxHeight(imageBoxRef.current?.clientHeight || 0)
+  },[imageBoxRef.current?.clientHeight])
+  console.log(bookImageRef.current?.height,imageBoxRef.current?.clientHeight)
+
   return (
     <div
       className={`flex ${STYLE.width} flex-col`}>
       <div
-        className={`${STYLE.img} flex relative justify-center items-end`}>
+        className={`${STYLE.img} flex relative justify-center items-end mt-auto`}>
         <div className="relative">
           <div
-            className={`flex items-end min-w-${rawImageSize.width} h-${
+            className={`flex items-end min-w-${rawImageSize.width} ${
               imageLoaded &&
               (bookImageRef.current?.height || 0) > imageSize.heightNumber.pc
                 ? `${STYLE.height} `
-                : `${bookImageRef.current?.height} `
-            } overflow-hidden`}>
+                : `h-${bookImageRef.current?.height} `
+              }  overflow-hidden mt-auto mb-auto`}
+            // className={`flex items-end min-w-${rawImageSize.width} ${STYLE.height} ${imageLoaded &&
+            //     (bookImageRef.current?.height || 0) > imageSize.heightNumber.pc
+            //     ? `${STYLE.height} `
+            //     : `h-${bookImageRef.current?.height} `
+            //   } overflow-hidden`}
+            ref={imageBoxRef}
+          >
             <Image
               src={image || DefaultImage}
               alt="책 미리보기 이미지"

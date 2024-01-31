@@ -62,14 +62,14 @@ function TestPage() {
         ranking={10}
         category="가정/육아"
         price={123456789}
-        image={TestImage1}
+        image={TestImage4}
       />
       <PreviewBookInfo
         title="어머 이책 사야해!"
         authorList={['이승연', '작가얌', '작가2', '작가333']}
         size="md"
         ranking={30}
-        image={TestImage2}
+        image={TestImage4}
       />
       <PreviewBookInfo
         title="겁나 비싼 책"
