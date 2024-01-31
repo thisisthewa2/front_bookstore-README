@@ -10,7 +10,7 @@ const BookLabelIcon = ({ fill ='#66C57B'}) => (
 );
 
 interface PreviewBookInfoProps {
-  image?: string | StaticImageData; // TODO: 테스트 후 수정하기(string타입 필요없을지도?)
+  image?: StaticImageData; // TODO: 테스트 후 수정하기(string타입 필요없을지도?)
   title?: string;
   alignCenter?: boolean;
   authorList?: string[];

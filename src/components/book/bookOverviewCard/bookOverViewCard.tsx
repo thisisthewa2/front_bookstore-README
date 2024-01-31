@@ -10,7 +10,7 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
         mobile:pb-15">
       <div
         role="book-img"
-        className="h-170 bg-gray-1 mobile:min-w-75 mobile:h-75">
+        className="h-170 bg-white mobile:min-w-75 mobile:h-75">
         <PreviewBookInfo size="sm" image={book.imageUrl} ranking={book.rank} />
       </div>
       <div className="flex flex-col justify-start items-start gap-4 w-full">
