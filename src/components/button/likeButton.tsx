@@ -1,4 +1,4 @@
-const HeartIcon = ({ fill = '#FFF', stroke }) => (
+const HeartIcon = ({ fill = '#FFF', stroke = '#363636' }) => (
   <svg
     width="22"
     height="22"

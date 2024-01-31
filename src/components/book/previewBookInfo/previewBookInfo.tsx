@@ -42,30 +42,30 @@ function PreviewBookInfo({
       tablet: 'tablet:w-157 tablet:h-239',
      mobile: 'mobile:w-160 mobile:h-230',
       widthOnly : 'w-192 tablet:w-157 mobile:w-160',
-      heightNumber: 291,
+     heightNumber: {pc: 291, tablet: 239, mobile: 160},
     },
     md: {
       pc: 'w-163 h-248',
       tablet: 'tablet:w-122 tablet:h-186',
       mobile: 'mobile:w-142 mobile:h-204',
       widthOnly: 'w-163 tablet:w-122 mobile:w-142',
-      heightNumber: 248,
+       heightNumber: {pc: 248, tablet: 186, mobile: 142},
     },
     sm: {
       pc: 'w-112 h-172',
       tablet: 'tablet:w-122 tablet:h-167',
       mobile: 'mobile:w-93 mobile:h-144',
       widthOnly: 'w-112 tablet:w-122 mobile:w-93',
-      heightNumber: 172,
+       heightNumber: {pc: 172, tablet: 167, mobile: 93},
     },
   };
   const imageSize = IMAGE_SIZE[size];
   const STYLE = {
     img: `${IMAGE_SIZE[size].pc} ${IMAGE_SIZE[size].tablet} ${IMAGE_SIZE[size].mobile}`,
-    width: `${IMAGE_SIZE[size].widthOnly}`
+    width: `${IMAGE_SIZE[size].widthOnly}`,
+    height: `h${IMAGE_SIZE[size].heightNumber.pc} tablet:h-${IMAGE_SIZE[size].heightNumber.tablet} mobile:h-${IMAGE_SIZE[size].heightNumber.mobile} `
 };
   
- 
   interface RawImageSize {
     naturalWidth: number;
     naturalHeight: number;
@@ -76,7 +76,7 @@ function PreviewBookInfo({
 
   const handleImageLoaded = () => {
     setImageLoaded(true);
-    if ((bookImageRef.current?.height || 0) > imageSize.heightNumber && isLabelMove) {
+    if ((bookImageRef.current?.height || 0) > imageSize.heightNumber.pc && isLabelMove) {
       setIsLabelMove(true);
     }
   };
@@ -90,8 +90,8 @@ function PreviewBookInfo({
           <div
             className={`flex items-end min-w-${rawImageSize.width} h-${
               imageLoaded &&
-              (bookImageRef.current?.height || 0) > imageSize.heightNumber
-                ? `${imageSize.heightNumber} `
+              (bookImageRef.current?.height || 0) > imageSize.heightNumber.pc
+                ? `${STYLE.height} `
                 : `${bookImageRef.current?.height} `
             } overflow-hidden`}>
             <Image
