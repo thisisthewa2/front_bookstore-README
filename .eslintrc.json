@@ -1,4 +1,12 @@
 {
-  "extends": ["next/core-web-vitals", "eslint:recommended"],
-  "plugins": ["prettier"]
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error"
+  }
 }

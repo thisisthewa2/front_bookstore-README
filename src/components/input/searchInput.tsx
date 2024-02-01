@@ -1,17 +1,17 @@
 import Image from 'next/image';
-import IconSearch from '@/public/icons/SearchIcon.svg';
+import SearchIcon from '@/public/icons/SearchIcon.svg';
 
 function SearchInput() {
   return (
-    <div className="w-3/6 relative inline-flex">
+    <div className="z-10 w-3/6 relative inline-flex">
       <input
-        className="w-full tablet:h-56 pc:h-56 border border-gray-1 rounded-3xl pl-20 pr-20 py-2
-          max-w-full"
+        className="w-full tablet:h-56 pc:h-56 border border-gray-1 rounded-[71px] px-20 py-2
+          max-w-full pr-20"
       />
       <div
-        className="absolute w-16 h-16 tablet:h-24 tablet:w-24 pc:h-24 pc:w-24 top-1/2 right-16
-          transform -translate-y-1/2">
-        <Image src={IconSearch} fill alt="검색 아이콘" />
+        className="absolute w-12 h-12 tablet:h-15 tablet:w-15 pc:h-15 pc:w-15 top-1/2
+          mobile:right-6 right-12 transform -translate-y-1/2">
+        <Image src={SearchIcon} fill alt="검색 아이콘" />
       </div>
     </div>
   );

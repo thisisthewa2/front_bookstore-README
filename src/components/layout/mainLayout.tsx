@@ -19,7 +19,7 @@ function MainLayout({ children }: MainLayoutProps) {
     <>
       <Header isLoggedIn={true} numItemsOfCart={1} />
       <div className="relative grid auto-rows-auto place-items-center tablet:max-w-[768px]">
-        <div className="w-300 h-20" ref={ref}/>
+        <div className="w-300 h-20" ref={ref} />
         {children}
         <ScrollToTopButton />
       </div>

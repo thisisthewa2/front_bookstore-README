@@ -7,7 +7,7 @@ interface BookRatingProps {
 function BookRating({ rating }: BookRatingProps) {
   const viewRating = () => {
     const ratingImages = [];
-    for (let i = 0; i < rating; i++) {
+    for (let i = 0; i < Math.floor(rating); i++) {
       ratingImages.push(
         <Image
           src="/icons/FilledStar.svg"

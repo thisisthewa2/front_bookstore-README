@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { GenreProps } from '@/pages/api/mock';
 export interface GenreButtonProps extends GenreProps {
-  editMode: boolean;
+  editMode?: boolean;
 }
 
 function GenreButton({
@@ -17,11 +17,11 @@ function GenreButton({
 
   return (
     <button
-      className={`border ${selected ? 'border-black' : 'border-gray-1'} pc:text-14 ${
-        editMode ? 'hover:border-green hover:text-green' : ''
-      }`}
+      className={`whitespace-nowrap rounded-[53px] w-fit h-33 text-13 border flex-center ${
+        selected ? 'border-black' : 'border-gray-1'
+      } pc:text-14 ${editMode ? 'hover:border-green hover:text-green' : ''}`}
       onClick={handleClick}>
-      {title}
+      <div className="mx-30">{title}</div>
     </button>
   );
 }

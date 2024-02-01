@@ -1,10 +1,12 @@
-import CartButton from '@/components/button/cartButton';
+import CartButton from '@/components/button/header/cartButton';
 import SearchInput from '@/components/input/searchInput';
-import MyPageButton from '@/components/button/myPageButton';
+import MyPageButton from '@/components/button/header/myPageButton';
 import SignInButton from '@/components/button/signInButton';
 import SignOutButton from '@/components/button/signOutButton';
+import BookmarkButton from '@/components/button/header/bookmarkButton';
+import HeaderLayout from '@/components/layout/headerLayout';
 import SignUpButton from '@/components/button/signUpButton';
-import HeaderLayout from '../layout/headerLayout';
+import ReadMeButton from '../button/header/readmeButton';
 
 export interface HeaderProps {
   isLoggedIn: boolean;
@@ -13,7 +15,7 @@ export interface HeaderProps {
 
 function Separator() {
   return (
-    <div className="mobile:hidden inline-block border-r w-1 h-14 border-gray-1" />
+    <div className="mobile:hidden inline-block border-r w-1 h-12 border-gray-1" />
   );
 }
 
@@ -21,15 +23,12 @@ function Separator() {
 function NonLoggedInHeader() {
   return (
     <div
-      className="flex tablet:mx-90 justify-between min-w-fit max-w-full items-center h-50 mx-16
-        tablet:h-100 pc:h-100 pc:mx-110">
-      <div className="text-18 pc:text-24 text-green font-bold tablet:text-24">
-        Read Me
-      </div>
+      className="z-10 flex mx-15 tablet:mx-30 justify-between min-w-fit max-w-full items-center
+        h-50 tablet:h-100 pc:h-100 pc:mx-60">
+      <ReadMeButton />
       <SearchInput />
       <div className="inline-flex items-center tablet:gap-40 pc:gap-40">
         <SignInButton />
-        <Separator />
         <SignUpButton />
       </div>
     </div>
@@ -40,16 +39,14 @@ function NonLoggedInHeader() {
 function LoggedInHeader({ numItemsOfCart }: { numItemsOfCart: number }) {
   return (
     <div
-      className="flex tablet:mx-90 justify-between min-w-fit max-w-full items-center h-50 mx-16
-        tablet:h-100 pc:h-100 pc:mx-110">
-      <div className="text-18 pc:text-24 text-green font-bold tablet:text-24">
-        Read Me
-      </div>
+      className="relative flex z-10 tablet:mx-30 mx-15 justify-between min-w-fit max-w-full
+        items-center h-50 tablet:h-100 pc:h-100 pc:mx-60">
+      <ReadMeButton />
       <SearchInput />
-
-      <div className="inline-flex gap-10 tablet:gap-26 pc:gap-26 items-center">
+      <div className="flex gap-10 tablet:gap-20 pc:gap-20 items-center">
         <SignOutButton />
         <Separator />
+        <BookmarkButton />
         <CartButton numItemsOfCart={numItemsOfCart} />
         <MyPageButton />
       </div>
@@ -60,11 +57,11 @@ function LoggedInHeader({ numItemsOfCart }: { numItemsOfCart: number }) {
 // 헤더 컴포넌트
 function Header({ isLoggedIn, numItemsOfCart }: HeaderProps) {
   return isLoggedIn && numItemsOfCart ? (
-    <HeaderLayout>
+    <HeaderLayout isLoggedIn={isLoggedIn}>
       <LoggedInHeader numItemsOfCart={numItemsOfCart} />
     </HeaderLayout>
   ) : (
-    <HeaderLayout>
+    <HeaderLayout isLoggedIn={isLoggedIn}>
       <NonLoggedInHeader />
     </HeaderLayout>
   );
