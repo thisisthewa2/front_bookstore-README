@@ -2,16 +2,18 @@ import { StaticImageData } from 'next/image';
 
 interface BookOverviewType {
   book: {
-    productId: number;
-    title: string;
-    imageUrl?: string | StaticImageData;
+    bookId: number;
+    bookTitle: string;
+    bookImgUrl?: string | StaticImageData;
     price: number;
     authors: string[];
     rank?: number;
     publisher: string;
-    rating: number;
+    averageRating: number;
     reviewCount: number;
-    issueDate?: number;
+    genre: string;
+    categories: string[];
+    publishedDate: string;
   };
   like: {
     userLiked: boolean;

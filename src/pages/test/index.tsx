@@ -4,89 +4,133 @@ import BookOverviewCard from '@/components/book/bookOverviewCard/bookOverViewCar
 import TestImage1 from '@/public/images/SampleBookCover1.jpeg';
 import TestImage2 from '@/public/images/SampleBookCover2.jpeg';
 import TestImage4 from '@/public/images/SampleBookCover4.jpeg';
+import { BookOverviewType } from '@/types/bookOverviewType';
 
-const testData1 = {
-  book: {
-    productId: 1,
-    title: '웹 프론트엔드의 정석',
-    imageUrl: TestImage1,
-    price: 30000,
-    authors: ['김웹', '박프론트'],
-    rank: 1,
-    publisher: '출판사',
-    rating: 4,
-    reviewCount: 0,
+const bookOverviews: BookOverviewType[] = [
+  {
+    book: {
+      bookId: 1,
+      bookTitle: '자바스크립트 마스터',
+      bookImgUrl: TestImage1, // 객체 직접 할당
+      price: 25000,
+      authors: ['홍길동'],
+      rank: 1,
+      publisher: 'IT출판사',
+      averageRating: 4.5,
+      reviewCount: 150,
+      genre: '프로그래밍',
+      categories: ['국내도서', '웹 개발'], // 수정된 categories
+      publishedDate: '2023-01-10',
+    },
+    like: {
+      userLiked: true,
+      count: 100,
+    },
   },
-  like: {
-    userLiked: true,
-    count: 150,
+  {
+    book: {
+      bookId: 2,
+      bookTitle: '리액트 초급부터 심화까지',
+      bookImgUrl: TestImage2, // 객체 직접 할당
+      price: 30000,
+      authors: ['이순신'],
+      publisher: '프론트엔드 출판사',
+      averageRating: 4.8,
+      reviewCount: 200,
+      genre: '프로그래밍',
+      categories: ['해외도서', '리액트'], // 수정된 categories
+      publishedDate: '2023-02-15',
+    },
+    like: {
+      userLiked: false,
+      count: 150,
+    },
   },
-};
+  {
+    book: {
+      bookId: 3,
+      bookTitle: 'Vue.js 입문',
+      bookImgUrl: TestImage4, // 객체 직접 할당
+      price: 28000,
+      authors: ['강감찬'],
+      rank: 2,
+      publisher: '웹 출판사',
+      averageRating: 4.2,
+      reviewCount: 90,
+      genre: '프로그래밍',
+      categories: ['국내도서', 'Vue.js'], // 수정된 categories
+      publishedDate: '2023-03-20',
+    },
+    like: {
+      userLiked: true,
+      count: 80,
+    },
+  },
+  {
+    book: {
+      bookId: 4,
+      bookTitle: '현대 웹 디자인의 이해',
+      bookImgUrl: TestImage1, // 객체 직접 할당
+      price: 32000,
+      authors: ['조세핀'],
+      rank: 4,
+      publisher: '디자인 출판사',
+      averageRating: 4.7,
+      reviewCount: 120,
+      genre: '디자인',
+      categories: ['해외도서', '웹 디자인'], // 수정된 categories
+      publishedDate: '2023-04-25',
+    },
+    like: {
+      userLiked: false,
+      count: 110,
+    },
+  },
+  {
+    book: {
+      bookId: 5,
+      bookTitle: '프론트엔드 프로젝트 가이드',
+      bookImgUrl: TestImage2, // 객체 직접 할당
+      price: 27000,
+      authors: ['박백범'],
+      rank: 3,
+      publisher: '개발 출판사',
+      averageRating: 4.3,
+      reviewCount: 130,
+      genre: '프로그래밍',
+      categories: ['국내도서', '프로젝트 관리'], // 수정된 categories
+      publishedDate: '2023-05-30',
+    },
+    like: {
+      userLiked: true,
+      count: 95,
+    },
+  },
+];
 
-const testData2 = {
-  book: {
-    productId: 2,
-    imageUrl: TestImage4,
-    title: '자바스크립트 마스터하기',
-    price: 25000,
-    authors: ['이자바', '최스크립트'],
-    rank: 3,
-    publisher: '출판사2222',
-    rating: 5,
-    reviewCount: 2,
-  },
-  like: {
-    userLiked: false,
-    count: 25,
-  },
-};
-
-const testData3 = {
-  book: {
-    productId: 3,
-    title: '현대 웹 디자인의 이해',
-    imageUrl: TestImage2,
-    price: 28000,
-    authors: ['정디자인', '한웹'],
-    rank: 5,
-    publisher: '출판사1931990',
-    rating: 1.5,
-    reviewCount: 2300,
-  },
-  like: {
-    userLiked: true,
-    count: 230,
-  },
-};
-
+console.log(bookOverviews[0], bookOverviews[1]);
 function TestPage() {
   return (
     <div className="flex flex-col gap-20 p-20">
-      <BookOverviewCard book={testData1.book} like={testData1.like} />
-      <BookOverviewCard book={testData2.book} like={testData2.like} />
-      <BookOverviewCard book={testData3.book} like={testData3.like} />
-      <PreviewBookInfo
-        title="어머 이책 사야해!"
-        authorList={['이승연', '작가얌', '작가2', '작가3', '작가3', '작가3']}
-        size="lg"
-        ranking={10}
-        category="가정/육아"
-        price={123456789}
-        image={TestImage4}
+      <BookOverviewCard
+        book={bookOverviews[0].book}
+        like={bookOverviews[0].like}
       />
-      <PreviewBookInfo
-        title="어머 이책 사야해!"
-        authorList={['이승연', '작가얌', '작가2', '작가333']}
-        size="md"
-        ranking={30}
-        image={TestImage4}
+      <BookOverviewCard
+        book={bookOverviews[1].book}
+        like={bookOverviews[1].like}
       />
-      <PreviewBookInfo
-        title="겁나 비싼 책"
-        authorList={['이승연', '작가얌', '작가2', '작가3']}
-        size="sm"
-        ranking={100}
-        image={TestImage4}
+      <BookOverviewCard
+        book={bookOverviews[2].book}
+        like={bookOverviews[2].like}
+      />
+      <BookOverviewCard
+        book={bookOverviews[3].book}
+        like={bookOverviews[3].like}
+      />
+      <BookOverviewCard
+        book={bookOverviews[4].book}
+        like={bookOverviews[4].like}
       />
     </div>
   );
