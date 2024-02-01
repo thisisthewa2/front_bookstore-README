@@ -25,6 +25,7 @@ const testData1 = {
 const testData2 = {
   book: {
     productId: 2,
+    imageUrl: TestImage4,
     title: '자바스크립트 마스터하기',
     price: 25000,
     authors: ['이자바', '최스크립트'],

@@ -61,9 +61,9 @@ function PreviewBookInfo({
     sm: {
       pc: 'w-112 h-172',
       tablet: 'tablet:w-122 tablet:h-167',
-      mobile: 'mobile:w-93 mobile:h-144',
+      mobile: 'mobile:w-93 mobile:h-141',
       widthOnly: 'w-112 tablet:w-122 mobile:w-93',
-      heightNumber: { pc: 172, tablet: 167, mobile: 144 },
+      heightNumber: { pc: 172, tablet: 167, mobile: 141 },
     },
   };
   const imageSize = IMAGE_SIZE[size];
@@ -73,11 +73,14 @@ function PreviewBookInfo({
     height: `h-${IMAGE_SIZE[size].heightNumber.pc} tablet:h-${IMAGE_SIZE[size].heightNumber.tablet} mobile:h-${IMAGE_SIZE[size].heightNumber.mobile} `,
   };
 
-  interface RawImageSize {
+  interface RawImageSizeProps {
     naturalWidth: number;
     naturalHeight: number;
   }
-  const handleSetting = ({ naturalWidth, naturalHeight }: RawImageSize) => {
+  const handleSetting = ({
+    naturalWidth,
+    naturalHeight,
+  }: RawImageSizeProps) => {
     setRawImageSize({ width: naturalWidth, height: naturalHeight });
   };
 
@@ -90,6 +93,8 @@ function PreviewBookInfo({
       setIsLabelMove(true);
     }
   };
+
+  console.log(bookImageRef.current?.height, imageSize.heightNumber.tablet);
 
   return (
     <div className={`flex ${STYLE.width} flex-col`}>
@@ -111,8 +116,7 @@ function PreviewBookInfo({
               onLoadingComplete={(img) => handleSetting(img)}
             />
             {ranking && (
-              <div
-                className={`absolute left-17 ${isLabelMove && size !== 'lg' ? 'top-[-3px]' : 'top-[-2px]'}`}>
+              <div className={`absolute left-17 top-[-2px]`}>
                 <BookLabelIcon fill={ranking > 10 ? '#ABABAB' : undefined} />
                 <span
                   className={`text-white text-13 font-bold absolute top-0 left-10 ${
