@@ -22,6 +22,7 @@ interface PreviewBookInfoProps {
   image?: string | StaticImageData;
   title?: string;
   alignCenter?: boolean;
+  itemsStart?: boolean;
   authorList?: string[];
   ranking?: number;
   size: 'sm' | 'md' | 'lg';
@@ -38,6 +39,7 @@ function PreviewBookInfo({
   size = 'md',
   price,
   category,
+  itemsStart,
 }: PreviewBookInfoProps) {
   const bookImageRef = useRef<HTMLImageElement>(null);
   const [isLabelMove, setIsLabelMove] = useState(false);
@@ -93,18 +95,15 @@ function PreviewBookInfo({
       setIsLabelMove(true);
     }
   };
-
-  console.log(bookImageRef.current?.height, imageSize.heightNumber.tablet);
-
   return (
     <div className={`flex ${STYLE.width} flex-col`}>
-      <div className={`${STYLE.img} flex relative justify-center items-end`}>
+      <div
+        className={`${STYLE.img} flex relative justify-center ${itemsStart ? '' : 'items-end'}`}>
         <div className="relative">
           <div
             className={`flex items-end min-w-${rawImageSize.width} ${
               imageLoaded &&
-              (bookImageRef.current?.height || 0) >
-                imageSize.heightNumber.mobile
+              (bookImageRef.current?.height || 0) > imageSize.heightNumber.pc
                 ? `${STYLE.height}`
                 : `h-${bookImageRef.current?.height}`
             } overflow-hidden`}>
@@ -116,7 +115,7 @@ function PreviewBookInfo({
               onLoadingComplete={(img) => handleSetting(img)}
             />
             {ranking && (
-              <div className={`absolute left-17 top-[-2px]`}>
+              <div className="absolute left-17 top-[-2px]">
                 <BookLabelIcon fill={ranking > 10 ? '#ABABAB' : undefined} />
                 <span
                   className={`text-white text-13 font-bold absolute top-0 left-10 ${
