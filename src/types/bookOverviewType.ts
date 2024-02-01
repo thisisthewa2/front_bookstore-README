@@ -10,6 +10,7 @@ interface BookOverviewType {
     rank?: number;
     publisher: string;
     rating: number;
+    reviewCount: number;
     issueDate?: number;
   };
   like: {

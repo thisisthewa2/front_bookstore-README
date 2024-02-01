@@ -15,6 +15,7 @@ const testData1 = {
     rank: 1,
     publisher: '출판사',
     rating: 4,
+    reviewCount: 0,
   },
   like: {
     userLiked: true,
@@ -32,10 +33,11 @@ const testData2 = {
     rank: 3,
     publisher: '출판사2222',
     rating: 5,
+    reviewCount: 2,
   },
   like: {
     userLiked: false,
-    count: 45,
+    count: 25,
   },
 };
 
@@ -49,6 +51,7 @@ const testData3 = {
     rank: 5,
     publisher: '출판사1931990',
     rating: 1.5,
+    reviewCount: 2300,
   },
   like: {
     userLiked: true,
