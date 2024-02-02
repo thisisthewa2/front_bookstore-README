@@ -1,5 +1,5 @@
 import Header from '@/components/header';
-import BestSellerPageLayout from '@/components/layout/bestSellerLayout';
+import BestSellerPageLayout from '@/layouts/bestSellerLayout';
 
 function BestSeller() {
   return (

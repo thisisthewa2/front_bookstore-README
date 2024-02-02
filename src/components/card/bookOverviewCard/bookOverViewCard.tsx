@@ -4,7 +4,7 @@ import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
 import { THOUSAND_UNIT } from 'src/constants/price';
 import LikeButton from '@/components/button/likeButton';
 import { useState } from 'react';
-import BookRating from '../bookRating/bookRating';
+import BookRating from '../../book/bookRating/bookRating';
 import ActionButton from '@/components/button/actionButton';
 
 function BookOverviewCard({ book, like }: BookOverviewType) {

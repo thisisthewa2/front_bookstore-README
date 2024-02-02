@@ -1,5 +1,5 @@
 import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
-import BookOverviewCard from '@/components/book/bookOverviewCard/bookOverViewCard';
+import BookOverviewCard from '@/components/card/bookOverviewCard/bookOverViewCard';
 import { bookOverviewsMock } from '@/pages/api/mock/bestSellerMock';
 const bookOverviews = bookOverviewsMock;
 
