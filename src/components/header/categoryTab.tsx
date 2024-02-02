@@ -4,7 +4,7 @@ import {
   CategoryProps,
   ReadMeForeignCategoryList,
   ReadMeDomesticCategoryList,
-} from '@/pages/api/mock';
+} from '@/pages/api/mock/mock';
 
 import SelectedAllButton from '@/components/button/header/selectedAllButton';
 import CategoryButton from '@/components/button/header/categoryButton';

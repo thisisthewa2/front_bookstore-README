@@ -2,17 +2,14 @@ import Image, { StaticImageData } from 'next/image';
 import DefaultImage from '@/public/images/SampleBookCover4.jpeg';
 import { useRef, useState } from 'react';
 import { THOUSAND_UNIT } from 'src/constants/price';
-
-const BookLabelIcon = ({ fill ='#66C57B'}) => (
-   <svg width="26" height="34" viewBox="0 0 26 34" fill="cover" xmlns="http://www.w3.org/2000/svg">
-    <path id="Vector" d="M26 34L13 24.5556L0 34V3.77778C0 2.77585 0.391325 1.81496 1.08789 1.10649C1.78445 0.398015 2.7292 0 3.71429 0H22.2857C23.2708 0 24.2155 0.398015 24.9121 1.10649C25.6087 1.81496 26 2.77585 26 3.77778V34Z" fill={fill} />
-  </svg>
-);
+import BookLabelGrayIcon from '@/public/icons/BookLabelGrayIcon.svg';
+import BookLabelGreenIcon from '@/public/icons/BookLabelIGreenIcon.svg';
 
 interface PreviewBookInfoProps {
-  image?: string | StaticImageData; // TODO: 테스트 후 수정하기(string타입 필요없을지도?)
+  image?: string | StaticImageData;
   title?: string;
   alignCenter?: boolean;
+  itemsStart?: boolean;
   authorList?: string[];
   ranking?: number;
   size: 'sm' | 'md' | 'lg';
@@ -29,77 +26,90 @@ function PreviewBookInfo({
   size = 'md',
   price,
   category,
+  itemsStart,
 }: PreviewBookInfoProps) {
   const bookImageRef = useRef<HTMLImageElement>(null);
   const [isLabelMove, setIsLabelMove] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [rawImageSize, setRawImageSize] = useState({ width: 0, height: 0 });
   const IMAGE_SIZE = {
     lg: {
-      width: 'w-192',
-      height: 'h-291',
-      tabletWidth: 'w-157',
-      tabletHeight: 'h-239',
-      mobileWidth: 'w-160',
-      mobileHeight: 'h-230',
-      heightNumber: 291,
+      pc: 'w-192 h-291',
+      tablet: 'tablet:w-160 tablet:h-239',
+      mobile: 'mobile:w-160 mobile:h-228',
+      widthOnly: 'w-192 tablet:w-160 mobile:w-160',
+      heightNumber: { pc: 291, tablet: 239, mobile: 228 },
     },
     md: {
-      width: 'w-163',
-      height: 'h-248',
-      tabletWidth: 'w-122',
-      tabletHeight: 'h-186',
-      mobileWidth: 'w-142',
-      mobileHeight: 'h-204',
-      heightNumber: 248,
+      pc: 'w-163 h-248',
+      tablet: 'tablet:w-142 tablet:h-204',
+      mobile: 'mobile:w-122 mobile:h-186',
+      widthOnly: 'w-163 tablet:w-142 mobile:w-122',
+      heightNumber: { pc: 248, tablet: 204, mobile: 186 },
     },
     sm: {
-      width: 'w-112',
-      height: 'h-172',
-      tabletWidth: 'w-122',
-      tabletHeight: 'h-167',
-      mobileWidth: 'w-93',
-      mobileHeight: 'h-144',
-      heightNumber: 172,
+      pc: 'w-112 h-172',
+      tablet: 'tablet:w-122 tablet:h-167',
+      mobile: 'mobile:w-93 mobile:h-141',
+      widthOnly: 'w-112 tablet:w-122 mobile:w-93',
+      heightNumber: { pc: 172, tablet: 167, mobile: 141 },
     },
   };
-
   const imageSize = IMAGE_SIZE[size];
+  const STYLE = {
+    img: `${IMAGE_SIZE[size].pc} ${IMAGE_SIZE[size].tablet} ${IMAGE_SIZE[size].mobile}`,
+    width: `${IMAGE_SIZE[size].widthOnly}`,
+    height: `h-${IMAGE_SIZE[size].heightNumber.pc} tablet:h-${IMAGE_SIZE[size].heightNumber.tablet} mobile:h-${IMAGE_SIZE[size].heightNumber.mobile} `,
+  };
+
+  interface RawImageSizeProps {
+    naturalWidth: number;
+    naturalHeight: number;
+  }
+  const handleSetting = ({
+    naturalWidth,
+    naturalHeight,
+  }: RawImageSizeProps) => {
+    setRawImageSize({ width: naturalWidth, height: naturalHeight });
+  };
 
   const handleImageLoaded = () => {
     setImageLoaded(true);
-    if ((bookImageRef.current?.height || 0) > imageSize.heightNumber && isLabelMove) {
+    if (
+      (bookImageRef.current?.height || 0) > imageSize.heightNumber.pc &&
+      isLabelMove
+    ) {
       setIsLabelMove(true);
     }
   };
-
   return (
-    <div
-      className={`flex ${imageSize.width} mobile:${imageSize.mobileWidth}
-        tablet:${imageSize.tabletWidth} flex-col`}>
+    <div className={`flex ${STYLE.width} flex-col`}>
       <div
-        className={`${imageSize.height} mobile:${imageSize.mobileWidth}
-          tablet:${imageSize.tabletHeight} flex relative justify-center items-end`}>
+        className={`${STYLE.img} flex relative justify-center ${itemsStart ? '' : 'items-end'}`}>
         <div className="relative">
           <div
-            className={`flex items-end h-${
+            className={`flex items-end min-w-${rawImageSize.width} ${
               imageLoaded &&
-              (bookImageRef.current?.height || 0) > imageSize.heightNumber
-                ? `${imageSize.heightNumber} `
-                : `${bookImageRef.current?.height} `
+              (bookImageRef.current?.height || 0) > imageSize.heightNumber.pc
+                ? `${STYLE.height}`
+                : `h-${bookImageRef.current?.height}`
             } overflow-hidden`}>
             <Image
               src={image || DefaultImage}
               alt="책 미리보기 이미지"
               ref={bookImageRef}
               onLoad={handleImageLoaded}
+              onLoadingComplete={(img) => handleSetting(img)}
             />
             {ranking && (
-              <div
-                className={`absolute left-17 ${isLabelMove && size !== 'lg' ? 'top-[-3px]' : 'top-[-2px]'}`}>
-                <BookLabelIcon fill={ranking > 10 ? '#ABABAB' : undefined } />
+              <div className="absolute left-17 top-[-2px]">
+                <Image
+                  src={ranking > 10 ? BookLabelGrayIcon : BookLabelGreenIcon}
+                  alt="순위라벨 이미지"
+                />
                 <span
                   className={`text-white text-13 font-bold absolute top-0 left-10 ${
-                    ranking > 9 && 'tracking-[-0.5px] left-5' 
+                    ranking > 9 && 'tracking-[-0.5px] left-5'
                   } ${ranking > 99 && 'tracking-[-0.5px] left-[-1px]'}`}>
                   {ranking}
                 </span>
@@ -121,14 +131,10 @@ function PreviewBookInfo({
           {authorList.join(', ')}
         </div>
       )}
-      {category && (
-        <div className="text-gray-3 text-14 ">
-          [{category}]
-        </div>
-      )}
-       {price && (
+      {category && <div className="text-gray-3 text-14">[{category}]</div>}
+      {price && (
         <div className="text-black text-14 font-bold mt-4">
-          {price.toString().replace(THOUSAND_UNIT,",")}
+          {price.toString().replace(THOUSAND_UNIT, ',')}
         </div>
       )}
     </div>

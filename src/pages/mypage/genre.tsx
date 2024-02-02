@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import GenreButton from '@/components/button/genreButton';
-import { ReadMeGenreList } from '../api/mock';
+import { ReadMeGenreList } from '../api/mock/mock';
 import EditToggleButton from '@/components/button/editToggleButton';
 
 export default function Genre() {
