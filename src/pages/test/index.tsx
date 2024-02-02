@@ -1,4 +1,3 @@
-// import DropDown from '@/components/dropDown/dropDown';
 import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
 import BookOverviewCard from '@/components/book/bookOverviewCard/bookOverViewCard';
 import { bookOverviewsMock } from '../api/bestSellerMock';
