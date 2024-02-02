@@ -1,6 +1,6 @@
 import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
 import BookOverviewCard from '@/components/book/bookOverviewCard/bookOverViewCard';
-import { bookOverviewsMock } from '../api/bestSellerMock';
+import { bookOverviewsMock } from '@/pages/api/mock/bestSellerMock';
 const bookOverviews = bookOverviewsMock;
 
 function TestPage() {
