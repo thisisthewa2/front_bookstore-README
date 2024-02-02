@@ -9,7 +9,12 @@ function BestSellerPage() {
       <BestSellerPageLayout
         header={<Header isLoggedIn={true} />}
         // sideBar={ }
-        main={<BookOverViewCardList bookData={bookOverviewsMock} />}
+        main={
+          <BookOverViewCardList
+            bookData={bookOverviewsMock}
+            title="베스트셀러"
+          />
+        }
       />
     </div>
   );

@@ -3,17 +3,23 @@ import BookOverviewCard from './bookOverViewCard';
 
 interface BookOverViewCardListProps {
   bookData: BookOverviewType[];
+  title: string;
 }
 
-function BookOverViewCardList({ bookData }: BookOverViewCardListProps) {
+function BookOverViewCardList({ bookData, title }: BookOverViewCardListProps) {
   if (!bookData) return;
 
   return (
-    <>
-      {bookData.map((data) => (
-        <BookOverviewCard book={data.book} like={data.like} />
-      ))}
-    </>
+    <div className="flex flex-col gap-40 text-20 font-bold text-black">
+      <h1>{title}</h1>
+      <div className="flex flex-col gap-20 mobile:gap-10">
+        {bookData.map((data) => (
+          <div key={data.book.bookId}>
+            <BookOverviewCard book={data.book} like={data.like} />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
