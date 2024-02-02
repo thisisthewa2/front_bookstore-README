@@ -30,6 +30,7 @@ const bookOverviewsMock: BookOverviewType[] = [
       bookTitle: '리액트 초급부터 심화까지',
       bookImgUrl: TestImage2, // 객체 직접 할당
       price: 30000,
+      rank: 99,
       authors: ['이순신'],
       publisher: '프론트엔드 출판사',
       averageRating: 4.8,
@@ -50,7 +51,7 @@ const bookOverviewsMock: BookOverviewType[] = [
       bookImgUrl: TestImage4, // 객체 직접 할당
       price: 28000,
       authors: ['강감찬'],
-      rank: 2,
+      rank: 100,
       publisher: '웹 출판사',
       averageRating: 4.2,
       reviewCount: 90,
