@@ -9,7 +9,12 @@ function NewestPage() {
       <BestSellerPageLayout
         header={<Header isLoggedIn={true} />}
         // sideBar={ }
-        main={<BookOverViewCardList bookData={bookOverviewsMock} />}
+        main={
+          <BookOverViewCardList
+            bookData={bookOverviewsMock}
+            title="신간 도서"
+          />
+        }
       />
     </div>
   );

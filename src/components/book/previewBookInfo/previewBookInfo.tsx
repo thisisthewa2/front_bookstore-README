@@ -108,9 +108,9 @@ function PreviewBookInfo({
                   alt="순위라벨 이미지"
                 />
                 <span
-                  className={`text-white text-13 font-bold absolute top-0 left-10 ${
-                    ranking > 9 && 'tracking-[-0.5px] left-5'
-                  } ${ranking > 99 && 'tracking-[-0.5px] left-[-1px]'}`}>
+                  className={`text-white text-[13px] font-bold absolute top-5 left-10 ${
+                    ranking > 9 && 'tracking-[-0.6px] left-6'
+                  } ${ranking > 99 && 'tracking-[-0.5px] left-2'}`}>
                   {ranking}
                 </span>
               </div>
