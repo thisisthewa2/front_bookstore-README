@@ -13,7 +13,7 @@ const bookOverviewsMock: BookOverviewType[] = [
       authors: ['홍길동'],
       rank: 1,
       publisher: 'IT출판사',
-      averageRating: 4.5,
+      averageRating: 3.8,
       reviewCount: 150,
       genre: '프로그래밍',
       categories: ['국내도서', '웹 개발'], // 수정된 categories

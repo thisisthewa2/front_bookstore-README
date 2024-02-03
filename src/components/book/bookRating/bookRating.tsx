@@ -10,9 +10,10 @@ function BookRating({ rating, size = 'sm' }: BookRatingProps) {
     sm: 15,
     md: 20,
   };
+
   const viewRating = () => {
     const ratingImages = [];
-    for (let i = 0; i < rating; i++) {
+    for (let i = 0; i < Math.round(rating); i++) {
       ratingImages.push(
         <Image
           src="/icons/FilledStar.svg"
@@ -23,7 +24,7 @@ function BookRating({ rating, size = 'sm' }: BookRatingProps) {
         />,
       );
     }
-    for (let i = 0; i < 5 - rating; i++) {
+    for (let i = 0; i < 5 - Math.round(rating); i++) {
       ratingImages.push(
         <Image
           src="/icons/UnfilledStar.svg"
