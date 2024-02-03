@@ -3,7 +3,7 @@ import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
 import { THOUSAND_UNIT } from 'src/constants/price';
 import LikeButton from '@/components/button/likeButton';
 import { useState } from 'react';
-import BookRating from '../../book/bookRating/bookRating';
+import BookRating from '@/components/book/bookRating/bookRating';
 import ActionButton from '@/components/button/actionButton';
 import { notify } from '@/components/toast/toast';
 
