@@ -1,11 +1,13 @@
-/** 카테고리 페이지 > 외국 > 전체*/
-
+import { useRouter } from 'next/router';
 import SidebarLayout from '@/components/layout/sidebarLayout';
 import Spacing from '@/components/container/spacing/spacing';
 
-export default function ForeignPage() {
+function CategoryPage() {
+  const router = useRouter();
+  const { category } = router.query;
+
   return (
-    <SidebarLayout isDomestic={false}>
+    <SidebarLayout isDomestic={false} location={category as string}>
       <Spacing height={[0, 0, 20]} />
       <article>
         <div
@@ -44,3 +46,5 @@ export default function ForeignPage() {
     </SidebarLayout>
   );
 }
+
+export default CategoryPage;

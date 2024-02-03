@@ -30,7 +30,7 @@ function NavigationTab({ isLoggedIn }: NavigationTabProps) {
             <CategoryTabButton onClick={toggleCategoryTab} />
           </div>
           <div className="flex gap-18 pc:gap-40 tablet:gap-30">
-            <Link href="/bestseller"> 베스트</Link>
+            <Link href="/bestsellers"> 베스트</Link>
             <Link href="/newest"> 신간</Link>
             <Link href="/custom">맞춤도서</Link>
             <div className="inline-block border-r w-1 h-14 mt-4 border-gray-1" />

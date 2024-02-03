@@ -16,9 +16,10 @@
     "paths": {
       "@/components/*": ["src/components/*"],
       "@/hooks/*": ["src/hooks/*"],
+      "@/layout/*": ["src/layout/*"],
       "@/store/*": ["src/store/*"],
       "@/pages/*": ["src/pages/*"],
-      "@/layouts/*": ["src/components/layouts/*"],
+      "@/containers/*": ["src/layouts/*"],
       "@/styles/*": ["src/styles/*"],
       "@/utils/*": ["src/utils/*"],
       "@/types/*": ["src/types/*"],

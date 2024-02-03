@@ -2,7 +2,7 @@
 
 // TODO - props 없이 내부에서 data fetching을 받도록 구현할 예정으로, 지금은 목업데이터를 쓰게끔 함
 
-import { bookListMock } from '@/pages/api/mock/todayBestMock';
+import { bookListMock } from '@/pages/api/todayBestMock';
 import TodayBestBook from '@/components/card/todayBestBookCard/TodayBestBookCard';
 import SkeletonTodayBestBook from '@/components/skeleton/skeletonTodayBestBook';
 import useWindowInnerWidth from '@/hooks/useWindowInnerWidth';

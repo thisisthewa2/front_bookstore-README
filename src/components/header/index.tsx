@@ -4,9 +4,9 @@ import MyPageButton from '@/components/button/header/myPageButton';
 import SignInButton from '@/components/button/signInButton';
 import SignOutButton from '@/components/button/signOutButton';
 import BookmarkButton from '@/components/button/header/bookmarkButton';
-import HeaderLayout from '@/components/layouts/headerLayout';
+import HeaderLayout from '@/components/layout/headerLayout';
 import SignUpButton from '@/components/button/signUpButton';
-import ReadMeButton from '@/components/button/header/readmeButton';
+import ReadMeButton from '../button/header/readmeButton';
 
 export interface HeaderProps {
   isLoggedIn: boolean;
