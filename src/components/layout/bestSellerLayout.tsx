@@ -1,10 +1,8 @@
-import Header from '@/components/header/index';
 import { ReactNode } from 'react';
 import ScrollToTopButton from '@/components/button/scrollToTopButton';
 import useInfinite from '@/hooks/useInfinite';
 import { useAtom } from 'jotai';
 import { pointVisibleAtom } from '@/store/state';
-import SidebarLayout from './sidebarLayout';
 
 interface BestSellerPageLayoutProps {
   header: ReactNode;
@@ -24,11 +22,13 @@ function BestSellerPageLayout({
 
   return (
     <>
-      <div className="flex flex-col grow shrink-0 overflow-hidden w-full basis-0pxr">
-        <div>{header}</div>
-        <div className="flex p-y-40 relative">
+      <div
+        role="container"
+        className="flex flex-col grow shrink-0 overflow-hidden w-full basis-0pxr">
+        <div role="header">{header}</div>
+        <div role="sidebar-container" className="flex p-y-40 relative">
           <section
-            role="contents"
+            role="sidebar"
             className="w-full h-full flex items-start flex-col pt-40 pl-245 pr-60 tablet:pr-40
               tablet:pl-190 mobile:pt-0 mobile:px-15">
             <div className="w-full mobile:pt-20">
@@ -38,8 +38,9 @@ function BestSellerPageLayout({
                 {sideBar}
               </aside>
             </div>
-
-            <div className="w-full h-full mobile:pt-30 mobile:flex-center">
+            <div
+              role="contents"
+              className="w-full h-full mobile:pt-30 mobile:flex-center">
               {main}
             </div>
           </section>

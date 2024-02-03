@@ -5,7 +5,7 @@ import { bookOverviewsMock } from '../api/mock/bestSellerMock';
 import Sidebar from '@/components/sidebar/sidebar';
 import { useRouter } from 'next/router';
 
-interface BestSellerPageProps {
+export interface BestSellerPageProps {
   isDomestic: boolean;
   category?: string;
 }
