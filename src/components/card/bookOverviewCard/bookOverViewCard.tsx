@@ -6,10 +6,13 @@ import { useState } from 'react';
 import BookRating from '@/components/book/bookRating/bookRating';
 import ActionButton from '@/components/button/actionButton';
 import { notify } from '@/components/toast/toast';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 function BookOverviewCard({ book, like }: BookOverviewType) {
   const [isLiked, setIsLiked] = useState(like.userLiked || false);
   const [likeCount, setIsLikeCount] = useState(like.count || 0);
+  const router = useRouter();
 
   const handleLikeClick = () => {
     setIsLiked(!isLiked);
@@ -30,7 +33,7 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
   const handleAddForPayment = () => {
     //TODO
     //1. 유저결제 정보에 저장(상품id 넘겨주기)
-    //2. 결제페이지 이동
+    router.push('/payment'); //결제페이지로 이동
   };
 
   return (
@@ -39,8 +42,9 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
       className="flex flex-col justify-between h-220 border-gray-1 border-2 p-30 rounded-xl
         mobile:p-15 mobile:pb-15 mobile:w-330 mobile:h-251 relative">
       <div role="book-info-container" className="flex relative">
-        <div
+        <Link
           role="book-img"
+          href={`bookdetail/${book.bookId}`}
           className="h-170 bg-white mobile:min-w-93 mobile:h-134 pt-2 overflow-hidden">
           <PreviewBookInfo
             size="sm"
@@ -48,7 +52,7 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
             ranking={book.rank}
             itemsStart
           />
-        </div>
+        </Link>
 
         <div
           role="book-info"
