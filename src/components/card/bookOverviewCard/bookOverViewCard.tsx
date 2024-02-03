@@ -92,7 +92,7 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
             role="book-rating"
             className="flex-center gap-4 mb-8 mobile:mb-4">
             <BookRating rating={book.averageRating} size="md" />
-            <span className="text-14 text-gray-3 font-[400] mobile:hidden">
+            <span className="text-14 text-gray-3 mobile:hidden">
               ({book.reviewCount})
             </span>
           </div>
@@ -118,7 +118,7 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
             mobile:bottom-16 mobile:right-0">
           <div role="like-button" className="flex-center flex-col gap-2">
             <LikeButton onClick={handleLikeClick} isLiked={isLiked} />
-            <span className="text-black text-12 font-[400]">{likeCount}</span>
+            <span className="text-black text-12">{likeCount}</span>
           </div>
           <div
             role="cart-button"
