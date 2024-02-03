@@ -1,4 +1,3 @@
-import BookAuthor from '@/components/book/bookAuthor/bookAuthor';
 import { BookOverviewType } from '@/types/bookOverviewType';
 import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
 import { THOUSAND_UNIT } from 'src/constants/price';
@@ -6,6 +5,8 @@ import LikeButton from '@/components/button/likeButton';
 import { useState } from 'react';
 import BookRating from '../../book/bookRating/bookRating';
 import ActionButton from '@/components/button/actionButton';
+import Toast, { notify } from '@/components/toast/toast';
+import { toast } from 'react-toastify';
 
 function BookOverviewCard({ book, like }: BookOverviewType) {
   const [isLiked, setIsLiked] = useState(like.userLiked || false);
@@ -18,7 +19,10 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
   };
 
   const handleAddToCart = () => {
-    alert('장바구니에 추가했습니다.');
+    notify({
+      type: 'success',
+      text: '장바구니에 담았어요 🛒',
+    });
     //TODO
     //1. 유저 장바구니에 추가(서버연결)
     //2. 성공시 장바구니 아이콘 변경
@@ -67,6 +71,11 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
               })}
             </div>
             <div>
+              {book.publisher && (
+                <span className="text-gray-3 text-14">| {book.publisher}</span>
+              )}
+            </div>
+            <div>
               <span className="text-gray-3 text-14 mobile:hidden"></span>
             </div>
           </div>
@@ -80,7 +89,7 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
             role="book-rating"
             className="flex-center gap-4 mb-8 mobile:mb-4">
             <BookRating rating={book.averageRating} size="md" />
-            <span className="text-14 text-gray-3 mobile:hidden">
+            <span className="text-14 text-gray-3 font-[400] mobile:hidden">
               ({book.reviewCount})
             </span>
           </div>
@@ -105,7 +114,7 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
           className="flex flex-col items-end gap-30 mobile:absolute mobile:bottom-16 mobile:right-0">
           <div role="like-button" className="flex-center flex-col gap-2">
             <LikeButton onClick={handleLikeClick} isLiked={isLiked} />
-            <span className="text-black text-12">{likeCount}</span>
+            <span className="text-black text-12 font-[400]">{likeCount}</span>
           </div>
           <div
             role="cart-button"

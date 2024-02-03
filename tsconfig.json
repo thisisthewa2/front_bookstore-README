@@ -18,7 +18,7 @@
       "@/hooks/*": ["src/hooks/*"],
       "@/store/*": ["src/store/*"],
       "@/pages/*": ["src/pages/*"],
-      "@/layouts/*": ["src/layouts/*"],
+      "@/layouts/*": ["src/components/layouts/*"],
       "@/styles/*": ["src/styles/*"],
       "@/utils/*": ["src/utils/*"],
       "@/types/*": ["src/types/*"],

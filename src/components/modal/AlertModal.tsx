@@ -1,4 +1,4 @@
-import ModalLayout from "@/layouts/modalLayout";
+import ModalLayout from '@/components/layouts/modalLayout';
 interface AlertModalProps {
   title: string;
   description: string;
