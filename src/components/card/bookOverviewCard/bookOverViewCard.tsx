@@ -5,8 +5,7 @@ import LikeButton from '@/components/button/likeButton';
 import { useState } from 'react';
 import BookRating from '../../book/bookRating/bookRating';
 import ActionButton from '@/components/button/actionButton';
-import Toast, { notify } from '@/components/toast/toast';
-import { toast } from 'react-toastify';
+import { notify } from '@/components/toast/toast';
 
 function BookOverviewCard({ book, like }: BookOverviewType) {
   const [isLiked, setIsLiked] = useState(like.userLiked || false);
@@ -37,7 +36,7 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
   return (
     <div
       role="card-container"
-      className="flex flex-col justify-between h-220 border-gray-1 border-2 p-30 pb-20 rounded-xl
+      className="flex flex-col justify-between h-220 border-gray-1 border-2 p-30 rounded-xl
         mobile:p-15 mobile:pb-15 mobile:w-330 mobile:h-251 relative">
       <div role="book-info-container" className="flex relative">
         <div
@@ -111,7 +110,8 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
 
         <div
           role="buttons-div"
-          className="flex flex-col items-end gap-30 mobile:absolute mobile:bottom-16 mobile:right-0">
+          className="flex flex-col items-end gap-30 tablet:absolute tablet:right-0 mobile:absolute
+            mobile:bottom-16 mobile:right-0">
           <div role="like-button" className="flex-center flex-col gap-2">
             <LikeButton onClick={handleLikeClick} isLiked={isLiked} />
             <span className="text-black text-12 font-[400]">{likeCount}</span>

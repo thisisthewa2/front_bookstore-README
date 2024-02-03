@@ -1,6 +1,6 @@
 import BookOverViewCardList from '@/components/card/bookOverviewCard/bookOverViewCardList';
 import Header from '@/components/header';
-import BestSellerPageLayout from '@/components/layouts/bestSellerLayout';
+import BestSellerPageLayout from '@/components/layout/bestSellerLayout';
 import { bookOverviewsMock } from '../api/mock/bestSellerMock';
 
 function NewestPage() {

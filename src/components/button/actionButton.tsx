@@ -19,7 +19,7 @@ function ActionButton({
   mobile,
 }: ActionButtonProps) {
   const ActionButtonClass = classNames(
-    'w-130 h-40 flex-center rounded-md text-14 font-[500]',
+    'w-134 h-40 flex-center rounded-md text-14 font-[500]',
     variant === 'primary'
       ? 'bg-white border-green border-2 text-green'
       : 'bg-green border-green border-2 text-white',

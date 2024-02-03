@@ -11,14 +11,10 @@ import Sidebar from '@/components/sidebar/sidebar';
 interface SidebarLayoutProps {
   isDomestic: boolean;
   location?: string;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
-function SidebarLayout({
-  isDomestic = true,
-  location,
-  children,
-}: SidebarLayoutProps) {
+function SidebarLayout({ isDomestic, location, children }: SidebarLayoutProps) {
   return (
     <div className="flex flex-col max-w-[1200px]">
       <MainLayout>
