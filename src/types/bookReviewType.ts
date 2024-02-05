@@ -1,19 +1,29 @@
-interface BookReviewType {
-  book: {
-    productId: number;
-    title: string;
-    imageUrl?: string | null;
-    authors: string[] | null;
-  };
-  review: {
-    reviewId: number;
-    createdAt: string;
-    updatedAt: string;
-    reviewTitle: string;
-    reviewImgUrl?: string | null;
-    reviewContent: string;
-    reviewRating: number;
-  };
+import { BookDetailCardType } from "./cardType";
+
+interface ReviewType{
+  reviewId: number;
+  isOwner: boolean;
+  createdAt: string;
+  updatedAt?: string;
+  reviewTitle: string;
+  reviewBookImgUrl?: string | null;
+  reviewProfileImg?: string | null;
+  profileName?: string;
+  reviewContent: string;
+  reviewRating: number;
 }
 
-export type { BookReviewType };
+interface MyReviewType {
+  book: BookDetailCardType;
+  review: ReviewType;
+}
+
+interface BookReviewType {
+  bookId: number;
+  averageRating: number;
+  ratingDist: [number, number, number, number, number];
+  reviewNum: number;
+  reviewList: ReviewType[];
+}
+
+export type { MyReviewType, BookReviewType };

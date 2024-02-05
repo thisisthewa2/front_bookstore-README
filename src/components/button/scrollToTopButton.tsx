@@ -4,23 +4,22 @@ import { useAtom } from 'jotai';
 import Image from 'next/image';
 
 function ScrollToTopButton() {
-  const [headerVisible] = useAtom(pointVisibleAtom);
+  const [pointVisible] = useAtom(pointVisibleAtom);
 
   const handleClickScrollToTop = () => {
-    if (!headerVisible) {
-      window.scrollTo({top:0, behavior:'smooth'})
+    if (!pointVisible) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }
+  };
 
-  return (
-    headerVisible ? null :
-    <div onClick={handleClickScrollToTop} className='cursor-pointer'>
+  return pointVisible ? null : (
+    <div onClick={handleClickScrollToTop} className="cursor-pointer">
       <Image
-        className="fixed right-50 bottom-80"
+        className="fixed right-20 bottom-80"
         src={ScrollToTopButtonImg}
         alt="페이지 상단으로 이동"
       />
-    </div> 
+    </div>
   );
 }
 

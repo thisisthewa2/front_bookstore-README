@@ -4,7 +4,7 @@ const isTouchScreen =
   typeof window !== 'undefined' &&
   window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
-export default function registDragEvent({
+function registDragEvent({
   onDragChange,
   onDragEnd,
 }: {
@@ -64,3 +64,5 @@ export default function registDragEvent({
     },
   };
 }
+
+export default registDragEvent;

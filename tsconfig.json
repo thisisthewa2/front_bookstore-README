@@ -16,10 +16,9 @@
     "paths": {
       "@/components/*": ["src/components/*"],
       "@/hooks/*": ["src/hooks/*"],
-      "@/layout/*": ["src/layout/*"],
       "@/store/*": ["src/store/*"],
       "@/pages/*": ["src/pages/*"],
-      "@/containers/*": ["src/layouts/*"],
+      "@/containers/*": ["src/layout/*"],
       "@/styles/*": ["src/styles/*"],
       "@/utils/*": ["src/utils/*"],
       "@/types/*": ["src/types/*"],
@@ -30,7 +29,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/button/register",
+    "src/components/button/register", "next.config.js",
   ],
   "exclude": ["node_modules"],
 }

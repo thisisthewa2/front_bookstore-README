@@ -1,6 +1,7 @@
 import { BookOverviewType } from '@/types/bookOverviewType';
 import TestImage1 from '@/public/images/SampleBookCover1.jpeg';
 import TestImage2 from '@/public/images/SampleBookCover2.jpeg';
+import TestImage3 from '@/public/images/SampleBookCover3.jpeg';
 import TestImage4 from '@/public/images/SampleBookCover4.jpeg';
 
 const bookOverviewsMock: BookOverviewType[] = [
@@ -106,6 +107,106 @@ const bookOverviewsMock: BookOverviewType[] = [
     like: {
       userLiked: true,
       count: 95,
+    },
+  },
+  {
+    book: {
+      bookId: 6,
+      bookTitle: '타입스크립트 입문',
+      bookImgUrl: TestImage4, // 객체 직접 할당
+      price: 30000,
+      authors: ['김개발'],
+      rank: 15,
+      publisher: '프로그래밍 출판사',
+      averageRating: 4.0,
+      reviewCount: 110,
+      genre: '프로그래밍',
+      categories: ['국내도서', '타입스크립트'],
+      publishedDate: '2023-06-15',
+    },
+    like: {
+      userLiked: false,
+      count: 120,
+    },
+  },
+  {
+    book: {
+      bookId: 7,
+      bookTitle: '리액트 네이티브 실전 가이드',
+      bookImgUrl: TestImage1, // 객체 직접 할당
+      price: 35000,
+      authors: ['이모바일'],
+      rank: 8,
+      publisher: '프론트엔드 출판사',
+      averageRating: 4.6,
+      reviewCount: 180,
+      genre: '프로그래밍',
+      categories: ['해외도서', '리액트 네이티브'],
+      publishedDate: '2023-07-20',
+    },
+    like: {
+      userLiked: true,
+      count: 90,
+    },
+  },
+  {
+    book: {
+      bookId: 8,
+      bookTitle: '파이썬 기초부터 실전까지',
+      bookImgUrl: TestImage2, // 객체 직접 할당
+      price: 32000,
+      authors: ['이코딩'],
+      rank: 5,
+      publisher: '프로그래밍 출판사',
+      averageRating: 4.2,
+      reviewCount: 160,
+      genre: '프로그래밍',
+      categories: ['국내도서', '파이썬'],
+      publishedDate: '2023-08-12',
+    },
+    like: {
+      userLiked: true,
+      count: 130,
+    },
+  },
+  {
+    book: {
+      bookId: 9,
+      bookTitle: '데이터베이스 설계와 구축',
+      bookImgUrl: TestImage4, // 객체 직접 할당
+      price: 38000,
+      authors: ['데이터마스터'],
+      rank: 12,
+      publisher: '데이터 출판사',
+      averageRating: 4.8,
+      reviewCount: 190,
+      genre: '데이터베이스',
+      categories: ['해외도서', '데이터베이스'],
+      publishedDate: '2023-09-28',
+    },
+    like: {
+      userLiked: false,
+      count: 110,
+    },
+  },
+  {
+    book: {
+      bookId: 10,
+      bookTitle: '클라우드 컴퓨팅 입문',
+      bookImgUrl: TestImage1, // 객체 직접 할당
+      price: 28000,
+      authors: ['클라우드마스터'],
+      rank: 18,
+      publisher: '클라우드 출판사',
+      averageRating: 4.5,
+      reviewCount: 140,
+      genre: '클라우드',
+      categories: ['해외도서', '클라우드'],
+      publishedDate: '2023-10-15',
+    },
+    like: {
+      userLiked: true,
+      count: 120,
     },
   },
 ];

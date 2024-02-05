@@ -4,22 +4,31 @@ import CategoryTabButton from '@/components/button/header/categoryTabButton';
 import CategoryTab from '@/components/header/categoryTab';
 import Link from 'next/link';
 import WritePostButton from '@/components/button/header/writePostButton';
+import AddCommunityCard from '../modal/addCommunityCard/addCommunityCard';
 
 interface NavigationTabProps {
   isLoggedIn: boolean;
 }
 function NavigationTab({ isLoggedIn }: NavigationTabProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCategoryTabVisible, setCategoryTabVisibility] = useState(false);
   const router = useRouter();
   // 현재 페이지 경로 확인
   const currentPath = router.pathname;
 
   // 특정 페이지에서만 WritePostButton을 보이도록 조건을 설정
-  const showWritePostButton = currentPath === '/community' && isLoggedIn;
+  const showWritePostButton =
+    currentPath === '/community' ||
+    (currentPath === '/community/writeme' && isLoggedIn);
 
   const toggleCategoryTab = () => {
     setCategoryTabVisibility(!isCategoryTabVisible);
   };
+
+  const handleModalOpen = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <>
       <div
@@ -38,10 +47,14 @@ function NavigationTab({ isLoggedIn }: NavigationTabProps) {
           </div>
         </div>
         <div className="flex items-center ml-auto tablet:mr-40 pc:mr-60">
-          <WritePostButton showButton={showWritePostButton} />
+          <WritePostButton
+            showButton={showWritePostButton}
+            onClick={handleModalOpen}
+          />
         </div>
       </div>
       {isCategoryTabVisible && <CategoryTab />}
+      {isModalOpen && <AddCommunityCard onClick={handleModalOpen} />}
     </>
   );
 }

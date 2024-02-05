@@ -1,10 +1,8 @@
-import Header from '@/components/header';
+import CommunityLayout from '@/components/layout/communityLayout';
+import { communityCards } from '@/pages/api/mock';
 
-export default function Community() {
-  return (
-    <div>
-      <Header isLoggedIn={false} />
-      <Header isLoggedIn={true} numItemsOfCart={4} />
-    </div>
-  );
+function Community() {
+  return <CommunityLayout communityData={communityCards} isSelected='피드' />;
 }
+
+export default Community;

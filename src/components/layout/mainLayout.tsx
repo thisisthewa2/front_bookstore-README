@@ -1,5 +1,5 @@
 import Header from '@/components/header/index';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import ScrollToTopButton from '@/components/button/scrollToTopButton';
 import useInfinite from '@/hooks/useInfinite';
 import { useAtom } from 'jotai';
@@ -13,13 +13,15 @@ function MainLayout({ children }: MainLayoutProps) {
   const [ref, isIntersecting] = useInfinite();
   const [, setPointVisible] = useAtom(pointVisibleAtom);
 
-  setPointVisible(isIntersecting);
+  useEffect(() => {
+    setPointVisible(isIntersecting);
+  }, [isIntersecting]);
 
   return (
     <>
       <Header isLoggedIn={true} numItemsOfCart={1} />
       <div className="relative grid auto-rows-auto place-items-center">
-        <div className="w-300 h-20" ref={ref} />
+        <div className="w-300 h-20" ref={ref}/>
         {children}
         <ScrollToTopButton />
       </div>
