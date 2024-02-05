@@ -49,15 +49,7 @@ function PreviewBookInfo({
   return (
     <div className={`flex flex-col ${STYLE.width}`}>
       <div className={`relative ${STYLE.img}`}>
-        <div
-          // className={`flex overflow-hidden items-end ${
-          //   size === 'lg'
-          //     ? 'w-192 tablet:w-157 mobile:w-160'
-          //     : size === 'md'
-          //       ? 'w-163 tablet:w-122 mobile:w-142'
-          //       : 'w-112 tablet:w-112 mobile:w-93'
-          //   }`}
-          className={`flex items-end`}>
+        <div className={`flex items-end`}>
           <Image
             src={image || DefaultImage}
             alt="책 미리보기 이미지"
