@@ -1,13 +1,16 @@
 import { StaticImageData } from 'next/image';
 
-export interface PreviewBookInfoProps {
+export interface PreviewBookInfoSizeProps {
+  size: 'sm' | 'md' | 'lg';
+}
+
+export interface PreviewBookInfoProps extends PreviewBookInfoSizeProps {
   image?: string | StaticImageData;
   title?: string;
   alignCenter?: boolean;
   itemsStart?: boolean;
   authorList?: string[];
   ranking?: number;
-  size: 'sm' | 'md' | 'lg';
   price?: number;
   category?: string;
 }
