@@ -74,7 +74,7 @@ function PreviewBookInfo({
   return (
     <div className={`flex ${STYLE.width} flex-col`}>
       <div
-        className={`${STYLE.img} flex relative justify-center ${itemsStart ? '' : 'items-end'}`}>
+        className={`${STYLE.img}relative justify-center ${itemsStart ? '' : 'items-end'}`}>
         <div className="relative">
           <div
             className={`flex items-end min-w-${rawImageSize.width} ${
@@ -88,7 +88,14 @@ function PreviewBookInfo({
               alt="책 미리보기 이미지"
               ref={bookImageRef}
               onLoad={handleImageLoaded}
-              onLoadingComplete={(img) => handleSetting(img)}
+              // onLoadingComplete={(img) => handleSetting(img)}
+              layout="responsive"
+              width={0}
+              height={0}
+              // sizes={`height:${rawImageSize.height} width:${rawImageSize.width}`}
+              sizes="320 640 750"
+              className="w-full h-auto"
+              priority
             />
             {ranking && (
               <div className="absolute left-17 top-[-2px]">

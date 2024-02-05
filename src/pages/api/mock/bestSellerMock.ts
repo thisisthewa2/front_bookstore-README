@@ -8,7 +8,8 @@ const bookOverviewsMock: BookOverviewType[] = [
     book: {
       bookId: 1,
       bookTitle: '자바스크립트 마스터',
-      bookImgUrl: TestImage1, // 객체 직접 할당
+      bookImgUrl:
+        'https://image.aladin.co.kr/product/32104/48/cover200/k212834108_1.jpg',
       price: 25000,
       authors: ['홍길동'],
       rank: 1,
@@ -28,7 +29,8 @@ const bookOverviewsMock: BookOverviewType[] = [
     book: {
       bookId: 2,
       bookTitle: '리액트 초급부터 심화까지',
-      bookImgUrl: TestImage2, // 객체 직접 할당
+      bookImgUrl:
+        'https://image.aladin.co.kr/product/13501/85/cover500/k042532608_1.jpg', // 객체 직접 할당
       price: 30000,
       authors: ['이순신'],
       rank: 22,
@@ -48,7 +50,8 @@ const bookOverviewsMock: BookOverviewType[] = [
     book: {
       bookId: 3,
       bookTitle: 'Vue.js 입문',
-      bookImgUrl: TestImage4, // 객체 직접 할당
+      bookImgUrl:
+        'https://image.aladin.co.kr/product/13650/41/cover500/8961412124_1.jpg', // 객체 직접 할당
       price: 28000,
       authors: ['강감찬'],
       rank: 100,
@@ -68,7 +71,8 @@ const bookOverviewsMock: BookOverviewType[] = [
     book: {
       bookId: 4,
       bookTitle: '현대 웹 디자인의 이해',
-      bookImgUrl: TestImage1, // 객체 직접 할당
+      bookImgUrl:
+        'https://media.istockphoto.com/id/1808231641/ko/%EB%B2%A1%ED%84%B0/%EC%A7%80%EC%8B%9D%EC%9D%80-%EC%A0%84%EB%A0%A5-%EA%B0%9C%EB%85%90%EC%9E%85%EB%8B%88%EB%8B%A4.jpg?s=2048x2048&w=is&k=20&c=ME7Z9wvpbf_Ofw3Iw1qgZxvQAkpOBeWma-Keu_MLHqI=', // 객체 직접 할당
       price: 32000,
       authors: ['조세핀'],
       rank: 4,
