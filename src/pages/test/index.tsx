@@ -26,6 +26,21 @@ function TestPage() {
         book={bookOverviews[4]?.book}
         like={bookOverviews[4]?.like}
       />
+      <PreviewBookInfo
+        size="lg"
+        image={bookOverviews[1]?.book.bookImgUrl}
+        ranking={bookOverviews[1]?.book.rank}
+      />
+      <PreviewBookInfo
+        size="md"
+        image={bookOverviews[1]?.book.bookImgUrl}
+        ranking={bookOverviews[1]?.book.rank}
+      />
+      <PreviewBookInfo
+        size="sm"
+        image={bookOverviews[1]?.book.bookImgUrl}
+        ranking={bookOverviews[1]?.book.rank}
+      />
     </div>
   );
 }
