@@ -4,18 +4,7 @@ import { useRef, useState } from 'react';
 import { THOUSAND_UNIT } from 'src/constants/price';
 import BookLabelGrayIcon from '@/public/icons/BookLabelGrayIcon.svg';
 import BookLabelGreenIcon from '@/public/icons/BookLabelIGreenIcon.svg';
-
-interface PreviewBookInfoProps {
-  image?: string | StaticImageData;
-  title?: string;
-  alignCenter?: boolean;
-  itemsStart?: boolean;
-  authorList?: string[];
-  ranking?: number;
-  size: 'sm' | 'md' | 'lg';
-  price?: number;
-  category?: string;
-}
+import { PreviewBookInfoProps } from '@/types/previewBookInfoType';
 
 function PreviewBookInfo({
   image,
