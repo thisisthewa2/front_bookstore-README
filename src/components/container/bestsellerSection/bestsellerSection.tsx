@@ -9,15 +9,15 @@ function BestSellerSection() {
         tablet:mx-40 mobile:my-80 mobile:mx-15">
       <div className="flex justify-between mobile:mb-20 pc:mb-50 tablet:mb-40">
         <div className="font-bold text-20">베스트셀러</div>
-        <Link href="/bestseller" className="text-green">
+        <Link href="/domestic/bestseller" className="text-green">
           더보기
         </Link>
       </div>
-      <div className="tablet:hidden flex mobile:flex-center flex-wrap gap-x-30 gap-y-62">
+      <div className="tablet:hidden flex flex-center flex-wrap gap-x-10 pc:gap-x-30 gap-y-62">
         {bookOverviewsMock.map((book, index) => (
           <PreviewBookInfo
             key={book.book.bookId}
-            size={'md'}
+            size={'lg'}
             title={book.book.bookTitle}
             image={book.book.bookImgUrl}
             authorList={book.book.authors}

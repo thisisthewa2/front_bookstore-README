@@ -30,8 +30,12 @@ const bookOverviewsMock: BookOverviewType[] = [
     book: {
       bookId: 2,
       bookTitle: '리액트 초급부터 심화까지',
+<<<<<<< HEAD
       bookImgUrl:
         'https://image.aladin.co.kr/product/32819/49/cover/k572936809_1.jpg', // 객체 직접 할당
+=======
+      bookImgUrl: TestImage3, // 객체 직접 할당
+>>>>>>> develop
       price: 30000,
       authors: ['이순신'],
       rank: 22,

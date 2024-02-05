@@ -32,7 +32,7 @@ export const myWishListData = {
       author: '작가 이름 3',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 38000,
     },
     {
       id: 4,
@@ -42,7 +42,7 @@ export const myWishListData = {
       author: '작가 이름 4',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 58000,
     },
     {
       id: 5,
@@ -52,7 +52,7 @@ export const myWishListData = {
       author: '작가 이름 5',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 28000,
     },
     {
       id: 6,
@@ -62,7 +62,7 @@ export const myWishListData = {
       author: '작가 이름 6',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 8000,
     },
     {
       id: 7,
@@ -72,7 +72,7 @@ export const myWishListData = {
       author: '작가 이름 7',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 100000,
     },
     {
       id: 8,
@@ -82,7 +82,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 4000,
     },
     {
       id: 9,
@@ -92,7 +92,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 5000,
     },
     {
       id: 10,
@@ -102,7 +102,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 5000,
     },
     {
       id: 11,
@@ -112,7 +112,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 10000,
     },
     {
       id: 12,
@@ -122,7 +122,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 8000,
     },
     {
       id: 13,
@@ -132,7 +132,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 28000,
     },
     {
       id: 14,
@@ -142,7 +142,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 38000,
     },
     {
       id: 15,
@@ -152,7 +152,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 5000,
     },
     {
       id: 16,
@@ -162,7 +162,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 5000,
     },
     {
       id: 17,
@@ -172,7 +172,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 1000,
     },
     {
       id: 18,
@@ -182,7 +182,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 2000,
     },
     {
       id: 19,
@@ -192,7 +192,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 8000,
     },
     {
       id: 20,
@@ -212,7 +212,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 108000,
     },
     {
       id: 22,
@@ -222,7 +222,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 5000,
     },
     {
       id: 23,
@@ -232,7 +232,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 3000,
     },
     {
       id: 24,
@@ -242,7 +242,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 10000,
     },
     {
       id: 25,
@@ -252,7 +252,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 20000,
     },
     {
       id: 26,
@@ -262,7 +262,7 @@ export const myWishListData = {
       author: '작가 이름 8',
       rating: 3.8,
       genre: '비평',
-      price: 18000,
+      price: 28000,
     },
   ],
 };

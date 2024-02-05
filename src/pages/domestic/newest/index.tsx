@@ -1,18 +1,15 @@
 import BookOverViewCardList from '@/components/card/bookOverviewCard/bookOverViewCardList';
 import Header from '@/components/header';
 import BestSellerPageLayout from '@/components/layout/bestSellerLayout';
-import { bookOverviewsMock } from '../api/mock/bestSellerMock';
-import Sidebar from '@/components/sidebar/sidebar';
+import { bookOverviewsMock } from '@/pages/api/mock/bestSellerMock';
 import { useRouter } from 'next/router';
+import Sidebar from '@/components/sidebar/sidebar';
+import { BestSellerPageProps } from '@/pages/domestic/bestseller';
 
-export interface BestSellerPageProps {
-  isDomestic: boolean;
-  category?: string;
-}
-
-function BestSellerPage({ isDomestic = true }: BestSellerPageProps) {
+function NewestPage({ isDomestic = true }: BestSellerPageProps) {
   const router = useRouter();
   const { category } = router?.query;
+
   return (
     <div>
       <BestSellerPageLayout
@@ -23,7 +20,7 @@ function BestSellerPage({ isDomestic = true }: BestSellerPageProps) {
         main={
           <BookOverViewCardList
             bookData={bookOverviewsMock}
-            title="베스트셀러"
+            title="신간 도서"
           />
         }
       />
@@ -31,4 +28,4 @@ function BestSellerPage({ isDomestic = true }: BestSellerPageProps) {
   );
 }
 
-export default BestSellerPage;
+export default NewestPage;

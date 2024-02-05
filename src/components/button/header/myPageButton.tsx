@@ -27,8 +27,8 @@ function MyPageButton() {
       <div className="mobile:hidden">
         <Image
           src={ProfileIcon}
-          alt="케밥버튼"
-          onClick={handleKebabClick}
+          alt="마이페이지 버튼"
+          onClick={handleMyPageClick}
           ref={ref}
           width={21}
           height={24}
@@ -37,7 +37,7 @@ function MyPageButton() {
       <div className="tablet:hidden pc:hidden">
         <Image
           src={ProfileIcon}
-          alt="케밥버튼"
+          alt="마이페이지 버튼"
           onClick={handleKebabClick}
           ref={ref}
           width={12}

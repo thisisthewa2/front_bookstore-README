@@ -68,7 +68,7 @@ function Carousel({ data, responsive }: CarouselProps) {
         className="flex items-center justify-between mx-60 tablet:mx-40 mobile:mx-15 mb-40
           mobile:mb-20">
         <span className="text-black text-20">신간도서</span>
-        <Link href="/newest" className="text-green text-16">
+        <Link href="/domestic/newest" className="text-green text-16">
           더보기
         </Link>
       </div>
