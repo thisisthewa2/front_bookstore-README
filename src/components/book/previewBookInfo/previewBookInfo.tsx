@@ -24,24 +24,24 @@ function PreviewBookInfo({
   const IMAGE_SIZE = {
     lg: {
       pc: 'w-192 h-291',
-      tablet: 'tablet:w-160 tablet:h-239',
-      mobile: 'mobile:w-160 mobile:h-228',
-      widthOnly: 'w-192 tablet:w-160 mobile:w-160',
-      heightNumber: { pc: 291, tablet: 239, mobile: 228 },
+      tablet: 'tablet:w-157 tablet:h-237',
+      mobile: 'mobile:w-160 mobile:h-242',
+      widthOnly: 'w-192 tablet:w-157 mobile:w-160',
+      heightNumber: { pc: 291, tablet: 237, mobile: 242 },
     },
     md: {
-      pc: 'w-163 h-248',
-      tablet: 'tablet:w-142 tablet:h-204',
-      mobile: 'mobile:w-122 mobile:h-186',
-      widthOnly: 'w-163 tablet:w-142 mobile:w-122',
-      heightNumber: { pc: 248, tablet: 204, mobile: 186 },
+      pc: 'w-163 h-246',
+      tablet: 'tablet:w-122 tablet:h-184',
+      mobile: 'mobile:w-142 mobile:h-202',
+      widthOnly: 'w-163 tablet:w-122 mobile:w-142',
+      heightNumber: { pc: 246, tablet: 184, mobile: 202 },
     },
     sm: {
-      pc: 'w-112 h-172',
-      tablet: 'tablet:w-122 tablet:h-167',
+      pc: 'w-112 h-170',
+      tablet: 'tablet:w-112 tablet:h-170',
       mobile: 'mobile:w-93 mobile:h-141',
-      widthOnly: 'w-112 tablet:w-122 mobile:w-93',
-      heightNumber: { pc: 172, tablet: 167, mobile: 141 },
+      widthOnly: 'w-112 tablet:w-112 mobile:w-93',
+      heightNumber: { pc: 170, tablet: 170, mobile: 141 },
     },
   };
   const imageSize = IMAGE_SIZE[size];
@@ -99,7 +99,7 @@ function PreviewBookInfo({
                 <span
                   className={`text-white text-[13px] font-bold absolute top-5 left-10 ${
                     ranking > 9 && 'tracking-[-0.6px] left-6'
-                  } ${ranking > 99 && 'tracking-[-0.5px] left-2'}`}>
+                  } ${ranking > 99 && 'tracking-[-0.5px] left-[2px]'}`}>
                   {ranking}
                 </span>
               </div>
