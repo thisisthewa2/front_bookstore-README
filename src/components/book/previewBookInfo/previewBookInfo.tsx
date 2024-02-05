@@ -48,7 +48,7 @@ function PreviewBookInfo({
 
   return (
     <div className={`flex flex-col ${STYLE.width}`}>
-      <div className={`relative ${STYLE.img}`}>
+      <div className={`relative ${STYLE.img} overflow-hidden`}>
         <div className={`flex items-end`}>
           <Image
             src={image || DefaultImage}
