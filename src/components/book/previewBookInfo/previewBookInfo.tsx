@@ -32,9 +32,9 @@ function PreviewBookInfo({
     md: {
       pc: 'w-163 h-246',
       tablet: 'tablet:w-122 tablet:h-184',
-      mobile: 'mobile:w-142 mobile:h-202',
+      mobile: 'mobile:w-142 mobile:h-215',
       widthOnly: 'w-163 tablet:w-122 mobile:w-142',
-      heightNumber: { pc: 246, tablet: 184, mobile: 202 },
+      heightNumber: { pc: 246, tablet: 184, mobile: 215 },
     },
     sm: {
       pc: 'w-112 h-170',

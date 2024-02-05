@@ -26,7 +26,9 @@ function BestSellerPageLayout({
         role="container"
         className="flex flex-col grow shrink-0 overflow-hidden w-full basis-0pxr">
         <div role="header">{header}</div>
-        <div role="sidebar-container" className="flex p-y-40 relative">
+        <div
+          role="sidebar-container"
+          className="max-w-[1200px] m-auto flex p-y-40 relative">
           <section
             role="sidebar"
             className="w-full h-full flex items-start flex-col pt-40 pl-245 pr-60 tablet:pr-40

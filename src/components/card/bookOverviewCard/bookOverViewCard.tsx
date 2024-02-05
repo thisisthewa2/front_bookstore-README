@@ -40,7 +40,7 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
     <div
       role="card-container"
       className="flex flex-col justify-between h-220 border-gray-1 border-2 p-30 rounded-xl
-        mobile:p-15 mobile:pb-15 mobile:w-330 mobile:h-251 relative">
+        tablet:w-[511px] mobile:p-15 mobile:pb-15 mobile:w-330 mobile:h-251 relative">
       <div role="book-info-container" className="flex relative">
         <Link
           role="book-img"
