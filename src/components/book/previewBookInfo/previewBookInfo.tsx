@@ -21,24 +21,12 @@ function PreviewBookInfo({
   const bookImageRef = useRef<HTMLImageElement>(null);
   const [isLabelMove, setIsLabelMove] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [rawImageSize, setRawImageSize] = useState({ width: 0, height: 0 });
 
   const imageSize = IMAGE_SIZE[size];
   const STYLE = {
     img: `${IMAGE_SIZE[size].pc} ${IMAGE_SIZE[size].tablet} ${IMAGE_SIZE[size].mobile}`,
     width: `${IMAGE_SIZE[size].widthOnly}`,
     height: `h-${IMAGE_SIZE[size].heightNumber.pc} tablet:h-${IMAGE_SIZE[size].heightNumber.tablet} mobile:h-${IMAGE_SIZE[size].heightNumber.mobile} `,
-  };
-
-  interface RawImageSizeProps {
-    naturalWidth: number;
-    naturalHeight: number;
-  }
-  const handleSetting = ({
-    naturalWidth,
-    naturalHeight,
-  }: RawImageSizeProps) => {
-    setRawImageSize({ width: naturalWidth, height: naturalHeight });
   };
 
   const handleImageLoaded = () => {
@@ -56,7 +44,7 @@ function PreviewBookInfo({
         className={`${STYLE.img}relative justify-center ${itemsStart ? '' : 'items-end'}`}>
         <div className="relative">
           <div
-            className={`flex items-end min-w-${rawImageSize.width} ${
+            className={`flex items-end min-w-${bookImageRef.current?.width} ${
               imageLoaded &&
               (bookImageRef.current?.height || 0) > imageSize.heightNumber.pc
                 ? `${STYLE.height}`
@@ -67,12 +55,10 @@ function PreviewBookInfo({
               alt="책 미리보기 이미지"
               ref={bookImageRef}
               onLoad={handleImageLoaded}
-              // onLoadingComplete={(img) => handleSetting(img)}
               layout="responsive"
               width={0}
               height={0}
-              // sizes={`height:${rawImageSize.height} width:${rawImageSize.width}`}
-              sizes="320 640 750"
+              sizes={`height:${bookImageRef.current?.height} width:${bookImageRef.current?.width}`}
               className="w-full h-auto"
               priority
             />
