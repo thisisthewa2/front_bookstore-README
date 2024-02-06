@@ -39,9 +39,9 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
   return (
     <div
       role="card-container"
-      className="relative flex h-220 flex-col justify-between rounded-xl border-2 border-gray-1
-        p-30 mobile:h-251 mobile:w-330 mobile:p-15 mobile:pb-15">
-      <div role="book-info-container" className="relative flex">
+      className="flex flex-col justify-between h-220 border-gray-1 border-2 p-30 rounded-xl
+        tablet:w-[511px] mobile:p-15 mobile:pb-15 mobile:w-330 mobile:h-251 relative">
+      <div role="book-info-container" className="flex relative">
         <Link
           role="book-img"
           href={`bookdetail/${book.bookId}`}
