@@ -348,7 +348,8 @@ export const myCommunityCard = [
     createAt: '2024.01.31',
     bookCover: 'https://picsum.photos/100/150?random=11',
     bookTitle: '숲 속의 비밀',
-    review: '이 책은 숲 속에 숨겨진 비밀을 찾아가는 모험을 그리고 있습니다. 자연의 아름다움과 함께하는 여정을 느낄 수 있어요.',
+    review:
+      '이 책은 숲 속에 숨겨진 비밀을 찾아가는 모험을 그리고 있습니다. 자연의 아름다움과 함께하는 여정을 느낄 수 있어요.',
   },
   {
     id: 2,
@@ -357,7 +358,8 @@ export const myCommunityCard = [
     createAt: '2024.01.31',
     bookCover: 'https://picsum.photos/100/150?random=12',
     bookTitle: '시간의 강',
-    review: '시간을 통해 우리가 겪는 변화와 성장에 대한 이야기입니다. 인생의 소중한 순간들을 되돌아보게 하는 깊은 메시지가 담겨 있어요.',
+    review:
+      '시간을 통해 우리가 겪는 변화와 성장에 대한 이야기입니다. 인생의 소중한 순간들을 되돌아보게 하는 깊은 메시지가 담겨 있어요.',
   },
   {
     id: 3,
@@ -366,7 +368,8 @@ export const myCommunityCard = [
     createAt: '2024.01.31',
     bookCover: 'https://picsum.photos/100/150?random=13',
     bookTitle: '빛나는 별의 노래',
-    review: '우주와 별을 테마로 한 이야기로, 꿈과 희망에 관한 이야기를 담고 있습니다. 마음을 울리는 따뜻한 이야기가 가득해요.',
+    review:
+      '우주와 별을 테마로 한 이야기로, 꿈과 희망에 관한 이야기를 담고 있습니다. 마음을 울리는 따뜻한 이야기가 가득해요.',
   },
   {
     id: 4,
@@ -375,7 +378,8 @@ export const myCommunityCard = [
     createAt: '2024.01.31',
     bookCover: 'https://picsum.photos/100/150?random=14',
     bookTitle: '그림자를 걷는 사람',
-    review: '자신의 그림자와 마주하는 과정을 통해 자아를 발견해가는 여정을 그립니다. 자기 발견과 성찰에 관한 이야기에 깊이 몰입하게 됩니다.',
+    review:
+      '자신의 그림자와 마주하는 과정을 통해 자아를 발견해가는 여정을 그립니다. 자기 발견과 성찰에 관한 이야기에 깊이 몰입하게 됩니다.',
   },
   {
     id: 5,
@@ -384,6 +388,7 @@ export const myCommunityCard = [
     createAt: '2024.01.31',
     bookCover: 'https://picsum.photos/100/150?random=15',
     bookTitle: '마음의 문을 열다',
-    review: '마음의 문을 열고 진정한 자신을 마주하는 과정에 대한 이야기입니다. 삶의 진정한 의미를 찾아가는 여정을 담고 있어요.',
+    review:
+      '마음의 문을 열고 진정한 자신을 마주하는 과정에 대한 이야기입니다. 삶의 진정한 의미를 찾아가는 여정을 담고 있어요.',
   },
 ];

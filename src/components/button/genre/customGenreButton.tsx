@@ -15,8 +15,8 @@ function CustomGenreButton({ title, selected, onSelect }: GenreButtonProps) {
 
   return (
     <button
-      className={`whitespace-nowrap rounded-[53px] w-fit h-33 text-13 border flex-center bg-white
-        ${selected ? 'text-green border-green' : 'text-black border-gray-2'} pc:text-14`}
+      className={`text-13 flex-center h-33 w-fit whitespace-nowrap rounded-[53px] border bg-white
+        ${selected ? 'border-green text-green' : 'border-gray-2 text-black'} pc:text-14`}
       onClick={handleClick}>
       <div className="mx-30">#{title}</div>
     </button>

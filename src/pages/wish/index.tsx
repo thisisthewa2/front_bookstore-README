@@ -29,10 +29,10 @@ function WishListNav({
   handleDeleteSelectedItems,
 }: WishListNavProps) {
   return (
-    <div className="flex justify-between my-23 mobile:my-18 tablet:my-23">
+    <div className="my-23 flex justify-between mobile:my-18 tablet:my-23">
       <div className="flex gap-x-8">
         <div
-          className="cursor-pointer w-20 h-20"
+          className="h-20 w-20 cursor-pointer"
           onClick={() => {
             if (wishListData.length === selectedItemArr.length) {
               resetSelectedItemArr();
@@ -51,10 +51,10 @@ function WishListNav({
             height={20}
           />
         </div>
-        <span className="text-gray-4 text-14">전체선택</span>
+        <span className="text-14 text-gray-4">전체선택</span>
       </div>
       <span
-        className="text-black text-14 font-normal cursor-pointer"
+        className="cursor-pointer text-14 font-normal text-black"
         onClick={() => handleDeleteSelectedItems()}>
         선택항목 삭제
       </span>
@@ -94,11 +94,11 @@ function WishListPage() {
   };
 
   return (
-    <div className="w-full flex flex-col items-center">
-      <div className="max-w-[1200px] w-full">
+    <div className="flex w-full flex-col items-center">
+      <div className="w-full max-w-[1200px]">
         <MainLayout>
-          <div className="w-full flex flex-col px-60 tablet:px-40 mobile:px-15">
-            <div className="text-black text-20 font-bold">
+          <div className="flex w-full flex-col px-60 mobile:px-15 tablet:px-40">
+            <div className="text-20 font-bold text-black">
               찜목록{wishListData.length > 0 && `(${wishListData.length})`}
             </div>
             {wishListData.length > 0 && (
@@ -112,8 +112,8 @@ function WishListPage() {
             )}
             {wishListData.length > 0 ? (
               <div
-                className="grid grid-cols-2 tablet:grid-cols-1 mobile:grid-cols-1 gap-x-20 tablet: gap-y-20
-                  mobile:gap-y-10">
+                className="tablet: grid grid-cols-2 gap-x-20 gap-y-20 mobile:grid-cols-1 mobile:gap-y-10
+                  tablet:grid-cols-1">
                 {wishListData.map((item) => {
                   const selectedItems = filteredDataByTargetId(
                     selectedItemArr,
@@ -123,11 +123,11 @@ function WishListPage() {
                   return (
                     <div
                       key={item.id}
-                      className={`relative flex items-center pt-40 pb-43 pr-82 border-2 ${
+                      className={`relative flex items-center border-2 pb-43 pr-82 pt-40 ${
                         item.id === pickedNum ? 'border-green' : 'border-gray-1'
-                      } bg-white rounded-[10px]`}>
+                      } rounded-[10px] bg-white`}>
                       <div
-                        className="absolute top-20 right-20 mobile:top-10 right-10 cursor-pointer"
+                        className="absolute right-10 right-20 top-20 cursor-pointer mobile:top-10"
                         onClick={() => {
                           const filteredWishListData =
                             filteredDataByNotTargetId(wishListData, item.id);
@@ -141,7 +141,7 @@ function WishListPage() {
                         />
                       </div>
                       <div
-                        className="mx-20 mobile:mx-10 w-20"
+                        className="mx-20 w-20 mobile:mx-10"
                         onClick={() => {
                           setSelectedItemArr((prev) => [...prev, item]);
                           const targetIdx = selectedItemArr.findIndex(
@@ -153,7 +153,7 @@ function WishListPage() {
                             setSelectedItemArr([...selectedItemArr]);
                           }
                         }}>
-                        <div className="cursor-pointer w-20 h-20">
+                        <div className="h-20 w-20 cursor-pointer">
                           <Image
                             src={
                               item.id === selectedItems[0]?.id
@@ -168,18 +168,18 @@ function WishListPage() {
                       </div>
                       <div className="flex gap-x-20 rounded-[10px]">
                         <PreviewBookInfo size="sm" />
-                        <div className="w-274 mobile:w-147 flex flex-col gap-y-8 mobile:w-">
-                          <div className="text-15 text-black font-bold break-all line-clamp-2">
+                        <div className="mobile:w- flex w-274 flex-col gap-y-8 mobile:w-147">
+                          <div className="line-clamp-2 break-all text-15 font-bold text-black">
                             {item.title}
                           </div>
-                          <span className="text-gray-3 whitespace-nowrap text-ellipsis overflow-hidden">
+                          <span className="overflow-hidden text-ellipsis whitespace-nowrap text-gray-3">
                             {item.author}
                           </span>
                           <div className="flex">
                             <BookRating rating={item.rating} />
                           </div>
                           <span className="text-14">[{item.genre}]</span>
-                          <span className="text-14 text-color font-bold">
+                          <span className="text-color text-14 font-bold">
                             {item.price.toLocaleString()}원
                           </span>
                         </div>
@@ -189,7 +189,7 @@ function WishListPage() {
                 })}
               </div>
             ) : (
-              <div className="w-full mt-120">
+              <div className="mt-120 w-full">
                 <p className="text-center text-gray-4">찜한 상품이 없어요</p>
               </div>
             )}

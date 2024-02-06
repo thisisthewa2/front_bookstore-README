@@ -33,9 +33,9 @@ function SignIn() {
     });
   };
   return (
-    <div className="w-full min-h-dvh flex-center bg-white">
-      <div className="max-w-300 flex-1 flex flex-col items-center">
-        <p className="text-green text-24 font-bold mb-57">Read Me</p>
+    <div className="flex-center min-h-dvh w-full bg-white">
+      <div className="flex max-w-300 flex-1 flex-col items-center">
+        <p className="mb-57 text-24 font-bold text-green">Read Me</p>
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
           <fieldset>
             <TextInput
@@ -54,21 +54,21 @@ function SignIn() {
               required={true}
               isError={errors.password}
             />
-            <div className="w-full h-20 mt-4 mb-20">
+            <div className="mb-20 mt-4 h-20 w-full">
               <SignError errors={errors} id="password" />
             </div>
           </fieldset>
-          <div className="w-full flex">
+          <div className="flex w-full">
             <input
               id="loginSaved"
               type="checkbox"
-              className="invisible w-1 h-1"
+              className="invisible h-1 w-1"
             />
-            <label htmlFor="loginSaved " className="flex-center gap-x-8 mb-40">
+            <label htmlFor="loginSaved " className="flex-center mb-40 gap-x-8">
               <div
                 onClick={() => setIsClick(!isClick)}
-                className={`flex-center ${isClick ? 'bg-green' : ''} rounded-full w-20 h-20 border-solid
-                  border-2 border-gray-1 cursor-pointer`}>
+                className={`flex-center ${isClick ? 'bg-green' : ''} h-20 w-20 cursor-pointer rounded-full
+                  border-2 border-solid border-gray-1`}>
                 {isClick && (
                   <Image
                     alt="체크아이콘"
@@ -78,22 +78,22 @@ function SignIn() {
                   />
                 )}
               </div>
-              <p className="text-15 text-black font-normal">로그인 상태 유지</p>
+              <p className="text-15 font-normal text-black">로그인 상태 유지</p>
             </label>
           </div>
           <RegisterButton>로그인</RegisterButton>
         </form>
-        <div className="flex gap-x-4 mt-20 mb-40">
+        <div className="mb-40 mt-20 flex gap-x-4">
           <p className="text-gray-3">아이디가 없으신가요?</p>
-          <Link href="/signup" className="text-green font-normal">
+          <Link href="/signup" className="font-normal text-green">
             회원가입
           </Link>
         </div>
         <div className="flex flex-col">
-          <p className="text-center text-12 text-gray-3 mb-20 font-normal">
+          <p className="mb-20 text-center text-12 font-normal text-gray-3">
             SNS로 로그인/회원가입
           </p>
-          <div className="w-184 flex justify-between">
+          <div className="flex w-184 justify-between">
             <SocialCircle />
             <SocialCircle />
             <SocialCircle />

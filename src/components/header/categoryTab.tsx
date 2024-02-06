@@ -49,11 +49,11 @@ function CategoryTab() {
 
   return (
     <div
-      className="flex border-gray-1 flex-wrap bg-white min-h-fit tablet:h-437 pc:h-437
-        mobile:w-280 pc:w-[600px] tablet:w-[600px] mx-15 tablet:mx-30 pc:mx-60 border
-        border-t-0 rounded-md relative z-100 opacity-100">
+      className="z-100 relative mx-15 flex min-h-fit flex-wrap rounded-md
+        border border-t-0 border-gray-1 bg-white opacity-100 mobile:w-280 tablet:mx-30
+        tablet:h-437 tablet:w-[600px] pc:mx-60 pc:h-437 pc:w-[600px]">
       <div className="flex w-full justify-between border-b border-gray-1">
-        <div className="flex mobile:mx-20 mx-30 mobile:gap-35 gap-60 h-60 items-center relative">
+        <div className="relative mx-30 flex h-60 items-center gap-60 mobile:mx-20 mobile:gap-35">
           <CategoryButton
             label="국내도서"
             onClick={() => {
@@ -71,7 +71,7 @@ function CategoryTab() {
             style={getButtonStyle('foreign')}
           />
         </div>
-        <div className="mt-15 mobile:mt-22 mr-30">
+        <div className="mr-30 mt-15 mobile:mt-22">
           <SelectedAllButton
             selectedCategory={selectedCategory}
             selectedAll={selectedAll}
@@ -79,7 +79,7 @@ function CategoryTab() {
         </div>
       </div>
       <div
-        className={`flex flex-wrap mobile:mx-20 mx-30 my-20 tablet:h-350 pc:h-350 text-13
+        className={`text-13 mx-30 my-20 flex flex-wrap mobile:mx-20 tablet:h-350 pc:h-350
           ${getLinkLayoutClass()}`}>
         {categoryList.map(({ title, link }) => (
           <Category

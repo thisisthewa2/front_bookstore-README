@@ -76,7 +76,6 @@
 //     },
 //   ];
 
-
 // function Carousel() {
 //   const { env } = useCarouselEnv();
 //   const CONTENT_WIDTH = modalCarouselResponsive[env]?.imageSize.width;

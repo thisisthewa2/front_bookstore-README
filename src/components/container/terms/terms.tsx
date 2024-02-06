@@ -40,15 +40,15 @@ function TermsCheckbox() {
 
   return (
     <div className="w-360 mobile:w-330">
-      <span className="font-bold inline-block pb-8">약관동의</span>
-      <div className="h-48 flex items-center border-0 border-b-[1px] border-b-[#DBDBDB] gap-8 relative">
-        <label htmlFor="selectAll" className="text-15 font-medium">
+      <span className="inline-block pb-8 font-bold">약관동의</span>
+      <div className="relative flex h-48 items-center gap-8 border-0 border-b-[1px] border-b-[#DBDBDB]">
+        <label htmlFor="selectAll" className="font-medium text-15">
           <Image
             src={CheckIcon}
             alt="체크아이콘"
             width={10}
             height={6}
-            className="absolute z-10 top-20 left-5"
+            className="absolute left-5 top-20 z-10"
           />
           <input
             type="checkbox"
@@ -56,8 +56,8 @@ function TermsCheckbox() {
             {...register('selectAll')}
             checked={Object.values(checkedStates).every(Boolean)}
             onChange={handleSelectAll}
-            className="p-1 relative float-left mr-8 mt-0.5 w-20 h-20 rounded-full border-2 border-solid
-              border-gray-3 checked:bg-green checked:border-0 appearance-none"
+            className="mt-0.5 relative float-left mr-8 h-20 w-20 appearance-none rounded-full border-2 border-solid
+              border-gray-3 p-1 checked:border-0 checked:bg-green"
           />
           전체 동의
         </label>
@@ -67,17 +67,17 @@ function TermsCheckbox() {
         {TERMS_TITLES.map((termsTitle) => (
           <div
             key={termsTitle}
-            className="h-48 flex items-center justify-between">
-            <div className="flex items-center relative">
+            className="flex h-48 items-center justify-between">
+            <div className="relative flex items-center">
               <label
                 htmlFor={`id.${termsTitle}`}
-                className="text-[#767676] text-15">
+                className="text-15 text-[#767676]">
                 <Image
                   src={CheckIcon}
                   alt="체크아이콘"
                   width={10}
                   height={6}
-                  className="absolute z-10 top-7 left-5"
+                  className="absolute left-5 top-7 z-10"
                 />
                 <input
                   id={`id.${termsTitle}`}
@@ -85,8 +85,8 @@ function TermsCheckbox() {
                   type="checkbox"
                   checked={checkedStates[termsTitle]}
                   onChange={() => handleIndividualCheck(termsTitle)}
-                  className="p-1 relative float-left mr-8 mt-0.5 w-20 h-20 rounded-full border-2 border-solid
-                    border-gray-3 checked:bg-green checked:border-0 appearance-none"
+                  className="mt-0.5 relative float-left mr-8 h-20 w-20 appearance-none rounded-full border-2 border-solid
+                    border-gray-3 p-1 checked:border-0 checked:bg-green"
                 />
                 {termsTitle}
               </label>

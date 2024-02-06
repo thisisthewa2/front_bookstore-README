@@ -1,6 +1,6 @@
-import { BookDetailCardType } from "./cardType";
+import { BookDetailCardType } from './cardType';
 
-interface ReviewType{
+interface ReviewType {
   reviewId: number;
   isOwner: boolean;
   createdAt: string;

@@ -12,48 +12,48 @@ function MyReviewCard({ book, review }: MyReviewType) {
   return (
     <div
       role="card-container"
-      className="w-full max-w-[1080px] min-w-330 border-gray-1 border-2 min-h-140 p-20 rounded-xl
-        flex justify-start gap-12 relative mobile:p-0 mobile:min-h-105
-        mobile:border-none">
-      <div className="flex gap-12 w-full">
+      className="relative flex min-h-140 w-full min-w-330 max-w-[1080px] justify-start gap-12
+        rounded-xl border-2 border-gray-1 p-20 mobile:min-h-105 mobile:border-none
+        mobile:p-0">
+      <div className="flex w-full gap-12">
         <div
           role="book-img"
-          className="min-w-102 h-102 bg-gray-1 text-center mobile:min-w-75 mobile:h-75">
+          className="h-102 min-w-102 bg-gray-1 text-center mobile:h-75 mobile:min-w-75">
           {book.imageUrl ? (
             <Image src={book.imageUrl} alt="book sample image" layout="fill" />
           ) : (
             <></>
           )}
         </div>
-        <div className="flex flex-col justify-start items-start gap-4 w-4/5">
+        <div className="flex w-4/5 flex-col items-start justify-start gap-4">
           <div
             role="book-title"
-            className="text-15 font-normal truncate whitespace-nowrap min-w-250">
+            className="min-w-250 truncate whitespace-nowrap text-15 font-normal">
             {book.title}
           </div>
           <BookAuthor authorList={book.authors} />
-          <div className="absolute w-18 h-18 right-0 top-0 mobile:-top-20 mobile:-right-10">
+          <div className="absolute right-0 top-0 h-18 w-18 mobile:-right-10 mobile:-top-20">
             <KebabButton title1="수정하기" title2="삭제하기" />
           </div>
           <div className="flex-center gap-10 whitespace-nowrap">
             <BookRating rating={review.reviewRating} />
-            <span className="text-gray-4 text-14">{review.createdAt}</span>
+            <span className="text-14 text-gray-4">{review.createdAt}</span>
           </div>
           <div
             role="content-div"
-            className={`flex mobile:relative mobile:w-full mobile:-left-87 top-10 ${
+            className={`top-10 flex mobile:relative mobile:-left-87 mobile:w-full ${
               isSummarized ? 'w-[90%]' : 'w-full mobile:w-[120%]'
             }`}>
             <div
               role="content"
-              className={`text-gray-3 text-14 ${isSummarized ? `truncate` : ''}`}>
+              className={`text-14 text-gray-3 ${isSummarized ? `truncate` : ''}`}>
               {review.reviewContent}
             </div>
           </div>
           {isSummarized && (
             <button
               onClick={() => setIsSummarized(false)}
-              className="text-green text-14 whitespace-nowrap absolute right-20 bottom-23
+              className="absolute bottom-23 right-20 whitespace-nowrap text-14 text-green
                 mobile:-bottom-3 mobile:right-0">
               더보기
             </button>

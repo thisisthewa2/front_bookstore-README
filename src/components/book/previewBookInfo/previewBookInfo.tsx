@@ -3,11 +3,31 @@ import DefaultImage from '@/public/images/SampleBookCover4.jpeg';
 import { THOUSAND_UNIT } from 'src/constants/price';
 import BookLabelGrayIcon from '@/public/icons/BookLabelGrayIcon.svg';
 import BookLabelGreenIcon from '@/public/icons/BookLabelIGreenIcon.svg';
-import BookLabelBottomIcon from '@/public/icons/BookLabelBottomIcon.svg';
-import BookLabelBottomGrayIcon from '@/public/icons/BookLabelBottomGrayIcon.svg'
 import { PreviewBookInfoProps } from '@/types/previewBookInfoType';
-import SkeletonPreviewBookImage from '@/components/skeleton/previewBookImage/skeleton';
-import { IMAGE_SIZE } from 'src/constants/size/previewBookImageSize';
+
+const IMAGE_SIZE = {
+  lg: {
+    pc: 'w-192 h-291',
+    tablet: 'tablet:w-157 tablet:h-237',
+    mobile: 'mobile:w-160 mobile:h-242',
+    widthOnly: 'w-192 tablet:w-157 mobile:w-160',
+    heightNumber: { pc: 291, tablet: 237, mobile: 242 },
+  },
+  md: {
+    pc: 'w-163 h-246',
+    tablet: 'tablet:w-122 tablet:h-184',
+    mobile: 'mobile:w-142 mobile:h-215',
+    widthOnly: 'w-163 tablet:w-122 mobile:w-142',
+    heightNumber: { pc: 246, tablet: 184, mobile: 215 },
+  },
+  sm: {
+    pc: 'w-112 h-170',
+    tablet: 'tablet:w-112 tablet:h-170',
+    mobile: 'mobile:w-93 mobile:h-141',
+    widthOnly: 'w-112 tablet:w-112 mobile:w-93',
+    heightNumber: { pc: 170, tablet: 170, mobile: 141 },
+  },
+};
 
 function PreviewBookInfo({
   image,
@@ -25,23 +45,11 @@ function PreviewBookInfo({
     width: `${IMAGE_SIZE[size].widthOnly}`,
     height: `h-${IMAGE_SIZE[size].heightNumber.pc} tablet:h-${IMAGE_SIZE[size].heightNumber.tablet} mobile:h-${IMAGE_SIZE[size].heightNumber.mobile} `,
   };
-  const isLoading = false;
-  // const { data: bookList, isLoading } = useQuery({
-  //     queryKey: [""],
-  //     queryFn: () => { },
-  // });
-
-  // isLoading 시 스켈레톤 ui 렌더링
-  if (isLoading) {
-    return <SkeletonPreviewBookImage size={size} />;
-  }
 
   return (
-    <div className={`relative flex flex-col ${STYLE.width}`}>
-      <div
-        className={`${STYLE.img} flex flex-col ${itemsStart ? 'justify-start' : 'justify-end relative'}
-          overflow-hidden`}>
-        <div>
+    <div className={`flex flex-col ${STYLE.width}`}>
+      <div className={`relative ${STYLE.img} overflow-hidden`}>
+        <div className={`flex items-end`}>
           <Image
             src={image || DefaultImage}
             alt="책 미리보기 이미지"
@@ -49,37 +57,21 @@ function PreviewBookInfo({
             width={0}
             height={0}
           />
-      {ranking && (
-        <div
-          className={`absolute ${itemsStart ? 'top-[-2px] left-17' : ' bottom-0 right-0'}`}>
-          <Image
-            src={
-              itemsStart
-                ? ranking > 10
-                  ? BookLabelGrayIcon
-                  : BookLabelGreenIcon
-                : ranking > 10 
-                  ? BookLabelBottomGrayIcon
-                  : BookLabelBottomIcon
-            }
-            alt="순위라벨 이미지"
-          />
-          <span
-              className={`text-white text-[13px] font-bold absolute ${itemsStart ? 'top-5 left-10' : 'bottom-5 right-9'} ${
-            ranking > 99
-              ? itemsStart
-                ? 'tracking-[-0.5px] left-[2px]'
-                : 'tracking-[-0.5px] left-17'
-              : ranking > 9
-              ? itemsStart
-                ? 'tracking-[-0.6px] left-6'
-                : 'tracking-[-0.6px] left-20'
-              : ''
-}`}>
-            {ranking}
-          </span>
-        </div>
-      )}
+
+          {ranking && (
+            <div className="absolute left-17 top-[-2px]">
+              <Image
+                src={ranking > 10 ? BookLabelGrayIcon : BookLabelGreenIcon}
+                alt="순위라벨 이미지"
+              />
+              <span
+                className={`text-white text-[13px] font-bold absolute top-5 left-10 ${
+                  ranking > 9 && 'tracking-[-0.6px] left-6'
+                } ${ranking > 99 && 'tracking-[-0.5px] left-[2px]'}`}>
+                {ranking}
+              </span>
+            </div>
+          )}
         </div>
       </div>
       {title && (
@@ -102,7 +94,6 @@ function PreviewBookInfo({
           {price.toString().replace(THOUSAND_UNIT, ',')}
         </div>
       )}
-
     </div>
   );
 }

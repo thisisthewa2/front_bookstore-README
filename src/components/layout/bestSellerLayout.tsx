@@ -24,23 +24,23 @@ function BestSellerPageLayout({
     <>
       <div
         role="container"
-        className="flex flex-col grow shrink-0 overflow-hidden w-full basis-0pxr">
+        className="basis-0pxr flex w-full shrink-0 grow flex-col overflow-hidden">
         <div role="header">{header}</div>
-        <div role="sidebar-container" className="flex p-y-40 relative">
+        <div role="sidebar-container" className="p-y-40 relative flex">
           <section
             role="sidebar"
-            className="w-full h-full flex items-start flex-col pt-40 pl-245 pr-60 tablet:pr-40
-              tablet:pl-190 mobile:pt-0 mobile:px-15">
+            className="flex h-full w-full flex-col items-start pl-245 pr-60 pt-40 mobile:px-15
+              mobile:pt-0 tablet:pl-190 tablet:pr-40">
             <div className="w-full mobile:pt-20">
               <aside
-                className="absolute top-40 left-40 w-[163px] h-[994px] tablet:w-[155px] mobile:static
-                  mobile:w-full mobile:h-35">
+                className="absolute left-40 top-40 h-[994px] w-[163px] mobile:static mobile:h-35
+                  mobile:w-full tablet:w-[155px]">
                 {sideBar}
               </aside>
             </div>
             <div
               role="contents"
-              className="w-full h-full mobile:pt-30 mobile:flex-center">
+              className="mobile:flex-center h-full w-full mobile:pt-30">
               {main}
             </div>
           </section>

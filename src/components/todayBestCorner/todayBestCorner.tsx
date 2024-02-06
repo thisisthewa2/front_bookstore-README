@@ -49,24 +49,24 @@ function TodayBestCorner() {
     return (
       <div
         role="container"
-        className={`relative flex flex-col justify-start items-center overflow-hidden
+        className={`relative flex flex-col items-center justify-start overflow-hidden
           ${STYLE.container}`}>
         <div
           role="colored-background"
-          className={`bg-gray-1 flex-center ${STYLE['colored-background']}`}>
+          className={`flex-center bg-gray-1 ${STYLE['colored-background']}`}>
           <h1 role="title" className={`absolute font-bold ${STYLE.title}`}>
             실시간 인기 도서
           </h1>
         </div>
         <div
           role="card-section"
-          className={`grid grid-rows-2 grid-flow-col absolute gap-20 tablet:grid-rows-3
+          className={`absolute grid grid-flow-col grid-rows-2 gap-20 tablet:grid-rows-3
             ${STYLE['card-section']}`}>
           {[0, 1, 2, 3, 4, 5].map((key) => {
             return (
               <div
                 key={key}
-                className={`${key === 2 || key === 3 ? `relative top-40` : ``} tablet:static mobile:static`}>
+                className={`${key === 2 || key === 3 ? `relative top-40` : ``} mobile:static tablet:static`}>
                 <SkeletonTodayBestBook />
               </div>
             );
@@ -79,24 +79,24 @@ function TodayBestCorner() {
   // 데탑, 타블렛 환경에선 그냥 TodayBestBook map으로 렌더링, 모바일환경에선 TodayBestSlider 렌더링.
   return (
     <div
-      className={`relative flex flex-col justify-start items-center overflow-hidden
+      className={`relative flex flex-col items-center justify-start overflow-hidden
         ${STYLE.container}`}>
       <div
         role="colored-background"
-        className={`bg-gray-1 flex-center ${STYLE['colored-background']}`}>
+        className={`flex-center bg-gray-1 ${STYLE['colored-background']}`}>
         <h1 role="title" className={`absolute font-bold ${STYLE.title}`}>
           실시간 인기 도서
         </h1>
       </div>
       <div role="card-section" className={`absolute ${STYLE['card-section']}`}>
-        <div className="grid grid-rows-2 grid-flow-col gap-20 tablet:grid-rows-3 mobile:hidden">
+        <div className="grid grid-flow-col grid-rows-2 gap-20 mobile:hidden tablet:grid-rows-3">
           {bookList ? (
             <>
               {bookList?.map((book, ind) => {
                 return (
                   <div
                     key={book.productId}
-                    className={`${ind === 2 || ind === 3 ? `relative top-40` : ``} tablet:static mobile:static`}>
+                    className={`${ind === 2 || ind === 3 ? `relative top-40` : ``} mobile:static tablet:static`}>
                     <TodayBestBook {...book} />
                   </div>
                 );

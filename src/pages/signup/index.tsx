@@ -59,19 +59,19 @@ function SignUp() {
 
   return (
     <FormProvider {...method}>
-      <div className="w-full min-h-dvh bg-white flex-center">
-        <div className="max-w-390 flex-1 flex flex-col items-center px-15">
-          <div className="h-64 flex-center mb-77">
-            <p className="font-bold font-Inter text-green text-24">Read Me</p>
+      <div className="flex-center min-h-dvh w-full bg-white">
+        <div className="flex max-w-390 flex-1 flex-col items-center px-15">
+          <div className="flex-center mb-77 h-64">
+            <p className="font-Inter text-24 font-bold text-green">Read Me</p>
           </div>
-          <p className="text-black font-bold text-20 mb-40">회원가입</p>
+          <p className="mb-40 text-20 font-bold text-black">회원가입</p>
           <div
-            className="w-full h-125 flex flex-col items-center justify-center text-gray-3
-              rounded-[10px] border-solid border-2 border-gray-1 py-5 mb-40">
-            <p className="text-center text-12 mb-20">
+            className="mb-40 flex h-125 w-full flex-col items-center justify-center
+              rounded-[10px] border-2 border-solid border-gray-1 py-5 text-gray-3">
+            <p className="mb-20 text-center text-12">
               SNS로 간편하게 로그인/회원가입
             </p>
-            <div className="w-184 flex justify-between">
+            <div className="flex w-184 justify-between">
               <SocialCircle />
               <SocialCircle />
               <SocialCircle />
@@ -79,9 +79,9 @@ function SignUp() {
           </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="w-full flex flex-col">
+            className="flex w-full flex-col">
             <fieldset>
-              <label className="text-gray-6 text-16 font-bold text-left w-full mb-12 inline-block">
+              <label className="text-gray-6 mb-12 inline-block w-full text-left text-16 font-bold">
                 이메일
               </label>
               <TextInput
@@ -91,15 +91,15 @@ function SignUp() {
                 required={true}
                 pattern={checkEmail}
               />
-              <div className="mt-8 mb-40 text-left">
+              <div className="mb-40 mt-8 text-left">
                 <SignError errors={errors} id="email" />
               </div>
             </fieldset>
             <fieldset>
-              <label className="text-black text-16 font-bold text-left w-full">
+              <label className="w-full text-left text-16 font-bold text-black">
                 비밀번호
               </label>
-              <p className="text-gray-3 text-15 text-left w-full mb-12 mt-4">
+              <p className="mb-12 mt-4 w-full text-left text-15 text-gray-3">
                 영문, 숫자를 포함한 8자 이상의 비밀번호
               </p>
               <PasswordInput
@@ -110,12 +110,12 @@ function SignUp() {
                 pattern={checkPassword}
                 isError={errors.password}
               />
-              <div className="mt-8 mb-40">
+              <div className="mb-40 mt-8">
                 <SignError errors={errors} id="password" />
               </div>
             </fieldset>
             <fieldset>
-              <label className="text-black text-16 font-bold text-left w-full inline-block mb-12">
+              <label className="mb-12 inline-block w-full text-left text-16 font-bold text-black">
                 비밀번호확인
               </label>
               <PasswordInput
@@ -125,15 +125,15 @@ function SignUp() {
                 required={true}
                 isError={errors.repassword}
               />
-              <div className="mt-8 mb-40">
+              <div className="mb-40 mt-8">
                 <SignError errors={errors} id="repassword" />
               </div>
             </fieldset>
             <fieldset>
-              <label className="text-gray-6 text-16 font-bold text-left w-full">
+              <label className="text-gray-6 w-full text-left text-16 font-bold">
                 닉네임
               </label>
-              <p className="text-gray-3 text-15 text-left w-full mt-4 mb-12">
+              <p className="mb-12 mt-4 w-full text-left text-15 text-gray-3">
                 다른 유저와 중복되지 않는 닉네임
               </p>
               <TextInput
@@ -144,7 +144,7 @@ function SignUp() {
                 pattern={checkNickName}
                 isError={errors.nickname}
               />
-              <div className="mt-8 mb-40">
+              <div className="mb-40 mt-8">
                 <SignError errors={errors} id="nickname" />
               </div>
             </fieldset>
@@ -153,9 +153,9 @@ function SignUp() {
             </fieldset>
             <RegisterButton>회원가입</RegisterButton>
           </form>
-          <div className="flex gap-x-4 mt-20">
+          <div className="mt-20 flex gap-x-4">
             <p className="text-gray-3">이미 아이디가 있으신가요?</p>
-            <Link href="/signin" className="text-green font-normal">
+            <Link href="/signin" className="font-normal text-green">
               로그인
             </Link>
           </div>

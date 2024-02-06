@@ -60,7 +60,7 @@ export default function useWithSlider(
   return (
     <>
       <div
-        className="overflow-hidden flex items-center"
+        className="flex items-center overflow-hidden"
         style={{
           width: sliderWidth,
           height: sliderHeight,

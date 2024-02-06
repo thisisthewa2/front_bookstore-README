@@ -1,5 +1,5 @@
-import { ReactNode, useEffect } from "react";
-import { createPortal } from "react-dom";
+import { ReactNode, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 interface ModalLayoutProps {
   children: ReactNode;
@@ -7,28 +7,34 @@ interface ModalLayoutProps {
 }
 
 function ModalLayout({ children, onClick }: ModalLayoutProps) {
-
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
     return () => {
       document.body.style.overflow = 'unset';
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <>
       {createPortal(
-        <div role="overlay" className="fixed top-0 left-0 w-full h-full flex-center z-[100]" >
-          <div className="absolute w-screen h-screen bg-black opacity-60" onClick={onClick} />
-          <div role="modalContainer" className="bg-white rounded-[10px] z-[150]">
+        <div
+          role="overlay"
+          className="flex-center fixed left-0 top-0 z-[100] h-full w-full">
+          <div
+            className="absolute h-screen w-screen bg-black opacity-60"
+            onClick={onClick}
+          />
+          <div
+            role="modalContainer"
+            className="z-[150] rounded-[10px] bg-white">
             {children}
           </div>
         </div>,
-        document.getElementById('portal') as HTMLDivElement
+        document.getElementById('portal') as HTMLDivElement,
       )}
-    </> 
-  )
+    </>
+  );
 }
 
-export default ModalLayout
+export default ModalLayout;

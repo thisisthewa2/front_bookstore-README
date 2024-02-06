@@ -8,10 +8,10 @@ type OrderCountProps = {
 
 function OrderCount({ orderDate, orderCount }: OrderCountProps) {
   return (
-    <div className="flex justify-between w-[1080px]">
+    <div className="flex w-[1080px] justify-between">
       <div className="flex-center gap-x-24">
-        <span className="text-gray-4 marker:font-weight">{orderDate}</span>
-        <div className="w-1 h-12 bg-gray-1"></div>
+        <span className="marker:font-weight text-gray-4">{orderDate}</span>
+        <div className="h-12 w-1 bg-gray-1"></div>
         <span className="text-gray-3">{orderCount}건</span>
       </div>
       <div className="flex">

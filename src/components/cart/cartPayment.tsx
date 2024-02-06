@@ -26,39 +26,39 @@ function CartPayment({
 
   return (
     <div
-      className="sticky top-297 mt-107 mobile:mt-20 mobile:mb-165 mobile:w-full h-fit flex
-        flex-col w-340 tablet:w-216 border-2 border-solid border-gray-1 p-30 tablet:p-20
-        mobile:p-20 rounded-[10px]">
-      <div className="flex justify-between mb-20">
-        <span className="text-black font-normal text-15">총 상품 금액</span>
-        <span className="text-black font-bold text-15">
+      className="sticky top-297 mt-107 flex h-fit w-340 flex-col rounded-[10px]
+        border-2 border-solid border-gray-1 p-30 mobile:mb-165 mobile:mt-20 mobile:w-full mobile:p-20
+        tablet:w-216 tablet:p-20">
+      <div className="mb-20 flex justify-between">
+        <span className="text-15 font-normal text-black">총 상품 금액</span>
+        <span className="text-15 font-bold text-black">
           {totalAmount.toString().replace(THOUSAND_UNIT, ',')}원
         </span>
       </div>
-      <div className="flex justify-between mb-20">
-        <span className="text-black font-normal text-15">총 배송비</span>
-        <span className="text-black font-bold text-15">
+      <div className="mb-20 flex justify-between">
+        <span className="text-15 font-normal text-black">총 배송비</span>
+        <span className="text-15 font-bold text-black">
           {calculateDeliveryFee(totalAmount, totalDiscount)
             .toString()
             .replace(THOUSAND_UNIT, ',')}
           원
         </span>
       </div>
-      <div className="flex justify-between mb-30">
-        <span className="text-black font-normal text-15">총 할인 금액</span>
+      <div className="mb-30 flex justify-between">
+        <span className="text-15 font-normal text-black">총 할인 금액</span>
         <span>{totalDiscount.toString().replace(THOUSAND_UNIT, ',')}원</span>
       </div>
-      <div className="flex justify-between mb-40 mobile:mb-10">
-        <span className="text-green font-bold text-15">결제 금액</span>
-        <span className="text-green font-bold text-25">
+      <div className="mb-40 flex justify-between mobile:mb-10">
+        <span className="text-15 font-bold text-green">결제 금액</span>
+        <span className="text-25 font-bold text-green">
           {calculatePaymentFee(totalAmount, totalDiscount)
             .toString()
             .replace(THOUSAND_UNIT, ',')}
           원
         </span>
       </div>
-      <div className="w-full mobile:fixed left-0 bottom-0 mobile:px-15 mobile:py-10 bg-white">
-        <button className="w-full text-center bg-green text-white rounded-[5px] py-15">
+      <div className="bottom-0 left-0 w-full bg-white mobile:fixed mobile:px-15 mobile:py-10">
+        <button className="w-full rounded-[5px] bg-green py-15 text-center text-white">
           결제하기({bookTotalCount})
         </button>
       </div>

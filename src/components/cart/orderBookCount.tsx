@@ -9,8 +9,8 @@ type OrderBookCountProps = {
 function OrderBookCount({ plusFunc, minusFunc, count }: OrderBookCountProps) {
   return (
     <div
-      className="flex justify-center gap-x-6 w-72 rounded-[5px] py-4 border-2 border-solid
-        border-gray-1">
+      className="flex w-72 justify-center gap-x-6 rounded-[5px] border-2 border-solid border-gray-1
+        py-4">
       <div className="cursor-pointer" onClick={minusFunc}>
         -
       </div>

@@ -23,13 +23,19 @@ function KebabButton({ title1, title2 }: KebabDropDownButtonProps) {
   return (
     <>
       <Image
-        className="absolute top-23 right-20"
+        className="absolute right-20 top-23"
         src={KebabImg}
         alt="케밥버튼"
         onClick={handleKebabClick}
         ref={ref}
       />
-      {showOptions && <KebabDropDownButton title1={title1} title2={title2} onClickTitle2={handleAlertModalOpenClick}/>}
+      {showOptions && (
+        <KebabDropDownButton
+          title1={title1}
+          title2={title2}
+          onClickTitle2={handleAlertModalOpenClick}
+        />
+      )}
       {isModalOpen && (
         <AlertModal
           title="정말 삭제하시겠습니까?"

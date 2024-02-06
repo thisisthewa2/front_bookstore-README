@@ -6,10 +6,10 @@ interface TodayBestBookCardType {
   rating: number;
   genre: string;
   price: number;
-};
+}
 
-interface BookDetailCardType{
-  bookId: number; 
+interface BookDetailCardType {
+  bookId: number;
   publishedAt: string;
   orderNum: number;
   categoryList: [string, string];

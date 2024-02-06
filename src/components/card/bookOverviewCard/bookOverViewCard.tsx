@@ -1,5 +1,4 @@
 import { BookOverviewType } from '@/types/bookOverviewType';
-import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
 import { THOUSAND_UNIT } from 'src/constants/price';
 import LikeButton from '@/components/button/likeButton';
 import { useState } from 'react';
@@ -39,13 +38,13 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
   return (
     <div
       role="card-container"
-      className="flex flex-col justify-between h-220 border-gray-1 border-2 p-30 rounded-xl
-        mobile:p-15 mobile:pb-15 mobile:w-330 mobile:h-251 relative">
-      <div role="book-info-container" className="flex relative">
+      className="relative flex h-220 flex-col justify-between rounded-xl border-2 border-gray-1
+        p-30 mobile:h-251 mobile:w-330 mobile:p-15 mobile:pb-15">
+      <div role="book-info-container" className="relative flex">
         <Link
           role="book-img"
           href={`bookdetail/${book.bookId}`}
-          className="h-170 bg-white mobile:min-w-93 mobile:h-134 pt-2">
+          className="h-170 overflow-hidden bg-white pt-2 mobile:h-134 mobile:min-w-93">
           <PreviewBookInfo
             size="sm"
             image={book.bookImgUrl}
@@ -56,18 +55,18 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
 
         <div
           role="book-info"
-          className="flex flex-col justify-start items-start gap-4 ml-30 mr-auto mobile:max-w-185
-            mobile:ml-12 mobile:gap-2">
+          className="ml-30 mr-auto flex flex-col items-start justify-start gap-4 mobile:ml-12
+            mobile:max-w-185 mobile:gap-2">
           <div
             role="book-title"
-            className="text-15 font-normal truncate whitespace-nowrap min-w-250">
+            className="min-w-250 truncate whitespace-nowrap text-15 font-normal">
             {book.bookTitle}
           </div>
           <div role="book-author-publisher" className="flex-center gap-4">
             <div>
               {book.authors?.map((author) => {
                 return (
-                  <span key={author} className="text-gray-3 text-14">
+                  <span key={author} className="text-14 text-gray-3">
                     {author}
                   </span>
                 );
@@ -75,19 +74,22 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
             </div>
             <div>
               {book.publisher && (
-                <span className="text-gray-3 text-14">| {book.publisher}</span>
+                <span className="text-14 text-gray-3">| {book.publisher}</span>
               )}
+            </div>
+            <div>
+              <span className="text-14 text-gray-3 mobile:hidden"></span>
             </div>
           </div>
           <div>
-            <span className="text-gray-3 text-14 mobile:hidden">
+            <span className="text-14 text-gray-3 mobile:hidden">
               {book.publishedDate}
             </span>
           </div>
 
           <div
             role="book-rating"
-            className="flex-center gap-4 mb-8 mobile:mb-4">
+            className="flex-center mb-8 gap-4 mobile:mb-4">
             <BookRating rating={book.averageRating} size="md" />
             <span className="text-14 text-gray-3 mobile:hidden">
               ({book.reviewCount})
@@ -95,7 +97,7 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
           </div>
 
           <div role="book-category">
-            <span className="text-gray-4 text-[13px] pc:hidden tablet:hidden">
+            <span className="text-[13px] text-gray-4 tablet:hidden pc:hidden">
               [{book.categories[1]}]
             </span>
           </div>
@@ -103,7 +105,7 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
           <div
             role="book-price"
             className="flex-center flex-col gap-10 whitespace-nowrap mobile:flex-row">
-            <div role="price-div" className="text-black text-14 font-bold">
+            <div role="price-div" className="text-14 font-bold text-black">
               {book.price.toString().replace(THOUSAND_UNIT, ',')}원
             </div>
           </div>
@@ -111,11 +113,11 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
 
         <div
           role="buttons-div"
-          className="flex flex-col items-end gap-30 tablet:absolute tablet:right-0 mobile:absolute
-            mobile:bottom-16 mobile:right-0">
+          className="flex flex-col items-end gap-30 mobile:absolute mobile:bottom-16 mobile:right-0
+            tablet:absolute tablet:right-0">
           <div role="like-button" className="flex-center flex-col gap-2">
             <LikeButton onClick={handleLikeClick} isLiked={isLiked} />
-            <span className="text-black text-12">{likeCount}</span>
+            <span className="text-12 text-black">{likeCount}</span>
           </div>
           <div
             role="cart-button"
@@ -135,8 +137,8 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
       </div>
 
       {/* 모바일에서만 보이는 컴포넌트(장바구니/구매하기 버튼)*/}
-      <div role="mobile-section" className="pt-10 pc:hidden tablet:hidden">
-        <div className="w-328 absolute left-0 bottom-70 border border-b-1 border-gray-1"></div>
+      <div role="mobile-section" className="pt-10 tablet:hidden pc:hidden">
+        <div className="border-b-1 absolute bottom-70 left-0 w-328 border border-gray-1"></div>
         <div role="mobile-cart-button" className="flex gap-10">
           <ActionButton
             label="장바구니"
