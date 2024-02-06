@@ -6,5 +6,5 @@
   "useTabs": false,
   "quoteProps": "as-needed",
   "bracketSameLine": true,
-  "plugins": ["prettier-plugin-classnames"]
+  "plugins": ["prettier-plugin-classnames", "prettier-plugin-tailwindcss"]
 }

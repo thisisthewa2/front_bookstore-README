@@ -7,25 +7,33 @@ import { ReactNode } from 'react';
 
 import MainLayout from './mainLayout';
 import Sidebar from '@/components/sidebar/sidebar';
+import { SidebarProps } from '@/types/sidebarType';
 
-interface SidebarLayoutProps {
-  isDomestic: boolean;
-  location?: string;
+interface SidebarLayoutProps extends SidebarProps {
   children?: ReactNode;
 }
 
-function SidebarLayout({ isDomestic, location, children }: SidebarLayoutProps) {
+function SidebarLayout({
+  pageName,
+  isDomestic,
+  location,
+  children,
+}: SidebarLayoutProps) {
   return (
-    <div className="flex flex-col max-w-[1200px]">
+    <div className="flex max-w-[1200px] flex-col">
       <MainLayout>
         <section
           role="contents"
-          className="w-full h-full flex items-start flex-col pt-20 pl-245 pr-60 tablet:pr-40
-            tablet:pl-217 mobile:pt-0 mobile:px-15">
+          className="flex h-full w-full flex-col items-start pl-245 pr-60 pt-20 mobile:px-15
+            mobile:pt-0 tablet:pl-217 tablet:pr-40">
           <aside
             className="absolute top-40 left-40 w-[163px] h-[994px] tablet:w-[155px] mobile:static
               mobile:h-35 mobile:w-full">
-            <Sidebar isDomestic={isDomestic} location={location} />
+            <Sidebar
+              pageName={pageName}
+              isDomestic={isDomestic}
+              location={location}
+            />
           </aside>
           <div>{children}</div>
         </section>

@@ -15,7 +15,11 @@ function NewestPage({ isDomestic = true }: BestSellerPageProps) {
       <BestSellerPageLayout
         header={<Header isLoggedIn={true} />}
         sideBar={
-          <Sidebar isDomestic={isDomestic} location={category as string} />
+          <Sidebar
+            pageName="newest"
+            isDomestic={isDomestic}
+            location={category as string}
+          />
         }
         main={
           <BookOverViewCardList

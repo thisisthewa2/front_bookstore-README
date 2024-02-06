@@ -19,7 +19,7 @@ export default function BookDetailPage() {
 
   return (
     <MainLayout>
-      <section className="flex flex-col w-full p-40 mobile:p-19 mobile:flex-center">
+      <section className="mobile:flex-center flex w-full flex-col p-40 mobile:p-19">
         <BookDetailCard bookId={bookId as string} />
       </section>
       <Spacing height={[80, 80, 40]} />
@@ -28,22 +28,22 @@ export default function BookDetailPage() {
         location={location}
         setLocation={setLocation}
       />
-      <div className="flex flex-col w-full">
-        <section className="flex w-full p-40 pt-120 mobile:p-19 mobile:pt-40 mobile:flex-center">
-          <div className="flex flex-col w-full mobile:flex-center">
+      <div className="flex w-full flex-col">
+        <section className="mobile:flex-center flex w-full p-40 pt-120 mobile:p-19 mobile:pt-40">
+          <div className="mobile:flex-center flex w-full flex-col">
             {location === 'information' && <BookInformation />}
             {location === 'review' && <Review bookId={bookId as string} />}
             {location === 'currency' && <RefundTerm />}
           </div>
-          <div className="pc:pt-50 pc:flex hidden">
+          <div className="hidden pc:flex pc:pt-50">
             <div
-              className="bg-red mt-auto pc:w-340 pc:h-164 pc:sticky pc:bottom-80 pc:right-60 z-50
-                bottom-0 left-0 right-0 w-full h-70">
+              className="bottom-0 left-0 right-0 z-50 mt-auto h-70 w-full bg-red
+                pc:sticky pc:bottom-80 pc:right-60 pc:h-164 pc:w-340">
               스티키 컴포넌트
             </div>
           </div>
         </section>
-        <div className="pc:hidden flex w-full bg-gray-3 sticky bottom-0 h-70 z-10">
+        <div className="sticky bottom-0 z-10 flex h-70 w-full bg-gray-3 pc:hidden">
           타블렛 모바일 환경 스티키 배송구매 버튼
         </div>
       </div>

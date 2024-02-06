@@ -80,14 +80,14 @@ function CategoryCarousel({ data, responsive }: CarouselProps) {
   useEffect(resetCurrentIndex, [env]);
 
   return (
-    <div className="bg-white relative overflow-hidden w-[895px] tablet:w-[511px] mobile:w-330">
-      <div className="flex items-center justify-between mb-40 mobile:mb-20">
-        <span className="text-black text-20">신간도서</span>
+    <div className="relative w-[895px] overflow-hidden bg-white mobile:w-330 tablet:w-[511px]">
+      <div className="mb-40 flex items-center justify-between mobile:mb-20">
+        <span className="text-20 text-black">신간도서</span>
         <div className="flex gap-x-30">
           <button
             onClick={btnpressprev}
-            className="w-10 h-full flex justify-center items-center bg-transparent mobile:hidden">
-            <div className="w-10 h-16 relative">
+            className="flex h-full w-10 items-center justify-center bg-transparent mobile:hidden">
+            <div className="relative h-16 w-10">
               <Image
                 className="cursor-pointer"
                 src={
@@ -102,9 +102,9 @@ function CategoryCarousel({ data, responsive }: CarouselProps) {
           </button>
           <button
             onClick={btnpressnext}
-            className="w-10 h-full flex justify-center items-center bg-transparent right-0
+            className="right-0 flex h-full w-10 items-center justify-center bg-transparent
               mobile:hidden">
-            <div className="w-10 h-16 relative">
+            <div className="relative h-16 w-10">
               <Image
                 src={
                   currentIndex === maxPage && maxPage !== 0
@@ -149,6 +149,7 @@ function CategoryCarousel({ data, responsive }: CarouselProps) {
                 {...item}
                 imageSize={responsive[env].imageSize}
                 marginRight={calcMarginValue(env)}
+                size="sm"
               />
             ))}
           </div>

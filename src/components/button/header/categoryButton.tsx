@@ -10,10 +10,10 @@ function CategoryButton({ label, onClick, style }: CategoryButtonProps) {
     <button
       onClick={onClick}
       style={style}
-      className="gap-x-60 border-spacing-20">
-      <div className="font-bold mb-12" style={{ color: style.color }}>
+      className="border-spacing-20 gap-x-60">
+      <div className="mb-12 font-bold" style={{ color: style.color }}>
         {label}
-        <div className="mobile:hidden h-5"></div>
+        <div className="h-5 mobile:hidden"></div>
       </div>
     </button>
   );

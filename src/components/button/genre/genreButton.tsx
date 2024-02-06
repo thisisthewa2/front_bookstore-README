@@ -17,7 +17,7 @@ function GenreButton({
 
   return (
     <button
-      className={`whitespace-nowrap rounded-[53px] w-fit h-33 text-13 border flex-center ${
+      className={`text-13 flex-center h-33 w-fit whitespace-nowrap rounded-[53px] border ${
         selected ? 'border-black' : 'border-gray-1'
       } pc:text-14 ${editMode ? 'hover:border-green hover:text-green' : ''}`}
       onClick={handleClick}>

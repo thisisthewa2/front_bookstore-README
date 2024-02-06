@@ -52,23 +52,23 @@ function CustomSection({ isLoggedIn, isGenreSelected }: CustomSectionProps) {
 
   return (
     <div
-      className="relative tablet:flex-col mobile:flex-col flex-center w-full h-500
-        tablet:h-[665px] mobile:h-[886px] pc:gap-x-20 bg-gray-1">
+      className="flex-center relative h-500 w-full bg-gray-1 mobile:h-[886px]
+        mobile:flex-col tablet:h-[665px] tablet:flex-col pc:gap-x-20">
       <Link
         href="/custom"
-        className="flex absolute top-20 tablet:top-60 right-60 pc:hidden text-green">
+        className="absolute right-60 top-20 flex text-green tablet:top-60 pc:hidden">
         더보기
       </Link>
       <div
-        className="flex-col pc:w-347 flex-center w-314 tablet:h-244 pc:h-342 mobile:mt-50
-          tablet:mx-auto mobile:mx-auto mt-80">
-        <div className="font-bold text-24 mb-8">
+        className="flex-center mt-80 w-314 flex-col mobile:mx-auto mobile:mt-50 tablet:mx-auto
+          tablet:h-244 pc:h-342 pc:w-347">
+        <div className="mb-8 text-24 font-bold">
           <span className="text-green">맞춤도서</span>를 가져왔어요
         </div>
-        <div className="mobile:mb-20 mb-30 text-gray-4">
+        <div className="mb-30 text-gray-4 mobile:mb-20">
           선호 장르 분석을 통해 도서를 추천해요
         </div>
-        <div className="flex-center flex-wrap w-full gap-10 mb-60 mobile:mb-40">
+        <div className="flex-center mb-60 w-full flex-wrap gap-10 mobile:mb-40">
           {CustomSectionMockData_3.map((data) => (
             <CustomGenreButton
               key={data.category}
@@ -81,8 +81,8 @@ function CustomSection({ isLoggedIn, isGenreSelected }: CustomSectionProps) {
       </div>
 
       <div
-        className="flex-center flex-wrap tablet:h-312 gap-x-20 pc:w-712 mobile:w-330
-          mobile:gap-y-60 mobile:mx-auto pc:justify-end relative">
+        className="flex-center pc:w-712 relative flex-wrap gap-x-20 mobile:mx-auto
+          mobile:w-330 mobile:gap-y-60 tablet:h-312 pc:justify-end">
         {selectedBookList.length > 0 && (
           <>
             {selectedBookList.map((book: CustomBook, index: number) => (

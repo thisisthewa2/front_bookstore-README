@@ -28,11 +28,11 @@ function BookDetailCard({ bookId = '' }) {
   };
 
   return (
-    <section className="flex justify-start gap-20 items-start mobile:flex-col mobile:flex-center">
+    <section className="mobile:flex-center flex items-start justify-start gap-20 mobile:flex-col">
       <article
         role="img"
-        className="bg-gray-5 relative w-[525px] h-[797px] tablet:min-w-[334px] tablet:max-w-[334px]
-          tablet:h-[526px] mobile:min-w-[330px] mobile:max-w-[330px] mobile:h-[500px]">
+        className="relative h-[797px] w-[525px] bg-gray-5 mobile:h-[500px] mobile:min-w-[330px]
+          mobile:max-w-[330px] tablet:h-[526px] tablet:min-w-[334px] tablet:max-w-[334px]">
         <Image
           src={BookDetailMock1.imageUrl ?? ''}
           alt="책 표지 이미지"
@@ -44,11 +44,11 @@ function BookDetailCard({ bookId = '' }) {
 
       <article
         role="info"
-        className="flex flex-col justify-start items-start grow mobile:w-full">
+        className="flex grow flex-col items-start justify-start mobile:w-full">
         <BookCategory categories={BookDetailMock1.categoryList} />
         <Spacing height={[4, 4, 4]} />
-        <div className="flex justify-between items-center w-full gap-20">
-          <h3 className="font-bold text-[22px] text-gray-4 text-pretty">
+        <div className="flex w-full items-center justify-between gap-20">
+          <h3 className="text-pretty text-[22px] font-bold text-gray-4">
             {BookDetailMock1.title}
           </h3>
           <div className="flex justify-center gap-24">
@@ -61,14 +61,14 @@ function BookDetailCard({ bookId = '' }) {
               />
               {bookmarkCount}
             </div>
-            <button className="relative w-30 h-30">
+            <button className="relative h-30 w-30">
               <Image src="/icons/ShareIcon.svg" fill alt="공유 버튼" />
             </button>
           </div>
         </div>
         <Spacing height={[12, 12, 12]} />
         <BookAuthor authorList={BookDetailMock1.authors} />
-        <div className="h-[1px] w-full bg-gray-1 max-w-[525px] my-20 mobile:my-12"></div>
+        <div className="my-20 h-[1px] w-full max-w-[525px] bg-gray-1 mobile:my-12"></div>
         <div className="text-14 text-gray-3">
           {BookDetailMock1.publisher} | {BookDetailMock1.publishedAt}
         </div>
@@ -76,10 +76,10 @@ function BookDetailCard({ bookId = '' }) {
 
         <div role="rating" className="flex gap-6">
           <BookRating rating={BookDetailMock1.rating} size="md" />
-          <span className="relative top-12 text-gray-3 text-14">
+          <span className="relative top-12 text-14 text-gray-3">
             ({BookDetailMock1.reviewNum})
           </span>
-          <span className="text-green font-bold text-[24px]">
+          <span className="text-[24px] font-bold text-green">
             {BookDetailMock1.rating}
           </span>
         </div>
@@ -92,7 +92,7 @@ function BookDetailCard({ bookId = '' }) {
           hasUnit={true}
         />
         <Spacing height={[57, 57, 57]} />
-        <div className="bg-green w-full h-154 tablet:h-150 mobile:w-330 mobile:h-130 mx-auto">
+        <div className="mx-auto h-154 w-full bg-green mobile:h-130 mobile:w-330 tablet:h-150">
           장바구니버튼, 구매하기버튼, 수량선택 버튼이 들어갈 컴포넌트
           <button className="bg-gray-3">장바구니</button>
           <button className="bg-red">구매하기</button>

@@ -11,12 +11,12 @@ function AddCommunityCard({ onClick }: AddCommunityCardProps) {
   return (
     <ModalLayout onClick={onClick}>
       <div
-        className="relative flex-center flex-col w-[688px] h-[851px] bg-white px-40 pt-60 pb-40
-          gap-40 mobile:w-330 mobile:h-[794px] mobile:px-20 mobile:pt-40 mobile:pb-30">
-        <p className="text-20 text-b-b">글쓰기</p>
-        <AddCommunityCardForm/>
+        className="flex-center relative h-[851px] w-[688px] flex-col gap-40 bg-white px-40 pb-40
+          pt-60 mobile:h-[794px] mobile:w-330 mobile:px-20 mobile:pb-30 mobile:pt-40">
+        <p className="text-b-b text-20">글쓰기</p>
+        <AddCommunityCardForm />
         <Image
-          className="absolute top-30 right-30 cursor-pointer"
+          className="absolute right-30 top-30 cursor-pointer"
           src={CloseIcon}
           alt="닫기"
           width={24}

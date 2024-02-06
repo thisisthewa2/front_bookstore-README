@@ -5,7 +5,7 @@
 
 function BookCategory({ categories }: { categories: [string, string] }) {
   return (
-    <div className="text-16 text-gary-4">{`[${categories[0]}/${categories[1]}]`}</div>
+    <div className="text-gary-4 text-16">{`[${categories[0]}/${categories[1]}]`}</div>
   );
 }
 

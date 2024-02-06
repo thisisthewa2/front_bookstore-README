@@ -25,12 +25,12 @@ function DropDown({ person }: DropDownTypes) {
   ];
 
   return (
-    <div className="flex relative">
+    <div className="relative flex">
       <div ref={ref}>
-        <div className="flex relative w-180">
+        <div className="relative flex w-180">
           <button
             onClick={handleClick}
-            className={`flex items-center border-solid border-2 border-gray-1 w-113 h-42 text-left
+            className={`flex h-42 w-113 items-center border-2 border-solid border-gray-1 text-left
               ${showOptions ? 'rounded-t-[5px]' : 'rounded-[5px]'}`}>
             <span className="w-85 pl-16 text-14">{selectedItem}</span>
             <div>
@@ -44,7 +44,7 @@ function DropDown({ person }: DropDownTypes) {
           </button>
         </div>
         {showOptions && (
-          <ul className="w-113 border-solid border-2 border-gray-1 absolute rounded-b-[5px] text-14">
+          <ul className="absolute w-113 rounded-b-[5px] border-2 border-solid border-gray-1 text-14">
             {menus.map((menu) => {
               return (
                 <DropDownItem

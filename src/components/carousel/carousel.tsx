@@ -27,7 +27,7 @@ function Carousel({ data, responsive }: CarouselProps) {
     }
   };
 
-  let carouselElementWidth = ref.current?.clientWidth!;
+  const carouselElementWidth = ref.current?.clientWidth!;
 
   const visibleItemsCount = useMemo(() => {
     return Math.round(carouselElementWidth / calcContentWidthValue);
@@ -63,20 +63,20 @@ function Carousel({ data, responsive }: CarouselProps) {
   useEffect(resetCurrentIndex, [env]);
 
   return (
-    <div className="bg-white relative overflow-hidden w-[1200px] tablet:w-[768px] mobile:w-360">
+    <div className="relative w-[1200px] overflow-hidden bg-white mobile:w-360 tablet:w-[768px]">
       <div
-        className="flex items-center justify-between mx-60 tablet:mx-40 mobile:mx-15 mb-40
-          mobile:mb-20">
-        <span className="text-black text-20">신간도서</span>
-        <Link href="/domestic/newest" className="text-green text-16">
+        className="mx-60 mb-40 flex items-center justify-between mobile:mx-15 mobile:mb-20
+          tablet:mx-40">
+        <span className="text-20 text-black">신간도서</span>
+        <Link href="/domestic/newest" className="text-16 text-green">
           더보기
         </Link>
       </div>
-      <div className="flex flex-row items-center mx-24 tablet:mx-14 mobile:mx-15">
+      <div className="mx-24 flex flex-row items-center mobile:mx-15 tablet:mx-14">
         <button
           onClick={btnpressprev}
-          className="w-10 h-full flex justify-center items-center bg-transparent mobile:hidden">
-          <div className="w-10 h-16 relative">
+          className="flex h-full w-10 items-center justify-center bg-transparent mobile:hidden">
+          <div className="relative h-16 w-10">
             <Image
               className="cursor-pointer"
               src={
@@ -89,7 +89,7 @@ function Carousel({ data, responsive }: CarouselProps) {
             />
           </div>
         </button>
-        <div className="mx-27 tablet:mx-16 mobile:mx-0 overflow-x-hidden scroll-smooth">
+        <div className="mx-27 overflow-x-hidden scroll-smooth mobile:mx-0 tablet:mx-16">
           <div
             className="flex scroll-smooth transition-transform"
             ref={ref}
@@ -119,15 +119,16 @@ function Carousel({ data, responsive }: CarouselProps) {
                 {...item}
                 imageSize={responsive[env].imageSize}
                 marginRight={CARD_MARGIN_VALUE}
+                size="md"
               />
             ))}
           </div>
         </div>
         <button
           onClick={btnpressnext}
-          className="w-10 h-full flex justify-center items-center bg-transparent right-0
+          className="right-0 flex h-full w-10 items-center justify-center bg-transparent
             mobile:hidden">
-          <div className="w-10 h-16 relative">
+          <div className="relative h-16 w-10">
             <Image
               src={
                 currentIndex === maxPage && maxPage !== 0

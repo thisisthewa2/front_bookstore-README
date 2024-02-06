@@ -16,8 +16,8 @@ function SelectedAllButton({
 }: SelectedAllButtonProps) {
   return (
     <div className="flex tablet:mt-10 pc:mt-10">
-      <Link href={`/${selectedCategory}`} className="mobile:hidden bg-white">
-        <p className="text-green text-13">
+      <Link href={`/${selectedCategory}`} className="bg-white mobile:hidden">
+        <p className="text-13 text-green">
           {selectedAll}
           <Image
             src={GreenArrowRightIcon}
@@ -30,14 +30,14 @@ function SelectedAllButton({
       </Link>
       <Link
         href={`/${selectedCategory}`}
-        className="tablet:hidden pc:hidden bg-white text-green text-[13px]">
+        className="bg-white text-[13px] text-green tablet:hidden pc:hidden">
         전체
         <Image
           src={GreenArrowRightIcon}
           alt="전체보기 화살표"
           width={8}
           height={13}
-          className="inline-block ml-3 mb-2"
+          className="mb-2 ml-3 inline-block"
         />
       </Link>
     </div>

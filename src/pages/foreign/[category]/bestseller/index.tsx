@@ -18,7 +18,11 @@ function BestSellerPage({ isDomestic = true }: BestSellerPageProps) {
       <BestSellerPageLayout
         header={<Header isLoggedIn={true} />}
         sideBar={
-          <Sidebar isDomestic={isDomestic} location={category as string} />
+          <Sidebar
+            pageName="bestseller"
+            isDomestic={isDomestic}
+            location={category as string}
+          />
         }
         main={
           <BookOverViewCardList

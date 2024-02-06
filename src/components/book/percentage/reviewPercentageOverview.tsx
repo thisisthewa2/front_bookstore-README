@@ -19,12 +19,12 @@ function ReviewPercentageOverview({
         return (
           <div key={ind} className="flex-center gap-20 mobile:gap-10">
             <div
-              className={`text-12 text-gray-2 ${major === ind + 1 ? 'text-green font-bold' : ''}`}>
+              className={`text-12 text-gray-2 ${major === ind + 1 ? 'font-bold text-green' : ''}`}>
               {ind + 1} 점
             </div>
             <Percentage num={el} total={reviewNum} />
             <div
-              className={`text-12 text-gray-2 ${major === ind + 1 ? 'text-green font-bold' : ''}`}>
+              className={`text-12 text-gray-2 ${major === ind + 1 ? 'font-bold text-green' : ''}`}>
               {reviewNum === 0 ? 0 : (el * 100) / reviewNum} %
             </div>
           </div>

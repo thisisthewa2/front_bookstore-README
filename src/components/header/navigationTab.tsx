@@ -32,21 +32,21 @@ function NavigationTab({ isLoggedIn }: NavigationTabProps) {
   return (
     <>
       <div
-        className="flex b min-w-fit max-w-full items-center h-40 tablet:h-70 pc:h-70 border-gray-1
-          border-y">
-        <div className="flex justify-between items-center text-14 tablet:text-16 pc:text-16">
+        className="b flex h-40 min-w-fit max-w-full items-center border-y border-gray-1 tablet:h-70
+          pc:h-70">
+        <div className="flex items-center justify-between text-14 tablet:text-16 pc:text-16">
           <div className="mx-16 tablet:mx-30 pc:mx-60">
             <CategoryTabButton onClick={toggleCategoryTab} />
           </div>
           <div className="flex gap-18 pc:gap-40 tablet:gap-30">
-            <Link href="/domestic/bestsellers"> 베스트</Link>
+            <Link href="/domestic/bestseller"> 베스트</Link>
             <Link href="/domestic/newest"> 신간</Link>
             <Link href="/custom">맞춤도서</Link>
-            <div className="inline-block border-r w-1 h-14 mt-4 border-gray-1" />
+            <div className="mt-4 inline-block h-14 w-1 border-r border-gray-1" />
             <Link href="/community"> 커뮤니티</Link>
           </div>
         </div>
-        <div className="flex items-center ml-auto tablet:mr-40 pc:mr-60">
+        <div className="ml-auto flex items-center tablet:mr-40 pc:mr-60">
           <WritePostButton
             showButton={showWritePostButton}
             onClick={handleModalOpen}

@@ -7,7 +7,7 @@ interface HeaderLayoutProps {
 }
 function HeaderLayout({ isLoggedIn, children }: HeaderLayoutProps) {
   return (
-    <div className="min-w-fit w-full sticky top-0 flex-row h-90 tablet:h-170 pc:h-170 bg-white z-50">
+    <div className="sticky top-0 z-50 h-90 w-full min-w-fit flex-row bg-white tablet:h-170 pc:h-170">
       {children} <NavigationTab isLoggedIn={isLoggedIn} />
     </div>
   );

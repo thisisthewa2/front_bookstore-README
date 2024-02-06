@@ -76,7 +76,7 @@ function PreviewBookInfo({
       </div>
       {title && (
         <p
-          className={`text-black text-15 font-medium text-overflow2 mb-4 mt-12 ${
+          className={`font-medium text-overflow2 mb-4 mt-12 text-15 text-black ${
             alignCenter ? 'text-center font-bold' : ''
           }`}>
           {title}
@@ -88,9 +88,9 @@ function PreviewBookInfo({
           {authorList.join(', ')}
         </div>
       )}
-      {category && <div className="text-gray-3 text-14">[{category}]</div>}
+      {category && <div className="text-14 text-gray-3">[{category}]</div>}
       {price && (
-        <div className="text-black text-14 font-bold mt-4">
+        <div className="mt-4 text-14 font-bold text-black">
           {price.toString().replace(THOUSAND_UNIT, ',')}
         </div>
       )}

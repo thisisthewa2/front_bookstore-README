@@ -7,7 +7,7 @@ interface PercentageProps {
 
 function Percentage({ num, total }: PercentageProps) {
   const BackgroundStyle = `bg-gray-1 rounded-[56px] w-160 mobile:w-100 h-[6px] relative`;
-  let percent = total > 0 ? Math.ceil((num * 100) / total) : 0;
+  const percent = total > 0 ? Math.ceil((num * 100) / total) : 0;
   const InnerStyle = `bg-green h-6 rounded-full`;
   return (
     <div className={BackgroundStyle}>

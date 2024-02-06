@@ -66,8 +66,8 @@ function EditProfile({
   return (
     <FormProvider {...method}>
       <div
-        className="max-w-440 max-h-745 bg-white border rounded-[10px] border-gray-1
-          mobile:border-none p-40">
+        className="max-h-745 max-w-440 rounded-[10px] border border-gray-1 bg-white
+          p-40 mobile:border-none">
         <div className="flex-center mb-40">
           <h1 className="text-20 font-bold"> 프로필 수정</h1>
         </div>
@@ -75,17 +75,17 @@ function EditProfile({
           className="flex flex-col gap-40 mobile:m-15"
           onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <h2 className="font-bold mb-20">프로필 이미지</h2>
+            <h2 className="mb-20 font-bold">프로필 이미지</h2>
             <div>
               <div
-                className="w-200 h-200 rounded-full bg-gray-2 relative cursor-pointer"
+                className="relative h-200 w-200 cursor-pointer rounded-full bg-gray-2"
                 onClick={handleClickInput}>
                 <Image
                   src={profileImageUrl || DefaultUserProfile}
                   alt="프로필 이미지"
                   width={200}
                   height={200}
-                  className="rounded-full max-w-200 max-h-200 object-cover"
+                  className="max-h-200 max-w-200 rounded-full object-cover"
                 />
                 <input
                   type="file"
@@ -109,7 +109,7 @@ function EditProfile({
             </div>
           </div>
           <div>
-            <label className="text-black text-16 font-bold text-left w-full">
+            <label className="w-full text-left text-16 font-bold text-black">
               이메일
             </label>
             <TextInput
@@ -121,10 +121,10 @@ function EditProfile({
             />
           </div>
           <div>
-            <label className="text-black text-16 font-bold text-left w-full">
+            <label className="w-full text-left text-16 font-bold text-black">
               닉네임
             </label>
-            <p className="text-gray-3 text-15 text-left w-full">
+            <p className="w-full text-left text-15 text-gray-3">
               다른 유저와 중복되지 않는 닉네임
             </p>
             <TextInput
@@ -139,7 +139,7 @@ function EditProfile({
               defaultValue={initialNickname}
             />
             {errors.nickname?.message && (
-              <p className="text-14 text-red w-full text-left">
+              <p className="w-full text-left text-14 text-red">
                 {errors.nickname.message}
               </p>
             )}

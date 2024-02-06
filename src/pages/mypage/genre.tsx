@@ -16,8 +16,8 @@ export default function Genre() {
   };
 
   return (
-    <div className="flex-col flex-center mt-40">
-      <div className="text-20 font-bold mb-28">선호장르 선택</div>
+    <div className="flex-center mt-40 flex-col">
+      <div className="mb-28 text-20 font-bold">선호장르 선택</div>
 
       <div className={`${getButtonLayoutClass()}`}>
         {genres.map((genre, index) => (
@@ -29,7 +29,7 @@ export default function Genre() {
           />
         ))}
       </div>
-      <div className="ml-auto mx-60 mt-80">
+      <div className="mx-60 ml-auto mt-80">
         <EditToggleButton
           isEditMode={isEditMode}
           onClick={handleEditModeToggle}

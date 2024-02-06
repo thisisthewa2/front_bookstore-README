@@ -5,11 +5,10 @@ import { useState } from 'react';
 import useClientEffect from '@/hooks/useClientEffect';
 import useResizeEffect from '@/hooks/useResizeEffect';
 
-
 const useWindowInnerWidth = () => {
   const [dynamicWid, setDynamicWid] = useState<number>(0);
   const windowSizeToSetEnv = () => {
-    let w = (typeof window !== "undefined") ? window.innerWidth : 0;
+    let w = typeof window !== 'undefined' ? window.innerWidth : 0;
     setDynamicWid(w);
   };
 
