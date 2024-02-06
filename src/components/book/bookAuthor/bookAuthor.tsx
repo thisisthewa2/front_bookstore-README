@@ -12,12 +12,12 @@ function BookAuthor({ authorList, publisher }: BookAuthorProps) {
     <div className="flex-center gap-4">
       {authorList.map((author) => {
         return (
-          <span key={author} className="text-gray-3 text-14 hover:text-gray-7">
+          <span key={author} className="hover:text-gray-7 text-14 text-gray-3">
             {author}
           </span>
         );
       })}
-      {publisher && <span className="text-gray-3 text-14">| {publisher}</span>}
+      {publisher && <span className="text-14 text-gray-3">| {publisher}</span>}
     </div>
   );
 }

@@ -10,10 +10,14 @@ interface CommunityLayoutProps {
 }
 
 //TODO : api나오면 useInfiniteQuery에서 data받아서 infinityscroll구현
-function CommunityLayout({ communityData, isSelected, kebab }: CommunityLayoutProps) {
+function CommunityLayout({
+  communityData,
+  isSelected,
+  kebab,
+}: CommunityLayoutProps) {
   return (
     <MainLayout>
-      <div className="flex flex-col mb-198">
+      <div className="mb-198 flex flex-col">
         <PageTab
           origin="피드"
           originHref="/community"
@@ -21,8 +25,7 @@ function CommunityLayout({ communityData, isSelected, kebab }: CommunityLayoutPr
           addHref="/community/writeme"
           isSelected={isSelected}
         />
-        <div
-          className="grid grid-cols-3 auto-rows-auto tablet:grid-cols-2 mobile:grid-cols-1 gap-20">
+        <div className="grid auto-rows-auto grid-cols-3 gap-20 mobile:grid-cols-1 tablet:grid-cols-2">
           {communityData.map((card) => (
             <CommunityCard
               key={card.id}
@@ -42,4 +45,4 @@ function CommunityLayout({ communityData, isSelected, kebab }: CommunityLayoutPr
   );
 }
 
-export default CommunityLayout
+export default CommunityLayout;

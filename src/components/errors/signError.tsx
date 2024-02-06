@@ -10,7 +10,7 @@ export default function SignError({ errors, id }: SignErrorProps) {
   return (
     <div>
       {errors[id]?.message && (
-        <p className="text-14 text-red text-left">{errors[id]?.message}</p>
+        <p className="text-left text-14 text-red">{errors[id]?.message}</p>
       )}
     </div>
   );

@@ -49,8 +49,8 @@ function TextInput({
           pattern: pattern,
           validate: validate,
         })}
-        className={`h-48 pt-[13px] pb-[12px] leading-normal w-full text-[16px] autofill:bg-white border-b border-gray-1 focus:border-green 
-        ${isError && 'border-b border-2 border-red focus:border-red'}
+        className={`h-48 w-full border-b border-gray-1 pb-[12px] pt-[13px] text-[16px] leading-normal autofill:bg-white focus:border-green 
+        ${isError && 'border-2 border-b border-red focus:border-red'}
           outline-none ${classNames}`}
         {...props}
       />
@@ -90,8 +90,8 @@ function PasswordInput({
           pattern: pattern,
           validate: validate,
         })}
-        className={`h-48 pt-[13px] pb-[12px] leading-normal w-full text-[16px] autofill:bg-white border-b border-gray-1 focus:border-green
-          ${isError && 'border-b border-2 focus:border-red border-red'} 
+        className={`h-48 w-full border-b border-gray-1 pb-[12px] pt-[13px] text-[16px] leading-normal autofill:bg-white focus:border-green
+          ${isError && 'border-2 border-b border-red focus:border-red'} 
           outline-none ${classNames}`}
         {...props}
       />

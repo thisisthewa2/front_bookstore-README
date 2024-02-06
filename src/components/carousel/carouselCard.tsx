@@ -20,6 +20,7 @@ function CarouselCard(props: CarouselCardProps) {
         className={`text-white relative select-none`}
         style={{ width, marginRight }}>
         <PreviewBookInfo size={size} title={title} authorList={[authorname]} />
+
       </div>
     </div>
   );

@@ -60,10 +60,10 @@ function CartPageNav({
             height={20}
           />
         </div>
-        <span className="text-gray-4 text-14">전체선택</span>
+        <span className="text-14 text-gray-4">전체선택</span>
       </div>
       <span
-        className="text-black font-normal cursor-pointer"
+        className="cursor-pointer font-normal text-black"
         onClick={() => handleDeleteSelectedItems()}>
         선택항목 삭제
       </span>
@@ -142,17 +142,17 @@ function CartPage() {
   }, 0);
 
   return (
-    <div className="w-full flex flex-col items-center">
-      <div className="max-w-[1200px] w-full">
+    <div className="flex w-full flex-col items-center">
+      <div className="w-full max-w-[1200px]">
         <MainLayout>
-          <div className="w-full relative">
+          <div className="relative w-full">
             <div
-              className="flex mobile:flex-col px-60 tablet:px-40 mobile:px-15 gap-x-30 tablet:gap-x-20
-                mobile:gap-x-10">
+              className="flex gap-x-30 px-60 mobile:flex-col mobile:gap-x-10 mobile:px-15 tablet:gap-x-20
+                tablet:px-40">
               <div
-                className="mt-20 flex-1 grid grid-cols-1 tablet:grid-cols-1 mobile:grid-cols-1 gap-x-20
-                  tablet: gap-y-20 mobile:gap-y-10">
-                <div className="text-black text-20 font-bold">
+                className="tablet: mt-20 grid flex-1 grid-cols-1 gap-x-20 gap-y-20
+                  mobile:grid-cols-1 mobile:gap-y-10 tablet:grid-cols-1">
+                <div className="text-20 font-bold text-black">
                   장바구니
                   {wishListData.length > 0 && `(${wishListData.length})`}
                 </div>
@@ -165,7 +165,7 @@ function CartPage() {
                     handleDeleteSelectedItems={handleDeleteSelectedItems}
                   />
                 ) : (
-                  <div className="text-gray-4 text-16 text-center mobile:mt-120 mobile:mb-120">
+                  <div className="text-center text-16 text-gray-4 mobile:mb-120 mobile:mt-120">
                     장바구니에 아직 상품이 없어요!
                   </div>
                 )}
@@ -178,11 +178,11 @@ function CartPage() {
                   return (
                     <div
                       key={item.id}
-                      className={`flex-1 flex relative items-center pt-40 pb-43 pr-44 mobile:pt-20 mobile:pb-75
-                        border-2 ${item.id === pickedItemId ? 'border-green' : 'border-gray-1'} bg-white
-                        rounded-[10px]`}>
+                      className={`relative flex flex-1 items-center border-2 pb-43 pr-44 pt-40 mobile:pb-75
+                        mobile:pt-20 ${item.id === pickedItemId ? 'border-green' : 'border-gray-1'} rounded-[10px]
+                        bg-white`}>
                       <div
-                        className="absolute top-20 right-20 mobile:top-10 mobile:right-10 cursor-pointer"
+                        className="absolute right-20 top-20 cursor-pointer mobile:right-10 mobile:top-10"
                         onClick={() => {
                           const filteredWishListData =
                             filteredDataByNotTargetId(wishListData, item.id);
@@ -196,7 +196,7 @@ function CartPage() {
                           alt="엑스"
                           width={24}
                           height={24}
-                          className="mobile:w-18 h-18"
+                          className="h-18 mobile:w-18"
                         />
                       </div>
                       <div
@@ -225,23 +225,23 @@ function CartPage() {
                           />
                         </div>
                       </div>
-                      <div className="w-full flex flex-1 relative mobile:static">
+                      <div className="relative flex w-full flex-1 mobile:static">
                         <div className="flex gap-x-20 rounded-[10px]">
                           <PreviewBookInfo size="sm" />
                           <div className="flex flex-col gap-y-8">
                             <div className="flex flex-col">
                               <div
-                                className="w-256 tablet:w-196 mobile:w-147 text-15 text-black font-bold break-all
-                                  line-clamp-2">
+                                className="line-clamp-2 w-256 break-all text-15 font-bold text-black mobile:w-147
+                                  tablet:w-196">
                                 {item.title}
                               </div>
                               <div
-                                className="w-256 tablet:w-196 mobile:w-147 text-gray-3 whitespace-nowrap text-ellipsis
-                                  overflow-hidden">
+                                className="w-256 overflow-hidden text-ellipsis whitespace-nowrap text-gray-3 mobile:w-147
+                                  tablet:w-196">
                                 {item.author}
                               </div>
                             </div>
-                            <div className="text-14 text-color font-bold mb-12">
+                            <div className="text-color mb-12 text-14 font-bold">
                               {item.price
                                 .toString()
                                 .replace(THOUSAND_UNIT, ',')}
@@ -277,10 +277,10 @@ function CartPage() {
                           </div>
                         </div>
                         <div
-                          className="absolute right-0 bottom-0 flex flex-col items-end mobile:border-t-2
-                            border-gray-1 mobile:flex-row mobile:justify-between mobile:w-full mobile:px-20
+                          className="absolute bottom-0 right-0 flex flex-col items-end border-gray-1
+                            mobile:w-full mobile:flex-row mobile:justify-between mobile:border-t-2 mobile:px-20
                             mobile:py-16">
-                          <span className="text-black text-20 font-bold">
+                          <span className="text-20 font-bold text-black">
                             {(item.clicked && item.clicked > 0
                               ? item.price * item.clicked
                               : item.price

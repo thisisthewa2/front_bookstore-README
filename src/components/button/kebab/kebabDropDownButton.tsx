@@ -16,17 +16,17 @@ function KebabDropDownButton({
 }: KebabDropDownButtonProps) {
   return (
     <div
-      className="flex-center flex-col absolute top-48 right-20 w-108 h-84 border-[1px]
-        border-solid border-gray-1 rounded-[5px] bg-white z-10">
+      className="flex-center absolute right-20 top-48 z-10 h-84 w-108 flex-col
+        rounded-[5px] border-[1px] border-solid border-gray-1 bg-white">
       <div
-        className="hover:bg-gray-5 text-black flex-center justify-start pl-15 w-full h-full
-          text-14 border-b-[1px] border-solid border-gray-1 rounded-t-[5px]"
+        className="flex-center h-full w-full justify-start rounded-t-[5px] border-b-[1px] border-solid
+          border-gray-1 pl-15 text-14 text-black hover:bg-gray-5"
         onClick={onClickTitle1}>
         {title1}
       </div>
       <div
-        className={`hover:bg-gray-5 text-${color} flex-center justify-start pl-15 w-full h-full
-          text-14 rounded-b-[5px]`}
+        className={`hover:bg-gray-5 text-${color} flex-center h-full w-full justify-start rounded-b-[5px]
+          pl-15 text-14`}
         onClick={onClickTitle2}>
         {title2}
       </div>

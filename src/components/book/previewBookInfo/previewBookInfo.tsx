@@ -82,6 +82,7 @@ function PreviewBookInfo({
           </span>
         </div>
       )}
+
         </div>
       </div>
       {title && <BookTitle title={title} alignCenter={alignCenter} />}

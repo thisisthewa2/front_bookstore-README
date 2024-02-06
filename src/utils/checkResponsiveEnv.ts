@@ -35,4 +35,4 @@ export const modalCarouselResponsive = {
     breakpoint: { max: 375, min: 767 },
     imageSize: { width: 128, height: 174 },
   },
-}
+};

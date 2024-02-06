@@ -19,9 +19,9 @@ function MainLayout({ children }: MainLayoutProps) {
 
   return (
     <>
-      <Header isLoggedIn={true} numItemsOfCart={1} />
+      <Header isLoggedIn={false} numItemsOfCart={1} />
       <div className="relative grid auto-rows-auto place-items-center">
-        <div className="w-300 h-20" ref={ref}/>
+        <div className="h-20 w-300" ref={ref} />
         {children}
         <ScrollToTopButton />
       </div>

@@ -33,14 +33,14 @@ function StyledLink({
 
 function SidebarRegionButton({ pageName, isDomestic = true }: SidebarProps) {
   return (
-    <div className="flex justify-start items-center mobile:flex-center">
+    <div className="mobile:flex-center flex items-center justify-start">
       <StyledLink
         title="국내"
         link={`/domestic/${pageName ?? ''}`}
         isLeft={true}
         isSelected={isDomestic}
       />
-      <div className="bg-gray-1 h-11 mobile:bg-green mobile:h-37 relative w-[1px] z-10"></div>
+      <div className="relative z-10 h-11 w-[1px] bg-gray-1 mobile:h-37 mobile:bg-green"></div>
       <StyledLink
         title="외국"
         link={`/foreign/${pageName ?? ''}`}

@@ -3,13 +3,13 @@
  */
 
 function StyledTitle({ title = '' }) {
-  return <h3 className="text-16 text-gray-6 font-bold">{title}</h3>;
+  return <h3 className="text-gray-6 text-16 font-bold">{title}</h3>;
 }
 
 function RefundTerm() {
   return (
     <section className="flex flex-col gap-40 mobile:gap-30">
-      <h2 className="text-20 font-bold text-gray-7">배송/교환/환불</h2>
+      <h2 className="text-gray-7 text-20 font-bold">배송/교환/환불</h2>
       <article className="flex flex-col gap-30 mobile:gap-20">
         <div className="flex flex-col gap-8">
           <StyledTitle title="환불/교환 방법" />

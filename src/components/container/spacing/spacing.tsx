@@ -11,13 +11,13 @@ function Spacing({ width = [2, 2, 2], height = [2, 2, 2] }: SpacingProps) {
   return (
     <div>
       <div
-        className="pc:block tablet:hidden mobile:hidden"
+        className="mobile:hidden tablet:hidden pc:block"
         style={{ width: width[0], height: height[0] }}></div>
       <div
-        className="pc:hidden tablet:block mobile:hidden"
+        className="mobile:hidden tablet:block pc:hidden"
         style={{ width: width[1], height: height[1] }}></div>
       <div
-        className="pc:hidden tablet:hidden mobile:block"
+        className="mobile:block tablet:hidden pc:hidden"
         style={{ width: width[2], height: height[2] }}></div>
     </div>
   );

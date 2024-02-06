@@ -25,36 +25,36 @@ function BookDetailNav({
 
   return (
     <div
-      className="bg-gray-5 flex justify-start gap-80 items-center sticky top-170 mobile:top-90
-        h-70 mobile:h-50 w-full px-70 mobile:px-0 mobile:flex-center border-b-[1px]
-        border-gray-1 z-10">
+      className="mobile:flex-center sticky top-170 z-10 flex h-70 w-full items-center
+        justify-start gap-80 border-b-[1px] border-gray-1 bg-gray-5 px-70 mobile:top-90
+        mobile:h-50 mobile:px-0">
       <div
         className={`${
           location === 'information'
-            ? 'h-full border-b-[3px] border-green flex-center'
+            ? 'flex-center h-full border-b-[3px] border-green'
             : 'border-none'
         }`}>
         <button
           id="information"
           onClick={handleClickLocation}
-          className={`text-gray-4 font-bold ${location === 'information' ? 'text-green' : ''}`}>
+          className={`font-bold text-gray-4 ${location === 'information' ? 'text-green' : ''}`}>
           상품 정보
         </button>
       </div>
       <div
         className={`${
           location === 'review'
-            ? 'h-full border-b-[3px] border-green flex-center'
+            ? 'flex-center h-full border-b-[3px] border-green'
             : 'border-none'
         }`}>
         <button
           id="review"
           onClick={handleClickLocation}
-          className={`text-gray-4 font-bold ${location === 'review' ? 'text-green' : ''}`}>
+          className={`font-bold text-gray-4 ${location === 'review' ? 'text-green' : ''}`}>
           리뷰
           <span
             id="review"
-            className={`text-gray-2 font-bold ml-5 ${location === 'review' ? 'text-green' : ''}`}>
+            className={`ml-5 font-bold text-gray-2 ${location === 'review' ? 'text-green' : ''}`}>
             {reviewNum}
           </span>
         </button>
@@ -62,13 +62,13 @@ function BookDetailNav({
       <div
         className={`${
           location === 'currency'
-            ? 'h-full border-b-[3px] border-green flex-center'
+            ? 'flex-center h-full border-b-[3px] border-green'
             : 'border-none'
         }`}>
         <button
           id="currency"
           onClick={handleClickLocation}
-          className={`text-gray-4 font-bold ${location === 'currency' ? 'text-green' : ''}`}>
+          className={`font-bold text-gray-4 ${location === 'currency' ? 'text-green' : ''}`}>
           배송/교환/환불
         </button>
       </div>

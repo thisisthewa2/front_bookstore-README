@@ -7,11 +7,16 @@ type ButtonProps = {
   color?: string;
 };
 
-function RegisterButton({ type, onClick, children, color = 'green' }: ButtonProps) {
+function RegisterButton({
+  type,
+  onClick,
+  children,
+  color = 'green',
+}: ButtonProps) {
   return (
     <button
       type={type}
-      className={`h-50 w-full text-center bg-${color} rounded-[5px] text-17 text-white`}
+      className={`h-50 w-full text-center bg-${color} text-17 rounded-[5px] text-white`}
       onClick={onClick}>
       {children}
     </button>

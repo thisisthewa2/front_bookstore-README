@@ -17,7 +17,7 @@ function DropDownItem({
   return (
     <div>
       <li
-        className="h-42 text-14 hover:bg-gray-5 flex items-center pl-16 pr-10"
+        className="flex h-42 items-center pl-16 pr-10 text-14 hover:bg-gray-5"
         onClick={() => handleSelectItem(menu)}>
         {menu}
       </li>

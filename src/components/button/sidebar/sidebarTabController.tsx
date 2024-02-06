@@ -30,8 +30,8 @@ function SidebarTabController({
     ? ReadMeDomesticCategoryList.categoryList
     : ReadMeForeignCategoryList.categoryList;
 
-  let found = categoryList.find((e) => e.link === `/${location}`);
-  let locatedTitle = location ? found?.title : '전체보기';
+  const found = categoryList.find((e) => e.link === `/${location}`);
+  const locatedTitle = location ? found?.title : '전체보기';
 
   const handleClick = () => setShowOptions(!showOptions);
 
@@ -40,9 +40,9 @@ function SidebarTabController({
       <button
         ref={ref}
         onClick={handleClick}
-        className="pc:hidden tablet:hidden mobile:flex-center mobile:gap-4 text-[13px]">
+        className="mobile:flex-center text-[13px] mobile:gap-4 tablet:hidden pc:hidden">
         {locatedTitle}
-        <div className="w-19 h-19 border-[1px] rounded-[100%] border-gray-1 overflow-hidden">
+        <div className="h-19 w-19 overflow-hidden rounded-[100%] border-[1px] border-gray-1">
           <Image
             src={`${showOptions ? '/icons/UpArrow.svg' : '/icons/DownArrow.svg'}`}
             alt="카테고리 펼치기 버튼"

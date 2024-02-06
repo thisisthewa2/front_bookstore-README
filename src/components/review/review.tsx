@@ -10,12 +10,12 @@ function Review({ bookId = '' }) {
   // TODO react query를 통해 book 상세 정보와 review 리스트를 받아올 것
 
   return (
-    <section className="flex flex-col gap-20 mobile:flex-center">
+    <section className="mobile:flex-center flex flex-col gap-20">
       <h3
-        className="w-full max-w-[710px] mobile:w-330 text-20 font-bold text-gray-4 flex
-          justify-start items-start">
+        className="flex w-full max-w-[710px] items-start justify-start text-20 font-bold
+          text-gray-4 mobile:w-330">
         리뷰
-        <span className="text-20 font-bold text-green pl-10">
+        <span className="pl-10 text-20 font-bold text-green">
           {ReviewListMock1.reviewNum}
         </span>
       </h3>
@@ -24,7 +24,7 @@ function Review({ bookId = '' }) {
         reviewNum={ReviewListMock1.reviewNum}
         ratingDist={ReviewListMock1.ratingDist}
       />
-      <article className="flex flex-col gap-20 w-full pt-40 mobile:flex-center">
+      <article className="mobile:flex-center flex w-full flex-col gap-20 pt-40">
         {ReviewListMock1.reviewList.map((el) => {
           return <BookReviewCard key={el.reviewId} />;
         })}

@@ -18,18 +18,18 @@ function PageTab({
   isSelected,
 }: PageTabProps) {
   return (
-    <div className="flex items-center justify-between w-169 h-27 mb-40 mt-20 tablet:mb-36 tablet:mt-16 mobile:mb-27 mobile:mt-6">
+    <div className="mb-40 mt-20 flex h-27 w-169 items-center justify-between mobile:mb-27 mobile:mt-6 tablet:mb-36 tablet:mt-16">
       <Link
         href={originHref}
-        className={`hover:text-black font-bold text-20 text-${
+        className={`text-20 font-bold hover:text-black text-${
           isSelected === origin ? 'black' : 'gray-2'
         }`}>
         {origin}
       </Link>
-      <div className="inline-block border-r w-1 h-14 mt-4 border-gray-1" />
+      <div className="mt-4 inline-block h-14 w-1 border-r border-gray-1" />
       <Link
         href={addHref}
-        className={`hover:text-black font-bold text-20 text-${
+        className={`text-20 font-bold hover:text-black text-${
           isSelected === add ? 'black' : 'gray-2'
         }`}>
         {add}
