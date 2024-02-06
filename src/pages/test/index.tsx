@@ -40,6 +40,11 @@ function TestPage() {
         // itemsStart
       />
       <SkeletonBookOverviewCard />
+      <div className="flex gap-10">
+        <SkeletonPreviewBookImage size="lg" />
+        <SkeletonPreviewBookImage size="md" />
+        <SkeletonPreviewBookImage size="sm" />
+      </div>
     </div>
   );
 }
