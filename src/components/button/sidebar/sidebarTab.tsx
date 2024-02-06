@@ -3,13 +3,9 @@ import {
   ReadMeForeignCategoryList,
   ReadMeDomesticCategoryList,
 } from '@/pages/api/mock';
+import { SidebarProps } from '@/types/sidebarType';
 
-interface SidebarTabProps {
-  isDomestic: boolean;
-  location?: string;
-}
-
-function SidebarTab({ isDomestic, location }: SidebarTabProps) {
+function SidebarTab({ pageName, isDomestic, location }: SidebarProps) {
   const categoryList = isDomestic
     ? ReadMeDomesticCategoryList.categoryList
     : ReadMeForeignCategoryList.categoryList;
@@ -31,7 +27,7 @@ function SidebarTab({ isDomestic, location }: SidebarTabProps) {
                 ? 'font-bold text-green'
                 : 'text-gray-2'
             }`}
-            href={`/${isDomestic ? 'domestic' : 'foreign'}${el.link}`}
+            href={`/${isDomestic ? 'domestic' : 'foreign'}${el.link}${pageName ? `/${pageName}` : ''}`}
             key={el.title}>
             {el.title}
           </Link>

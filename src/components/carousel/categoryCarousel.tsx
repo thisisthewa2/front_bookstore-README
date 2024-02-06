@@ -149,6 +149,7 @@ function CategoryCarousel({ data, responsive }: CarouselProps) {
                 {...item}
                 imageSize={responsive[env].imageSize}
                 marginRight={calcMarginValue(env)}
+                size="sm"
               />
             ))}
           </div>

@@ -9,7 +9,7 @@ function BestSellerSection() {
         tablet:mx-40 mobile:my-80 mobile:mx-15">
       <div className="flex justify-between mobile:mb-20 pc:mb-50 tablet:mb-40">
         <div className="font-bold text-20">베스트셀러</div>
-        <Link href="/bestseller" className="text-green">
+        <Link href="/domestic/bestseller" className="text-green">
           더보기
         </Link>
       </div>
