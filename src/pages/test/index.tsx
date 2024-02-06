@@ -11,9 +11,33 @@ function TestPage() {
         book={bookOverviews[0]?.book}
         like={bookOverviews[0]?.like}
       />
-      <SkeletonPreviewBookImage size="sm" />
+      {/* <SkeletonPreviewBookImage size="sm" />
       <SkeletonPreviewBookImage size="md" />
-      <SkeletonPreviewBookImage size="lg" />
+      <SkeletonPreviewBookImage size="lg" /> */}
+      <PreviewBookInfo
+        title="하이용"
+        authorList={['얌얌', '능이버섯']}
+        image={bookOverviews[0]?.book.bookImgUrl}
+        size="sm"
+        ranking={100}
+        // itemsStart
+      />
+      <PreviewBookInfo
+        title="하이용"
+        authorList={['얌얌', '능이버섯']}
+        image={bookOverviews[0]?.book.bookImgUrl}
+        size="md"
+        ranking={20}
+        // itemsStart
+      />
+      <PreviewBookInfo
+        title="하이용"
+        authorList={['얌얌', '능이버섯']}
+        image={bookOverviews[0]?.book.bookImgUrl}
+        size="lg"
+        ranking={10}
+        // itemsStart
+      />
     </div>
   );
 }

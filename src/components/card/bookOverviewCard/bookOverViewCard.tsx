@@ -50,7 +50,7 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
             size="sm"
             image={book.bookImgUrl}
             ranking={book.rank}
-            // itemsStart
+            itemsStart
           />
         </Link>
 

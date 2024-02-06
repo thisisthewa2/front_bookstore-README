@@ -51,7 +51,7 @@ function PreviewBookInfo({
           />
       {ranking && (
         <div
-          className={`absolute ${itemsStart ? 'top-[-2px] left-17' : 'bottom-0 right-0'}`}>
+          className={`absolute ${itemsStart ? 'top-[-2px] left-17' : ' bottom-0 right-0'}`}>
           <Image
             src={
               itemsStart
@@ -65,14 +65,17 @@ function PreviewBookInfo({
             alt="순위라벨 이미지"
           />
           <span
-                className={`text-white text-[13px] font-bold absolute ${itemsStart ? 'top-5 left-10' : 'bottom-5 right-9'} 
-              ${ranking > 9 && itemsStart && 'tracking-[-0.6px] left-6'}
-              ${ranking > 9 &&'tracking-[-0.6px] right-6'}
-            }
-              ${ranking > 99 && itemsStart && 'tracking-[-0.5px] left-[2px]'}
-              ${ranking > 99 &&'tracking-[-0.5px] right-3'}
-              `}
-              >
+              className={`text-white text-[13px] font-bold absolute ${itemsStart ? 'top-5 left-10' : 'bottom-5 right-9'} ${
+            ranking > 99
+              ? itemsStart
+                ? 'tracking-[-0.5px] left-[2px]'
+                : 'tracking-[-0.5px] left-17'
+              : ranking > 9
+              ? itemsStart
+                ? 'tracking-[-0.6px] left-6'
+                : 'tracking-[-0.6px] left-20'
+              : ''
+}`}>
             {ranking}
           </span>
         </div>
