@@ -45,12 +45,12 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
         <Link
           role="book-img"
           href={`bookdetail/${book.bookId}`}
-          className="h-170 bg-white mobile:min-w-93 mobile:h-134 pt-2 overflow-hidden">
+          className="h-170 bg-white mobile:min-w-93 mobile:h-134 pt-2">
           <PreviewBookInfo
             size="sm"
             image={book.bookImgUrl}
             ranking={book.rank}
-            itemsStart
+            // itemsStart
           />
         </Link>
 
@@ -77,9 +77,6 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
               {book.publisher && (
                 <span className="text-gray-3 text-14">| {book.publisher}</span>
               )}
-            </div>
-            <div>
-              <span className="text-gray-3 text-14 mobile:hidden"></span>
             </div>
           </div>
           <div>
