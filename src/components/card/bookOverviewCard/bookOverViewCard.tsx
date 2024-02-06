@@ -45,7 +45,7 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
         <Link
           role="book-img"
           href={`bookdetail/${book.bookId}`}
-          className="h-170 bg-white mobile:min-w-93 mobile:h-134 pt-2">
+          className="h-170 bg-white mobile:min-w-93 mobile:h-134">
           <PreviewBookInfo
             size="sm"
             image={book.bookImgUrl}

@@ -1,5 +1,6 @@
 import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
 import BookOverviewCard from '@/components/card/bookOverviewCard/bookOverViewCard';
+import SkeletonBookOverviewCard from '@/components/skeleton/bookOverviewCard/skeleton';
 import SkeletonPreviewBookImage from '@/components/skeleton/previewBookImage/skeleton';
 import { bookOverviewsMock } from '@/pages/api/mock/bestSellerMock';
 const bookOverviews = bookOverviewsMock;
@@ -27,8 +28,8 @@ function TestPage() {
         authorList={['얌얌', '능이버섯']}
         image={bookOverviews[0]?.book.bookImgUrl}
         size="md"
-        ranking={20}
-        // itemsStart
+        ranking={1}
+        itemsStart
       />
       <PreviewBookInfo
         title="하이용"
@@ -38,6 +39,7 @@ function TestPage() {
         ranking={10}
         // itemsStart
       />
+      <SkeletonBookOverviewCard />
     </div>
   );
 }
