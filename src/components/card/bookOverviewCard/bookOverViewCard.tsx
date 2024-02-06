@@ -7,6 +7,7 @@ import ActionButton from '@/components/button/actionButton';
 import { notify } from '@/components/toast/toast';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
 
 function BookOverviewCard({ book, like }: BookOverviewType) {
   const [isLiked, setIsLiked] = useState(like.userLiked || false);
