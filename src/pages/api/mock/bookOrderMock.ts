@@ -36,6 +36,7 @@ export const bookOrderTestData: BookOrderCardListProps = {
         },
       ],
       orderDate: '2023-01-01',
+      orderId: 2,
     },
     {
       bookData: [
@@ -71,6 +72,7 @@ export const bookOrderTestData: BookOrderCardListProps = {
         },
       ],
       orderDate: '2023-01-02',
+      orderId: 1,
     },
     {
       bookData: [
@@ -91,6 +93,7 @@ export const bookOrderTestData: BookOrderCardListProps = {
         },
       ],
       orderDate: '2023-01-03',
+      orderId: 3,
     },
   ],
 };

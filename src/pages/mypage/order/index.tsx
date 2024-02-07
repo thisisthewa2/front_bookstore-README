@@ -7,10 +7,10 @@ import MyOrderPageLayout from '@/components/layout/myOrderLayOut';
 import { bookOrderTestData } from '@/pages/api/mock/bookOrderMock';
 const { orderData } = bookOrderTestData;
 
-// function MyOrderPage() {
-//   return (
-//  <MyOrderPageLayout header={<Header isLoggedIn/>} orderDate={<OrderDate />} overview={<OrderOverView />} main={<BookOrderCardList />} />
-// )
-
-// }
-// export default MyOrderPage;
+function MyOrderPage() {
+  return (
+    <div>주문조회페이지-버셀오류방지용</div>
+    //  <MyOrderPageLayout header={<Header isLoggedIn/>} orderDate={<OrderDate />} overview={<OrderOverView />} main={<BookOrderCardList />} />
+  );
+}
+export default MyOrderPage;

@@ -5,6 +5,7 @@ import OrderCount from '@/components/container/orderDate/orderCount';
 export interface BookOrderCardListType {
   bookData: BookOrderType[];
   orderDate: string;
+  orderId: number;
 }
 
 export interface BookOrderCardListProps {
@@ -24,6 +25,7 @@ function BookOrderCardList({ orderData }: BookOrderCardListProps) {
             <OrderCount
               orderCount={index + 1}
               orderDate={orderData.orderDate}
+              orderId={orderData.orderId}
             />
             <div className="flex flex-col gap-20">
               {orderData.bookData.map((bookData) => (
