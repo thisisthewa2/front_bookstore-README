@@ -4,6 +4,8 @@ import { BookOrderType } from '@/types/bookOrderType';
 import BookAuthor from '@/components/book/bookAuthor/bookAuthor';
 
 function BookOrderCard({ book, order }: BookOrderType) {
+  if (!book || !order) return;
+  
   return (
     <div
       role="card-container"
@@ -34,19 +36,6 @@ function BookOrderCard({ book, order }: BookOrderType) {
           </div>
         </div>
       </div>
-
-      <button
-        className="flex-center absolute right-20 top-20 text-14 text-gray-3 mobile:right-0
-          mobile:top-50">
-        배송 조회
-        <Image
-          src="/icons/RightArrow.svg"
-          width={15}
-          height={15}
-          alt="화살표 버튼"
-        />
-      </button>
-
       <div
         role="service-div"
         className="flex-center absolute bottom-20 right-20 gap-12 mobile:bottom-0 mobile:left-0
@@ -54,7 +43,7 @@ function BookOrderCard({ book, order }: BookOrderType) {
         <button
           className="flex-center h-40 w-130 rounded-md border-2 border-green bg-white text-green
             mobile:w-full">
-          문의
+          교환/환불
         </button>
         <button
           className="flex-center h-40 w-130 rounded-md border-2 border-green bg-green text-white
