@@ -5,7 +5,7 @@ import BookAuthor from '@/components/book/bookAuthor/bookAuthor';
 
 function BookOrderCard({ book, order }: BookOrderType) {
   if (!book || !order) return;
-  
+
   return (
     <div
       role="card-container"
@@ -29,7 +29,7 @@ function BookOrderCard({ book, order }: BookOrderType) {
         <BookAuthor authorList={book.authors} />
         <div className="flex-center flex-col gap-10 whitespace-nowrap mobile:flex-row">
           <div role="price-div" className="text-14 text-gray-4">
-            {book.price} 원
+            {book.cost} 원
           </div>
           <div role="delivery-div" className="text-14 text-green">
             {order.deliveryStatus}
