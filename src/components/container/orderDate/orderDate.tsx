@@ -14,7 +14,7 @@ import Image from 'next/image';
 import { getDateAgo } from '@/utils/getTimeAgo';
 import { Person } from '@/types/orderDateType';
 
-type OrderDateProps = {
+export type OrderDateProps = {
   pastDate: string;
   setSelectedItem: Dispatch<SetStateAction<string>>;
   person: Person;

@@ -4,13 +4,22 @@ import OrderDate from '@/components/container/orderDate/orderDate';
 import OrderOverView from '@/components/container/orderDate/orderOverView';
 import Header from '@/components/header';
 import MyOrderPageLayout from '@/components/layout/myOrderLayOut';
-import { bookOrderTestData } from '@/pages/api/mock/bookOrderMock';
+import {
+  bookOrderTestData,
+  orderOverViewData,
+} from '@/pages/api/mock/bookOrderMock';
 const { orderData } = bookOrderTestData;
 
 function MyOrderPage() {
   return (
-    <div>주문조회페이지-버셀오류방지용</div>
-    //  <MyOrderPageLayout header={<Header isLoggedIn/>} orderDate={<OrderDate />} overview={<OrderOverView />} main={<BookOrderCardList />} />
+    <>
+      <MyOrderPageLayout
+        header={<Header isLoggedIn />}
+        // orderDate={<OrderDate />}
+        overview={<OrderOverView orderView={orderOverViewData.orderView} />}
+        main={<BookOrderCardList orderData={orderData} />}
+      />
+    </>
   );
 }
 export default MyOrderPage;
