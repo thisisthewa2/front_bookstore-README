@@ -1,3 +1,5 @@
+/** 책 상세페이지에 들어가는 별점 총평 카드 */
+
 import BookRating from '@/components/book/bookRating/bookRating';
 import ReviewPercentageOverview from '@/components/book/percentage/reviewPercentageOverview';
 

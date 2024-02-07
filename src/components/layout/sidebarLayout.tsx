@@ -20,7 +20,6 @@ function SidebarLayout({
   children,
 }: SidebarLayoutProps) {
   return (
-    <div className="flex max-w-[1200px] flex-col">
       <MainLayout>
         <section
           role="contents"
@@ -38,7 +37,6 @@ function SidebarLayout({
           <div>{children}</div>
         </section>
       </MainLayout>
-    </div>
   );
 }
 

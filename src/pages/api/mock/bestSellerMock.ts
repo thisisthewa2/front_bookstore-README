@@ -10,7 +10,7 @@ const bookOverviewsMock: BookOverviewType[] = [
       bookId: 1,
       bookTitle: '자바스크립트 마스터',
       bookImgUrl:
-        'https://image.aladin.co.kr/product/32104/48/cover200/k212834108_1.jpg',
+        'https://image.aladin.co.kr/product/33072/75/cover500/k092937309_1.jpg', // 객체 직접 할당
       price: 25000,
       authors: ['홍길동'],
       rank: 1,

@@ -1,5 +1,4 @@
 import { BookOverviewType } from '@/types/bookOverviewType';
-import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
 import { THOUSAND_UNIT } from 'src/constants/price';
 import LikeButton from '@/components/button/likeButton';
 import { useState } from 'react';
@@ -8,6 +7,7 @@ import ActionButton from '@/components/button/actionButton';
 import { notify } from '@/components/toast/toast';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
 
 function BookOverviewCard({ book, like }: BookOverviewType) {
   const [isLiked, setIsLiked] = useState(like.userLiked || false);
