@@ -1,3 +1,5 @@
+/** 마이페이지에 들어갈 내가 쓴 리뷰 컴포넌트 */
+
 import { useState } from 'react';
 import Image from 'next/image';
 

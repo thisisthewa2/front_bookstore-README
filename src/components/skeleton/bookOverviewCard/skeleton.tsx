@@ -1,3 +1,4 @@
+
 import { SKELETON_COMMON_STYLE } from 'src/constants/style/skeletonCommonStyle';
 
 SKELETON_COMMON_STYLE;
@@ -70,3 +71,4 @@ function SkeletonBookOverviewCard() {
 }
 
 export default SkeletonBookOverviewCard;
+

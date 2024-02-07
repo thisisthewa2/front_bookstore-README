@@ -10,43 +10,60 @@ import RefundTerm from '@/components/container/refundTerm/refundTerm';
 import BookInformation from '@/components/book/bookInformation/bookInformation';
 import Review from '@/components/review/review';
 import Spacing from '@/components/container/spacing/spacing';
+import SideOrderNavigator from '@/components/orderNavigator/sideOrderNavigator';
+import FooterOrderNavitgator from '@/components/orderNavigator/footerOrderNavitgator';
 
 export default function BookDetailPage() {
   const router = useRouter();
   const { bookId } = router.query;
+  // 페이지 하단 상품정보, 리뷰, 배송교환환불 탭을 나타내는 state
   const [location, setLocation] =
     useState<BookDetailNavLocationType>('information');
+  // 책 구매 수량 state
+  const [orderCount, setOrderCount] = useState(1);
 
   return (
     <MainLayout>
-      <section className="mobile:flex-center flex w-full flex-col p-40 mobile:p-19">
-        <BookDetailCard bookId={bookId as string} />
-      </section>
-      <Spacing height={[80, 80, 40]} />
-      <BookDetailNav
-        reviewNum={BookDetailMock1.reviewNum}
-        location={location}
-        setLocation={setLocation}
-      />
-      <div className="flex w-full flex-col">
-        <section className="mobile:flex-center flex w-full p-40 pt-120 mobile:p-19 mobile:pt-40">
-          <div className="mobile:flex-center flex w-full flex-col">
-            {location === 'information' && <BookInformation />}
-            {location === 'review' && <Review bookId={bookId as string} />}
-            {location === 'currency' && <RefundTerm />}
-          </div>
-          <div className="hidden pc:flex pc:pt-50">
-            <div
-              className="bottom-0 left-0 right-0 z-50 mt-auto h-70 w-full bg-red
-                pc:sticky pc:bottom-80 pc:right-60 pc:h-164 pc:w-340">
-              스티키 컴포넌트
-            </div>
-          </div>
+        <section className="flex flex-col w-full p-40 mobile:p-19 mobile:flex-center">
+          <BookDetailCard
+            bookId={bookId as string}
+            orderCount={orderCount}
+            setOrderCount={setOrderCount}
+          />
         </section>
-        <div className="sticky bottom-0 z-10 flex h-70 w-full bg-gray-3 pc:hidden">
-          타블렛 모바일 환경 스티키 배송구매 버튼
+        <Spacing height={[80, 80, 40]} />
+        <BookDetailNav
+          reviewNum={BookDetailMock1.reviewNum}
+          location={location}
+          setLocation={setLocation}
+        />
+        <div className="flex flex-col w-full">
+          <section
+            className="flex p-40 justify-start gap-30 pt-120 mobile:p-19 mobile:pt-40
+              mobile:flex-center">
+            <div className="flex flex-col w-full max-w-[710px] mobile:flex-center">
+              {location === 'information' && <BookInformation />}
+              {location === 'review' && <Review bookId={bookId as string} />}
+              {location === 'currency' && <RefundTerm />}
+            </div>
+            <div className="pc:pt-50 pc:flex hidden">
+              <SideOrderNavigator
+                isBookmarked={BookDetailMock1.isBookmarked}
+                price={BookDetailMock1.price}
+                bookId={bookId as string}
+                orderCount={orderCount}
+                setOrderCount={setOrderCount}
+              />
+            </div>
+          </section>
+          <FooterOrderNavitgator
+            isBookmarked={BookDetailMock1.isBookmarked}
+            price={BookDetailMock1.price}
+            bookId={bookId as string}
+            orderCount={orderCount}
+            setOrderCount={setOrderCount}
+          />
         </div>
-      </div>
-    </MainLayout>
+      </MainLayout>
   );
 }

@@ -30,6 +30,7 @@ function TestPage() {
         size="md"
         ranking={1}
         itemsStart
+
       />
       <PreviewBookInfo
         title="하이용"

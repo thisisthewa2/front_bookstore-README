@@ -89,8 +89,7 @@ function PreviewBookInfo({
       {authorList && <BookAuthors authorList={authorList} alignCenter={alignCenter} />}
       {category && <BookCategory category={category} />}
       {price && <BookPrice price={price} />}
-
-    </div>
+     </div>
   );
 }
 export default PreviewBookInfo;

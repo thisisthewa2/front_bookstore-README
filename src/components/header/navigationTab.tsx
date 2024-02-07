@@ -5,6 +5,7 @@ import CategoryTab from '@/components/header/categoryTab';
 import Link from 'next/link';
 import WritePostButton from '@/components/button/header/writePostButton';
 import AddCommunityCard from '../modal/addCommunityCard/addCommunityCard';
+import CustomBookButton from '../button/header/customBookButton';
 
 interface NavigationTabProps {
   isLoggedIn: boolean;
@@ -41,8 +42,9 @@ function NavigationTab({ isLoggedIn }: NavigationTabProps) {
           <div className="flex gap-18 pc:gap-40 tablet:gap-30">
             <Link href="/domestic/bestseller"> 베스트</Link>
             <Link href="/domestic/newest"> 신간</Link>
-            <Link href="/custom">맞춤도서</Link>
-            <div className="mt-4 inline-block h-14 w-1 border-r border-gray-1" />
+            <CustomBookButton isLoggedIn={isLoggedIn} />
+            <div className="inline-block border-r w-1 h-14 mt-4 border-gray-1" />
+
             <Link href="/community"> 커뮤니티</Link>
           </div>
         </div>

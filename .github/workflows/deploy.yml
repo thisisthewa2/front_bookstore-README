@@ -55,8 +55,8 @@ jobs:
       uses: amondnet/vercel-action@v20
       with:
         vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-project-id: prj_3rfFFcppvOaVoUFdtm6T7TuGN1Uh
-        vercel-org-id: team_TRZ6IV6KLT7YSyDetlr4o1OS
+        vercel-project-id: ${{secrets.PROJECT_ID}}
+        vercel-org-id: ${{secrets.ORG_ID}}
 
   notify_discord:
     runs-on: ubuntu-latest

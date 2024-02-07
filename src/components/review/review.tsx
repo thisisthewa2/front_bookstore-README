@@ -24,12 +24,23 @@ function Review({ bookId = '' }) {
         reviewNum={ReviewListMock1.reviewNum}
         ratingDist={ReviewListMock1.ratingDist}
       />
-      <article className="mobile:flex-center flex w-full flex-col gap-20 pt-40">
+      <article className="flex flex-col gap-20 w-full pt-40 mobile:flex-center mobile:gap-10">
         {ReviewListMock1.reviewList.map((el) => {
-          return <BookReviewCard key={el.reviewId} />;
+          return (
+            <BookReviewCard
+              key={el.reviewId}
+              createdAt={el.createdAt}
+              reviewProfileImg={el.reviewProfileImg}
+              userNickname={el.userNickname}
+              reviewContent={el.reviewContent}
+              reviewRating={el.reviewRating}
+              reviewId={el.reviewId}
+              isOwner={el.isOwner}
+            />
+          );
         })}
       </article>
-      페이지네이션 아직 구현 안 했습니다, !!
+      페이지네이션, order드롭다운 아직 구현 안 했습니다, !!
     </section>
   );
 }

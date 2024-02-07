@@ -1,6 +1,7 @@
 import { PreviewBookInfoSizeProps } from '@/types/previewBookInfoType';
 import { IMAGE_SIZE } from 'src/constants/style/previewBookImageSize';
 
+
 function SkeletonPreviewBookImage({ size }: PreviewBookInfoSizeProps) {
   const STYLE = {
     img: `${IMAGE_SIZE[size].pc} ${IMAGE_SIZE[size].tablet} ${IMAGE_SIZE[size].mobile}`,
