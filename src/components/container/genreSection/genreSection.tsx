@@ -3,7 +3,7 @@ import GenreButton from '@/components/button/genre/genreButton';
 import { ReadMeGenreList } from '@/pages/api/mock';
 import EditToggleButton from '@/components/button/editToggleButton';
 
-export default function Genre() {
+function GenreSection() {
   const [isEditMode, setEditMode] = useState(false);
   const genres = ReadMeGenreList.genreList;
 
@@ -38,3 +38,5 @@ export default function Genre() {
     </div>
   );
 }
+
+export default GenreSection;
