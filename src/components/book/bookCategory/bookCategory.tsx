@@ -3,9 +3,18 @@
  * @param {{categories: [string, string]}} param0
  */
 
-function BookCategory({ categories }: { categories: [string, string] }) {
+interface BookCategoryProps {
+  categories: [string, string];
+  fontSize?: number;
+}
+
+function BookCategory({ categories, fontSize }: BookCategoryProps) {
   return (
-    <div className="text-16 text-gray-4">{`[${categories[0]}/${categories[1]}]`}</div>
+    <div
+      className="text-16 text-gray-4"
+      style={{
+        fontSize: fontSize ?? 16,
+      }}>{`[${categories[0]}/${categories[1]}]`}</div>
   );
 }
 

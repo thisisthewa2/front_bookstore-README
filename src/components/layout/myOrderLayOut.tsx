@@ -15,9 +15,7 @@ function MyOrderPageLayout({
 }: MyOrderPageLayoutProps) {
   return (
     <>
-      <div
-        role="container"
-        className="basis-0pxr flex w-full shrink-0 grow flex-col">
+      <div role="container">
         <div role="header">{header}</div>
         <div className="mx-auto flex max-w-[1080px] flex-col items-center px-40 py-60">
           <div
@@ -28,9 +26,7 @@ function MyOrderPageLayout({
           <div role="order-date" className="mb-20">
             {orderDate}
           </div>
-          <div
-            role="content"
-            className="w-[1080px] mobile:w-330 tablet:w-[688px]">
+          <div role="content" className="">
             {main}
           </div>
         </div>
