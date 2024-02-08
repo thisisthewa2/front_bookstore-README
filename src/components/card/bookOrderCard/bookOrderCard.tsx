@@ -13,7 +13,7 @@ function BookOrderCard({ book, order }: BookOrderType) {
         rounded-xl border-2 border-gray-1 p-20 mobile:border-none mobile:p-0">
       <div
         role="book-img"
-        className="h-102 min-w-102 bg-gray-1 text-center mobile:h-75 mobile:min-w-75">
+        className=" relative h-102 min-w-102 bg-gray-1 text-center mobile:h-75 mobile:min-w-75">
         {book.imageUrl ? (
           <Image src={book.imageUrl} alt="책 표지 이미지" layout="fill" />
         ) : (
