@@ -11,10 +11,10 @@ interface CheckedStates {
 
 function TermsCheckbox() {
   const { register, setValue } = useFormContext();
+
   const [checkedStates, setCheckedStates] = useState<CheckedStates>(
     TERMS_TITLES.reduce((acc, title) => ({ ...acc, [title]: false }), {}),
   );
-
   const handleSelectAll = (e: FormEvent<HTMLInputElement>) => {
     const isChecked = e.currentTarget.checked;
     setCheckedStates(
@@ -24,7 +24,6 @@ function TermsCheckbox() {
       ),
     );
   };
-
   const handleIndividualCheck = (termsTitle: string) => {
     setCheckedStates((prev) => ({ ...prev, [termsTitle]: !prev[termsTitle] }));
   };

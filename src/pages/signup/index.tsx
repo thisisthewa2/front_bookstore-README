@@ -6,7 +6,7 @@ import {
 } from '@/components/input/signInput/signInput';
 import SocialCircle from '@/components/chip/socialCircle';
 import TermsCheckbox from '@/components/container/terms/terms';
-import { SignValueType } from '@/types/signType';
+import { SignUpValueType, SignValueType } from '@/types/signType';
 import {
   checkEmail,
   checkNickName,
@@ -16,45 +16,51 @@ import Link from 'next/link';
 import { FormProvider, useForm } from 'react-hook-form';
 
 function SignUp() {
-  const method = useForm<SignValueType>({
+  const method = useForm<SignUpValueType>({
     mode: 'onBlur',
     defaultValues: {
       email: '',
       password: '',
       repassword: '',
       nickname: '',
+      selectAll: false,
     },
   });
   const {
     register,
     handleSubmit,
     setError,
-    getValues,
     formState: { errors },
   } = method;
-  const passwordValue = getValues('password');
-  const rePasswordValue = getValues('repassword');
-  const onSubmit = () => {
-    setError('email', {
-      type: 'manual',
-      message: '이메일 형식에 맞지 않습니다',
-    });
-    setError('password', {
-      type: 'manual',
-      message: '영문, 숫자를 포함해 8자 이상으로 지어주세요.',
-    });
 
-    if (passwordValue !== rePasswordValue) {
+  const onSubmit = (data: SignUpValueType) => {
+    const { email, password, repassword, nickname, selectAll } = data;
+    if (!checkEmail.value.test(email)) {
+      setError('email', {
+        type: 'manual',
+        message: checkEmail.message,
+      });
+    }
+    if (!checkPassword.value.test(password)) {
+      setError('password', {
+        type: 'manual',
+        message: checkPassword.message,
+      });
+    }
+
+    if (!checkNickName.value.test(nickname)) {
+      setError('nickname', {
+        type: 'manual',
+        message: checkNickName.message,
+      });
+    }
+    if (password !== repassword) {
       setError('repassword', {
         type: 'manual',
         message: '비밀번호가 다릅니다',
       });
     }
-
-    setError('nickname', {
-      type: 'manual',
-      message: '닉네임은 3자 이상, 8자 이하로 지어주세요.',
-    });
+    if (!selectAll) return;
   };
 
   return (
@@ -89,7 +95,7 @@ function SignUp() {
                 placeholder="이메일"
                 register={register}
                 required={true}
-                pattern={checkEmail}
+                isError={errors.email}
               />
               <div className="mb-40 mt-8 text-left">
                 <SignError errors={errors} id="email" />
@@ -107,7 +113,6 @@ function SignUp() {
                 placeholder="비밀번호"
                 register={register}
                 required={true}
-                pattern={checkPassword}
                 isError={errors.password}
               />
               <div className="mb-40 mt-8">
@@ -141,7 +146,6 @@ function SignUp() {
                 placeholder="닉네임"
                 register={register}
                 required={true}
-                pattern={checkNickName}
                 isError={errors.nickname}
               />
               <div className="mb-40 mt-8">

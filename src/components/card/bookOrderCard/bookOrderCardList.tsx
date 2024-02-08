@@ -1,6 +1,6 @@
 import { BookOrderType } from '@/types/bookOrderType';
 import BookOrderCard from './bookOrderCard';
-import OrderCount from '@/components/container/orderDate/orderCount';
+import OrderBookCount from '@/components/cart/orderBookCount';
 
 export interface BookOrderCardListType {
   bookData: BookOrderType[];
@@ -20,7 +20,7 @@ function BookOrderCardList({ orderData }: BookOrderCardListProps) {
       <div className="flex flex-col gap-40">
         {orderData.map((orderData, index) => (
           <div key={index} className="flex flex-col gap-20">
-            <OrderCount
+            <OrderBookCount
               orderCount={index + 1}
               orderDate={orderData.orderDate}
               orderId={orderData.orderId}
