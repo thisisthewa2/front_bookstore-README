@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 interface MyOrderPageLayoutProps {
-  header: ReactNode;
+  header?: ReactNode;
   overview: ReactNode;
   orderDate?: ReactNode;
   main: ReactNode;

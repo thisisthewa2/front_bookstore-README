@@ -1,4 +1,3 @@
-import BookOrderCard from '@/components/card/bookOrderCard/bookOrderCard';
 import BookOrderCardList from '@/components/card/bookOrderCard/bookOrderCardList';
 import OrderDate from '@/components/container/orderDate/orderDate';
 import OrderOverView from '@/components/container/orderDate/orderOverView';
@@ -14,7 +13,7 @@ function MyOrderPage() {
   return (
     <>
       <MyOrderPageLayout
-        header={<Header isLoggedIn />}
+        header={<Header isLoggedIn numItemsOfCart={1} />}
         // orderDate={<OrderDate />}
         overview={<OrderOverView orderView={orderOverViewData.orderView} />}
         main={<BookOrderCardList orderData={orderData} />}
