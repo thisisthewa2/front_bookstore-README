@@ -1,6 +1,10 @@
-export type SignValueType = {
+export interface SignValueType {
   email: string;
   password: string;
-  repassword?: string;
-  nickname?: string;
-};
+}
+
+export interface SignUpValueType extends SignValueType {
+  repassword: string;
+  nickname: string;
+  selectAll: boolean;
+}

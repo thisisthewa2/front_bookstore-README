@@ -1,5 +1,5 @@
 import ModalLayout from '@/components/modal/modalLayout';
-import RegisterButton from '../button/register/registerButton';
+import RegisterButton from '@/components/button/register/registerButton';
 interface AlertModalProps {
   title: string;
   description: string;
@@ -8,7 +8,9 @@ interface AlertModalProps {
 function AlertModal({ title, description, onClick }: AlertModalProps) {
   return (
     <ModalLayout onClick={onClick}>
-      <div className="flex-center h-240 w-412 flex-col gap-40 px-40 pb-40 pt-50 mobile:h-190 mobile:w-330 mobile:p-30">
+      <div
+        className="flex-center flex-col w-412 h-240 mobile:w-330 mobile:h-190 px-40 pt-50 pb-40
+          gap-40 mobile:p-30">
         <div>
           <p className="mb-8 text-20 font-bold">{title}</p>
           <span className="text-16 font-light text-gray-3">{description}</span>

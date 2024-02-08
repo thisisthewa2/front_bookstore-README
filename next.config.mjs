@@ -13,6 +13,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/address/:path*',
+        destination: `http://www.juso.go.kr/:path*`,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

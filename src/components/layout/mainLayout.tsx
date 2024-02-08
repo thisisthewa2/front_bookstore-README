@@ -19,7 +19,7 @@ function MainLayout({ children }: MainLayoutProps) {
 
   return (
     <>
-      <Header isLoggedIn={false} numItemsOfCart={1} />
+      <Header isLoggedIn={true} numItemsOfCart={undefined} />
       <div className="relative grid auto-rows-auto place-items-center">
         <div className="h-20 w-300" ref={ref} />
         {children}

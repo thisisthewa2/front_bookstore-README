@@ -8,7 +8,7 @@ type OrderCountProps = {
 
 function OrderCount({ orderDate, orderCount }: OrderCountProps) {
   return (
-    <div className="flex w-[1080px] justify-between">
+    <div className="flex max-w-[1080px] justify-between">
       <div className="flex-center gap-x-24">
         <span className="marker:font-weight text-gray-4">{orderDate}</span>
         <div className="h-12 w-1 bg-gray-1"></div>

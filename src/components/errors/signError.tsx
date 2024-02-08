@@ -1,10 +1,10 @@
-import { SignValueType } from '@/types/signType';
+import { SignUpValueType, SignValueType } from '@/types/signType';
 import React from 'react';
 import type { FieldErrors } from 'react-hook-form';
 
 type SignErrorProps = {
-  errors: FieldErrors<SignValueType>;
-  id: keyof SignValueType;
+  errors: FieldErrors<SignUpValueType>;
+  id: keyof SignUpValueType;
 };
 export default function SignError({ errors, id }: SignErrorProps) {
   return (

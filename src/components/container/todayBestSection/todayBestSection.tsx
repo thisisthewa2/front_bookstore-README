@@ -2,11 +2,12 @@
 
 // TODO - props 없이 내부에서 data fetching을 받도록 구현할 예정으로, 지금은 목업데이터를 쓰게끔 함
 
-import { bookListMock } from '@/pages/api/todayBestMock';
 import TodayBestBook from '@/components/card/todayBestBookCard/TodayBestBookCard';
-import SkeletonTodayBestBook from '@/components/skeleton/skeletonTodayBestBook';
+import TodayBestSlider from '@/components/container/todayBestSection/todayBestSlider';
 import useWindowInnerWidth from '@/hooks/useWindowInnerWidth';
-import TodayBestSlider from './todayBestSlider';
+
+import SkeletonTodayBestBook from '@/components/skeleton/todayBestBookSkeleton/skeletonTodayBestBook';
+import { TodayBestBookListMock } from '@/pages/api/mock/todayBestSectionMock';
 
 // width, height, top, bottom, left, right 관련 속성을 모아둔 SIZE 객체
 const SIZE = {
@@ -35,13 +36,13 @@ const STYLE = {
   'card-section': `${SIZE.desktop['card-section']} ${SIZE.tablet['card-section']} ${SIZE.mobile['card-section']}`,
 };
 
-function TodayBestCorner() {
+function TodayBestSection() {
   // const { data: bookList, isLoading } = useQuery({
   //     queryKey: [""],
   //     queryFn: () => { },
   // });
   const isLoading = false;
-  const bookList = bookListMock;
+  const bookList = TodayBestBookListMock;
   const { dynamicWid } = useWindowInnerWidth();
 
   // isLoading 시 스켈레톤 ui 렌더링
@@ -95,7 +96,7 @@ function TodayBestCorner() {
               {bookList?.map((book, ind) => {
                 return (
                   <div
-                    key={book.productId}
+                    key={book.bookId}
                     className={`${ind === 2 || ind === 3 ? `relative top-40` : ``} mobile:static tablet:static`}>
                     <TodayBestBook {...book} />
                   </div>
@@ -121,4 +122,4 @@ function TodayBestCorner() {
   );
 }
 
-export default TodayBestCorner;
+export default TodayBestSection;
