@@ -1,57 +1,32 @@
-import Image from 'next/image';
-import SearchIcon from '@/public/icons/SearchIcon.svg';
 import RegisterButton from '@/components/button/register/registerButton';
-import { useForm } from 'react-hook-form';
+import useFormControl from '@/hooks/useFormControl';
+import Textarea from '@/components/input/textarea';
+import ModalSearchInput from '@/components/input/modalSearchInput';
+import { useEffect, useState } from 'react';
+import { useAtom } from 'jotai';
+import { CurrentPageStateAtom } from '@/store/state';
+import PreviewBookInfoPagination from '@/components/modal/addCommunityCard/previewBookInfoPagination';
 
 function AddCommunityCardForm() {
-  const { register, watch, handleSubmit } = useForm({
-    mode: 'onSubmit',
-    defaultValues: {
-      book: '',
-      content: '',
-    },
-  });
-  console.log(watch('book'));
+  const { control, handleSubmit, isButtonActive, onSubmit } = useFormControl();
+  const [search, setSearch] = useState('')
+  const [CurrentPage, setCurrentPage] = useAtom(CurrentPageStateAtom);
 
-  const onSubmit = () => {};
-
+  const handleSearch = (value:string) => {
+    setSearch(value);
+    setCurrentPage(1);
+  }
+  
   return (
     <form
-      className="flex w-full flex-col gap-40 mobile:gap-20"
+      className="flex flex-col w-full gap-40 mobile:gap-20"
       onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex w-full flex-col gap-12">
-        <label htmlFor="book" className="text-b-b text-16">
-          도서
-        </label>
-        <div
-          className="flex h-48 w-full items-center justify-between rounded-[5px] border border-gray-1
-            p-13">
-          <input
-            id="book"
-            placeholder="책 제목, 작가 등을 검색해주세요"
-            {...register('book')}
-            className="flex grow"></input>
-          <Image
-            src={SearchIcon}
-            alt="검색"
-            width={18}
-            height={18}
-            className="cursor-pointer"
-          />
-        </div>
+      <ModalSearchInput placeholder="책 제목, 작가 등을 검색해주세요" onSearch={handleSearch}/>
+      <div className='flex-center flex-col gap-22 w-full h-323'>
+        <PreviewBookInfoPagination />
       </div>
-      {/* {watch('book') ? <Carousel /> : <div className='flex-center w-[608px] h-283'>검색 결과가 없어요</div>} */}
-      <div className="flex w-full flex-col gap-12">
-        <label htmlFor="content" className="text-b-b text-16">
-          내용
-        </label>
-        <textarea
-          id="content"
-          {...register('content', { required: true })}
-          className="h-101 w-full resize-none rounded-[10px] border border-gray-1 px-20 py-15"
-          placeholder="내용을 작성해주세요"></textarea>
-      </div>
-      <RegisterButton>글쓰기</RegisterButton>
+      <Textarea height="h-100" control={control} name='description'/>
+      <RegisterButton type='submit' disabled={isButtonActive ? true : false}>글쓰기</RegisterButton>
     </form>
   );
 }

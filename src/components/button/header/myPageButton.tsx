@@ -14,7 +14,7 @@ function MyPageButton() {
   };
 
   const handleMyPageClick = () => {
-    router.push('/mypage');
+    router.push('/mypage/order');
   };
 
   const handleLogoutClick = () => {

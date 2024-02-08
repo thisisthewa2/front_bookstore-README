@@ -5,7 +5,7 @@ import BestSellerSection from '@/components/container/bestsellerSection/bestsell
 import Carousel from '@/components/carousel/carousel';
 import { carouselMockData } from './api/mock/carouselMock';
 import { responsive } from '@/utils/checkResponsiveEnv';
-import TodayBestCorner from '@/components/todayBestCorner/todayBestCorner';
+import TodayBestSection from '@/components/container/todayBestSection/todayBestSection';
 function Home() {
   return (
     <>
@@ -27,7 +27,7 @@ function Home() {
         <Carousel data={carouselMockData} responsive={responsive} />
       </div>
 
-      <TodayBestCorner />
+      <TodayBestSection />
       <BestSellerSection />
     </>
   );

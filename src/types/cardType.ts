@@ -1,13 +1,3 @@
-interface TodayBestBookCardType {
-  productId: number;
-  bookImg?: string | null;
-  title: string;
-  author: string[] | [];
-  rating: number;
-  genre: string;
-  price: number;
-}
-
 interface BookDetailCardType {
   bookId: number;
   publishedAt: string;
@@ -26,4 +16,4 @@ interface BookDetailCardType {
   isBookmarked: boolean;
 }
 
-export type { TodayBestBookCardType, BookDetailCardType };
+export type { BookDetailCardType };

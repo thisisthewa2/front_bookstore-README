@@ -1,13 +1,16 @@
 import Image from 'next/image';
 import DefaultImage from '@/public/images/SampleBookCover4.jpeg';
-import { THOUSAND_UNIT } from 'src/constants/price';
 import BookLabelGrayIcon from '@/public/icons/BookLabelGrayIcon.svg';
 import BookLabelGreenIcon from '@/public/icons/BookLabelIGreenIcon.svg';
 import BookLabelBottomIcon from '@/public/icons/BookLabelBottomIcon.svg';
 import BookLabelBottomGrayIcon from '@/public/icons/BookLabelBottomGrayIcon.svg'
 import { PreviewBookInfoProps } from '@/types/previewBookInfoType';
 import SkeletonPreviewBookImage from '@/components/skeleton/previewBookImage/skeleton';
-import { IMAGE_SIZE } from 'src/constants/size/previewBookImageSize';
+import { IMAGE_SIZE } from 'src/constants/style/previewBookImageSize';
+import BookTitle from './title';
+import BookAuthors from './authors';
+import BookPrice from './price';
+import BookCategory from './category';
 
 function PreviewBookInfo({
   image,
@@ -51,7 +54,7 @@ function PreviewBookInfo({
           />
       {ranking && (
         <div
-          className={`absolute ${itemsStart ? 'top-[-2px] left-17' : ' bottom-0 right-0'}`}>
+          className={`absolute ${itemsStart ? 'top-[-2px] left-17' : ' bottom-[-2px] right-0'}`}>
           <Image
             src={
               itemsStart
@@ -74,36 +77,19 @@ function PreviewBookInfo({
               ? itemsStart
                 ? 'tracking-[-0.6px] left-6'
                 : 'tracking-[-0.6px] left-20'
-              : ''
-}`}>
+              : ''}`}>
             {ranking}
           </span>
         </div>
       )}
+
         </div>
       </div>
-      {title && (
-        <p
-          className={`text-black text-15 font-medium text-overflow2 mb-4 mt-12 ${
-            alignCenter ? 'text-center font-bold' : ''
-          }`}>
-          {title}
-        </p>
-      )}
-      {authorList && (
-        <div
-          className={`text-gray-3 text-14 truncate ${alignCenter ? 'text-center' : ''}`}>
-          {authorList.join(', ')}
-        </div>
-      )}
-      {category && <div className="text-gray-3 text-14">[{category}]</div>}
-      {price && (
-        <div className="text-black text-14 font-bold mt-4">
-          {price.toString().replace(THOUSAND_UNIT, ',')}
-        </div>
-      )}
-
-    </div>
+      {title && <BookTitle title={title} alignCenter={alignCenter} />}
+      {authorList && <BookAuthors authorList={authorList} alignCenter={alignCenter} />}
+      {category && <BookCategory category={category} />}
+      {price && <BookPrice price={price} />}
+     </div>
   );
 }
 export default PreviewBookInfo;

@@ -15,6 +15,7 @@ function BookAuthor({ authorList, publisher, fontSize }: BookAuthorProps) {
   return (
     <div className="text-14 text-gray-3" style={{ fontSize: fontSize }}>
       {nameList}
+
     </div>
   );
 }

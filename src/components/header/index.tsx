@@ -10,7 +10,7 @@ import ReadMeButton from '../button/header/readmeButton';
 
 export interface HeaderProps {
   isLoggedIn: boolean;
-  numItemsOfCart?: number;
+  numItemsOfCart?: number | undefined;
 }
 
 function Separator() {
@@ -36,7 +36,11 @@ function NonLoggedInHeader() {
 }
 
 // 로그인한 상태의 헤더
-function LoggedInHeader({ numItemsOfCart }: { numItemsOfCart: number }) {
+function LoggedInHeader({
+  numItemsOfCart,
+}: {
+  numItemsOfCart: number | undefined;
+}) {
   return (
     <div
       className="relative z-10 mx-15 flex h-50 min-w-fit max-w-full items-center
@@ -56,7 +60,7 @@ function LoggedInHeader({ numItemsOfCart }: { numItemsOfCart: number }) {
 
 // 헤더 컴포넌트
 function Header({ isLoggedIn, numItemsOfCart }: HeaderProps) {
-  return isLoggedIn && numItemsOfCart ? (
+  return isLoggedIn ? (
     <HeaderLayout isLoggedIn={isLoggedIn}>
       <LoggedInHeader numItemsOfCart={numItemsOfCart} />
     </HeaderLayout>

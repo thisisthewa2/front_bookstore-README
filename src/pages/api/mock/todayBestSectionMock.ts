@@ -1,0 +1,103 @@
+import { BookDetailCardType } from '@/types/cardType';
+
+export const BookDetail1: BookDetailCardType = {
+  bookId: 112,
+  publishedAt: '2020-01-30',
+  orderNum: 13,
+  categoryList: ['국내', '과학'],
+  title: '재미없는 과학! 재미없는 과학! 재미없는 과학!',
+  imageUrl: 'https://image.yes24.com/momo/TopCate0001/kepub/L_486044.jpg',
+  publisher: '상상 출판사',
+  price: 12000,
+  authors: ['김남길', '최석준'],
+  views: 32,
+  bookmarkNum: 17,
+  reviewNum: 5,
+  rating: 4.2,
+  isBookmarked: true,
+};
+
+export const BookDetail2: BookDetailCardType = {
+  bookId: 132,
+  publishedAt: '2020-01-30',
+  orderNum: 13,
+  categoryList: ['국내', '소설'],
+  title: '배따라기',
+  imageUrl: 'https://qi-b.qoo10cdn.com/partner/goods_image/3/9/0/4/212153904g.jpg',
+  publisher: '상상 출판사',
+  price: 12000,
+  authors: ['김남길', '최석준'],
+  views: 32,
+  bookmarkNum: 17,
+  reviewNum: 5,
+  rating: 4.2,
+  isBookmarked: true,
+};
+export const BookDetail3: BookDetailCardType = {
+  bookId: 7,
+  publishedAt: '2020-01-30',
+  orderNum: 13,
+  categoryList: ['국내', '시'],
+  title: '당신이 있기에 내가 있습니다',
+  imageUrl: 'https://www.thebestplay.co.kr//upload/perfinfo/%ED%8F%AC%EC%8A%A4%ED%84%B0_%EC%B2%AD%EC%B6%98%EC%98%88%EC%B0%AC.jpg',
+  publisher: '상상 출판사',
+  price: 12000,
+  authors: ['김남길', '최석준'],
+  views: 32,
+  bookmarkNum: 17,
+  reviewNum: 5,
+  rating: 4.2,
+  isBookmarked: true,
+};
+export const BookDetail4: BookDetailCardType = {
+  bookId: 3,
+  publishedAt: '2020-01-30',
+  orderNum: 13,
+  categoryList: ['국내', '소설'],
+  title: '인생은 아름다워',
+  imageUrl: 'https://cdn.topclass.chosun.com/news/photo/201710/4514_15484_0500.jpg',
+  publisher: '상상 출판사',
+  price: 12000,
+  authors: ['김남길', '최석준'],
+  views: 32,
+  bookmarkNum: 17,
+  reviewNum: 5,
+  rating: 4.2,
+  isBookmarked: true,
+};
+export const BookDetail5: BookDetailCardType = {
+  bookId: 38,
+  publishedAt: '2020-01-30',
+  orderNum: 13,
+  categoryList: ['국내', '수험서'],
+  title: '수능특강',
+  imageUrl: 'https://contents.kyobobook.co.kr/sih/fit-in/400x0/pdt/9788954781664.jpg',
+  publisher: '상상 출판사',
+  price: 12000,
+  authors: ['김남길', '최석준'],
+  views: 32,
+  bookmarkNum: 17,
+  reviewNum: 5,
+  rating: 4.2,
+  isBookmarked: true,
+};
+export const BookDetail6: BookDetailCardType = {
+  bookId: 96,
+  publishedAt: '2020-01-30',
+  orderNum: 13,
+  categoryList: ['국내', '여행'],
+  title: '한비야 여행기',
+  imageUrl: 'https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788971847497.jpg',
+  publisher: '상상 출판사',
+  price: 12000,
+  authors: ['김남길', '최석준'],
+  views: 32,
+  bookmarkNum: 17,
+  reviewNum: 5,
+  rating: 4.2,
+  isBookmarked: true,
+};
+
+
+export const TodayBestBookListMock = [BookDetail1, BookDetail2, BookDetail3, BookDetail4, BookDetail5, BookDetail6];
+// export const TodayBestBookListMock = [BookDetail1, BookDetail2, BookDetail3, BookDetail4, BookDetail5, BookDetail6];

@@ -33,7 +33,7 @@ function DropDown({  menus, selectedItem, onSelectedItem }: DropDownTypes) {
           </button>
         </div>
         {showOptions && (
-          <ul className="absolute w-full rounded-b-[5px] border-2 border-solid border-gray-1 text-14">
+          <ul className="absolute w-full rounded-b-[5px] border-2 border-solid border-gray-1 text-14 bg-white">
             {menus.map((menu) => {
               return (               
                 <DropDownItem  

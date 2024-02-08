@@ -1,5 +1,6 @@
 import { PreviewBookInfoSizeProps } from '@/types/previewBookInfoType';
-import { IMAGE_SIZE } from 'src/constants/size/previewBookImageSize';
+import { IMAGE_SIZE } from 'src/constants/style/previewBookImageSize';
+
 
 function SkeletonPreviewBookImage({ size }: PreviewBookInfoSizeProps) {
   const STYLE = {
