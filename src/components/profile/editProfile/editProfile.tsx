@@ -77,8 +77,8 @@ function EditProfile({
   return (
     <FormProvider {...method}>
       <div
-        className="max-h-745 mobile:360 w-440 rounded-[10px] border border-gray-1 bg-white
-          p-40 mobile:border-none">
+        className="max-h-745 mobile:360 w-440 rounded-[10px] border border-gray-1 bg-white p-40
+          mobile:border-none mobile:p-0 mobile:px-40">
         <div className="flex-center mb-40">
           <h1 className="text-20 font-bold"> 프로필 수정</h1>
         </div>

@@ -1,3 +1,4 @@
+import BookOverEmptyCard from '@/components/card/bookOrderCard/bookOderEmptyCard';
 import BookOrderCardList from '@/components/card/bookOrderCard/bookOrderCardList';
 import OrderDate from '@/components/container/orderDate/orderDate';
 import OrderOverView from '@/components/container/orderDate/orderOverView';
@@ -9,7 +10,7 @@ import {
   orderOverViewData,
 } from '@/pages/api/mock/bookOrderMock';
 const { orderData } = bookOrderTestData;
-
+// const orderData = undefined;
 function MyOrderPage() {
   return (
     <>
@@ -17,7 +18,13 @@ function MyOrderPage() {
         header={<Header isLoggedIn numItemsOfCart={1} />}
         // orderDate={<OrderDate />}
         overview={<OrderOverView orderView={orderOverViewData.orderView} />}
-        main={<BookOrderCardList orderData={orderData} />}
+        main={
+          orderData ? (
+            <BookOrderCardList orderData={orderData} />
+          ) : (
+            <BookOverEmptyCard />
+          )
+        }
       />
     </>
   );

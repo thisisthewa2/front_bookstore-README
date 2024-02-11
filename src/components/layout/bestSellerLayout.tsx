@@ -28,7 +28,7 @@ function BestSellerPageLayout({
         <div role="header">{header}</div>
         <div
           role="sidebar-container"
-          className="max-w-[1200px] m-auto flex p-y-40 relative">
+          className="p-y-40 relative m-auto flex max-w-[1200px]">
           <section
             role="sidebar"
             className="flex h-full w-full flex-col items-start pl-245 pr-60 pt-40 mobile:px-15
@@ -42,14 +42,14 @@ function BestSellerPageLayout({
             </div>
             <div
               role="contents"
-              className="mobile:flex-center h-full w-full mobile:pt-30">
+              className="mobile:flex-center h-full w-full mobile:pt-30 ">
+              <div className="h-1" ref={ref} />
               {main}
+              <ScrollToTopButton />
             </div>
           </section>
         </div>
       </div>
-
-      <ScrollToTopButton />
     </>
   );
 }
