@@ -28,9 +28,7 @@ function MyReviewCard({ book, review }: MyReviewType) {
                 alt="book sample image"
                 layout="fill"
               />
-            ) : (
-              <></>
-            )}
+            ) : null}
           </div>
           <div className="flex w-4/5 flex-col items-start justify-start gap-4">
             <div
