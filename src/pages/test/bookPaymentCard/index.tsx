@@ -1,4 +1,4 @@
-import BookPaymentCardList from '@/components/card/bookPaymentCard.tsx/bookPaymentCardList';
+import BookPaymentCardList from '@/components/card/bookPaymentCard/bookPaymentCardList';
 import { bookOrderTestData } from '@/pages/api/mock/bookOrderMock';
 const testData = bookOrderTestData;
 
