@@ -1,20 +1,12 @@
 import { THOUSAND_UNIT } from 'src/constants/price';
-import LikeButton from '@/components/button/likeButton';
-import { useState } from 'react';
-import BookRating from '@/components/book/bookRating/bookRating';
-import ActionButton from '@/components/button/actionButton';
-import { notify } from '@/components/toast/toast';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
 import { BookOrderType } from '@/types/bookOrderType';
 import BookAuthor from '@/components/book/bookAuthor/bookAuthor';
-import BookTitle from '@/components/book/bookTitle/bookTitle';
 import BookPaymentCost from './bookPaymentCost';
 
 function BookPaymentCard({ book, order }: BookOrderType) {
   if (!book || !order) return null;
-  const router = useRouter();
 
   return (
     <div

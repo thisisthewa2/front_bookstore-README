@@ -1,12 +1,13 @@
-import BookPaymentCard from '@/components/card/bookPaymentCard.tsx/bookPaymentCard';
+import BookPaymentCardList from '@/components/card/bookPaymentCard.tsx/bookPaymentCardList';
 import { bookOrderTestData } from '@/pages/api/mock/bookOrderMock';
-const testData = bookOrderTestData.orderData;
+const testData = bookOrderTestData;
 
+// orderId에 해당하는 데이터를 넘겨주기
 export default function TestBookPaymentCard() {
   return (
-    <BookPaymentCard
-      book={testData[0].bookData[0].book}
-      order={testData[0].bookData[0].order}
+    <BookPaymentCardList
+      bookData={testData.orderData[0].bookData}
+      label="주문상품"
     />
   );
 }
