@@ -57,20 +57,15 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
 
         <div
           role="book-info"
-          className="ml-30 mr-auto flex flex-col items-start justify-start gap-4 mobile:ml-12
-            mobile:max-w-185 mobile:gap-2">
+          className="ml-30 mr-auto flex flex-col items-start justify-start gap-4 whitespace-pre-line
+            mobile:ml-12 mobile:max-w-185 mobile:gap-2">
           <div
             role="book-title"
-            className="min-w-250 truncate whitespace-nowrap text-15 font-normal">
+            className="min-w-250 text-15 font-normal mobile:w-185 mobile:min-w-0 tablet:w-200">
             {book.bookTitle}
           </div>
           <div role="book-author-publisher" className="flex-center gap-4">
-            <div>
-              <BookAuthor
-                authorList={book.authors}
-                publisher={book.publisher}
-              />
-            </div>
+            <BookAuthor authorList={book.authors} publisher={book.publisher} />
           </div>
           <div>
             <span className="text-14 text-gray-3 mobile:hidden">
