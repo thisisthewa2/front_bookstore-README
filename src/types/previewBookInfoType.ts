@@ -5,7 +5,7 @@ export interface PreviewBookInfoSizeProps {
 }
 
 export interface PreviewBookInfoProps extends PreviewBookInfoSizeProps {
-  image?: string | StaticImageData;
+  image?: string | StaticImageData | null;
   title?: string;
   alignCenter?: boolean;
   itemsStart?: boolean;

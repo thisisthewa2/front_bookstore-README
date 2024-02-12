@@ -6,7 +6,7 @@ import BookPrice from '@/components/book/bookPrice/bookPrice';
 import BookTitle from '@/components/book/bookTitle/bookTitle';
 
 function BookOrderCard({ book, order }: BookOrderType) {
-  if (!book || !order) return;
+  if (!book || !order) return null;
 
   return (
     <div
