@@ -7,27 +7,31 @@ interface BookOverViewCardListProps {
   // bookData: BookOverviewType[];
   title: string;
 }
+interface BooksResponse {
+  books: BookData[];
+}
 
 function BookOverViewCardList({ title }: BookOverViewCardListProps) {
-  const DEFAULT_PARAMS = {
+  const INITIAL_PARAMS = {
     limit: '100',
     sort: 'STAR',
     ascending: 'false',
   };
 
-  const data = useGetBooks({
+  const { data } = useGetBooks({
     mainId: '0',
-    params: { ...DEFAULT_PARAMS, bookId: undefined },
+    params: INITIAL_PARAMS,
   });
-  console.log(data);
-  // if (!bookData) return;
+  const bookData = data?.books ?? [];
+
+  console.log(bookData);
 
   return (
     <div className="flex flex-col gap-40 pb-40 text-black">
       <h1 className="text-20 font-bold">{title}</h1>
       {/* <div className="flex flex-col gap-20 mobile:gap-10">
         {bookData.map((data) => (
-          <div key={data.book.bookId}>
+          <div key={data?.bookId}>
             <BookOverviewCard book={data.book} like={data.like} />
           </div>
         ))}

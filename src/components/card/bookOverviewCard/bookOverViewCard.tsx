@@ -8,7 +8,6 @@ import { notify } from '@/components/toast/toast';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
-import BookAuthor from '@/components/book/bookAuthor/bookAuthor';
 
 function BookOverviewCard({ book, like }: BookOverviewType) {
   const [isLiked, setIsLiked] = useState(like.userLiked || false);
@@ -57,15 +56,28 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
 
         <div
           role="book-info"
-          className="ml-30 mr-auto flex flex-col items-start justify-start gap-4 whitespace-pre-line
-            mobile:ml-12 mobile:max-w-185 mobile:gap-2">
+          className="ml-30 mr-auto flex flex-col items-start justify-start gap-4 mobile:ml-12
+            mobile:max-w-185 mobile:gap-2">
           <div
             role="book-title"
-            className="min-w-250 text-15 font-normal mobile:w-185 mobile:min-w-0 tablet:w-200">
+            className="min-w-250 truncate whitespace-nowrap text-15 font-normal">
             {book.bookTitle}
           </div>
           <div role="book-author-publisher" className="flex-center gap-4">
-            <BookAuthor authorList={book.authors} publisher={book.publisher} />
+            <div>
+              {book.authors?.map((author) => {
+                return (
+                  <span key={author} className="text-14 text-gray-3">
+                    {author}
+                  </span>
+                );
+              })}
+            </div>
+            <div>
+              {book.publisher && (
+                <span className="text-14 text-gray-3">| {book.publisher}</span>
+              )}
+            </div>
           </div>
           <div>
             <span className="text-14 text-gray-3 mobile:hidden">
