@@ -10,7 +10,7 @@ function BookOverViewCardList({ bookData, title }: BookOverViewCardListProps) {
   if (!bookData) return;
 
   return (
-    <div className="flex flex-col gap-40 text-black">
+    <div className="flex flex-col gap-40 pb-40 text-black">
       <h1 className="text-20 font-bold">{title}</h1>
       <div className="flex flex-col gap-20 mobile:gap-10">
         {bookData.map((data) => (
