@@ -3,7 +3,7 @@ import DefaultImage from '@/public/images/SampleBookCover4.jpeg';
 import BookLabelGrayIcon from '@/public/icons/BookLabelGrayIcon.svg';
 import BookLabelGreenIcon from '@/public/icons/BookLabelIGreenIcon.svg';
 import BookLabelBottomIcon from '@/public/icons/BookLabelBottomIcon.svg';
-import BookLabelBottomGrayIcon from '@/public/icons/BookLabelBottomGrayIcon.svg'
+import BookLabelBottomGrayIcon from '@/public/icons/BookLabelBottomGrayIcon.svg';
 import { PreviewBookInfoProps } from '@/types/previewBookInfoType';
 import SkeletonPreviewBookImage from '@/components/skeleton/previewBookImage/skeleton';
 import { IMAGE_SIZE } from 'src/constants/style/previewBookImageSize';
@@ -42,7 +42,7 @@ function PreviewBookInfo({
   return (
     <div className={`relative flex flex-col ${STYLE.width}`}>
       <div
-        className={`${STYLE.img} flex flex-col ${itemsStart ? 'justify-start' : 'justify-end relative'}
+        className={`${STYLE.img} flex flex-col ${itemsStart ? 'justify-start' : 'relative justify-end'}
           overflow-hidden`}>
         <div>
           <Image
@@ -52,44 +52,46 @@ function PreviewBookInfo({
             width={0}
             height={0}
           />
-      {ranking && (
-        <div
-          className={`absolute ${itemsStart ? 'top-[-2px] left-17' : ' bottom-[-2px] right-0'}`}>
-          <Image
-            src={
-              itemsStart
-                ? ranking > 10
-                  ? BookLabelGrayIcon
-                  : BookLabelGreenIcon
-                : ranking > 10 
-                  ? BookLabelBottomGrayIcon
-                  : BookLabelBottomIcon
-            }
-            alt="순위라벨 이미지"
-          />
-          <span
-              className={`text-white text-[13px] font-bold absolute ${itemsStart ? 'top-5 left-10' : 'bottom-5 right-9'} ${
-            ranking > 99
-              ? itemsStart
-                ? 'tracking-[-0.5px] left-[2px]'
-                : 'tracking-[-0.5px] left-17'
-              : ranking > 9
-              ? itemsStart
-                ? 'tracking-[-0.6px] left-6'
-                : 'tracking-[-0.6px] left-20'
-              : ''}`}>
-            {ranking}
-          </span>
-        </div>
-      )}
-
+          {ranking && (
+            <div
+              className={`absolute ${itemsStart ? 'left-17 top-[-2px]' : ' bottom-[-2px] right-0'}`}>
+              <Image
+                src={
+                  itemsStart
+                    ? ranking > 10
+                      ? BookLabelGrayIcon
+                      : BookLabelGreenIcon
+                    : ranking > 10
+                      ? BookLabelBottomGrayIcon
+                      : BookLabelBottomIcon
+                }
+                alt="순위라벨 이미지"
+              />
+              <span
+                className={`absolute text-[13px] font-bold text-white ${itemsStart ? 'left-10 top-5' : 'bottom-5 right-9'} ${
+                  ranking > 99
+                    ? itemsStart
+                      ? 'left-[2px] tracking-[-0.5px]'
+                      : 'left-17 tracking-[-0.5px]'
+                    : ranking > 9
+                      ? itemsStart
+                        ? 'left-6 tracking-[-0.6px]'
+                        : 'left-20 tracking-[-0.6px]'
+                      : ''
+                }`}>
+                {ranking}
+              </span>
+            </div>
+          )}
         </div>
       </div>
       {title && <BookTitle title={title} alignCenter={alignCenter} />}
-      {authorList && <BookAuthors authorList={authorList} alignCenter={alignCenter} />}
+      {authorList && (
+        <BookAuthors authorList={authorList} alignCenter={alignCenter} />
+      )}
       {category && <BookCategory category={category} />}
       {price && <BookPrice price={price} />}
-     </div>
+    </div>
   );
 }
 export default PreviewBookInfo;

@@ -8,14 +8,8 @@ function BestSellerPage() {
   return (
     <BestSellerPageLayout
       header={<Header isLoggedIn={true} />}
-      sideBar={
-        <Sidebar
-          pageName="bestseller"
-        />
-      }
-      main={
-        <BookOverViewCardList bookData={bookOverviewsMock} title="베스트셀러" />
-      }
+      sideBar={<Sidebar pageName="bestseller" />}
+      main={<BookOverViewCardList title="베스트셀러" />}
     />
   );
 }

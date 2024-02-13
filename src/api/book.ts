@@ -1,4 +1,4 @@
-import { BookCache, BookParams } from '@/types/api/book';
+import { BookData, BookParams } from '@/types/api/book';
 import { instance } from 'src/libs/instance';
 
 interface GetBookOption {
@@ -16,7 +16,7 @@ export const getBook = async (option: GetBookOption) => {
 };
 
 //도서 저장
-export const postBook = async (data: BookCache) => {
+export const postBook = async (data: BookData) => {
   const result = await instance.post('/book', {
     data,
   });
