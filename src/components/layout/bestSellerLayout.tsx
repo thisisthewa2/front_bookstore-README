@@ -27,7 +27,7 @@ function BestSellerPageLayout({
       <div role="header">{header}</div>
       <div
         role="sidebar-container"
-        className="relative m-auto flex max-w-[1200px]">
+        className="relative m-auto flex pc:w-[1200px]">
         <section
           role="sidebar"
           className="flex h-full w-full flex-col items-start pl-245 pr-60 pt-40 mobile:px-15
