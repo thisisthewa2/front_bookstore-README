@@ -2,14 +2,12 @@ import SidebarTabController from '@/components/button/sidebar/sidebarTabControll
 import SidebarRegionButton from '@/components/button/sidebar/sidebarRegionButton';
 import { SidebarProps } from '@/types/sidebarType';
 
-function Sidebar({ pageName, isDomestic = true, location }: SidebarProps) {
+function Sidebar({ pageName}: SidebarProps) {
   return (
     <aside className="mobile:flex mobile:justify-between">
-      <SidebarRegionButton pageName={pageName} isDomestic={isDomestic} />
+      <SidebarRegionButton pageName={pageName} />
       <SidebarTabController
         pageName={pageName}
-        isDomestic={isDomestic}
-        location={location}
       />
     </aside>
   );

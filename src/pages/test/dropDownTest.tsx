@@ -4,7 +4,12 @@ import React, { useState } from 'react'
 
 function dropDownTest() {  
   const [selectedItem, setSelectedItem] = useState('전체보기');
-  const onSelectedItem = (menu:string) => {setSelectedItem(menu)}
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const onSelectedItem = (menu: string) => { setSelectedItem(menu) }
+  const onStartDate = (startDate:Date) => {setStartDate(startDate)}  
+  const onEndDate = (endDate:Date) => {setEndDate(endDate) }
+
   const menus = [
     "전체보기",
     "최근 1개월", 
@@ -17,7 +22,7 @@ function dropDownTest() {
     id:1,
     name: "yuna", 
     isPurchased: false, 
-    firstPurchasedDate: "2012-10-10"
+    firstPurchasedDate: new Date().toString()
   }   
 
   return (
@@ -29,7 +34,11 @@ function dropDownTest() {
         {person && (
         <OrderDate
           pastDate={selectedItem}
+          startDate={startDate}
+          endDate={endDate}
           setSelectedItem={setSelectedItem}
+          setStartDate={onStartDate}
+          setEndDate={onEndDate}
           person={person}
         />
         )}   

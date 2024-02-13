@@ -126,8 +126,8 @@ const setSelectedItemMock: Dispatch<SetStateAction<string>> = (value) => {
 };
 
 // OrderDateProps 타입의 테스트 데이터
-const orderDateTestData: OrderDateProps = {
-  pastDate: '2022-01-01',
-  setSelectedItem: setSelectedItemMock,
-  person: personTestData,
-};
+// const orderDateTestData: OrderDateProps = {
+//   pastDate: '2022-01-01',
+//   setSelectedItem: setSelectedItemMock,
+//   person: personTestData,
+// };

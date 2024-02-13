@@ -1,4 +1,8 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
+import ScrollToTopButton from '../button/scrollToTopButton';
+import { useAtom } from 'jotai';
+import { pointVisibleAtom } from '@/store/state';
+import useInfinite from '@/hooks/useInfinite';
 
 interface MyOrderPageLayoutProps {
   header?: ReactNode;
@@ -13,6 +17,12 @@ function MyOrderPageLayout({
   orderDate,
   main,
 }: MyOrderPageLayoutProps) {
+  const [ref, isIntersecting] = useInfinite();
+  const [, setPointVisible] = useAtom(pointVisibleAtom);
+
+  useEffect(() => {
+    setPointVisible(isIntersecting);
+  }, [isIntersecting]);
   return (
     <>
       <div role="container">
@@ -26,8 +36,10 @@ function MyOrderPageLayout({
           <div role="order-date" className="mb-20">
             {orderDate}
           </div>
-          <div role="content" className="">
+          <div role="content">
+            <div className="h-1" ref={ref} />
             {main}
+            <ScrollToTopButton />
           </div>
         </div>
       </div>

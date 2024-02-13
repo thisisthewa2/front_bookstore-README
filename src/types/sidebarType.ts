@@ -2,6 +2,6 @@ export type pageNameType = "newest" | "bestseller";
 
 export interface SidebarProps {
   pageName?: pageNameType;
-  isDomestic: boolean;
+  isDomestic?: boolean;
   location?: string;
 }

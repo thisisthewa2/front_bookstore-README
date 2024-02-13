@@ -10,6 +10,7 @@ import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
 import Toast from '@/components/toast/toast';
 import 'react-toastify/dist/ReactToastify.css';
+import InitialContainer from '@/components/container/initialContainer/initialContainer';
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <InitialContainer />
       <HydrationBoundary state={pageProps.dehydratedState}>
         {getLayout(<Component {...pageProps} />)}
       </HydrationBoundary>

@@ -42,14 +42,14 @@ function BestSellerPageLayout({
             </div>
             <div
               role="contents"
-              className="mobile:flex-center h-full w-full mobile:pt-30">
+              className="mobile:flex-center h-full w-full mobile:pt-30 ">
+              <div className="h-1" ref={ref} />
               {main}
+              <ScrollToTopButton />
             </div>
           </section>
         </div>
       </div>
-
-      <ScrollToTopButton />
     </>
   );
 }

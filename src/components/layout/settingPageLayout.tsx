@@ -13,14 +13,13 @@ function SettingPageLayout({
   isTopButton,
 }: SettingPageLayoutProps) {
   return (
-    
-      <div role="container" className="flex flex-col gap-40">
-        <div role="header">{header}</div>
-        <div role="content" className="flex-center">
-          {main}
-        </div>
-        {isTopButton && <ScrollToTopButton />}
+    <div role="container" className="flex flex-col gap-40">
+      <div role="header">{header}</div>
+      <div role="content" className="flex-center pb-40">
+        {main}
       </div>
+      {isTopButton && <ScrollToTopButton />}
+    </div>
   );
 }
 

@@ -7,31 +7,22 @@
  */
 
 import Image from 'next/image';
+import { useAtom } from 'jotai';
 import { useRef } from 'react';
 
 import SidebarTab from '@/components/button/sidebar/sidebarTab';
 import useShowDropDown from '@/hooks/useShowDropDown';
 import useCarouselEnv from '@/hooks/useCarouselEnv';
-import {
-  ReadMeDomesticCategoryList,
-  ReadMeForeignCategoryList,
-} from '@/pages/api/mock';
 import { SidebarProps } from '@/types/sidebarType';
+import { CategoryListAtom, LocatedCategoryAtom } from '@/store/state';
 
-function SidebarTabController({
-  pageName,
-  isDomestic,
-  location,
-}: SidebarProps) {
+function SidebarTabController({pageName}: SidebarProps) {
   const ref = useRef(null);
   const [showOptions, setShowOptions] = useShowDropDown(ref, false);
   const { env } = useCarouselEnv();
-  const categoryList = isDomestic
-    ? ReadMeDomesticCategoryList.categoryList
-    : ReadMeForeignCategoryList.categoryList;
-
-  const found = categoryList.find((e) => e.link === `/${location}`);
-  const locatedTitle = location ? found?.title : '전체보기';
+  const [categoryList,] = useAtom(CategoryListAtom);
+  const [locatedCategory] = useAtom(LocatedCategoryAtom);
+  const locatedTitle = locatedCategory.subId ? categoryList[locatedCategory.mainId === 0 ? "domestic" : "foreign"][locatedCategory.subId-1].subName : '전체보기';
 
   const handleClick = () => setShowOptions(!showOptions);
 
@@ -54,8 +45,6 @@ function SidebarTabController({
       {(showOptions || env !== 'mobile') && (
         <SidebarTab
           pageName={pageName}
-          isDomestic={isDomestic}
-          location={location}
         />
       )}
     </>

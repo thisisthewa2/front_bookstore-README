@@ -6,3 +6,8 @@ export const getCategory = async (category:string) => {
   return result.data;
 };
 
+// 전체 카테고리 리스트 조회
+export const getCategoryList = async () => {
+  const result = await instance.get(`/category`);
+  return result.data.data;
+};

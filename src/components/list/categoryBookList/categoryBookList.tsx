@@ -13,7 +13,7 @@ interface CategoryBookList {
   subCategory?: string;
 }
 
-function CategoryBookList({ mainCategory, subCategory }: CategoryBookList) {
+function CategoryBookList() {
   const [selectedOrder, setSelectedOrder] = useState("조회순");
   const onSelectedOrder = (menu: string) => {
     setSelectedOrder(menu);

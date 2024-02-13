@@ -3,16 +3,8 @@ import Header from '@/components/header';
 import BestSellerPageLayout from '@/components/layout/bestSellerLayout';
 import Sidebar from '@/components/sidebar/sidebar';
 import { bookOverviewsMock } from '@/pages/api/mock/bestSellerMock';
-import { useRouter } from 'next/router';
 
-export interface BestSellerPageProps {
-  isDomestic: boolean;
-  category?: string;
-}
-
-function BestSellerPage({ isDomestic = true }: BestSellerPageProps) {
-  const router = useRouter();
-  const { category } = router?.query;
+function BestSellerPage( ) {
   return (
     <div>
       <BestSellerPageLayout
@@ -20,8 +12,6 @@ function BestSellerPage({ isDomestic = true }: BestSellerPageProps) {
         sideBar={
           <Sidebar
             pageName="bestseller"
-            isDomestic={isDomestic}
-            location={category as string}
           />
         }
         main={
