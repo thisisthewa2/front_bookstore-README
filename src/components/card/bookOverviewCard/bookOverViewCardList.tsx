@@ -1,4 +1,3 @@
-import { BookOverviewType } from '@/types/bookOverviewType';
 import BookOverviewCard from './bookOverViewCard';
 import useGetBooks from '@/hooks/useGetBooks';
 import { BookData } from '@/types/api/book';
@@ -6,9 +5,6 @@ import { BookData } from '@/types/api/book';
 interface BookOverViewCardListProps {
   // bookData: BookOverviewType[];
   title: string;
-}
-interface BooksResponse {
-  books: BookData[];
 }
 
 function BookOverViewCardList({ title }: BookOverViewCardListProps) {
@@ -22,20 +18,20 @@ function BookOverViewCardList({ title }: BookOverViewCardListProps) {
     mainId: '0',
     params: INITIAL_PARAMS,
   });
-  const bookData = data?.books ?? [];
+  const bookData: BookData[] = data?.books ?? [];
 
   console.log(bookData);
 
   return (
     <div className="flex flex-col gap-40 pb-40 text-black">
       <h1 className="text-20 font-bold">{title}</h1>
-      {/* <div className="flex flex-col gap-20 mobile:gap-10">
-        {bookData.map((data) => (
+      <div className="flex flex-col gap-20 mobile:gap-10">
+        {bookData.map((data, index) => (
           <div key={data?.bookId}>
-            <BookOverviewCard book={data.book} like={data.like} />
+            <BookOverviewCard book={data} rank={index + 1} />
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 }

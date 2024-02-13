@@ -6,7 +6,7 @@ interface BookTitleProps {
 function BookTitle({ title, alignCenter }: BookTitleProps) {
   return (
     <p
-      className={`text-black text-15 font-medium text-overflow2 mb-4 mt-12 ${
+      className={`font-medium text-overflow2 mb-4 mt-12 text-15 text-black ${
         alignCenter ? 'text-center font-bold' : ''
       }`}>
       {title}

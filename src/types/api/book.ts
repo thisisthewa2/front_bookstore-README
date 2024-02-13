@@ -17,6 +17,7 @@ export interface BookData {
   price: number;
   averageRating: number;
   bookImgUrl: string | null;
+  publisher: string;
   publishedDate: string;
   quantityCount: number | null;
   createDate: string;

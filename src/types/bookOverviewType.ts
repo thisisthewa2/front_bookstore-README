@@ -1,24 +1,12 @@
-import { StaticImageData } from 'next/image';
+import { BookData } from './api/book';
 
 interface BookOverviewType {
-  book: {
-    bookId: number;
-    bookTitle: string;
-    bookImgUrl?: string | StaticImageData;
-    price: number;
-    authors: string[];
-    rank?: number;
-    publisher: string;
-    averageRating: number;
-    reviewCount: number;
-    genre: string;
-    categories: string[];
-    publishedDate: string;
-  };
-  like: {
+  book: BookData;
+  like?: {
     userLiked: boolean;
     count: number;
   };
+  rank?: number;
 }
 
 export type { BookOverviewType };
