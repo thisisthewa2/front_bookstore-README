@@ -1,25 +1,25 @@
 import BookRating from '@/components/book/bookRating/bookRating';
 import RegisterButton from '@/components/button/register/registerButton';
-import Textarea from '@/components/input/textarea';
 import TitleContentTable from '@/components/modal/addReview/titleContentTable';
 import Image from 'next/image';
 import LineIcon from '@/public/icons/Line.svg';
 import useFormControl from '@/hooks/useFormControl';
+import Input from '@/components/input/input';
+import { useState } from 'react';
 
 function AddReviewForm() {
+  const [newRating, setNewRating] = useState(0);
   const {
     control,
     handleSubmit,
     isButtonActive,
-    newRating,
-    setNewRating,
     onSubmit,
-  } = useFormControl();
+  } = useFormControl(newRating);
 
   return (
     <>
       <form
-        className="flex flex-col w-full gap-40 overflow-scroll mobile:gap-30"
+        className="flex w-full flex-col gap-40 overflow-scroll mobile:gap-30"
         onSubmit={handleSubmit(onSubmit)}>
         <TitleContentTable
           title1="책 제목"
@@ -28,18 +28,18 @@ function AddReviewForm() {
           content2="이제니"
           truncate="truncate"
         />
-        <Image src={LineIcon} alt="구분선"/>
-        <div className="flex flex-col justify-between text-16 text-b-b h-87">
+        <Image src={LineIcon} alt="구분선" />
+        <div className="text-b-b flex h-87 flex-col justify-between text-16">
           별점 평가
           <BookRating
             rating={newRating}
             setNewRating={setNewRating}
             size="lg"
             onClick={true}
-            className="flex items-center justify-start gap-13 h-52 w-full mobile:gap-9"
+            className="flex h-52 w-full items-center justify-start gap-13 mobile:gap-9"
           />
         </div>
-        <Textarea height="h-274" control={control} name="description" />
+        <Input type='text' title='내용' height="h-274" control={control} name="description" />
       </form>
       <RegisterButton type="submit" disabled={isButtonActive ? true : false}>
         리뷰 작성하기

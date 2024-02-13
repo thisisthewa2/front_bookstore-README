@@ -26,7 +26,7 @@ function TitleContentTable({ title1, content1, title2, content2, truncate, butto
         <p className="w-full text-gray-3 font-light">{content2}</p>
       </div>
       {button && <div className="absolute w-50 top-0 right-0">
-        <RegisterButton height={36} text={14} onClick={onClick}>선택</RegisterButton>
+        <RegisterButton height='h-36' text='text-14' onClick={onClick}>선택</RegisterButton>
       </div>}
     </div>
   );

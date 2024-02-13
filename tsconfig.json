@@ -16,6 +16,7 @@
     "paths": {
       "@/components/*": ["src/components/*"],
       "@/api/*": ["src/api/*"],
+      "@/constants/*" : ["src/constants/*"],
       "@/hooks/*": ["src/hooks/*"],
       "@/store/*": ["src/store/*"],
       "@/pages/*": ["src/pages/*"],
@@ -30,7 +31,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/button/register", "next.config.js",
+    "src/components/button/register",
+    "next.config.js",
+    "src/components/card/bookPaymentCard",
   ],
   "exclude": ["node_modules"],
 }

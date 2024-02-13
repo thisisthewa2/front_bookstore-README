@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { MouseEventHandler } from 'react';
 
 type ButtonProps = {
@@ -6,8 +7,8 @@ type ButtonProps = {
   children: React.ReactNode;
   disabled?: boolean;
   color?: string;
-  height?: number;
-  text?: number;
+  height?: string;
+  text?: string;
 };
 
 function RegisterButton({
@@ -15,15 +16,16 @@ function RegisterButton({
   onClick,
   children,
   disabled = true,
-  color = 'green',
-  height = 50,
-  text = 17,
+  color = 'bg-green',
+  height = 'h-50',
+  text = 'text-17',
 }: ButtonProps) {
+  const buttonColor = `${!disabled ? 'bg-gray-2' : color}`;
+  const className = classNames("w-full text-center rounded-[5px] text-white py-8", buttonColor, text, height);
   return (
     <button
       type={type}
-      className={`h-${height} w-full text-center bg-${!disabled ? 'gray-2' : color} rounded-[5px] text-${text} text-white
-        py-8`}
+      className={className}
       onClick={onClick}
       disabled={!disabled}
       >

@@ -8,7 +8,7 @@ const bookOverviewsMock: BookOverviewType[] = [
   {
     book: {
       bookId: 1,
-      bookTitle: '자바스크립트 마스터',
+      bookTitle: '자바스크립트 마스터 긴 책 이름을 지어볼게요 줄바꿈되니',
       bookImgUrl:
         'https://image.aladin.co.kr/product/33072/75/cover500/k092937309_1.jpg', // 객체 직접 할당
       price: 25000,

@@ -3,22 +3,28 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import CheckIcon from '@/public/icons/CheckIcon.svg';
 import RightArrowIcon from '@/public/icons/RightArrow.svg';
-import { TERMS_TITLES } from 'src/constants/sign';
 
+interface TermsCheckboxProps {
+  title?: string;
+  entire: string;
+  checkContent: string[];
+  useFormContextProps?: boolean;
+  showLastButton?: boolean;
+}
 interface CheckedStates {
   [key: string]: boolean;
 }
 
-function TermsCheckbox() {
-  const { register, setValue } = useFormContext();
-
+function TermsCheckbox({ title, entire, checkContent, useFormContextProps = true, showLastButton = true }: TermsCheckboxProps) {
+  const formMethods = useFormContextProps ? useFormContext() : null
+  
   const [checkedStates, setCheckedStates] = useState<CheckedStates>(
-    TERMS_TITLES.reduce((acc, title) => ({ ...acc, [title]: false }), {}),
+    checkContent.reduce((acc, title) => ({ ...acc, [title]: false }), {}),
   );
   const handleSelectAll = (e: FormEvent<HTMLInputElement>) => {
     const isChecked = e.currentTarget.checked;
     setCheckedStates(
-      TERMS_TITLES.reduce(
+      checkContent.reduce(
         (acc, termsTitle) => ({ ...acc, [termsTitle]: isChecked }),
         {},
       ),
@@ -29,17 +35,17 @@ function TermsCheckbox() {
   };
 
   const handleOpenModal = () => {
-    //모달을 열거예용
+    //TODO : 모달을 열거예용
   };
 
   useEffect(() => {
     const isAllChecked = Object.values(checkedStates).every(Boolean);
-    setValue('selectAll', isAllChecked);
-  }, [checkedStates, setValue]);
+    formMethods?.setValue('selectAll', isAllChecked);
+  }, [checkedStates, formMethods?.setValue]);
 
   return (
-    <div className="w-360 mobile:w-330">
-      <span className="inline-block pb-8 font-bold">약관동의</span>
+    <div className="w-full">
+      {title && <span className="inline-block pb-8 font-bold">{title}</span>}
       <div className="relative flex h-48 items-center gap-8 border-0 border-b-[1px] border-b-[#DBDBDB]">
         <label htmlFor="selectAll" className="font-medium text-15">
           <Image
@@ -52,24 +58,22 @@ function TermsCheckbox() {
           <input
             type="checkbox"
             id="selectAll"
-            {...register('selectAll')}
+            {...formMethods?.register('selectAll')}
             checked={Object.values(checkedStates).every(Boolean)}
             onChange={handleSelectAll}
-            className="mt-0.5 relative float-left mr-8 h-20 w-20 appearance-none rounded-full border-2 border-solid
+            className="mt-0.5 relative float-left mr-8 h-20 w-20 appearance-none rounded-[2px] border-2 border-solid
               border-gray-3 p-1 checked:border-0 checked:bg-green"
           />
-          전체 동의
+          {entire}
         </label>
       </div>
 
       <div>
-        {TERMS_TITLES.map((termsTitle) => (
-          <div
-            key={termsTitle}
-            className="flex h-48 items-center justify-between">
-            <div className="relative flex items-center">
+        {checkContent.map((content, index) => (
+          <div key={content} className="flex h-48 items-center justify-between gap-5">
+            <div className="relative flex items-center gap-8">
               <label
-                htmlFor={`id.${termsTitle}`}
+                htmlFor={`id.${content}`}
                 className="text-15 text-[#767676]">
                 <Image
                   src={CheckIcon}
@@ -79,25 +83,27 @@ function TermsCheckbox() {
                   className="absolute left-5 top-7 z-10"
                 />
                 <input
-                  id={`id.${termsTitle}`}
-                  {...register(`id.${termsTitle}`)}
+                  id={`id.${content}`}
+                  {...formMethods?.register(`id.${content}`)}
                   type="checkbox"
-                  checked={checkedStates[termsTitle]}
-                  onChange={() => handleIndividualCheck(termsTitle)}
-                  className="mt-0.5 relative float-left mr-8 h-20 w-20 appearance-none rounded-full border-2 border-solid
+                  checked={checkedStates[content]}
+                  onChange={() => handleIndividualCheck(content)}
+                  className="mt-0.5 relative float-left mr-8 h-20 w-20 appearance-none rounded-[2px] border-2 border-solid
                     border-gray-3 p-1 checked:border-0 checked:bg-green"
                 />
-                {termsTitle}
+                {content}
               </label>
             </div>
-            <button className="pr-4" onClick={handleOpenModal}>
-              <Image
-                src={RightArrowIcon}
-                width={18}
-                height={18}
-                alt="약관내용 전체보기 버튼"
-              />
-            </button>
+            {(showLastButton || index !== checkContent.length - 1) && (
+              <button className="pr-4" onClick={handleOpenModal}>
+                <Image
+                  src={RightArrowIcon}
+                  width={18}
+                  height={18}
+                  alt="약관내용 전체보기 버튼"
+                />
+              </button>
+            )}
           </div>
         ))}
       </div>

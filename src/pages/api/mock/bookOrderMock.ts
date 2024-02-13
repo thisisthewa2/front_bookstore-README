@@ -11,15 +11,16 @@ export const bookOrderTestData: BookOrderCardListProps = {
         {
           book: {
             productId: 1,
-            title: '첫 번째 책',
-            imageUrl: null,
+            title: '첫 번째 책 이름이 길어요오오오오오오오오오오',
+            imageUrl:
+              'https://image.aladin.co.kr/product/33341/98/cover200/k222938702_1.jpg',
             cost: 15000,
             authors: ['저자 A', '저자 B'],
           },
           order: {
             deliveryStatus: '배송 중',
             address: '서울시 강남구 역삼동',
-            orderCount: 1,
+            orderCount: 2,
           },
         },
         {

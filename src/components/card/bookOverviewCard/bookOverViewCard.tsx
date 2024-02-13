@@ -8,6 +8,7 @@ import { notify } from '@/components/toast/toast';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
+import BookAuthor from '@/components/book/bookAuthor/bookAuthor';
 
 function BookOverviewCard({ book, like }: BookOverviewType) {
   const [isLiked, setIsLiked] = useState(like.userLiked || false);
@@ -39,14 +40,13 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
   return (
     <div
       role="card-container"
-      className="flex flex-col justify-between h-220 border-gray-1 border-2 p-30 rounded-xl
-        tablet:w-[511px] mobile:p-15 mobile:pb-15 mobile:w-330 mobile:h-251 relative">
-      <div role="book-info-container" className="flex relative">
+      className="relative flex h-220 flex-col justify-between rounded-xl border-2 border-gray-1
+        p-30 mobile:h-251 mobile:w-330 mobile:p-15 mobile:pb-15 tablet:w-[511px]">
+      <div role="book-info-container" className="relative flex">
         <Link
           role="book-img"
           href={`bookdetail/${book.bookId}`}
-          className="h-170 bg-white mobile:min-w-93 mobile:h-134">
-
+          className="h-170 bg-white mobile:h-134 mobile:min-w-93">
           <PreviewBookInfo
             size="sm"
             image={book.bookImgUrl}
@@ -57,28 +57,15 @@ function BookOverviewCard({ book, like }: BookOverviewType) {
 
         <div
           role="book-info"
-          className="ml-30 mr-auto flex flex-col items-start justify-start gap-4 mobile:ml-12
-            mobile:max-w-185 mobile:gap-2">
+          className="ml-30 mr-auto flex flex-col items-start justify-start gap-4 whitespace-pre-line
+            mobile:ml-12 mobile:max-w-185 mobile:gap-2">
           <div
             role="book-title"
-            className="min-w-250 truncate whitespace-nowrap text-15 font-normal">
+            className="min-w-250 text-15 font-normal mobile:w-185 mobile:min-w-0 tablet:w-200">
             {book.bookTitle}
           </div>
           <div role="book-author-publisher" className="flex-center gap-4">
-            <div>
-              {book.authors?.map((author) => {
-                return (
-                  <span key={author} className="text-14 text-gray-3">
-                    {author}
-                  </span>
-                );
-              })}
-            </div>
-            <div>
-              {book.publisher && (
-                <span className="text-14 text-gray-3">| {book.publisher}</span>
-              )}
-            </div>
+            <BookAuthor authorList={book.authors} publisher={book.publisher} />
           </div>
           <div>
             <span className="text-14 text-gray-3 mobile:hidden">

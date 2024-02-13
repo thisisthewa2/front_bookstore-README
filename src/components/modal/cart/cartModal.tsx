@@ -17,7 +17,7 @@ function CartModal({ title, description, onClick }: CartModalProps) {
           <span className="text-16 text-gray-3 font-light">{description}</span>
         </div>
         <div className="flex w-156">
-          <RegisterButton type="button" color="green" onClick={onClick}>
+          <RegisterButton type="button" onClick={onClick}>
             확인
           </RegisterButton>
         </div>
