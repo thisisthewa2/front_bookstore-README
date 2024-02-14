@@ -16,7 +16,6 @@ function BookOverviewCard({ book, like, rank }: BookOverviewType) {
   const [likeCount, setIsLikeCount] = useState(0);
   const router = useRouter();
   const formattedDate = formatDate(book.publishedDate);
-  console.log(formattedDate); // "2012. 2. 23" 출력
 
   const handleLikeClick = () => {
     setIsLiked(!isLiked);
