@@ -1,4 +1,4 @@
-import { BookOverviewType } from '@/types/bookOverviewType';
+import { BookOverviewType, BookOverviewType2 } from '@/types/bookOverviewType';
 import { THOUSAND_UNIT } from 'src/constants/price';
 import LikeButton from '@/components/button/likeButton';
 import { useState } from 'react';
@@ -11,7 +11,7 @@ import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
 import BookTitle from '@/components/book/bookTitle/bookTitle';
 import formatDate from '@/hooks/useFormatDate';
 
-function BookOverviewCard({ book, like, rank }: BookOverviewType) {
+function BookOverviewCard({ book, like, rank }: BookOverviewType2) {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCount, setIsLikeCount] = useState(0);
   const router = useRouter();
