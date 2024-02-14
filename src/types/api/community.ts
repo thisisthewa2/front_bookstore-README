@@ -11,3 +11,30 @@ export interface CommunityCard {
   bookTitle: string;
   content: string; // 커뮤니티 글 내용
 }
+
+export interface GetCommunityParams {
+  cursorId?: number;
+  limit?: number;
+}
+
+export interface GetCommunityOption {
+  memberId?: number;
+  params?: GetCommunityParams;
+}
+
+export interface PostCommunityData {
+  memberId: number;
+  bookId: number;
+  title: string;
+  content: string;
+}
+
+export interface PutCommunityData {
+  title: string;
+  content: string;
+}
+
+export interface PutCommunityOption {
+  communityId: number;
+  data : PutCommunityData
+}

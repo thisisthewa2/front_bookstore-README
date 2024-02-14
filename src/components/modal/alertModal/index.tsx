@@ -1,7 +1,6 @@
 import ModalLayout from '@/components/modal/modalLayout';
 import RegisterButton from '@/components/button/register/registerButton';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteCommunity } from '@/api/community';
+
 interface AlertModalProps {
   title: string;
   description: string;

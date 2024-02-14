@@ -5,7 +5,6 @@ function useFormControl(option ?:  string | number | boolean) {
   const { control, handleSubmit, watch } = useForm({ mode: 'onChange' });
   const [isButtonActive, setIsButtonActive] = useState(false);
   const value = Object.values(watch()).every((el) => el);
-  console.log(value)
 
   useEffect(() => {
     if (value && option) {

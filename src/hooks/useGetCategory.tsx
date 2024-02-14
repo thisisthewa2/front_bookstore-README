@@ -11,6 +11,7 @@ function useGetCategory() {
     queryKey: ["category-list"],
     queryFn: () => getCategoryList(),
     retry: 3,
+    staleTime: Infinity,
   })
   setCategoryList(data)
 }

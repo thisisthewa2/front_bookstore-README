@@ -3,7 +3,7 @@
 import SidebarLayout from '@/components/layout/sidebarLayout';
 import Spacing from '@/components/container/spacing/spacing';
 import CategoryCarousel from '@/components/carousel/categoryCarousel';
-import CategoryBookList from '@/components/list/categoryBookList/categoryBookList';
+import MainCategoryBookList from '@/components/container/categoryBookList/mainCategoryBookList';
 import EventSection from '@/components/container/eventSection/eventSection';
 
 import { responsive } from '@/utils/checkResponsiveEnv';
@@ -30,7 +30,7 @@ export default function DomesticPage() {
         </article>        
         <Spacing height={[120, 80, 80]} />
 
-        <CategoryBookList />
+        <MainCategoryBookList />
       </SidebarLayout>
   );
 }

@@ -25,10 +25,14 @@ function dropDownTest() {
     firstPurchasedDate: new Date().toString()
   }   
 
+  const handleClick = () => console.log("나는테스투우우우이다아앙")
   return (
+
     <div className="flex relative">
       <div className="w-[1000px]">
-        <DropDown menus={menus} selectedItem={selectedItem} onSelectedItem={onSelectedItem} />       
+        <form onSubmit={handleClick}>
+          <DropDown menus={menus} selectedItem={selectedItem} onSelectedItem={onSelectedItem} />   
+        </form>  
       </div>
       <div className="flex-center">
         {person && (

@@ -1,4 +1,4 @@
-import { useRef} from 'react';
+import { MouseEvent, useRef} from 'react';
 import useShowDropDown from '@/hooks/useShowDropDown';
 import DropDownItem from '@/components/dropDown/dropDownItem';  
 import Image from 'next/image';     
@@ -12,16 +12,20 @@ type DropDownTypes = {
 function DropDown({  menus, selectedItem, onSelectedItem }: DropDownTypes) {  
   const ref = useRef(null);
   const [showOptions, setShowOptions] = useShowDropDown(ref, false);
-  const handleClick = () => setShowOptions(!showOptions);   
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    setShowOptions(!showOptions)
+  }
 
   return (  
       <div ref={ref} className="relative"> 
         <div>
-          <button
+        <button
+          type="button"
             onClick={handleClick}
             className={`flex justify-between h-42 w-full items-center border-2 border-solid border-gray-1 text-left
               ${showOptions ? 'rounded-t-[5px]' : 'rounded-[5px]'}`}>
-            <span className="w-85 pl-16 text-14">{selectedItem}</span>
+            <span className="pl-16 text-14">{selectedItem}</span>
             <div className="pr-12">
               <Image
                 src={showOptions ? '/icons/UpArrow.svg' : '/icons/DownArrow.svg'}
