@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import ScrollToTopButton from '@/components/button/scrollToTopButton';
 import useInfinite from '@/hooks/useInfinite';
 import { useAtom } from 'jotai';
@@ -18,7 +18,9 @@ function BestSellerPageLayout({
   const [ref, isIntersecting] = useInfinite();
   const [, setPointVisible] = useAtom(pointVisibleAtom);
 
-  setPointVisible(isIntersecting);
+  useEffect(() => {
+    setPointVisible(isIntersecting);
+  }, [isIntersecting, setPointVisible]);
 
   return (
     <div
