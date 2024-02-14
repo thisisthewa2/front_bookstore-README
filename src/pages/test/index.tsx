@@ -10,35 +10,33 @@ function TestPage() {
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [isFindAddressModalOpen, setIsFindAddressModalOpen] = useState(false);
   const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
-  const [isAddCommunityCardModalOpen, setIsAddCommunityCardModalOpen] = useState(false);
-  const [isGetRefundFormModalOpen, setIsGetRefundFormModalOpen] = useState(false);
+  const [isAddCommunityCardModalOpen, setIsAddCommunityCardModalOpen] =
+    useState(false);
+  const [isGetRefundFormModalOpen, setIsGetRefundFormModalOpen] =
+    useState(false);
 
   const handleReviewModalOpen = () => {
     setIsReviewModalOpen(!isReviewModalOpen);
-  }
+  };
 
   const handleFindAddressModalOpen = () => {
     setIsFindAddressModalOpen(!isFindAddressModalOpen);
-  }
+  };
 
   const handleAlertModalOpen = () => {
-    setIsAlertModalOpen(!isAlertModalOpen)
-  }
+    setIsAlertModalOpen(!isAlertModalOpen);
+  };
 
   const handleAddCommunityCardModalOpen = () => {
-    setIsAddCommunityCardModalOpen(!isAddCommunityCardModalOpen)
-  }
+    setIsAddCommunityCardModalOpen(!isAddCommunityCardModalOpen);
+  };
 
   const handleGetRefundFormModalOpen = () => {
-    setIsGetRefundFormModalOpen(!isGetRefundFormModalOpen)
-  }
+    setIsGetRefundFormModalOpen(!isGetRefundFormModalOpen);
+  };
 
   return (
     <div className="flex flex-col gap-20 p-20">
-      <BookOverviewCard
-        book={bookOverviews[0]?.book}
-        like={bookOverviews[0]?.like}
-      />
       {/* <SkeletonPreviewBookImage size="sm" />
       <SkeletonPreviewBookImage size="md" />
       <SkeletonPreviewBookImage size="lg" /> */}
@@ -57,7 +55,6 @@ function TestPage() {
         size="md"
         ranking={1}
         itemsStart
-
       />
       <PreviewBookInfo
         title="하이용"
