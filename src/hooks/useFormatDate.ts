@@ -1,4 +1,4 @@
-export default function formatDate(dateString: string) {
+export default function useFormatDate(dateString: string) {
   const date = new Date(dateString);
   const year = date.getFullYear(); // 년도 추출
   const month = date.getMonth() + 1; // 월 추출 (월은 0부터 시작하므로 +1 해줌)
