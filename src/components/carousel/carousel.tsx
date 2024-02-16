@@ -118,7 +118,7 @@ function Carousel({ data, responsive }: CarouselProps) {
               <CarouselCard
                 imageUrl={item.bookImgUrl as string}
                 title={item.bookTitle}
-                authorname={item.authors}
+                authorList={item.authors}
                 key={index}
                 imageSize={responsive[env].imageSize}
                 marginRight={CARD_MARGIN_VALUE}

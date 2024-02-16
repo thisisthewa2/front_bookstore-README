@@ -6,16 +6,17 @@ export type CarouselCardProps = {
   size: 'sm' | 'md' | 'lg';
   imageUrl: string;
   title: string;
-  authorname: string[];
+  authorList: string[];
   imageSize: ImageSize;
   marginRight: number;
   bookId?: number;
 };
 
 function CarouselCard(props: CarouselCardProps) {
-  const { imageUrl, bookId, title, authorname, imageSize, marginRight, size } =
+  const { imageUrl, bookId, title, authorList, imageSize, marginRight, size } =
     props;
   const { width } = imageSize;
+
   return (
     <div>
       <div
@@ -25,7 +26,7 @@ function CarouselCard(props: CarouselCardProps) {
           image={imageUrl}
           size={size}
           title={title}
-          authorList={authorname}
+          authorList={authorList}
           bookId={bookId}
         />
       </div>
