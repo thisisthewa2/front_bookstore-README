@@ -64,6 +64,7 @@ function BookOverviewCard({ book, rank }: BookOverviewType2) {
             image={book.bookImgUrl}
             ranking={rank}
             itemsStart
+            bookId={book.bookId}
           />
         </Link>
 

@@ -29,7 +29,15 @@ const STYLE = {
   img: `${SIZE.desktop.img} ${SIZE.mobile.img}`,
 };
 
-function TodayBestBook({ bookId, bookImgUrl, bookTitle, price, authors, averageRating, categories }: BookData) {
+function TodayBestBook({
+  bookId,
+  bookImgUrl,
+  bookTitle,
+  price,
+  authors,
+  averageRating,
+  categories,
+}: BookData) {
   return (
     <div
       role="container"
@@ -42,17 +50,35 @@ function TodayBestBook({ bookId, bookImgUrl, bookTitle, price, authors, averageR
           role="img-section"
           className={`flex-center relative bg-white ${STYLE.img}`}>
           {bookImgUrl ? (
-          <PreviewBookInfo size='sm' image={bookImgUrl} itemsStart/>
+            <PreviewBookInfo
+              size="sm"
+              image={bookImgUrl}
+              itemsStart
+              bookId={bookId}
+            />
           ) : (
             <div className={`bg-gray-1 ${STYLE.img}`}></div>
           )}
         </div>
         <div className="flex flex-col items-start justify-start gap-4">
-          <BookTitle isBold fontSize={15} title={bookTitle} classNames='line-clamp-2 mobile:line-clamp-1' />
-          <BookAuthor authorList={authors} fontSize={14} classNames='line-clamp-1 mobile:hidden'/>
+          <BookTitle
+            isBold
+            fontSize={15}
+            title={bookTitle}
+            classNames="line-clamp-2 mobile:line-clamp-1"
+          />
+          <BookAuthor
+            authorList={authors}
+            fontSize={14}
+            classNames="line-clamp-1 mobile:hidden"
+          />
           <BookRating rating={averageRating} />
-          <BookCategory categories={categories} fontSize={13} classNames='line-clamp-2'/>
-          <BookPrice price={price}  fontSize={14} isBold hasUnit/>
+          <BookCategory
+            categories={categories}
+            fontSize={13}
+            classNames="line-clamp-2"
+          />
+          <BookPrice price={price} fontSize={14} isBold hasUnit />
         </div>
       </Link>
     </div>

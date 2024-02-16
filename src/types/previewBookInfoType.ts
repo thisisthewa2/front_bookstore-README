@@ -13,4 +13,5 @@ export interface PreviewBookInfoProps extends PreviewBookInfoSizeProps {
   ranking?: number;
   price?: number;
   category?: string;
+  bookId?: number;
 }

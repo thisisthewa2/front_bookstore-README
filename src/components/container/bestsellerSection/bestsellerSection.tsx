@@ -33,6 +33,7 @@ function BestSellerSection() {
             image={book.bookImgUrl}
             authorList={book.authors}
             ranking={index + 1}
+            bookId={book.bookId}
           />
         ))}
       </div>
@@ -46,6 +47,7 @@ function BestSellerSection() {
             image={book.bookImgUrl}
             authorList={book.authors}
             ranking={index + 1}
+            bookId={book.bookId}
           />
         ))}
       </div>

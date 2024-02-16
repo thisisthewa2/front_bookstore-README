@@ -18,7 +18,12 @@ function BookPaymentCard({ book, order }: BookOrderType) {
           role="book-img"
           href={`bookdetail/${book.productId}`}
           className="h-170 bg-white mobile:h-134 mobile:min-w-93">
-          <PreviewBookInfo size="sm" image={book.imageUrl} itemsStart />
+          <PreviewBookInfo
+            size="sm"
+            image={book.imageUrl}
+            itemsStart
+            bookId={book.productId}
+          />
         </Link>
 
         <div
