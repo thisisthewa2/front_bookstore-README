@@ -12,9 +12,15 @@ export type CarouselCardProps = {
   bookId?: number;
 };
 
-function CarouselCard(props: CarouselCardProps) {
-  const { imageUrl, bookId, title, authorList, imageSize, marginRight, size } =
-    props;
+function CarouselCard({
+  size,
+  imageUrl,
+  title,
+  authorList,
+  imageSize,
+  marginRight,
+  bookId,
+}: CarouselCardProps) {
   const { width } = imageSize;
 
   return (
