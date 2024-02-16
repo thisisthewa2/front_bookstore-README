@@ -68,7 +68,7 @@ function Carousel({ data, responsive }: CarouselProps) {
       <div
         className="mx-60 mb-40 flex items-center justify-between mobile:mx-15 mobile:mb-20
           tablet:mx-40">
-        <span className="text-20 text-black">신간도서</span>
+        <span className="text-20 font-bold text-black">신간도서</span>
         <Link href="/domestic/newest" className="text-16 text-green">
           더보기
         </Link>
@@ -118,7 +118,7 @@ function Carousel({ data, responsive }: CarouselProps) {
               <CarouselCard
                 imageUrl={item.bookImgUrl as string}
                 title={item.bookTitle}
-                authorname={item.authors[1]}
+                authorname={item.authors}
                 key={index}
                 imageSize={responsive[env].imageSize}
                 marginRight={CARD_MARGIN_VALUE}

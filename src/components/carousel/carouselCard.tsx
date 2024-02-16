@@ -6,7 +6,7 @@ export type CarouselCardProps = {
   size: 'sm' | 'md' | 'lg';
   imageUrl: string;
   title: string;
-  authorname: string;
+  authorname: string[];
   imageSize: ImageSize;
   marginRight: number;
   bookId?: number;
@@ -25,7 +25,7 @@ function CarouselCard(props: CarouselCardProps) {
           image={imageUrl}
           size={size}
           title={title}
-          authorList={[authorname]}
+          authorList={authorname}
           bookId={bookId}
         />
       </div>
