@@ -17,10 +17,14 @@ function CarouselCard(props: CarouselCardProps) {
   return (
     <div>
       <div
-        className={`text-white relative select-none`}
+        className={`relative select-none text-white`}
         style={{ width, marginRight }}>
-        <PreviewBookInfo size={size} title={title} authorList={[authorname]} />
-
+        <PreviewBookInfo
+          image={imageUrl}
+          size={size}
+          title={title}
+          authorList={[authorname]}
+        />
       </div>
     </div>
   );

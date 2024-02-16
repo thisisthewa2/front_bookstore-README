@@ -36,14 +36,14 @@ const STYLE = {
 
 function TodayBestSection() {
   const { data, isLoading, isError } = useGetBook({
-    endpoint: "0/main",
+    endpoint: '0/main',
     params: {
-      bookId: "0",
-      limit: "6",
-      sort: "POPULATION",
+      bookId: '0',
+      limit: '6',
+      sort: 'POPULATION',
       ascending: false,
-    }
-  })
+    },
+  });
   const bookList: Array<BookData> = data ? data.data.books : [];
   const { dynamicWid } = useWindowInnerWidth();
 
