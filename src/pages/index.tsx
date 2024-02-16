@@ -3,12 +3,10 @@ import MainLayout from '@/components/layout/mainLayout';
 import CustomSection from '@/components/container/customSection/customSection';
 import BestSellerSection from '@/components/container/bestsellerSection/bestsellerSection';
 import Carousel from '@/components/carousel/carousel';
-import { carouselMockData } from './api/mock/carouselMock';
 import { responsive } from '@/utils/checkResponsiveEnv';
 import TodayBestSection from '@/components/container/todayBestSection/todayBestSection';
 import { useGetBook } from '@/api/book';
 import { BookData } from '@/types/api/book';
-import { NewBook } from '@/types/carouselType';
 function Home() {
   const { data, isLoading, isError } = useGetBook({
     endpoint: '0/main',
@@ -21,8 +19,6 @@ function Home() {
   });
 
   const bookList: Array<BookData> = data ? data.data.books : [];
-  console.log('booklist: ' + bookList);
-  console.log('bookdata: ' + data);
   return (
     <>
       <div

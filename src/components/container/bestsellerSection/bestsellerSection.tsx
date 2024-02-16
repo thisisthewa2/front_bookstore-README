@@ -1,8 +1,19 @@
 import Link from 'next/link';
-import { bookOverviewsMock } from '@/pages/api/mock/bestSellerMock';
 import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
+import { useGetBook } from '@/api/book';
+import { BookData } from '@/types/api/book';
 
 function BestSellerSection() {
+  const { data, isLoading, isError } = useGetBook({
+    endpoint: '0/main',
+    params: {
+      bookId: '0',
+      limit: '10',
+      sort: 'BESTSELLER',
+      ascending: false,
+    },
+  });
+  const bookList: Array<BookData> = data ? data.data.books : [];
   return (
     <div
       className="flex-col mobile:mx-15 mobile:my-80 mobile:w-330 tablet:mx-40 tablet:my-120
@@ -14,26 +25,27 @@ function BestSellerSection() {
         </Link>
       </div>
       <div className="flex-center flex flex-wrap gap-x-10 gap-y-62 tablet:hidden pc:gap-x-30">
-        {bookOverviewsMock.map((book, index) => (
+        {bookList.map((book, index) => (
           <PreviewBookInfo
-            key={book.book.bookId}
+            key={book.bookId}
             size={'lg'}
-            title={book.book.bookTitle}
-            image={book.book.bookImgUrl}
-            authorList={book.book.authors}
+            title={book.bookTitle}
+            image={book.bookImgUrl}
+            authorList={book.authors}
             ranking={index + 1}
           />
         ))}
       </div>
 
       <div className="flex w-full flex-wrap justify-start gap-x-20 gap-y-62 mobile:hidden pc:hidden">
-        {bookOverviewsMock.map((book, index) => (
+        {bookList.map((book, index) => (
           <PreviewBookInfo
-            key={book.book.bookId}
+            key={book.bookId}
             size={'sm'}
-            title={book.book.bookTitle}
-            image={book.book.bookImgUrl}
-            authorList={book.book.authors}
+            title={book.bookTitle}
+            image={book.bookImgUrl}
+            authorList={book.authors}
+            ranking={index + 1}
           />
         ))}
       </div>
