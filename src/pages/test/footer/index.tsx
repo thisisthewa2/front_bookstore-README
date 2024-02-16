@@ -2,11 +2,8 @@ import { ReactElement } from 'react';
 import MainLayout from '@/components/layout/mainLayout';
 import CustomSection from '@/components/container/customSection/customSection';
 import BestSellerSection from '@/components/container/bestsellerSection/bestsellerSection';
-import Carousel from '@/components/carousel/carousel';
-
-import { responsive } from '@/utils/checkResponsiveEnv';
 import TodayBestSection from '@/components/container/todayBestSection/todayBestSection';
-import { carouselMockData } from '@/pages/api/mock/carouselMock';
+
 import Footer from '@/components/footer/footer';
 function Home() {
   return (
@@ -25,9 +22,6 @@ function Home() {
         />
       </div>
       <CustomSection isLoggedIn={true} isGenreSelected={true} />
-      <div className="mt-80 mobile:mb-80 tablet:mb-120 pc:mb-140">
-        <Carousel data={carouselMockData} responsive={responsive} />
-      </div>
 
       <TodayBestSection />
       <BestSellerSection />
