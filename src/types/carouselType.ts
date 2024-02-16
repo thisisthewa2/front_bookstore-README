@@ -1,7 +1,7 @@
 export type NewBook = {
   imageUrl: string;
   title: string;
-  authorname: string;
+  authorList: string[];
 };
 
 export type ResponSive = {

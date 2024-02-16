@@ -6,7 +6,7 @@ interface BookAuthorsProps {
 function BookAuthors({ alignCenter, authorList }: BookAuthorsProps) {
   return (
     <div
-      className={`text-gray-3 text-14 truncate ${alignCenter ? 'text-center' : ''}`}>
+      className={`truncate text-14 text-gray-3 ${alignCenter ? 'text-center' : ''}`}>
       {authorList.join(', ')}
     </div>
   );
