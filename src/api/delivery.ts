@@ -15,17 +15,26 @@ export const useGetDelivery = (id: number) => {
   return useFetch(QUERY_KEY.delivery, getDelivery, id);
 };
 
+interface DeliveryOrderBook {
+  bookId: number;
+  quantity: number;
+}
 //배달 등록
 //TODO : api 나오면 interface type 수정필요
-interface PostDeliveryOption {
-  id: number;
-  data: string;
+export interface PostDeliveryOption {
+  name: string;
+  phone: string;
+  address: string;
+  message: string;
+  paymentMethod: string;
+  paymentAmount: number;
+  basketIds: number[];
+  OrderBooks: DeliveryOrderBook[];
 }
 
 const postDelivery = async (option: PostDeliveryOption) => {
-  const { id, data } = option;
-  const result = await instance.post(`delivery/${id}`, {
-    data,
+  const result = await instance.post(`delivery/`, {
+    option,
   });
   return result.data;
 };
