@@ -6,6 +6,7 @@ import { zipNoAtom, roadAddrAtom } from '@/store/address';
 import AddressLabel from './addressLabel';
 import AddressInputField from './addressInputField';
 import AddressTextArea from './addressTextArea';
+import { deliveryInfoAtom } from '@/store/deliveryInfo';
 // AddressInput 컴포넌트
 interface AddressInputProps {
   isDefault: boolean;
@@ -17,11 +18,20 @@ function AddressInput({ isDefault, addressLines }: AddressInputProps) {
   const [roadAddr] = useAtom(roadAddrAtom);
   const [isFindAddressModalOpen, setIsFindAddressModalOpen] = useState(false);
   const [customAddressLine, setCustomAddressLine] = useState('');
+  const [, setDeliveryInfo] = useAtom(deliveryInfoAtom);
   const handleFindAddressModalOpen = () => {
     setIsFindAddressModalOpen(!isFindAddressModalOpen);
   };
   function handleInputChange(inputValue: string) {
     setCustomAddressLine(inputValue);
+  }
+  function handleInputBlur() {
+    if (!isDefault) {
+      setDeliveryInfo((prevDeliveryInfo) => ({
+        ...prevDeliveryInfo,
+        address: zipNo + roadAddr + customAddressLine,
+      }));
+    }
   }
 
   return (
@@ -49,6 +59,7 @@ function AddressInput({ isDefault, addressLines }: AddressInputProps) {
               handleInputChange(event.target.value);
             }
           }}
+          onBlur={handleInputBlur}
         />
       </div>
     </div>
