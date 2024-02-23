@@ -4,7 +4,8 @@ import React from 'react';
 interface DeliveryRequestInputProps {
   placeholder?: string;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur: (event: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
   disabled?: boolean;
 }
@@ -15,6 +16,7 @@ function DeliveryRequestInput({
   onChange,
   className,
   disabled,
+  onBlur,
 }: DeliveryRequestInputProps) {
   return (
     <input
@@ -24,6 +26,7 @@ function DeliveryRequestInput({
       onChange={onChange}
       className={className}
       disabled={disabled}
+      onBlur={onBlur}
     />
   );
 }
