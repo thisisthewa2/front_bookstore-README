@@ -1,5 +1,6 @@
 import { useState } from 'react';
-
+import { deliveryInfoAtom } from '@/store/deliveryInfo';
+import { useAtom } from 'jotai';
 // 전화번호 입력 필드 컴포넌트
 interface PhoneNumberInputProps {
   isDefault: boolean;
@@ -7,9 +8,20 @@ interface PhoneNumberInputProps {
 }
 function PhoneNumberInput({ isDefault, value }: PhoneNumberInputProps) {
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [, setDeliveryInfo] = useAtom(deliveryInfoAtom);
   function handleInputChange(inputValue: string) {
     setPhoneNumber(inputValue);
   }
+
+  function handleInputBlur() {
+    if (!isDefault) {
+      setDeliveryInfo((prevDeliveryInfo) => ({
+        ...prevDeliveryInfo,
+        phone: phoneNumber,
+      }));
+    }
+  }
+
   return (
     <div className="flex items-center text-16  text-gray-3">
       <label htmlFor="phoneNumber" className="mr-34 whitespace-nowrap">
@@ -28,6 +40,7 @@ function PhoneNumberInput({ isDefault, value }: PhoneNumberInputProps) {
             handleInputChange(event.target.value);
           }
         }}
+        onBlur={handleInputBlur}
         disabled={isDefault}
       />
     </div>

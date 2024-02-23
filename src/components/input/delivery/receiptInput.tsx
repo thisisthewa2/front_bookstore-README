@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useAtom } from 'jotai';
+import { deliveryInfoAtom } from '@/store/deliveryInfo';
 
 // 받는 분 입력 필드 컴포넌트
 interface RecipientInputProps {
@@ -7,9 +9,21 @@ interface RecipientInputProps {
 }
 function RecipientInput({ isDefault, value }: RecipientInputProps) {
   const [recipient, setRecipient] = useState('');
+  const [, setDeliveryInfo] = useAtom(deliveryInfoAtom);
+
   function handleInputChange(inputValue: string) {
     setRecipient(inputValue);
   }
+
+  function handleInputBlur() {
+    if (!isDefault) {
+      setDeliveryInfo((prevDeliveryInfo) => ({
+        ...prevDeliveryInfo,
+        name: recipient,
+      }));
+    }
+  }
+
   return (
     <div className="flex text-16 text-gray-3">
       <label htmlFor="recipient" className="mr-45 inline-flex items-center">
@@ -28,6 +42,7 @@ function RecipientInput({ isDefault, value }: RecipientInputProps) {
             handleInputChange(event.target.value);
           }
         }}
+        onBlur={handleInputBlur}
         disabled={isDefault}
       />
     </div>
