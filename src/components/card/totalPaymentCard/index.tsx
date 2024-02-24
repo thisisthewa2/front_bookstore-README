@@ -4,8 +4,7 @@ import { REQUIRED_FOR_PAYMENT } from 'src/constants/sign';
 import useCalculateTotalPrice from '@/hooks/common/useCalculateTotalPrice';
 import useCalculateProductsPrice from '@/hooks/common/useCalculateProductsPrice';
 import PaymentButton from '@/components/button/payment/paymentButton';
-import { useForm, FormProvider } from 'react-hook-form';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 interface TotalPriceCardProps {
   checkbox?: boolean;
@@ -13,9 +12,6 @@ interface TotalPriceCardProps {
   color?: string;
   delivery?: number;
   discount?: number;
-}
-interface FormDataType {
-  selectAll: boolean;
 }
 
 function TotalPriceCard({

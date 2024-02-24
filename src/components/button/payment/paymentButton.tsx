@@ -3,6 +3,12 @@ import { notify } from '@/components/toast/toast';
 import useCalculateProductsPrice from '@/hooks/common/useCalculateProductsPrice';
 import useCalculateTotalPrice from '@/hooks/common/useCalculateTotalPrice';
 import { useRouter } from 'next/router';
+import { deliveryInfoAtom } from '@/store/deliveryInfo';
+import { useAtomValue } from 'jotai';
+import { basketItemList } from '@/store/state';
+import { DeliveryOrderBook } from '@/api/delivery';
+import { usePostDelivery } from '@/api/delivery';
+import { PostDeliveryOption } from '@/api/delivery';
 interface PaymentButtonProps {
   isAllChecked?: boolean;
 }
@@ -11,13 +17,28 @@ interface response {
   success: boolean;
 }
 function PaymentButton({ isAllChecked }: PaymentButtonProps) {
+  const deliveryInfo = useAtomValue(deliveryInfoAtom);
+  const booksInfo = useAtomValue(basketItemList);
   const router = useRouter();
   const bookPrice = useCalculateProductsPrice();
+  let clicked = false;
   const delivery = bookPrice > 30000 ? 0 : 3000;
   const totalPrice = useCalculateTotalPrice({
     delivery: delivery,
     discount: 0,
   });
+
+  // orderbooks 초기화
+  const orderBooks: DeliveryOrderBook[] = [];
+
+  // booksInfo 반복문을 사용하여 orderbooks에 bookid와 count를 추가
+  booksInfo.forEach((book) => {
+    orderBooks.push({
+      bookId: book.bookId,
+      quantity: book.count,
+    });
+  });
+
   // 결제창 함수
   function kakaoPay(useremail: string, username: string) {
     if (typeof window !== 'undefined') {
@@ -62,7 +83,9 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
   }
   const { data } = useGetMember();
   // 결제 함수 호출
+
   function handlePaymentButtonClick() {
+    clicked = !clicked;
     if (isAllChecked) {
       const user_email = data.email;
       const username = '안윤진';
@@ -75,6 +98,20 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
     }
   }
 
+  const orderInfo: PostDeliveryOption = {
+    name: deliveryInfo.name,
+    phone: deliveryInfo.phone,
+    address: deliveryInfo.address,
+    message: deliveryInfo.message,
+    paymentMethod: 'KAKAO_PAY',
+    paymentAmount: totalPrice,
+    basketIds: [],
+    OrderBooks: orderBooks,
+    isDefault: deliveryInfo?.isDefault || false,
+    enabled: clicked && isAllChecked,
+  };
+
+  usePostDelivery(orderInfo); // 약관동의 & 결제 버튼 클릭일 때에만 실행
   return (
     <>
       <div className="borer-primary border-t-1 fixed bottom-0 left-0 z-[100] w-full border bg-white px-40 py-10 pc:hidden">

@@ -14,11 +14,10 @@ function ShippingAddressSection() {
   //const { data } = useGetMember();
   const [isDefault, setIsDefault] = useState(true);
   const [, setDeliveryInfo] = useAtom(deliveryInfoAtom);
-  const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsDefault(event.target.id === 'defaultAddress');
+  const handleOptionChange = () => {
+    setIsDefault(!isDefault);
     setDeliveryInfo((prevDeliveryInfo) => ({
       ...prevDeliveryInfo,
-      isDefault: event.target.id === 'defaultAddress',
     }));
   };
 
