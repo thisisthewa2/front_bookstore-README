@@ -9,7 +9,7 @@ export const useFetch = <T>(
   const context = useQuery({
     queryKey: [queryKey, params],
     queryFn: () => queryFn(params),
-    enabled: !!enabled ?? true
+    enabled: enabled ? !!`${enabled}` : true,
   });
 
   return context;
