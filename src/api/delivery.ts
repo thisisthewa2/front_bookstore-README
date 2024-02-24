@@ -22,17 +22,15 @@ export interface DeliveryOrderBook {
 //배달 등록
 //TODO : api 나오면 interface type 수정필요
 export interface PostDeliveryOption {
-  option: {
-    name: string;
-    phone: string;
-    address: string;
-    message: string;
-    paymentMethod: string;
-    paymentAmount: number;
-    basketIds: number[];
-    OrderBooks: DeliveryOrderBook[];
-    isDefault: boolean;
-  };
+  name: string;
+  phone: string;
+  address: string;
+  message: string;
+  paymentMethod: string;
+  paymentAmount: number;
+  basketIds: number[];
+  OrderBooks: DeliveryOrderBook[];
+  isDefault: boolean;
   enabled?: any;
 }
 

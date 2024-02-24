@@ -6,16 +6,20 @@ import ShippingOptionRadio from '@/components/button/delivery/shippingOptionRadi
 import SetDefaultAddressButton from '@/components/button/delivery/setDefaultAddressButton';
 import DeliveryDropDown from '@/components/dropDown/deliveryDropDown';
 import { MOCK_ADDRESS } from '@/constants/address';
+//import { useGetMember } from '@/api/member';
+import { deliveryInfoAtom } from '@/store/deliveryInfo';
+import { useAtom } from 'jotai';
 
-/*
-TODO
-기본 배송지 선택 시 api get 요청 연결
-*/
 function ShippingAddressSection() {
+  //const { data } = useGetMember();
   const [isDefault, setIsDefault] = useState(true);
-
+  const [, setDeliveryInfo] = useAtom(deliveryInfoAtom);
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsDefault(event.target.id === 'defaultAddress');
+    setDeliveryInfo((prevDeliveryInfo) => ({
+      ...prevDeliveryInfo,
+      isDefault: event.target.id === 'defaultAddress',
+    }));
   };
 
   return (
