@@ -28,7 +28,7 @@ export interface PostDeliveryOption {
   message: string;
   paymentMethod: string;
   paymentAmount: number;
-  basketIds: number[];
+  basketIds: (number | undefined)[];
   OrderBooks: DeliveryOrderBook[];
   isDefault: boolean;
   enabled?: any;

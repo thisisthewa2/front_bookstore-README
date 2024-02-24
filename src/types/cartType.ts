@@ -9,6 +9,7 @@ export type CartItem = {
 };
 
 export type PayMentAtom = {
+  basketId?: number;
   bookId: number;
   bookImgUrl: string;
   bookTitle: string;
