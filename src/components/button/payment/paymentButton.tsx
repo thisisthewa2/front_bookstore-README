@@ -4,11 +4,12 @@ import useCalculateProductsPrice from '@/hooks/common/useCalculateProductsPrice'
 import useCalculateTotalPrice from '@/hooks/common/useCalculateTotalPrice';
 import { useRouter } from 'next/router';
 import { deliveryInfoAtom } from '@/store/deliveryInfo';
-import { useAtomValue } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import { basketItemList } from '@/store/state';
 import { DeliveryOrderBook } from '@/api/delivery';
 import { usePostDelivery } from '@/api/delivery';
 import { PostDeliveryOption } from '@/api/delivery';
+import { deliveryIdAtom } from '@/store/deliveryInfo';
 interface PaymentButtonProps {
   isAllChecked?: boolean;
 }
@@ -18,6 +19,7 @@ interface response {
 }
 function PaymentButton({ isAllChecked }: PaymentButtonProps) {
   const deliveryInfo = useAtomValue(deliveryInfoAtom);
+  const [deliveryId, setDeliveryId] = useAtom(deliveryIdAtom);
   const booksInfo = useAtomValue(basketItemList);
   const router = useRouter();
   const bookPrice = useCalculateProductsPrice();
@@ -28,8 +30,11 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
     discount: 0,
   });
 
+  console.log('basket이다요' + booksInfo[0].basketId);
+
   // orderbooks 초기화
   const orderBooks: DeliveryOrderBook[] = [];
+  const basketIds: (number | undefined)[] = [];
 
   // booksInfo 반복문을 사용하여 orderbooks에 bookid와 count를 추가
   booksInfo.forEach((book) => {
@@ -37,6 +42,7 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
       bookId: book.bookId,
       quantity: book.count,
     });
+    basketIds.push(book?.basketId);
   });
 
   // 결제창 함수
@@ -83,7 +89,7 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
   }
   const { data } = useGetMember();
   // 결제 함수 호출
-
+  console.log('아이디다욧' + deliveryId);
   function handlePaymentButtonClick() {
     clicked = !clicked;
     if (isAllChecked) {
@@ -105,13 +111,15 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
     message: deliveryInfo.message,
     paymentMethod: 'KAKAO_PAY',
     paymentAmount: totalPrice,
-    basketIds: [],
+    basketIds: basketIds,
     OrderBooks: orderBooks,
     isDefault: deliveryInfo?.isDefault || false,
     enabled: clicked && isAllChecked,
   };
 
-  usePostDelivery(orderInfo); // 약관동의 & 결제 버튼 클릭일 때에만 실행
+  const { data: deliveryId2 } = usePostDelivery(orderInfo); // 약관동의 & 결제 버튼 클릭일 때에만 실행
+  setDeliveryId(deliveryId2.deliveryId);
+  console.log('배송이다욧!' + deliveryId);
   return (
     <>
       <div className="borer-primary border-t-1 fixed bottom-0 left-0 z-[100] w-full border bg-white px-40 py-10 pc:hidden">

@@ -8,3 +8,5 @@ export const deliveryInfoAtom = atom<DeliveryInfo>({
   message: '',
   isDefault: false,
 });
+
+export const deliveryIdAtom = atom(null);
