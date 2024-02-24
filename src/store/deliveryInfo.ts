@@ -6,4 +6,5 @@ export const deliveryInfoAtom = atom<DeliveryInfo>({
   phone: '',
   address: '',
   message: '',
+  isDefault: false,
 });

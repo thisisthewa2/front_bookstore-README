@@ -3,4 +3,5 @@ export interface DeliveryInfo {
   phone: string;
   address: string;
   message: string;
+  isDefault?: boolean;
 }
