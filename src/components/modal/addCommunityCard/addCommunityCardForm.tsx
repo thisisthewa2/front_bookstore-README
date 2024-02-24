@@ -3,12 +3,15 @@ import useFormControl from '@/hooks/useFormControl';
 import ModalSearchInput from '@/components/input/modalSearchInput';
 import { useState } from 'react';
 import { useAtom } from 'jotai';
-import { CurrentPageStateAtom } from '@/store/state';
+import { CurrentPageStateAtom, chooseBookIdAtom } from '@/store/state';
 import PreviewBookInfoPagination from '@/components/modal/addCommunityCard/previewBookInfoPagination';
 import Input from '@/components/input/input';
+import NoData from './noData';
 import { usePostCommunity, usePutCommunity } from '@/api/community';
 import { useSession } from 'next-auth/react';
 import { AddCommunityCardProps } from '.';
+import PreviewBookInfo from '@/components/book/previewBookInfo/previewBookInfo';
+import { useGetBook } from '@/api/book';
 
 function AddCommunityCardForm({
   onClick,
@@ -18,35 +21,55 @@ function AddCommunityCardForm({
   review,
 }: AddCommunityCardProps) {
   const { data: session } = useSession();
+  const [chooseBookId] = useAtom(chooseBookIdAtom);
   const { control, handleSubmit, isButtonActive, onSubmit } = useFormControl({
     postFn: usePostCommunity,
     putFn: usePutCommunity,
     edit: edit,
-    bookId: 35,
-    option: {required : session?.memberId, optional : communityId},
+    bookId: chooseBookId,
+    option: { required: session?.memberId, optional: communityId },
     onClick: onClick,
     initialValue: { content: review },
   });
   const [search, setSearch] = useState('');
-  const [CurrentPage, setCurrentPage] = useAtom(CurrentPageStateAtom);
+  const [_, setCurrentPage] = useAtom(CurrentPageStateAtom);
 
-  //TODO:pagination데이터 필요
+  const { data: chooseBookData } = useGetBook({
+    endpoint: String(bookId),
+    params: {},
+    enabled: bookId,
+  });
+
   const handleSearch = (value: string) => {
     setSearch(value);
     setCurrentPage(1);
-    console.log(bookId, CurrentPage)
   };
 
   return (
     <form
-      className="flex w-full flex-col gap-40 mobile:gap-20"
+      className="flex w-full flex-col gap-40 overflow-scroll mobile:gap-20"
       onSubmit={handleSubmit(onSubmit)}>
       <ModalSearchInput
         placeholder="책 제목, 작가 등을 검색해주세요"
         onSearch={handleSearch}
       />
-      <div className="flex-center h-323 w-full flex-col gap-22">
-        {search && <PreviewBookInfoPagination search={search} />}
+      <div className="flex-center h-323 w-full flex-col gap-22 mobile:h-330 ">
+        {search ? (
+          <PreviewBookInfoPagination search={search} />
+        ) : (
+          !edit && <NoData />
+        )}
+        {edit && chooseBookData && (
+          <div className="flex w-full justify-start">
+            <PreviewBookInfo
+              size="xs"
+              image={chooseBookData.data.bookImgUrl}
+              title={chooseBookData.data.bookTitle}
+              authorList={chooseBookData.data.authors}
+              community={true}
+            />
+          </div>
+        )}
       </div>
       <Input
         type="text"

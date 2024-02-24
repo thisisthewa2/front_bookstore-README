@@ -1,14 +1,23 @@
-import { postLogin, postSignup } from '@/api/member';
+import { postSignup } from '@/api/member';
 import { Login, Signup } from '@/types/api/member';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { AxiosError } from 'axios';
 import { notify } from '@/components/toast/toast';
+import { signIn } from 'next-auth/react';
 
 function useSignUpMutation() {
   const router = useRouter();
   const loginMutation = useMutation({
-    mutationFn: (data: Login) => postLogin(data),
+    mutationFn: async (data: Login) => {
+      const { email, password } = data;
+      await signIn('signin-credentials', {
+        email,
+        password,
+        redirect: false,
+        callbackUrl: '/',
+      });
+    },
     onSuccess: () => router.push('/'),
   });
 

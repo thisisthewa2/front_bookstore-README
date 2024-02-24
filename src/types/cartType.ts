@@ -1,5 +1,6 @@
 export type CartItem = {
   basketId: number;
+  bookId: number;
   bookImgUrl: string;
   bookTitle: string;
   price: number;
@@ -8,8 +9,7 @@ export type CartItem = {
 };
 
 export type PayMentAtom = {
-  basketId?: number;
-  bookId?: number;
+  bookId: number;
   bookImgUrl: string;
   bookTitle: string;
   price: number;

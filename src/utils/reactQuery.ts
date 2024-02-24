@@ -4,12 +4,12 @@ export const useFetch = <T>(
   queryKey: string,
   queryFn: (option: T) => Promise<any>,
   params: T,
-  enabled?: boolean,
+  enabled?: any,
 ) => {
   const context = useQuery({
     queryKey: [queryKey, params],
     queryFn: () => queryFn(params),
-    enabled: enabled ?? true,
+    enabled: !!enabled ?? true
   });
 
   return context;

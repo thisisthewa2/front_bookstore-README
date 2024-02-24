@@ -27,7 +27,7 @@ function usePayNowItem({
   const router = useRouter();
   const setNowPayItemList: PayMentAtom[] = [
     {
-      basketId: bookId,
+      bookId: bookId,
       bookImgUrl: bookImgUrl,
       bookTitle: bookTitle,
       price: price,

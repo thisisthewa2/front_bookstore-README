@@ -35,7 +35,7 @@ export default function BookDetailPage() {
     },
   });
   let bookData = data?.data;
-
+  console.log(bookData);
   // 로그인 한 상태라면 찜 여부 체크하기
   const { data: bookmarkData } = useGetIsBookmarked({
     bookId: String(bookId),
@@ -94,7 +94,12 @@ export default function BookDetailPage() {
       <div className="flex-center w-full max-w-[1200px] flex-col">
         <section className="tablet:flex-center mobile:flex-center mb-100 flex w-full gap-30 p-40 pt-120 mobile:p-19 mobile:pt-40">
           <div className="w-[100%] min-w-330 max-w-[710px]">
-            {location === 'information' && <BookInformation />}
+            {location === 'information' && (
+              <BookInformation
+                bookImgUrl={bookData?.bookImgUrl}
+                description={bookData?.description}
+              />
+            )}
             {location === 'review' && (
               <Review
                 bookId={bookId as string}

@@ -16,7 +16,7 @@ import { useMemo, useState } from 'react';
 function MyOrderPage() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [selectedItem, setSelectedItem] = useState('전체보기');
+  const [selectedItem, setSelectedItem] = useState(ORDER_DROPDOWN_MENUS[0]);
   const onSelectedItem = (menu: string) => setSelectedItem(menu);
   const onStartDate = (startDate: Date) => setStartDate(startDate);
   const onEndDate = (endDate: Date) => setEndDate(endDate);

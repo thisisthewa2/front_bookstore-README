@@ -5,7 +5,6 @@ import { forwardRef } from 'react';
 import ko from 'date-fns/locale/ko';
 import Image from 'next/image';
 import { getDateAgo } from '@/utils/getTimeAgo';
-import { Person } from '@/types/orderDateType';
 
 export type OrderDateProps = {
   pastDate: string;
@@ -14,7 +13,6 @@ export type OrderDateProps = {
   setSelectedItem: Dispatch<SetStateAction<string>>;
   setStartDate: (startDate: Date) => void;
   setEndDate: (endDate: Date) => void;
-  // person: Person;
 };
 
 const CustomOrderInput = forwardRef(function MyInput(props: any, ref) {
@@ -32,7 +30,6 @@ const CustomOrderInput = forwardRef(function MyInput(props: any, ref) {
 });
 
 function OrderDate({
-  // person,
   pastDate,
   startDate,
   endDate,
@@ -48,7 +45,6 @@ function OrderDate({
   const aYearAgo = getDateAgo(365);
 
   const selectedAgo = [
-    ['전체보기', endDate],
     ['최근 1개월', aMonthAgo],
     ['최근 3개월', threeMonthAgo],
     ['최근 6개월', sixMonthAgo],
@@ -69,17 +65,6 @@ function OrderDate({
     if (pastDate === '직접 입력') {
       setStartDate(new Date());
       setEndDate(endDate);
-    }
-    if (pastDate === '전체보기') {
-      setStartDate(new Date());
-      setEndDate(new Date());
-      // if (!person.isPurchased) {
-      //   setStartDate(new Date());
-      //   setEndDate(new Date());
-      // } else if (person.isPurchased === true) {
-      //   setStartDate(new Date(person.firstPurchasedDate));
-      //   setEndDate(new Date());
-      // }
     }
   }, [pastDate]);
 

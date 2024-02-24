@@ -3,7 +3,7 @@ import React from 'react';
 
 function VacantCustomLayout() {
   return (
-    <div className="flex h-482 flex-col items-center justify-center bg-gray-6 mobile:h-205 tablet:h-324">
+    <div className="flex h-482 flex-col items-center justify-center bg-pink mobile:h-205 tablet:h-324">
       <div className="mb-25">
         <p className="text-20 font-bold text-black">
           해당하는 맞춤도서가 없습니다.

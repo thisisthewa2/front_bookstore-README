@@ -1,8 +1,8 @@
-import { BookParams, SortType } from '@/types/api/book';
+import { BookParams, Sort } from '@/types/api/book';
 const INITIAL_LIMIT = '100';
 const INITIAL_ASCENDING = false;
 
-const useInitialBestNewestParams = ({ sort }: SortType) => {
+const useInitialBestNewestParams = ({ sort }: Sort) => {
   const INITIAL_PARAMS = {
     limit: INITIAL_LIMIT,
     sort: sort,

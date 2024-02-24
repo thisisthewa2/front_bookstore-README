@@ -1,7 +1,7 @@
 import { BookOverviewType2 } from '@/types/bookOverviewType';
 import { THOUSAND_UNIT } from 'src/constants/price';
 import LikeButton from '@/components/button/likeButton';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import BookRating from '@/components/book/bookRating/bookRating';
 import ActionButton from '@/components/button/actionButton';
 import Link from 'next/link';
@@ -12,7 +12,7 @@ import formatDate from '@/hooks/useFormatDate';
 import { useAddToBasket } from '@/hooks/api/useAddToBasket';
 import MobileBookOverViewCard from './bookOverviewMobile';
 import { useSetAtom } from 'jotai';
-import { CartItem } from '@/types/cartType';
+import { PayMentAtom } from '@/types/cartType';
 import { basketItemList } from '@/store/state';
 import { useUpdateBookmark } from '@/hooks/api/useUpdateBookmark';
 
@@ -38,9 +38,9 @@ function BookOverviewCard({ book, rank }: BookOverviewType2) {
   });
 
   const setNowPayItem = useSetAtom(basketItemList);
-  const setNowPayItemList: CartItem[] = [
+  const setNowPayItemList: PayMentAtom[] = [
     {
-      basketId: book.bookId,
+      bookId: book.bookId,
       bookImgUrl: book.bookImgUrl,
       bookTitle: book.bookTitle,
       price: book.price,

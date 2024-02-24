@@ -7,7 +7,9 @@ import { responsive } from '@/utils/checkResponsiveEnv';
 import TodayBestSection from '@/components/container/todayBestSection/todayBestSection';
 import { useGetBook } from '@/api/book';
 import { BookData } from '@/types/api/book';
+import { useSession } from 'next-auth/react';
 function Home() {
+  const { status } = useSession();
   const { data: newest } = useGetBook({
     endpoint: '0/main',
     params: {
@@ -47,7 +49,7 @@ function Home() {
             pc:w-[247px]"
         />
       </div>
-      <CustomSection isLoggedIn={true} isGenreSelected={true} />
+      <CustomSection isLoggedIn={status === 'authenticated'} />
       <div className="mt-80 mobile:mb-80 tablet:mb-120 pc:mb-140">
         <Carousel data={newestList} responsive={responsive} />
       </div>

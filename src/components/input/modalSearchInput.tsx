@@ -9,7 +9,7 @@ interface SearchInput {
 }
 
 function ModalSearchInput({ placeholder, onSearch }: SearchInput) {
-  const { value, setValue, handleInputChange, handleSearch } =
+  const { value, handleInputChange, handleSearch, handleEraserValue } =
     useSearchDebounce(onSearch);
 
   return (
@@ -26,7 +26,7 @@ function ModalSearchInput({ placeholder, onSearch }: SearchInput) {
           alt="검색창 지우기"
           width={18}
           height={18}
-          onClick={() => setValue('')}
+          onClick={handleEraserValue}
         />
       )}
       <div className="relative h-18 w-18" onClick={handleSearch}>

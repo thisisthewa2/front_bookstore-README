@@ -6,6 +6,8 @@ import NoProfileImg from '@/public/icons/Noprofile.svg';
 import { useState } from 'react';
 import AlertModal from '@/components/modal/alertModal';
 import AddCommunityCard from '@/components/modal/addCommunityCard';
+import { useAtom } from 'jotai';
+import { chooseBookIdAtom } from '@/store/state';
 
 function CommunityCard({
   communityId,

@@ -5,7 +5,7 @@
 import { PayMentAtom } from '@/types/cartType';
 export const bookOrderTestData2: PayMentAtom[] = [
   {
-    basketId: 1,
+    // basketId: 1,
     bookId: 22,
     bookImgUrl:
       'https://image.aladin.co.kr/product/33341/98/cover200/k222938702_1.jpg',

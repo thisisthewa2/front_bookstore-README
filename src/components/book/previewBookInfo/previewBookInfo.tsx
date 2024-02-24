@@ -24,6 +24,8 @@ function PreviewBookInfo({
   itemsStart,
   bookId,
   isUnit,
+  community = false,
+  onClick,
 }: PreviewBookInfoProps) {
   const STYLE = {
     img: `${IMAGE_SIZE[size].pc} ${IMAGE_SIZE[size].tablet} ${IMAGE_SIZE[size].mobile}`,
@@ -32,11 +34,15 @@ function PreviewBookInfo({
   };
 
   return (
-    <Link href={`/bookdetail/${bookId}`}>
-      <div className={`relative flex flex-col ${STYLE.width}`}>
+    <Link
+      href={community ? '#' : `/bookdetail/${bookId}`}
+      >
+      <div
+        className={`relative flex flex-col ${STYLE.width}`}
+        onClick={onClick}>
         <div
           className={`${STYLE.img} flex flex-col ${itemsStart ? 'justify-start' : 'relative justify-end'}
-          overflow-hidden`}>
+          overflow-hidden}`}>
           <div>
             <Image
               src={image || DefaultImage}

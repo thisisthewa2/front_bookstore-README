@@ -20,4 +20,11 @@ export const IMAGE_SIZE = {
     widthOnly: 'w-112 tablet:w-122 mobile:w-93',
     heightNumber: { pc: 172, tablet: 167, mobile: 141 },
   },
+  xs: {
+    pc: 'w-137 h-209',
+    tablet: 'tablet:w-137 tablet:h-209',
+    mobile: 'mobile:w-93 mobile:h-141',
+    widthOnly : 'w-137 tablet:w-137 mobile:w-93',
+    heightNumber: { pc: 172, tablet: 167, mobile: 141 },
+  }
 };

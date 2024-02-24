@@ -1,7 +1,9 @@
+import { SetStateAction } from 'jotai';
 import { StaticImageData } from 'next/image';
+import { MouseEventHandler } from 'react';
 
 export interface PreviewBookInfoSizeProps {
-  size: 'sm' | 'md' | 'lg';
+  size: 'xs' |'sm' | 'md' | 'lg';
 }
 
 export interface PreviewBookInfoProps extends PreviewBookInfoSizeProps {
@@ -15,4 +17,6 @@ export interface PreviewBookInfoProps extends PreviewBookInfoSizeProps {
   category?: string;
   bookId?: number;
   isUnit?: boolean;
+  community?: boolean;
+  onClick?: () => void;
 }

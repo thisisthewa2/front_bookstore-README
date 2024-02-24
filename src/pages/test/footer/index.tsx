@@ -20,7 +20,7 @@ function Home() {
             pc:w-[247px]"
         />
       </div>
-      <CustomSection isLoggedIn={true} isGenreSelected={true} />
+      <CustomSection isLoggedIn={true} />
       <TodayBestSection />
       <BestSellerSection page={'main'} />
       <Footer />

@@ -7,6 +7,13 @@ function useSearchDebounce(onSearch?: (searchTerm: string) => void) {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setValue(e.target.value);
   };
+  
+  const handleEraserValue = () => {
+    setValue('');
+    if(onSearch) {
+      onSearch('')
+    }
+  }
 
   // Debounce
   useEffect(() => {
@@ -25,7 +32,7 @@ function useSearchDebounce(onSearch?: (searchTerm: string) => void) {
     }
   };
 
-  return { value, setValue, handleInputChange, handleSearch };
+  return { value, handleInputChange, handleSearch, handleEraserValue };
 }
 
 export default useSearchDebounce;

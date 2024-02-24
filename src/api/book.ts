@@ -1,4 +1,4 @@
-import { BookParams, putBookPath } from '@/types/api/book';
+import { BookParams, BookParamsV2, putBookPath } from '@/types/api/book';
 import { useFetch, useUpdate } from '@/utils/reactQuery';
 import { QUERY_KEY } from 'src/constants/queryKey';
 import { instance } from 'src/libs/instance';
@@ -6,9 +6,10 @@ import { instance } from 'src/libs/instance';
 interface GetBookOption {
   endpoint?: string;
   params?: BookParams;
+  enabled?: any;
 }
 
-//책 전체 가져오기, 도서 단일 조회, 책 페이징 조회,
+//책 전체 가져오기, 도서 단일 조회
 export const getBook = async (option: GetBookOption) => {
   const { endpoint, params } = option;
   const result = await instance.get(`/book${endpoint ? `/${endpoint}` : ''}`, {
@@ -18,8 +19,22 @@ export const getBook = async (option: GetBookOption) => {
 };
 
 export const useGetBook = (option: GetBookOption) => {
-  return useFetch(QUERY_KEY.book, getBook, option);
+  return useFetch(QUERY_KEY.book, getBook, option, option?.enabled);
 };
+
+//책 전체 infinite, pagination 둘다 가능
+const getPageBook = async (params : BookParamsV2 ) => {
+  const result = await instance.get(`book/v2`, {
+    params,
+  })
+
+  return result.data;
+}
+
+export const useGetPageBook = (params : BookParamsV2) => {
+  return useFetch(QUERY_KEY.book, getPageBook, params, params?.enabled)
+}
+
 
 //도서 조회수 증가
 const putBookView = async (option: putBookPath) => {

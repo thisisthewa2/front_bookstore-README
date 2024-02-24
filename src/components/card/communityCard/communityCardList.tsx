@@ -14,10 +14,10 @@ function CommunityCardList({ communityData, kebab }: CommunityCardListProps) {
           <div
             key={index}
             className="grid auto-rows-auto grid-cols-3 gap-20 mobile:grid-cols-1 tablet:grid-cols-2 mb-20">
-            {data?.cards.map((card: CommunityCardsProps) => {
+            {data?.cards.map((card: CommunityCardsProps, index) => {
               return (
                 <CommunityCard
-                  key={card?.bookInfo.bookId}
+                  key={index}
                   communityId={card.communityId}
                   profileImg={card?.writer?.profileImg}
                   userNickname={card?.writer.nickname}

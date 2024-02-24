@@ -1,5 +1,4 @@
 export const ORDER_DROPDOWN_MENUS = [
-  '전체보기',
   '최근 1개월',
   '최근 3개월',
   '최근 6개월',

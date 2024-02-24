@@ -67,8 +67,8 @@ function CartPayment({
         <span>{totalDiscount.toString().replace(THOUSAND_UNIT, ',')}원</span>
       </div>
       <div className="mb-40 flex justify-between mobile:mb-10">
-        <span className="text-primary text-15 font-bold">결제 금액</span>
-        <span className="text-25 text-primary font-bold">
+        <span className="text-15 font-bold text-primary">결제 금액</span>
+        <span className="text-25 font-bold text-primary">
           {calculatePaymentFee(totalAmount, totalDiscount)
             .toString()
             .replace(THOUSAND_UNIT, ',')}
@@ -77,7 +77,7 @@ function CartPayment({
       </div>
       <div className="bottom-0 left-0 w-full bg-white mobile:fixed mobile:px-15 mobile:py-10">
         <button
-          className="bg-primary w-full rounded-[5px] py-15 text-center text-white"
+          className="w-full rounded-[5px] bg-primary py-15 text-center text-white"
           onClick={() => {
             selectedItemArr.length > 0
               ? handleMovePayMentPage()
