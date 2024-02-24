@@ -15,21 +15,24 @@ export const useGetDelivery = (id: number) => {
   return useFetch(QUERY_KEY.delivery, getDelivery, id);
 };
 
-interface DeliveryOrderBook {
+export interface DeliveryOrderBook {
   bookId: number;
   quantity: number;
 }
 //배달 등록
 //TODO : api 나오면 interface type 수정필요
 export interface PostDeliveryOption {
-  name: string;
-  phone: string;
-  address: string;
-  message: string;
-  paymentMethod: string;
-  paymentAmount: number;
-  basketIds: number[];
-  OrderBooks: DeliveryOrderBook[];
+  option: {
+    name: string;
+    phone: string;
+    address: string;
+    message: string;
+    paymentMethod: string;
+    paymentAmount: number;
+    basketIds: number[];
+    OrderBooks: DeliveryOrderBook[];
+  };
+  enabled?: any;
 }
 
 const postDelivery = async (option: PostDeliveryOption) => {
@@ -40,7 +43,7 @@ const postDelivery = async (option: PostDeliveryOption) => {
 };
 
 export const usePostDelivery = (option: PostDeliveryOption) => {
-  return useUpdate(postDelivery, option);
+  return useUpdate(postDelivery, option, option.enabled);
 };
 
 //배달상태 수정
