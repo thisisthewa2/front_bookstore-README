@@ -1,19 +1,21 @@
 import ModalLayout from '@/components/modal/modalLayout';
 import RegisterButton from '@/components/button/register/registerButton';
 import { useDeleteCommunity } from '@/api/community';
-import { useSession } from 'next-auth/react';
+import { UseMutationResult } from '@tanstack/react-query';
 
 interface AlertModalProps {
   title: string;
   description: string;
   onClick: () => void;
+  Fn?: (id: number | undefined) => UseMutationResult<any, Error, void, unknown>;
   id?: number;
 }
-function AlertModal({ title, description, onClick, id }: AlertModalProps) {  
-  const mutation = useDeleteCommunity(id)
+function AlertModal({ title, description, onClick, Fn ,id }: AlertModalProps) {  
+  const mutation = Fn ? Fn(id) : null;
 
   const handleDelete = () => {
-    mutation.mutate();
+    if (mutation) mutation.mutate();
+    onClick();
   }
 
   return (

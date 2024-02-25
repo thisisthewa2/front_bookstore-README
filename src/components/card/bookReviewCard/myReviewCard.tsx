@@ -11,7 +11,8 @@ import BookTitle from '@/components/book/bookTitle/bookTitle';
 import useFormatDate from '@/hooks/useFormatDate';
 import { MyReviewData } from '@/types/api/review';
 import AlertModal from '@/components/modal/alertModal';
-import AddCommunityCard from '@/components/modal/addCommunityCard';
+import AddReview from '@/components/modal/addReview';
+import { useDeleteReview } from '@/api/review';
 
 function MyReviewCard({
   bookId,
@@ -25,11 +26,11 @@ function MyReviewCard({
 }: MyReviewData) {
   const [isSummarized, setIsSummarized] = useState(true);
   const formatDate = useFormatDate(updateDate);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
 
-  const handleEditModalOpenClick = () => {
-    setIsEditModalOpen(!isEditModalOpen);
+  const handleReviewModalOpenClick = () => {
+    setIsReviewModalOpen(!isReviewModalOpen);
   };
   const handleAlertModalOpenClick = () => {
     setIsAlertModalOpen(!isAlertModalOpen);
@@ -58,7 +59,7 @@ function MyReviewCard({
             />
             <BookAuthor authorList={authors} classNames="line-clamp-2" />
             <div className="absolute right-0 top-0 h-18 w-18 mobile:-right-10 mobile:-top-20">
-              <KebabButton title1="수정하기" title2="삭제하기" id={reviewId} />
+              <KebabButton title1="수정하기" title2="삭제하기" onClickTitle1={handleReviewModalOpenClick} onClickTitle2={handleAlertModalOpenClick} id={reviewId} />
             </div>
             <div className="flex-center gap-10 whitespace-nowrap">
               <BookRating rating={reviewRating} />
@@ -89,14 +90,16 @@ function MyReviewCard({
       <div className="pt-32  tablet:hidden pc:hidden">
         <div className="h-1 w-full border border-gray-1"></div>
       </div>
-      {isEditModalOpen && (
-        <AddCommunityCard onClick={handleEditModalOpenClick} />
+      {isReviewModalOpen && (
+        <AddReview onClick={handleReviewModalOpenClick} bookId={bookId} bookTitle={bookTitle} authors={authors} review={content} rating={reviewRating}/>
       )}
       {isAlertModalOpen && (
         <AlertModal
           title="정말 삭제하시겠습니까?"
           description="삭제한 글은 복구할 수 없습니다."
           onClick={handleAlertModalOpenClick}
+          Fn={useDeleteReview}
+          id={reviewId}
         />
       )}
     </div>

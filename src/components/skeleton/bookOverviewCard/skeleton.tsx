@@ -1,6 +1,6 @@
 import { PreviewBookInfoSizeProps } from '@/types/previewBookInfoType';
 import { SKELETON_COMMON_STYLE } from 'src/constants/style/skeletonCommonStyle';
-import SkeletonPreviewBookImage from '../previewBookImage/skeleton';
+import SkeletonPreviewBookImage from '@/components/skeleton/previewBookImage/skeleton';
 
 function SkeletonBookOverviewCard({ size }: PreviewBookInfoSizeProps) {
   return (

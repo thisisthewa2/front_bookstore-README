@@ -8,6 +8,7 @@ import AlertModal from '@/components/modal/alertModal';
 import AddCommunityCard from '@/components/modal/addCommunityCard';
 import { useAtom } from 'jotai';
 import { chooseBookIdAtom } from '@/store/state';
+import { useDeleteCommunity } from '@/api/community';
 
 function CommunityCard({
   communityId,
@@ -77,6 +78,7 @@ function CommunityCard({
           title="정말 삭제하시겠습니까?"
           description="삭제한 글은 복구할 수 없습니다."
           onClick={handleAlertModalOpenClick}
+          Fn={useDeleteCommunity}
           id={communityId}
         />
       )}

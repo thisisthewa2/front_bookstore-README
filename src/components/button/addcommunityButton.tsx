@@ -1,7 +1,7 @@
 import AddCommunityButtonImg from '@/public/icons/AddCommunityButton.svg';
 import Image from 'next/image';
 import { useState } from 'react';
-import AddCommunityCard from '../modal/addCommunityCard';
+import AddCommunityCard from '@/components/modal/addCommunityCard';
 
 function AddCommunityButton() {
   const [isModalOpen, setIsModalOpen] = useState(false);

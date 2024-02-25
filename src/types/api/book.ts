@@ -21,8 +21,8 @@ export interface BookParams extends Sort {
 
 export interface BookParamsV2 {
   navigationMethod: 'INFINITE_SCROLL' | 'PAGINATION';
-  sortType: SortType;
-  ascending: true | false;
+  sortType?: SortType | string;
+  ascending?: true | false;
   cursorId?: string;
   offset?: string;
   limit?: string;

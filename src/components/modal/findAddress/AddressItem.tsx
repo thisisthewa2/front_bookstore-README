@@ -1,14 +1,8 @@
 import TitleContentTable from '@/components/modal/addReview/titleContentTable';
 import Image from 'next/image';
 import LineIcon from '@/public/icons/Line.svg';
-import { Address } from '@/types/address';
 import { useAtom } from 'jotai';
-import {
-  setAddressData,
-  zipNoAtom,
-  roadAddrAtom,
-  jibunAddrAtom,
-} from '@/store/address';
+import { setAddressData } from '@/store/address';
 
 interface AddressItemProps {
   zipNo: string;

@@ -1,37 +1,41 @@
-import Image from "next/image";
-import Link from "next/link";
+import AdvertisementCard from '@/components/card/advertisementCard/advertisementCard';
+import EventCarousel from '@/components/carousel/eventCarousel';
+import { EVENT_SECTION_SIZE } from '@/constants/style/eventSectionSize';
+import { StaticImageData } from 'next/image';
 
 interface EventSectionProps {
   adsLink?: string;
-  adsImg?: string;
-  adsSizeClassName: string;
+  adsImg?: string | StaticImageData;
   eventLink?: string;
-  eventImg?: string;
-  eventSizeClassName: string;
+  eventImgs?: {
+    pc: StaticImageData[] | string[];
+    mobile: StaticImageData[] | string[];
+  };
+  eventSize: 'main' | 'category';
 }
 
 function EventSection({
   adsLink,
   adsImg,
-  adsSizeClassName,
   eventLink,
-  eventImg,
-  eventSizeClassName,
+  eventImgs,
+  eventSize,
 }: EventSectionProps) {
+  const STYLE = {
+    ad: `${EVENT_SECTION_SIZE[eventSize]?.ad}`,
+    event: `${EVENT_SECTION_SIZE[eventSize]?.event}`,
+  };
   return (
-    <section className="flex-center gap-30 tablet:gap-20 mobile:gap-10 mobile:flex-col w-fit h-fit">
-      <Link href={adsLink || "/"} >
-        <div className={`rounded-[10px] bg-gray-5 flex-center relative ${adsSizeClassName}`}>
-          {adsImg ? <Image src={adsImg} alt="" fill /> : <span className="font-bold text-gray-2 text-[13px]">광고 준비 중입니다.</span>}
-      </div>
-      </Link>
-      <Link href={eventLink || "/"} >
-        <div className={`rounded-[10px] bg-gray-5 flex-center relative ${eventSizeClassName}`}>
-          {eventImg ? <Image src={eventImg} alt="" fill /> : <span className="font-bold text-gray-2 text-[13px]">이벤트 준비 중입니다.</span>}
-      </div>
-      </Link>
+    <section className="flex-center h-fit w-fit gap-30 mobile:flex-col mobile:gap-10 tablet:gap-20">
+      <AdvertisementCard
+        adsImg={adsImg}
+        adsLink={adsLink}
+        classNames={STYLE.ad}
+      />
+
+      <EventCarousel eventImages={eventImgs} classNames={STYLE.event} />
     </section>
-  )
+  );
 }
 
-export default EventSection
+export default EventSection;

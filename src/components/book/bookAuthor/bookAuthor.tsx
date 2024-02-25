@@ -14,7 +14,7 @@ function BookAuthor({
   fontSize,
   classNames,
 }: BookAuthorProps) {
-  if (!authorList || authorList.length < 1) return;
+  if (!authorList || authorList.length < 1) return null;
 
   let nameList = authorList.join(', ');
   nameList += publisher ? ` | ${publisher}` : '';

@@ -32,5 +32,6 @@ export interface PostCommunityData {
 
 export interface PutCommunityOption {
   option?: number;
+  required?: number;
   content?: string;
 }

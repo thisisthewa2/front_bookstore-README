@@ -77,5 +77,5 @@ const getMyReviewList = async (id: number) => {
 };
 
 export const useGetMyReviewList = (id: number) => {
-  return useFetch(QUERY_KEY.member, getMyReviewList, id);
+  return useFetch(QUERY_KEY.member, getMyReviewList, id, id);
 };

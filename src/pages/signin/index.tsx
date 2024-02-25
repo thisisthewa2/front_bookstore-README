@@ -4,7 +4,6 @@ import {
   PasswordInput,
   TextInput,
 } from '@/components/input/signInput/signInput';
-import SocialCircle from '@/components/chip/socialCircle';
 import { SignValueType } from '@/types/signType';
 import { checkEmail } from '@/utils/checkSignInSignOut';
 import Image from 'next/image';
@@ -12,6 +11,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react';
+import SocialCircle from '@/components/chip/socialCircle';
 
 function SignIn() {
   const [isClick, setIsClick] = useState(false);
@@ -50,7 +50,7 @@ function SignIn() {
   return (
     <div className="flex-center min-h-dvh w-full bg-white">
       <div className="flex max-w-300 flex-1 flex-col items-center">
-        <Link href="/" className="text-primary mb-57 text-24 font-bold">
+        <Link href="/" className="mb-57 text-24 font-bold text-primary">
           Read Me
         </Link>
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
@@ -102,7 +102,7 @@ function SignIn() {
         </form>
         <div className="mb-40 mt-20 flex gap-x-4">
           <p className="text-gray-3">아이디가 없으신가요?</p>
-          <Link href="/signup" className="text-primary font-normal">
+          <Link href="/signup" className="font-normal text-primary">
             회원가입
           </Link>
         </div>
@@ -111,9 +111,9 @@ function SignIn() {
             SNS로 로그인/회원가입
           </p>
           <div className="flex w-184 justify-between">
-            <SocialCircle />
-            <SocialCircle />
-            <SocialCircle />
+            <SocialCircle id="NAVER" width={36} height={36} />
+            <SocialCircle id="KAKAO" width={24} height={22} />
+            <SocialCircle id="GOOGLE" width={38} height={26} />
           </div>
         </div>
       </div>

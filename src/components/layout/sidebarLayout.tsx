@@ -10,30 +10,23 @@ interface SidebarLayoutProps extends SidebarProps {
   children?: ReactNode;
 }
 
-function SidebarLayout({
-  pageName,
-  children,
-}: SidebarLayoutProps) {
+function SidebarLayout({ pageName, children }: SidebarLayoutProps) {
   return (
-
-    <div className='flex-center flex-col'>
-
+    <div className="flex-center flex-col">
       <MainLayout>
         <section
           role="contents"
           className="flex h-full w-full flex-col items-start pl-245 pr-60 pt-20 mobile:px-15
             mobile:pt-0 tablet:pl-217 tablet:pr-40">
           <aside
-            className="absolute top-40 left-40 w-[163px] h-[994px] tablet:w-[155px] mobile:static
-              mobile:h-35 mobile:w-full">
-            <Sidebar
-              pageName={pageName}
-            />
+            className="absolute left-40 top-40 h-[994px] w-[163px] mobile:static mobile:h-35
+              mobile:w-full tablet:w-[155px]">
+            <Sidebar pageName={pageName} />
           </aside>
           <div>{children}</div>
         </section>
       </MainLayout>
-      </div>
+    </div>
   );
 }
 

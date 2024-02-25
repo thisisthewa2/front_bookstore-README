@@ -114,9 +114,9 @@ function SignUp() {
               SNS로 간편하게 로그인/회원가입
             </p>
             <div className="flex w-184 justify-between">
-              <SocialCircle />
-              <SocialCircle />
-              <SocialCircle />
+              <SocialCircle id="NAVER" width={36} height={36} />
+              <SocialCircle id="KAKAO" width={24} height={22} />
+              <SocialCircle id="GOOGLE" width={38} height={26} />
             </div>
           </div>
           <form

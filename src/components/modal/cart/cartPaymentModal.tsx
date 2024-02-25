@@ -33,6 +33,8 @@ function CartPaymentModal({
       />
     );
   }
+
+  return null;
 }
 
 export default CartPaymentModal;

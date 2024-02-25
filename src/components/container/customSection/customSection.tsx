@@ -23,6 +23,7 @@ function CustomSection({ isLoggedIn }: CustomSectionProps) {
     queryFn: () => getCustomCategoryList(),
     select: (data) => data.data,
     staleTime: Infinity,
+    enabled: isLoggedIn,
   });
 
   const genreList = useMemo(() => {

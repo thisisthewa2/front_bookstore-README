@@ -12,7 +12,7 @@ import Pagination from '@/components/button/pagination';
 import { REVIEW_ORDER_STANDARD } from '@/constants/orderList';
 import { ReviewData, ReviewSortType } from '@/types/api/review';
 import { CurrentPageStateAtom } from '@/store/state';
-import SkeletonBookReviewCard from '../skeleton/bookReviewCard/skeleton';
+import SkeletonBookReviewCard from '@/components/skeleton/bookReviewCard/skeleton';
 
 interface ReviewProps {
   bookId: string;

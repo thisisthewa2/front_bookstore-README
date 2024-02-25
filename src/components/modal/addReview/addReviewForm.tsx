@@ -6,16 +6,19 @@ import LineIcon from '@/public/icons/Line.svg';
 import useFormControl from '@/hooks/useFormControl';
 import Input from '@/components/input/input';
 import { useState } from 'react';
-import { usePostReview } from '@/api/review';
-import { OnClickProps } from '@/types/onClickType';
+import { usePostReview, usePutReview } from '@/api/review';
+import { AddReviewProps } from '@/components/modal/addReview';
 
-function AddReviewForm({ onClick }: OnClickProps) {
+function AddReviewForm({ onClick, bookId, bookTitle, authors, edit, reviewId, review, rating }: AddReviewProps ) {
   const [newRating, setNewRating] = useState(0);
   const { control, handleSubmit, isButtonActive, onSubmit } = useFormControl({
     postFn: usePostReview,
-    option: { required: newRating },
-    bookId: 35,
+    putFn: usePutReview,
+    edit: edit,
+    bookId: bookId,
+    option: { required: newRating, optional: reviewId },
     onClick: onClick,
+    initialValue: {content : review},
   });
 
   return (
@@ -25,16 +28,16 @@ function AddReviewForm({ onClick }: OnClickProps) {
         onSubmit={handleSubmit(onSubmit)}>
         <TitleContentTable
           title1="책 제목"
-          content1="스물 아홉 생일, 1년 후 죽기로 결심하다"
+          content1={bookTitle}
           title2="저자"
-          content2="이제니"
+          content2={Array.isArray(authors) ? authors.join(', ') : authors}
           truncate="truncate"
         />
         <Image src={LineIcon} alt="구분선" />
         <div className="text-b-b flex h-87 flex-col justify-between text-16">
           별점 평가
           <BookRating
-            rating={newRating}
+            rating={rating ? rating : newRating}
             setNewRating={setNewRating}
             size="lg"
             onClick={true}
@@ -46,12 +49,12 @@ function AddReviewForm({ onClick }: OnClickProps) {
           title="내용"
           height="h-274"
           control={control}
-          name="description"
+          name="content"
         />
+        <RegisterButton type="submit" disabled={isButtonActive ? true : false}>
+          리뷰 작성하기
+        </RegisterButton>
       </form>
-      <RegisterButton type="submit" disabled={isButtonActive ? true : false}>
-        리뷰 작성하기
-      </RegisterButton>
     </>
   );
 }

@@ -24,10 +24,10 @@ interface PostReviewOption {
   content?: string;
 }
 
-const postReview = async (data: PostReviewOption) => {
-  const { option, content } = data;
-  const result = await instance.post(`review/${option}`, {
-    content,
+export const postReview = async (data: PostReviewOption) => {
+  const result = await instance.post('review', {
+    reviewRating: data.option,
+    ...data,
   });
   return result.data;
 };
@@ -39,29 +39,29 @@ export const usePostReview = (data: PostReviewOption) => {
 //리뷰 수정
 //TODO : api 나오면 interface type 수정필요
 interface PutReviewOption {
-  id: number;
-  data: string;
+  option?: number;  //id
+  content?: string; //review 내용
 }
 
-const putReview = async (option: PutReviewOption) => {
-  const { id, data } = option;
-  const result = await instance.put(`review/${id}`, {
-    data,
+const putReview = async (putFormData: PutReviewOption) => {
+  const {option, content} = putFormData
+  const result = await instance.put(`review/${option}`, {
+    content,
   });
   return result.data;
 };
 
-export const usePutReview = (option: PutReviewOption) => {
-  return useUpdate(putReview, option);
+export const usePutReview = (putFormData: PutReviewOption) => {
+  return useUpdate(putReview, putFormData);
 };
 
 //리뷰 삭제
-const deleteReview = async (id: number) => {
+const deleteReview = async (id?: number) => {
   const result = await instance.delete(`review/${id}`);
   return result.data;
 };
 
-export const useDeleteReview = (id: number) => {
+export const useDeleteReview = (id?: number) => {
   return useDelete(deleteReview, id);
 };
 

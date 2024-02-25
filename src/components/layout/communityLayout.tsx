@@ -4,8 +4,8 @@ import CommunityCardList from '@/components/card/communityCard/communityCardList
 import useInfinite from '@/hooks/useInfinite';
 import useCustomInfiniteQuery from '@/hooks/useCustomInfiniteQuery';
 import { getCommunity } from '@/api/community';
-import AddCommunityButton from '../button/addcommunityButton';
-import SkeletonCommunityCard from '../skeleton/communityCard/skeleton';
+import AddCommunityButton from '@/components/button/addcommunityButton';
+import SkeletonCommunityCard from '@/components/skeleton/communityCard/skeleton';
 import { SKELETON_COMMON_STYLE } from '@/constants/style/skeletonCommonStyle';
 
 interface CommunityLayoutProps {

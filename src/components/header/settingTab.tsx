@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import TabButton from '../button/header/TabButton';
+import TabButton from '@/components/button/header/TabButton';
 
 function SettingTab() {
   const [selectedTab, setSelectedTab] = useState('');

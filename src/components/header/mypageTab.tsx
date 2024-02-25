@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import TabButton from '../button/header/TabButton';
+import TabButton from '@/components/button/header/TabButton';
 import SettingTab from '@/components/header/settingTab';
 import { useRouter } from 'next/router';
 

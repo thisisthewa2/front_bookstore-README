@@ -5,7 +5,7 @@ interface TitleContentTableProps {
   title1: string;
   content1: string;
   title2?: string;
-  content2: string;
+  content2: string | string[];
   truncate?: 'truncate';
   button?: boolean;
   onClick?: () => void;

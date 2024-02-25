@@ -27,6 +27,7 @@ function RegisterButton({
     text,
     height,
   );
+
   return (
     <button
       type={type}

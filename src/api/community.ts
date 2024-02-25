@@ -48,10 +48,11 @@ export const useDeleteCommunity = (communityId?: number) => {
 
 //글 수정
 const putCommunity = async (putFormData: PutCommunityOption ) => {
-  const {option, content} = putFormData
+  const {option, required, content} = putFormData
   
   const result = await instance.put(`community/${option}`, {
     content,
+    rating: required,
   });
   return result.data;
 };

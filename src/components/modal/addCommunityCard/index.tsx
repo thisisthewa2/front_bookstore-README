@@ -1,6 +1,6 @@
 import ModalLayout from '@/components/modal/modalLayout';
 import AddCommunityCardForm from '@/components/modal/addCommunityCard/addCommunityCardForm';
-import ModalContainer from '../modalContainer';
+import ModalContainer from '@/components/modal/modalContainer';
 
 export interface AddCommunityCardProps {
   onClick : () => void;

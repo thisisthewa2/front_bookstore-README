@@ -3,7 +3,10 @@ import Image from 'next/image';
 import BookAuthor from '@/components/book/bookAuthor/bookAuthor';
 import BookPrice from '@/components/book/bookPrice/bookPrice';
 import BookTitle from '@/components/book/bookTitle/bookTitle';
+import { useState } from 'react';
+import AddReview from '@/components/modal/addReview';
 export type BookOrderCardProps = {
+  bookId: number;
   bookTitle: string;
   bookImgUrl: string;
   bookPrice: number;
@@ -13,13 +16,20 @@ export type BookOrderCardProps = {
 };
 
 function BookOrderCard({
+  bookId,
   bookTitle,
   bookImgUrl,
   bookPrice,
   authors,
   quantity,
   deliveryStatus,
-}: BookOrderCardProps) {
+}: BookOrderCardProps) 
+{
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+
+  const handleReviewModalOpenClick = () => {
+    setIsReviewModalOpen(!isReviewModalOpen);
+  };
   return (
     <div
       role="card-container"
@@ -71,10 +81,13 @@ function BookOrderCard({
         )}
         <button
           className="flex-center h-40 w-130 rounded-md border-2 border-primary bg-primary text-white
-            mobile:w-full">
+            mobile:w-full" onClick={handleReviewModalOpenClick}>
           리뷰쓰기
         </button>
       </div>
+      {isReviewModalOpen && (
+        <AddReview onClick={handleReviewModalOpenClick} bookId={bookId} bookTitle={bookTitle} authors={authors} />
+      )}
     </div>
   );
 }

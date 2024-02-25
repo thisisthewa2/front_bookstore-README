@@ -42,7 +42,7 @@ function ModalTest() {
         className="flex-center bg-primary h-50 w-full border border-black">
         리뷰 모달 열려라
       </button>
-      {isReviewModalOpen && <AddReview onClick={handleReviewModalOpen} />}
+      {isReviewModalOpen && <AddReview onClick={handleReviewModalOpen} bookId={1} bookTitle='책이름' authors='작가' />}
 
       <button
         onClick={handleFindAddressModalOpen}

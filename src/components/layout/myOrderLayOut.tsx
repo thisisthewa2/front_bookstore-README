@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from 'react';
-import ScrollToTopButton from '../button/scrollToTopButton';
+import ScrollToTopButton from '@/components/button/scrollToTopButton';
 import { useAtom } from 'jotai';
 import { pointVisibleAtom } from '@/store/state';
 import useInfinite from '@/hooks/useInfinite';
