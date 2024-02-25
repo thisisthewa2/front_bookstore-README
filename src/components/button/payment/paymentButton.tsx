@@ -30,8 +30,6 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
     discount: 0,
   });
 
-  console.log('basket이다요' + booksInfo[0].basketId);
-
   // orderbooks 초기화
   const orderBooks: DeliveryOrderBook[] = [];
   const basketIds: (number | undefined)[] = [];
@@ -88,18 +86,25 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
     }
   }
   const { data } = useGetMember();
+  const isAllSubmitted: boolean =
+    !!deliveryInfo.name && !!deliveryInfo.phone && !!deliveryInfo.address;
+
   // 결제 함수 호출
   console.log('아이디다욧' + deliveryId);
   function handlePaymentButtonClick() {
-    clicked = !clicked;
-    if (isAllChecked) {
+    if (isAllChecked && isAllSubmitted) {
       const user_email = data.email;
-      const username = '안윤진';
+      const username = data.nickname;
       kakaoPay(user_email, username);
-    } else {
+    } else if (!isAllChecked) {
       notify({
         type: 'error',
-        text: '모든약관에 동의하셔야 합니다. ✅',
+        text: '모든약관에 동의하셔야 합니다.',
+      });
+    } else if (!isAllSubmitted) {
+      notify({
+        type: 'error',
+        text: '모든 배송 정보를 작성하셔야 합니다.',
       });
     }
   }
@@ -118,7 +123,7 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
   };
 
   const { data: deliveryId2 } = usePostDelivery(orderInfo); // 약관동의 & 결제 버튼 클릭일 때에만 실행
-  setDeliveryId(deliveryId2.deliveryId);
+  setDeliveryId(deliveryId2);
   console.log('배송이다욧!' + deliveryId);
   return (
     <>
