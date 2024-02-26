@@ -15,7 +15,7 @@ function TermsDetailModal({ title, content, onClick }: TermsDetailCardProps) {
         <div className="sticky top-0 flex items-center justify-between bg-white py-30 pl-30 pr-36">
           <h1 className="text-20 font-bold text-black">{title}</h1>
           <button onClick={onClick}>
-            <Image src={CloseIcon} width={12} height={12} alt="취소 아이콘" />
+            <Image src={CloseIcon} width={24} height={24} alt="취소 아이콘" />
           </button>
         </div>
         <div className="overflow-auto whitespace-pre-wrap px-30 pb-20">
