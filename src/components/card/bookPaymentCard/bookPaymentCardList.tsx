@@ -15,10 +15,10 @@ function BookPaymentCardList({ bookData, label }: BookPaymentCardListProps) {
         {bookData.map((data, id) => (
           <BookPaymentCard
             key={id}
-            bookId={data.bookId}
+            bookId={data.orderBookId}
             imageUrl={data.bookImgUrl}
             cost={data.price}
-            count={data.count}
+            count={data.quantity}
             title={data.bookTitle}
           />
         ))}

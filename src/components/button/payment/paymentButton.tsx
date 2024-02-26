@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { deliveryInfoAtom } from '@/store/deliveryInfo';
 import { useAtom, useAtomValue } from 'jotai';
 import { basketItemList } from '@/store/state';
-import { DeliveryOrderBook, postAxiosDelivery, postDelivery2 } from '@/api/delivery';
+import { DeliveryOrderBook, postAxiosDelivery } from '@/api/delivery';
 import { PostDeliveryOption } from '@/api/delivery';
 import { usePostDeliveryMutation } from '@/hooks/usePostDeliveryMutatation';
 import { useGetOrderTitle } from '@/hooks/common/useGetOrderTitle';

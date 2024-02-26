@@ -1,15 +1,12 @@
-import { DeliveryInfo } from './../types/deliveryInfo';
 import { QUERY_KEY } from '@/constants/queryKey';
 import { convertDateType } from '@/utils/convertDate';
 import { useFetch, useUpdate } from '@/utils/reactQuery';
 import { instance } from 'src/libs/instance';
-import { deliveryIdAtom } from '@/store/deliveryInfo';
+
 import { FormData } from '@/hooks/useFormControl';
-import axios from 'axios';
-import { useAtom, useSetAtom } from 'jotai';
 
 //배달상태조회
-const getDelivery = async (id: number) => {
+export const getDelivery = async (id: number) => {
   const result = await instance.get(`delivery/${id}`);
   return result.data;
 };
