@@ -1,10 +1,11 @@
 import TermsCheckbox from '@/components/container/terms/terms';
 import TotalPrice from '@/components/card/totalPaymentCard/totalPrice';
-import { REQUIRED_FOR_PAYMENT } from 'src/constants/sign';
 import useCalculateTotalPrice from '@/hooks/common/useCalculateTotalPrice';
 import useCalculateProductsPrice from '@/hooks/common/useCalculateProductsPrice';
 import PaymentButton from '@/components/button/payment/paymentButton';
-import { useState } from 'react';
+import { useForm, FormProvider } from 'react-hook-form';
+import { useEffect, useState } from 'react';
+import { PAYMENT_TERMS_CONTENT } from '@/constants/termsContent';
 
 interface TotalPriceCardProps {
   checkbox?: boolean;
@@ -54,9 +55,12 @@ function TotalPriceCard({
       {checkbox && (
         <TermsCheckbox
           entire="전체동의(필수)"
-          checkContent={REQUIRED_FOR_PAYMENT}
+          checkContent={[
+            PAYMENT_TERMS_CONTENT.ageLimit,
+            PAYMENT_TERMS_CONTENT.payment,
+            PAYMENT_TERMS_CONTENT.termsOfUse,
+          ]}
           useFormContextProps={false}
-          showLastButton={false}
           onCheckedChange={handleCheckedChange}
         />
       )}

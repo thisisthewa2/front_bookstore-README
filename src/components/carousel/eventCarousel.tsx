@@ -1,5 +1,7 @@
 import Image, { StaticImageData } from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import EventDefaultImageMobile from '@/public/images/EventImageMobileDefault.png';
+import EventDefaultImage from '@/public/images/EventImageDefault.png';
 
 interface EventCarouselProps {
   eventImages?: {
@@ -21,6 +23,7 @@ function EventCarousel({
   const [currList, setCurrList] = useState<(string | StaticImageData)[]>([]); // 화면에 표시될 이미지 리스트 (버퍼 이미지 제외)
   const [ButtonActiveIndex, setButtonActiveIndex] = useState(0);
   const carouselRef = useRef<HTMLUListElement>(null);
+  let noEventImage: StaticImageData | string;
 
   const updateIndex = (index: number) => {
     // 버튼 클릭시 보여줄 이미지와 button 상태 변경
@@ -34,6 +37,7 @@ function EventCarousel({
       const width = window.innerWidth;
       const isMobile = width < 768;
       const selectedImages = isMobile ? eventImages.mobile : eventImages.pc;
+      noEventImage = isMobile ? EventDefaultImageMobile : EventDefaultImage;
 
       if (selectedImages.length > 0) {
         const firstImage = selectedImages[0];
@@ -93,7 +97,7 @@ function EventCarousel({
         {fullImageList.map((image, idx) => (
           <li key={idx} className="relative flex w-full flex-shrink-0">
             <Image
-              src={image}
+              src={image || noEventImage}
               alt={`이벤트 이미지 ${idx}`}
               fill
               objectFit="cover"

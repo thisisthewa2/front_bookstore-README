@@ -9,6 +9,7 @@ interface SideOrderNavigatorProps {
   bookImgUrl: string;
   bookTitle: string;
   authors: string[];
+  isBookmarkPending: boolean;
   orderCount: number;
   setOrderCount: (s: number) => void;
   price: number;
@@ -23,6 +24,7 @@ function SideOrderNavigator({
   authors,
   orderCount,
   setOrderCount,
+  isBookmarkPending,
   price,
   isBookmarked,
   handleBookmarkClick,
@@ -65,6 +67,7 @@ function SideOrderNavigator({
           <LikeButton
             isLiked={isBookmarked}
             onClick={handleBookmarkClick}
+            disabled={isBookmarkPending}
             width={24}
             height={24}
           />

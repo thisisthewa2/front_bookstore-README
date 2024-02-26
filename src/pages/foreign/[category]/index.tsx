@@ -9,12 +9,12 @@ import useCheckCategoryUrl from '@/hooks/useCheckCategoryUrl';
 import { responsive } from '@/utils/checkResponsiveEnv';
 import BestSellerSection from '@/components/container/bestsellerSection/bestsellerSection';
 import { BookData } from '@/types/api/book';
-import { AdImage, EVENT_IMAGES } from '@/constants/eventImages';
+import { AD_IMAGES, EVENT_IMAGES } from '@/constants/eventImages';
 
 function CategoryPage() {
   const INITIAL_PARAMS = useCategoryCarouselParams();
   const { categoryId } = useCheckCategoryUrl();
-  const { data } = useGetBook({
+  const { data, isLoading } = useGetBook({
     endpoint: `${categoryId}/sub`,
     params: {
       ...INITIAL_PARAMS,
@@ -36,7 +36,7 @@ function CategoryPage() {
       <Spacing height={[0, 0, 20]} />
       <EventSection
         eventSize="category"
-        adsImg={AdImage}
+        adsImg={AD_IMAGES}
         eventImgs={EVENT_IMAGES}
       />
       {data && data?.data.books.length > 0 ? (
@@ -48,9 +48,13 @@ function CategoryPage() {
           <Spacing height={[120, 80, 80]} />
           <SubCategoryBookList />
         </>
-      ) : (
+      ) : (!data || data?.data.books.length <= 0) && !isLoading ? (
         <div className="flex-center w-full pt-120 text-gray-4 mobile:pt-80">
           이 카테고리에 등록된 도서가 없어요!
+        </div>
+      ) : (
+        <div className="flex-center w-full pt-120 text-gray-4 mobile:pt-80">
+          도서 찾는 중!
         </div>
       )}
     </SidebarLayout>

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import { PayMentAtom } from '@/types/cartType';
 import { basketItemList } from '@/store/state';
+import { useSession } from 'next-auth/react';
 
 interface PayNowItemProps {
   bookId: number;
@@ -25,6 +26,8 @@ function usePayNowItem({
 }: PayNowItemProps) {
   const [, setNowPayItem] = useAtom(basketItemList);
   const router = useRouter();
+  const { status } = useSession();
+
   const setNowPayItemList: PayMentAtom[] = [
     {
       bookId: bookId,
@@ -37,6 +40,11 @@ function usePayNowItem({
   ];
 
   const handlePayNowButton = () => {
+    if (status === "unauthenticated") {
+      router.push("/signin");
+    return;
+    }
+    
     setNowPayItem(setNowPayItemList);
     router.push('/order');
   };

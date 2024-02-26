@@ -7,6 +7,7 @@ import { useGetPageBook } from '@/api/book';
 import BestSellerSection from '@/components/container/bestsellerSection/bestsellerSection';
 import CategoryCarousel from '@/components/carousel/categoryCarousel';
 import { responsive } from '@/utils/checkResponsiveEnv';
+import { AD_IMAGES, EVENT_IMAGES } from '@/constants/eventImages';
 function Search() {
   const router = useRouter();
   const { term } = router.query;
@@ -30,7 +31,11 @@ function Search() {
   return (
     <SidebarLayout>
       <Spacing height={[0, 0, 20]} />
-      <EventSection eventSize={'category'} />
+      <EventSection
+        eventSize={'category'}
+        adsImg={AD_IMAGES}
+        eventImgs={EVENT_IMAGES}
+      />
       <Spacing height={[120, 80, 80]} />
       {newestList?.books ? (
         <CategoryCarousel data={newestList?.books} responsive={responsive} />

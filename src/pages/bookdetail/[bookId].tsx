@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 import { useGetBook, usePutBook } from '@/api/book';
-import { useGetIsBookmarked } from '@/api/bookmark';
+import { getIsBookmarked } from '@/api/bookmark';
 import MainLayout from '@/components/layout/mainLayout';
 import BookDetailCard from '@/components/card/bookDetailCard/bookDetailCard';
 import BookDetailNav from '@/components/button/bookDetailNav';
@@ -14,7 +15,7 @@ import Spacing from '@/components/container/spacing/spacing';
 import SideOrderNavigator from '@/components/orderNavigator/sideOrderNavigator';
 import FooterOrderNavitgator from '@/components/orderNavigator/footerOrderNavitgator';
 import SkeletonBookDetailCard from '@/components/skeleton/bookDetailCard/skeleton';
-import useClickLikeButton from '@/hooks/useClickLikeButton';
+import useClickBookmarkButton from '@/hooks/useClickBookmarkButton';
 
 type BookDetailNavLocationType = 'information' | 'review' | 'currency';
 
@@ -33,30 +34,38 @@ export default function BookDetailPage() {
     params: {
       bookId: String(bookId),
     },
+    enabled: !!bookId,
   });
+
   let bookData = data?.data;
-  console.log(bookData);
+
   // 로그인 한 상태라면 찜 여부 체크하기
-  const { data: bookmarkData } = useGetIsBookmarked({
-    bookId: String(bookId),
+  const { data: bookmarkData } = useQuery({
+    queryKey: ['temp'],
+    queryFn: () => getIsBookmarked(String(bookId)),
     enabled: status === 'authenticated',
   });
-  const { bookmarkState, handleBookmarkClick } = useClickLikeButton({
-    bookId: String(bookId),
-    bookmarkId: bookmarkData?.bookmarkId ?? -1,
-    isBookmarked: bookmarkData?.marked ?? false,
-  });
+
+  const { isBookmarked, bookmarkCount, isBookmarkPending, updateBookmark } =
+    useClickBookmarkButton({
+      bookId: Number(bookId),
+      marked: bookmarkData?.marked ?? false,
+      count: bookData?.bookmarkCount,
+    });
 
   const { mutate: handleViewCountMutate } = usePutBook({
     bookId: Number(bookId),
   });
 
   useEffect(() => {
+    if (isError) {
+      router.push('/404');
+    }
     if (status === 'authenticated') {
       // 로그인 한 상태라면 조회수 1 증가
       handleViewCountMutate();
     }
-  }, [status]);
+  }, [status, isError]);
 
   return (
     <MainLayout>
@@ -66,14 +75,15 @@ export default function BookDetailPage() {
         ) : (
           <BookDetailCard
             bookId={bookId as string}
+            isBookmarkPending={isBookmarkPending}
             bookImgUrl={bookData.bookImgUrl}
             bookTitle={bookData.bookTitle}
             price={bookData.price}
             categories={bookData.categories}
             authors={bookData.authors}
-            bookmarkCount={bookData.bookmarkCount}
-            isBookmarked={bookmarkState}
-            handleBookmarkClick={handleBookmarkClick}
+            bookmarkCount={bookmarkCount}
+            isBookmarked={isBookmarked}
+            handleBookmarkClick={updateBookmark}
             publishedDate={bookData.publishedDate}
             publisher={bookData.publisher}
             averageRating={bookData.averageRating}
@@ -117,8 +127,9 @@ export default function BookDetailPage() {
               bookImgUrl={bookData?.bookImgUrl ?? './'}
               bookTitle={bookData?.bookTitle}
               authors={bookData?.authors}
-              isBookmarked={bookmarkState}
-              handleBookmarkClick={handleBookmarkClick}
+              isBookmarked={isBookmarked}
+              isBookmarkPending={isBookmarkPending}
+              handleBookmarkClick={updateBookmark}
               price={bookData?.price ?? 0}
               orderCount={orderCount}
               setOrderCount={setOrderCount}
@@ -131,8 +142,9 @@ export default function BookDetailPage() {
           bookImgUrl={bookData?.bookImgUrl ?? './'}
           bookTitle={bookData?.bookTitle}
           authors={bookData?.authors}
-          isBookmarked={bookmarkState}
-          handleBookmarkClick={handleBookmarkClick}
+          isBookmarked={isBookmarked}
+          isBookmarkPending={isBookmarkPending}
+          handleBookmarkClick={updateBookmark}
           price={bookData?.price ?? 0}
           orderCount={orderCount}
           setOrderCount={setOrderCount}

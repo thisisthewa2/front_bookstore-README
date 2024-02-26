@@ -9,7 +9,7 @@ import { responsive } from '@/utils/checkResponsiveEnv';
 import BestSellerSection from '@/components/container/bestsellerSection/bestsellerSection';
 import { useGetBook } from '@/api/book';
 import { BookData } from '@/types/api/book';
-import { AdImage, EVENT_IMAGES } from '@/constants/eventImages';
+import { AD_IMAGES, EVENT_IMAGES } from '@/constants/eventImages';
 
 export default function DomesticPage() {
   const { data: bestsellers } = useGetBook({
@@ -36,7 +36,7 @@ export default function DomesticPage() {
 
       <EventSection
         eventSize="category"
-        adsImg={AdImage}
+        adsImg={AD_IMAGES}
         eventImgs={EVENT_IMAGES}
       />
       <Spacing height={[60, 40, 40]} />

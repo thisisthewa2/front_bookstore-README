@@ -82,11 +82,11 @@ export const useDeleteBookmark = (option: deleteBookmarkPath) => {
 };
 
 // 해당 책에 대한 찜 여부 조회
-const getIsBookmarked = async (bookId: string) => {
+export const getIsBookmarked = async (bookId: string) => {
   const result = await instance.get(`/bookmark/${bookId}/check`);
   return result.data.data;
 };
 
-export const useGetIsBookmarked = ({ bookId="", enabled = true }) => {
+export const useGetIsBookmarked = ({ bookId = "", enabled = true }) => {
   return useFetch(QUERY_KEY.bookmark, getIsBookmarked, bookId, enabled);
 };

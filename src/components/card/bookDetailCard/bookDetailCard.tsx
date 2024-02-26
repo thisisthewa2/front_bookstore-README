@@ -16,6 +16,7 @@ interface BookDetailCardProps {
   handleBookmarkClick: () => void;
   publishedDate: string;
   publisher: string;
+  isBookmarkPending: boolean;
   averageRating: number;
   reviewCount: number;
   orderCount: number;
@@ -32,6 +33,7 @@ function BookDetailCard({
   bookmarkCount,
   isBookmarked,
   handleBookmarkClick,
+  isBookmarkPending,
   publishedDate,
   publisher,
   averageRating,
@@ -51,6 +53,7 @@ function BookDetailCard({
           categories={categories}
           authors={authors}
           isBookmarked={isBookmarked}
+          isBookmarkPending={isBookmarkPending}
           handleBookmarkClick={handleBookmarkClick}
           bookmarkCount={bookmarkCount}
           publishedDate={publishedDate}

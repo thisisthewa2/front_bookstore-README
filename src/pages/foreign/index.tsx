@@ -10,7 +10,7 @@ import { useCategoryCarouselParams } from '@/hooks/useInitialParams';
 import { useGetBook } from '@/api/book';
 import { BookData } from '@/types/api/book';
 import BestSellerSection from '@/components/container/bestsellerSection/bestsellerSection';
-import { AdImage, EVENT_IMAGES } from '@/constants/eventImages';
+import { AD_IMAGES, EVENT_IMAGES } from '@/constants/eventImages';
 
 export default function ForeignPage() {
   const INITIAL_PARAMS = useCategoryCarouselParams();
@@ -37,7 +37,7 @@ export default function ForeignPage() {
 
       <EventSection
         eventSize="category"
-        adsImg={AdImage}
+        adsImg={AD_IMAGES}
         eventImgs={EVENT_IMAGES}
       />
       <Spacing height={[60, 40, 40]} />

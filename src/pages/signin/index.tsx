@@ -12,7 +12,7 @@ import { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react';
 import SocialCircle from '@/components/chip/socialCircle';
-
+import Logo from '@/public/icons/ReadmeLogo.svg';
 function SignIn() {
   const [isClick, setIsClick] = useState(false);
   const {
@@ -50,8 +50,8 @@ function SignIn() {
   return (
     <div className="flex-center min-h-dvh w-full bg-white">
       <div className="flex max-w-300 flex-1 flex-col items-center">
-        <Link href="/" className="mb-57 text-24 font-bold text-primary">
-          Read Me
+        <Link href="/" className="mb-40">
+          <Image src={Logo} alt="logo" width={80} height={80} />
         </Link>
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
           <fieldset>

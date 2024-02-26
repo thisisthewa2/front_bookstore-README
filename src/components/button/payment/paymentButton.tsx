@@ -132,14 +132,14 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
           className="flex-center h-50 w-full rounded border bg-white "
           type="submit"
           onClick={handlePaymentButtonClick}>
-          <div className="flex-center  h-50 w-full bg-primary text-white">
+          <div className="flex-center h-50 w-full bg-primary text-white">
             {totalPrice.toLocaleString()}원 결제하기
           </div>
         </button>
       </div>
 
       <button
-        className="flex-center mt-20 h-50 w-full rounded border-t  border-gray-1 bg-primary text-white mobile:hidden tablet:hidden"
+        className="flex-center h-50 w-full rounded border-t  border-gray-1 bg-primary text-white mobile:hidden tablet:hidden"
         type="submit"
         onClick={handlePaymentButtonClick}>
         {totalPrice.toLocaleString()}원 결제하기

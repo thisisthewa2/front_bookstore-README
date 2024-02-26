@@ -9,12 +9,12 @@ import { responsive } from '@/utils/checkResponsiveEnv';
 import useCheckCategoryUrl from '@/hooks/useCheckCategoryUrl';
 import BestSellerSection from '@/components/container/bestsellerSection/bestsellerSection';
 import { BookData } from '@/types/api/book';
-import { AdImage, EVENT_IMAGES } from '@/constants/eventImages';
+import { AD_IMAGES, EVENT_IMAGES } from '@/constants/eventImages';
 
 function CategoryPage() {
   const INITIAL_PARAMS = useCategoryCarouselParams();
   const { categoryId } = useCheckCategoryUrl();
-  const { data } = useGetBook({
+  const { data, isLoading } = useGetBook({
     endpoint: `${categoryId}/sub`,
     params: {
       ...INITIAL_PARAMS,
@@ -37,11 +37,11 @@ function CategoryPage() {
 
       <EventSection
         eventSize="category"
-        adsImg={AdImage}
+        adsImg={AD_IMAGES}
         eventImgs={EVENT_IMAGES}
       />
       <Spacing height={[60, 40, 40]} />
-      {data && data?.data.books.length > 0 ? (
+      {data && data?.data.books.length > 0 && !isLoading ? (
         <>
           <CategoryCarousel data={data?.data.books} responsive={responsive} />
           <Spacing height={[120, 80, 80]} />
@@ -49,9 +49,13 @@ function CategoryPage() {
           <Spacing height={[120, 80, 80]} />
           <SubCategoryBookList />
         </>
-      ) : (
+      ) : (!data || data?.data.books.length <= 0) && !isLoading ? (
         <div className="flex-center w-full pt-120 text-gray-4 mobile:pt-80">
           이 카테고리에 등록된 도서가 없어요!
+        </div>
+      ) : (
+        <div className="flex-center w-full pt-120 text-gray-4 mobile:pt-80">
+          도서 찾는 중!
         </div>
       )}
     </SidebarLayout>

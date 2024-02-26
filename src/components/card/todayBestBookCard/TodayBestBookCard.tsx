@@ -17,6 +17,7 @@ const SIZE = {
   },
   tablet: {
     container: 'tablet:w-334 tablet:h-220',
+    img: 'tablet:min-w-112 tablet:max-w-112 tablet:h-170',
   },
   mobile: {
     container: 'mobile:w-294 mobile:h-181',
@@ -26,7 +27,7 @@ const SIZE = {
 
 const STYLE = {
   container: `${SIZE.desktop.container} ${SIZE.tablet.container} ${SIZE.mobile.container}`,
-  img: `${SIZE.desktop.img} ${SIZE.mobile.img}`,
+  img: `${SIZE.desktop.img} ${SIZE.tablet.img} ${SIZE.mobile.img}`,
 };
 
 function TodayBestBook({

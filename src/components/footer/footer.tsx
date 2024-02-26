@@ -4,6 +4,7 @@ import Link from 'next/link';
 import GithubIcon from 'public/icons/GithubIcon.svg';
 import FigmaIcon from 'public/icons/FigmaIcon.svg';
 import GatherIcon from 'public/icons/GatherIcon.svg';
+import LogoIcon from 'public/icons/LogoFav.svg';
 
 const HYPER_LINKS = [
   { name: '서비스 소개', link: '/' },
@@ -21,8 +22,15 @@ const CONTACT_LINKS = [
 
 function Footer() {
   return (
-    <footer className="flex-center h-302 w-full flex-col gap-20 bg-gray-5 p-60">
-      <h2 className="text-primary text-18 font-bold">Read Me</h2>
+    <footer className="flex-center w-full flex-col gap-20 bg-gray-5 pb-60 pt-32 mobile:hidden tablet:hidden">
+      <Image
+        src={LogoIcon}
+        alt="로고 사진"
+        width={60}
+        height={60}
+        className="relative"
+      />
+      <h1 className="w-150 bg-gray-6 pt-[1px]"></h1>
       <article className="flex-center mb-10 gap-7">
         {CONTACT_LINKS.map((el) => {
           return (
@@ -32,7 +40,7 @@ function Footer() {
           );
         })}
       </article>
-      <article className="text-18 font-bold text-gray-6">
+      <article className="text-18 font-bold text-gray-4">
         고객센터 1588-1588
       </article>
       <div className="h-[1px] w-150 bg-gray-1"></div>

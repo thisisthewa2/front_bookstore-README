@@ -13,6 +13,7 @@ interface SideOrderNavigatorProps {
   price: number;
   bookId: string;
   isBookmarked: boolean;
+  isBookmarkPending: boolean;
   handleBookmarkClick: () => void;
 }
 
@@ -22,6 +23,7 @@ function FooterOrderNavitgator({
   price,
   bookId,
   bookImgUrl,
+  isBookmarkPending,
   bookTitle,
   authors,
   isBookmarked,
@@ -63,6 +65,7 @@ function FooterOrderNavitgator({
           <LikeButton
             isLiked={isBookmarked}
             onClick={handleBookmarkClick}
+            disabled={isBookmarkPending}
             width={24}
             height={24}
           />

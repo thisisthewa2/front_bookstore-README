@@ -7,12 +7,14 @@ interface BookOverViewCardListProps {
   bookData: BookData[];
   title: string;
   isLoading: boolean;
+  ranking?: boolean;
 }
 
 function BookOverViewCardList({
   title,
   bookData,
   isLoading,
+  ranking,
 }: BookOverViewCardListProps) {
   return (
     <div className="flex flex-col gap-40 pb-40 text-black">
@@ -32,7 +34,10 @@ function BookOverViewCardList({
           // 로딩 중이 아니고 데이터가 있으면 데이터 렌더링
           bookData.map((data, index) => (
             <div key={data?.bookId}>
-              <BookOverviewCard book={data} rank={index + 1} />
+              <BookOverviewCard
+                book={data}
+                rank={ranking ? index + 1 : undefined}
+              />
             </div>
           ))
         )}

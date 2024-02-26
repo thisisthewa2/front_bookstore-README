@@ -25,6 +25,7 @@ function BestSellerPage() {
           title="베스트셀러"
           bookData={bookData}
           isLoading={isLoading}
+          ranking
         />
       }
     />

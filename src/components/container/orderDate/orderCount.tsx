@@ -11,6 +11,7 @@ type OrderCountProps = {
 
 function OrderCount({ orderId, orderDate, orderCount }: OrderCountProps) {
   const { year, month, day } = convertDate(orderDate);
+
   return (
     <>
       <div className="flex max-w-[1080px] justify-between">

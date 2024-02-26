@@ -20,6 +20,7 @@ interface BookDetailInfoProps {
   publisher?: string;
   publishedDate: string;
   averageRating: number;
+  isBookmarkPending: boolean;
   reviewCount: number;
   price: number;
 }
@@ -30,6 +31,7 @@ function BookDetailInfo({
   categories,
   isBookmarked,
   handleBookmarkClick,
+  isBookmarkPending,
   bookmarkCount,
   authors,
   publishedDate,
@@ -56,6 +58,7 @@ function BookDetailInfo({
             <LikeButton
               onClick={handleBookmarkClick}
               isLiked={isBookmarked}
+              disabled={isBookmarkPending}
               width={30}
               height={30}
             />

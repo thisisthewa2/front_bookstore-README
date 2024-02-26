@@ -11,8 +11,25 @@ export type DeliveryItem = {
   nickname: string;
   email: string;
   socialId: any;
-  orderDto: any;
+  orderDto: OrderDto;
+  createDate: string;
+  updateDate: string;
 };
+
+export interface OrderDto {
+  orderId: number;
+  orderBook: OrderBook[];
+}
+
+export interface OrderBook {
+  orderBookId: number;
+  bookId: number;
+  bookTitle: string;
+  authors: string;
+  bookImgUrl: string;
+  price: number;
+  quantity: number;
+}
 
 export type OrderOverViewItem = {
   '배송 준비중': number;
