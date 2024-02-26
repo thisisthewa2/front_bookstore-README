@@ -7,9 +7,8 @@ import { deliveryInfoAtom } from '@/store/deliveryInfo';
 import { useAtom, useAtomValue } from 'jotai';
 import { basketItemList } from '@/store/state';
 import { DeliveryOrderBook } from '@/api/delivery';
-import { usePostDelivery } from '@/api/delivery';
 import { PostDeliveryOption } from '@/api/delivery';
-import { deliveryIdAtom } from '@/store/deliveryInfo';
+import { usePostDeliveryMutation } from '@/hooks/usePostDeliveryMutatation';
 interface PaymentButtonProps {
   isAllChecked?: boolean;
 }
@@ -19,7 +18,7 @@ interface response {
 }
 function PaymentButton({ isAllChecked }: PaymentButtonProps) {
   const deliveryInfo = useAtomValue(deliveryInfoAtom);
-  const [deliveryId, setDeliveryId] = useAtom(deliveryIdAtom);
+  // const [deliveryIdAtom, setDeliveryIdAtom] = useAtom(deliveryIdAtom);
   const booksInfo = useAtomValue(basketItemList);
   const router = useRouter();
   const bookPrice = useCalculateProductsPrice();
@@ -86,16 +85,33 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
     }
   }
   const { data } = useGetMember();
+
+  const orderInfo: PostDeliveryOption = {
+    name: deliveryInfo.name,
+    phone: deliveryInfo.phone,
+    address: deliveryInfo.address,
+    message: deliveryInfo.message,
+    paymentMethod: 'KAKAO_PAY',
+    paymentAmount: totalPrice,
+    basketIds: basketIds,
+    OrderBooks: orderBooks,
+    isDefault: deliveryInfo?.isDefault || false,
+    // enabled: clicked && isAllChecked,
+  };
+
   const isAllSubmitted: boolean =
     !!deliveryInfo.name && !!deliveryInfo.phone && !!deliveryInfo.address;
 
-  // 결제 함수 호출
-  console.log('아이디다욧' + deliveryId);
+  const mutate = usePostDeliveryMutation(orderInfo);
   function handlePaymentButtonClick() {
+    clicked = !clicked;
     if (isAllChecked && isAllSubmitted) {
       const user_email = data.email;
       const username = data.nickname;
-      kakaoPay(user_email, username);
+      // kakaoPay(user_email, username);
+      const deliveryData = mutate(orderInfo);
+      console.log('진짜 배송데이터' + deliveryData);
+      // setDeliveryIdAtom(data);
     } else if (!isAllChecked) {
       notify({
         type: 'error',
@@ -109,22 +125,9 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
     }
   }
 
-  const orderInfo: PostDeliveryOption = {
-    name: deliveryInfo.name,
-    phone: deliveryInfo.phone,
-    address: deliveryInfo.address,
-    message: deliveryInfo.message,
-    paymentMethod: 'KAKAO_PAY',
-    paymentAmount: totalPrice,
-    basketIds: basketIds,
-    OrderBooks: orderBooks,
-    isDefault: deliveryInfo?.isDefault || false,
-    enabled: clicked && isAllChecked,
-  };
-
-  const { data: deliveryId2 } = usePostDelivery(orderInfo); // 약관동의 & 결제 버튼 클릭일 때에만 실행
-  setDeliveryId(deliveryId2);
-  console.log('배송이다욧!' + deliveryId);
+  // const deliveryId2 = usePostDelivery(orderInfo); // 약관동의 & 결제 버튼 클릭일 때에만 실행
+  // setDeliveryId(deliveryId2.data);
+  // console.log('배송이다욧!' + deliveryId2);
   return (
     <>
       <div className="borer-primary border-t-1 fixed bottom-0 left-0 z-[100] w-full border bg-white px-40 py-10 pc:hidden">

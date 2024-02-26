@@ -34,7 +34,7 @@ export interface PostDeliveryOption {
   enabled?: any;
 }
 
-const postDelivery = async (option: PostDeliveryOption) => {
+export const postDelivery = async (option: PostDeliveryOption) => {
   const result = await instance.post(`delivery/`, {
     option,
   });
