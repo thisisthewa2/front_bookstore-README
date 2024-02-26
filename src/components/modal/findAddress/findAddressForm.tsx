@@ -7,18 +7,19 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Pagination from '@/components/button/pagination';
 import { useAtom } from 'jotai';
-import {CurrentPageStateAtom } from '@/store/state';
+import { CurrentPageStateAtom } from '@/store/state';
 import { QUERY_KEY } from 'src/constants/queryKey';
 
 function FindAddressForm() {
-  const [search, setSearch] = useState('')
-  const [addressCurrentPage, setAddressCurrentPage] = useAtom(CurrentPageStateAtom);
+  const [search, setSearch] = useState('');
+  const [addressCurrentPage, setAddressCurrentPage] =
+    useAtom(CurrentPageStateAtom);
 
   const { data, refetch } = useQuery({
     queryKey: [QUERY_KEY.address, search, addressCurrentPage],
     queryFn: () => getAddress(search, addressCurrentPage),
     enabled: !!search,
-  })
+  });
 
   const handleSearch = async (value: string) => {
     setSearch(value);
@@ -27,10 +28,10 @@ function FindAddressForm() {
 
   useEffect(() => {
     refetch();
-  },[search, addressCurrentPage, refetch])
+  }, [search, addressCurrentPage, refetch]);
 
   return (
-    <div className="flex flex-col w-full gap-20 overflow-scroll">
+    <div className="flex w-full flex-col gap-20">
       <ModalSearchInput
         placeholder="도로명, 지명, 건물명 검색"
         onSearch={handleSearch}
@@ -42,7 +43,7 @@ function FindAddressForm() {
       ) : (
         <NotFindAddress />
       )}
-      <Pagination totalCount={data?.common.totalCount} standard={15}/>
+      <Pagination totalCount={data?.common.totalCount} standard={15} />
     </div>
   );
 }

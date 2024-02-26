@@ -20,15 +20,15 @@ function ModalLayout({ children, onClick }: ModalLayoutProps) {
       {createPortal(
         <div
           role="overlay"
-          className="fixed top-0 left-0 w-full h-full flex-center z-[100]">
+          className="flex-center fixed left-0 top-0 z-[100] h-full w-full">
           <div
-            className="absolute w-screen h-screen bg-black opacity-60"
+            className="absolute h-screen w-screen bg-black opacity-60"
             onClick={onClick}
           />
           <div
             role="modalContainer"
-            className="bg-white rounded-[10px] z-[150]">
-              {children}
+            className="scrollbar-hide z-[150] max-h-[95vh] overflow-auto rounded-[10px] border border-none bg-white ">
+            {children}
           </div>
         </div>,
         document.getElementById('portal') as HTMLDivElement,

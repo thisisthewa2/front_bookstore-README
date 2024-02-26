@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image from 'next/image';
 import CloseIcon from '@/public/icons/Close.svg';
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 interface ModalContainerProps {
   children: ReactNode;
@@ -11,12 +11,12 @@ interface ModalContainerProps {
 function ModalContainer({ children, onClick, title }: ModalContainerProps) {
   return (
     <div
-  className="relative flex flex-col items-center justify-start w-[688px] h-[851px] bg-white px-40 pt-60 pb-40
-    gap-40 mobile:w-330 mobile:h-[600px] mobile:px-20 mobile:pt-40 mobile:pb-30">
-      <p className="text-20 text-b-b">{title}</p>
+      className="relative flex h-[851px] w-[688px] flex-col items-center justify-start gap-40 bg-white px-40 pb-40
+    pt-60 mobile:h-[600px] mobile:w-330 mobile:px-20 mobile:pb-30 mobile:pt-40">
+      <p className="text-b-b text-20">{title}</p>
       {children}
       <Image
-        className="absolute top-30 right-30 cursor-pointer"
+        className="absolute right-30 top-30 cursor-pointer"
         src={CloseIcon}
         alt="닫기"
         width={24}
@@ -24,7 +24,7 @@ function ModalContainer({ children, onClick, title }: ModalContainerProps) {
         onClick={onClick}
       />
     </div>
-  )
+  );
 }
 
-export default ModalContainer
+export default ModalContainer;

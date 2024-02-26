@@ -11,16 +11,14 @@ interface TermsDetailCardProps {
 function TermsDetailModal({ title, content, onClick }: TermsDetailCardProps) {
   return (
     <ModalLayout onClick={onClick}>
-      <div className="relative flex max-h-[908px] w-[750px] flex-col rounded-[10px] mobile:max-h-[794px] mobile:w-330 tablet:max-h-[815px] tablet:w-[688px]">
+      <div className="relative flex max-h-[95vh] w-[750px] flex-col pb-20  mobile:w-330 tablet:w-[688px]">
         <div className="sticky top-0 flex items-center justify-between bg-white py-30 pl-30 pr-36">
           <h1 className="text-20 font-bold text-black">{title}</h1>
           <button onClick={onClick}>
             <Image src={CloseIcon} width={24} height={24} alt="취소 아이콘" />
           </button>
         </div>
-        <div className="overflow-auto whitespace-pre-wrap px-30 pb-20">
-          {content}
-        </div>
+        <div className="overflow-auto whitespace-pre-wrap px-30">{content}</div>
       </div>
     </ModalLayout>
   );
