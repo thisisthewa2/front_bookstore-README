@@ -15,7 +15,7 @@ function useCalculateTotalPrice({ delivery, discount }: useGetTotalPriceProps) {
     (total, item) => total + (item.price || 0),
     0,
   );
-  if (bookPrice < 30000) {
+  if (bookPrice < 10000) {
     const totalPrice = bookPrice + delivery - discount; //구매 금액이 3만원 이상일 경우 배송비 무료
     return totalPrice;
   } else {

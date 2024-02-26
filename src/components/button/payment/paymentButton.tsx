@@ -23,7 +23,7 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
   const router = useRouter();
   const bookPrice = useCalculateProductsPrice();
   let clicked = false;
-  const delivery = bookPrice > 30000 ? 0 : 3000;
+  const delivery = bookPrice > 10000 ? 0 : 3000;
   const totalPrice = useCalculateTotalPrice({
     delivery: delivery,
     discount: 0,
