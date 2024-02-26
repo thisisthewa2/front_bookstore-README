@@ -105,8 +105,8 @@ function CartPage() {
             className="flex w-full gap-x-30 px-60 mobile:flex-col mobile:gap-x-10 mobile:px-15 tablet:gap-x-20
                 tablet:px-40">
             <div
-              className="mt-40 grid w-full flex-1 grid-cols-1 gap-x-20 gap-y-20 mobile:mt-20 mobile:grid-cols-1
-                  mobile:gap-y-10 tablet:mt-20 tablet:grid-cols-1">
+              className="mb-120 mt-40 grid w-full flex-1 grid-cols-1 gap-x-20 gap-y-20 mobile:mt-20
+                  mobile:grid-cols-1 mobile:gap-y-10 tablet:mt-20 tablet:grid-cols-1">
               <div className="h-27 text-20 font-bold text-black">
                 장바구니
                 {wishListData &&
@@ -192,7 +192,11 @@ function CartPage() {
                     </div>
                     <div className="relative flex w-full flex-1 mobile:static">
                       <div className="flex gap-x-20 rounded-[10px]">
-                        <PreviewBookInfo size="sm" image={item.bookImgUrl} />
+                        <PreviewBookInfo
+                          size="sm"
+                          image={item.bookImgUrl}
+                          bookId={item.bookId}
+                        />
                         <div className="flex flex-col gap-y-8">
                           <div className="flex flex-col">
                             <div
