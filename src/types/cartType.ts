@@ -17,4 +17,5 @@ export type PayMentAtom = {
   price: number;
   authors: string[];
   count: number;
+  quantity?: number;
 };

@@ -9,20 +9,38 @@ import { useGetMember } from '@/api/member';
 import { deliveryInfoAtom } from '@/store/deliveryInfo';
 import { useAtom } from 'jotai';
 import useAddressSplitter from '@/hooks/common/useAddressSplitter';
+import { notify } from '@/components/toast/toast';
 
 function ShippingAddressSection() {
   const { data } = useGetMember(); // data를 따로 추출합니다.
+  const newestInfo = data?.deliveries?.slice(-1)[0];
   const [isDefault, setIsDefault] = useState(true);
-  const [, setDeliveryInfo] = useAtom(deliveryInfoAtom);
+  const [deliveryInfo, setDeliveryInfo] = useAtom(deliveryInfoAtom);
   const handleOptionChange = () => {
     setIsDefault(!isDefault);
-    setDeliveryInfo((prevDeliveryInfo) => ({
-      ...prevDeliveryInfo,
-    }));
+    if (isDefault) {
+      if (!newestInfo) {
+        notify({
+          type: 'error',
+          text: '기본 배송지 데이터가 존재하지 않아요 😭',
+        });
+      } else {
+        setDeliveryInfo({
+          address: newestInfo?.address,
+          name: newestInfo?.name,
+          phone: newestInfo?.phone,
+          isDefault: true,
+        });
+      }
+    } else {
+      setDeliveryInfo((prevDeliveryInfo) => ({
+        ...prevDeliveryInfo,
+      }));
+    }
   };
 
   const addressLine = useAddressSplitter({
-    address: data?.deliveries?.slice(-1)[0]?.address,
+    address: newestInfo?.address,
   });
   return (
     <div className="flex w-full flex-col gap-y-12 text-16 pc:mx-93">

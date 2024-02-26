@@ -24,6 +24,7 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
   const booksInfo = useAtomValue(basketItemList);
   const router = useRouter();
   const bookPrice = useCalculateProductsPrice();
+  const member = useGetMember();
   let clicked = false;
   const delivery = bookPrice > 10000 ? 0 : 3000;
   const totalPrice = useCalculateTotalPrice({
@@ -93,7 +94,7 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
     name: deliveryInfo.name,
     phone: deliveryInfo.phone,
     address: deliveryInfo.address,
-    message: deliveryInfo.message,
+    message: deliveryInfo.message || '',
     paymentMethod: 'KAKAO_PAY',
     paymentAmount: totalPrice,
     basketIds: basketIds,
@@ -102,22 +103,18 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
     // enabled: clicked && isAllChecked,
   };
 
-  console.log('ORDER INFO' + orderInfo.phone);
   const isAllSubmitted: boolean =
     !!deliveryInfo.name && !!deliveryInfo.phone && !!deliveryInfo.address;
-
+  console.log('디폴트다용' + deliveryInfo?.isDefault);
+  console.log(deliveryInfo.name);
   const mutate = usePostDeliveryMutation(orderInfo);
   async function handlePaymentButtonClick() {
     clicked = !clicked;
     if (isAllChecked && isAllSubmitted) {
-      // const user_email = data.email;
-      // const username = data.nickname;
-      //kakaoPay(user_email, username);
+      const user_email = member?.email;
+      const username = member?.name;
+      kakaoPay(user_email, username);
       setDeliveryId(await postAxiosDelivery(orderInfo));
-      //const deliveryData = mutate(orderInfo);
-      //console.log('진짜 배송데이터' + deliveryData);
-      router.push('/paymented');
-      //setDeliveryIdAtom(data);
     } else if (!isAllChecked) {
       notify({
         type: 'error',
@@ -131,9 +128,6 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
     }
   }
 
-  // const deliveryId2 = usePostDelivery(orderInfo); // 약관동의 & 결제 버튼 클릭일 때에만 실행
-  // setDeliveryId(deliveryId2.data);
-  // console.log('배송이다욧!' + deliveryId2);
   return (
     <>
       <div className="borer-primary border-t-1 fixed bottom-0 left-0 z-[100] w-full border bg-white px-40 py-10 pc:hidden">
