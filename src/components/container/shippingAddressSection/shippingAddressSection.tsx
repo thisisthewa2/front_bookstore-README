@@ -14,12 +14,13 @@ import { notify } from '@/components/toast/toast';
 function ShippingAddressSection() {
   const { data } = useGetMember(); // data를 따로 추출합니다.
   const newestInfo = data?.deliveries?.slice(-1)[0];
-  const [isDefault, setIsDefault] = useState(true);
+  const [isDefault, setIsDefault] = useState(false); // 기본값을 false로 설정합니다.
   const [deliveryInfo, setDeliveryInfo] = useAtom(deliveryInfoAtom);
   const handleOptionChange = () => {
     setIsDefault(!isDefault);
-    if (isDefault) {
-      if (!newestInfo) {
+    if (!isDefault) {
+      // 기본값이 false일 때 실행합니다.
+      if (!newestInfo.address) {
         notify({
           type: 'error',
           text: '기본 배송지 데이터가 존재하지 않아요 😭',
