@@ -26,7 +26,7 @@ function AddCommunityCardForm({
     postFn: usePostCommunity,
     putFn: usePutCommunity,
     edit: edit,
-    bookId: chooseBookId,
+    id: chooseBookId,
     option: { required: session?.memberId, optional: communityId },
     onClick: onClick,
     initialValue: { content: review },

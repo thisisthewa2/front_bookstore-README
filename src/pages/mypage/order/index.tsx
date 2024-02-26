@@ -8,6 +8,7 @@ import MyOrderPageLayout from '@/components/layout/myOrderLayOut';
 import { ORDER_DROPDOWN_MENUS } from '@/constants/ORDER_DROPDOWN_MENUS';
 import { myOrderStatus } from '@/constants/myOrderStatus';
 import { QUERY_KEY } from '@/constants/queryKey';
+import { OrderBookData } from '@/types/bookOrderType';
 import { DeliveryItem, OrderOverViewItem } from '@/types/deliveryType';
 import { convertDate } from '@/utils/convertDate';
 import { useQuery } from '@tanstack/react-query';
@@ -58,6 +59,7 @@ function MyOrderPage() {
 
   const orderData = getMyOrderQuery?.data?.map((item: DeliveryItem) => {
     return {
+      deliveryId : item.deliveryId,
       ...item.orderDto,
       createDate: item.createDate,
       deliveryStatus: item.deliveryStatus,

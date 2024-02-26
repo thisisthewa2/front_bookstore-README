@@ -1,9 +1,6 @@
 import { QUERY_KEY } from '@/constants/queryKey';
-import {
-  GetCommunityOption,
-  PostCommunityData,
-  PutCommunityOption,
-} from '@/types/api/community';
+import { FormData } from '@/hooks/useFormControl';
+import { GetCommunityOption } from '@/types/api/community';
 import { useDelete, useFetch, useUpdate } from '@/utils/reactQuery';
 import { instance } from 'src/libs/instance';
 
@@ -24,15 +21,16 @@ export const useGetCommunity = (option: GetCommunityOption) => {
 };
 
 //글 등록
-const postCommunity = async (data: PostCommunityData) => {
+const postCommunity = async (data: FormData) => {
   const result = await instance.post('community', {
-    memberId : data.option,
-    ...data,
+    memberId: data.required,
+    bookId: data.id,
+    content: data.content,
   });
   return result.data;
 };
 
-export const usePostCommunity = (data: PostCommunityData) => {
+export const usePostCommunity = (data: FormData) => {
   return useUpdate(postCommunity, data);
 };
 
@@ -47,9 +45,9 @@ export const useDeleteCommunity = (communityId?: number) => {
 };
 
 //글 수정
-const putCommunity = async (putFormData: PutCommunityOption ) => {
-  const {option, required, content} = putFormData
-  
+const putCommunity = async (putFormData: FormData) => {
+  const { option, required, content } = putFormData;
+
   const result = await instance.put(`community/${option}`, {
     content,
     rating: required,
@@ -57,6 +55,6 @@ const putCommunity = async (putFormData: PutCommunityOption ) => {
   return result.data;
 };
 
-export const usePutCommunity = (putFormData : PutCommunityOption ) => {
+export const usePutCommunity = (putFormData: FormData) => {
   return useUpdate(putCommunity, putFormData);
 };

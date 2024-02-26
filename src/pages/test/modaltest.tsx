@@ -81,7 +81,7 @@ function ModalTest() {
         환불 모달 열려라
       </button>
       {isGetRefundFormModalOpen && (
-        <GetRefund onClick={handleGetRefundFormModalOpen} />
+        <GetRefund onClick={handleGetRefundFormModalOpen} bookTitle='책제목' authors='작가' deliveryId={999} />
       )}
 
       <SkeletonCommunityCard />

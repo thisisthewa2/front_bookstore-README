@@ -2,17 +2,19 @@ import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { UseMutationResult } from '@tanstack/react-query';
 
-interface FormData {
-  option?: number;
+export interface FormData {
+  required?: number | string ;
+  optional?: number | string;
+  id?: number;
   [key: string]: any; // 추가적인 동적 프로퍼티를 허용
 }
 
 interface UseFormControl {
-  postFn: (data: FormData) => UseMutationResult<any, Error, void, void>;
+  postFn?: (data: FormData) => UseMutationResult<any, Error, void, void>;
   putFn?: (putFormData: FormData) => UseMutationResult<any, Error, void, void>;
   edit?: boolean;
-  bookId: number;
-  option?: { required?: number; optional?: number };
+  id: number;
+  option?: { required?: number | string; optional?: number | string };
   onClick: () => void;
   initialValue?: {};
 }
@@ -21,7 +23,7 @@ function useFormControl ({
   postFn,
   putFn,
   edit,
-  bookId,
+  id,
   option,
   onClick,
   initialValue,
@@ -35,21 +37,23 @@ function useFormControl ({
   const content = getValues();
 
   const postFormData = {
-    option: option?.required,
-    bookId,
+    required: option?.required,
+    option: option?.optional,
+    id,
     ...content,
   };
   
   const putFormData = {
-    option: option?.optional,
     required: option?.required,
+    option: option?.optional,
+    id,
     ...content,
   };
-  
-  const mutation = (edit && putFn) ? putFn(putFormData) : postFn(postFormData);
+
+  const mutation = (edit && putFn) ? putFn(putFormData) : postFn ? postFn(postFormData) : null;
 
   const onSubmit = () => {
-    mutation.mutate();
+    mutation?.mutate();
     onClick();
   };
 

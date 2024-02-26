@@ -24,7 +24,7 @@ function AddReviewForm({
     postFn: usePostReview,
     putFn: usePutReview,
     edit: edit,
-    bookId: bookId,
+    id: bookId,
     option: { required: newRating, optional: reviewId },
     onClick: onClick,
     initialValue: { content: review },

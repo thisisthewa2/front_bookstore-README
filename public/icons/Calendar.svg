@@ -1,17 +1,1 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="24" height="24" fill="#F5F5F5"/>
-<g id="Group 167">
-<g id="Group 131">
-<rect id="Rectangle 163" x="-98.5" y="-8.5" width="134" height="41" rx="4.5" fill="white" stroke="#DBDBDB"/>
-<g id="Group 118">
-<rect id="Rectangle 164" width="24" height="24" fill="white"/>
-<g id="Group 117">
-<path id="Vector" d="M18.4 4.80005H5.8C4.80589 4.80005 4 5.60594 4 6.60005V19.2C4 20.1942 4.80589 21 5.8 21H18.4C19.3941 21 20.2 20.1942 20.2 19.2V6.60005C20.2 5.60594 19.3941 4.80005 18.4 4.80005Z" stroke="#363636" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_2" d="M15.7002 3V6.6" stroke="#363636" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_3" d="M8.5 3V6.6" stroke="#363636" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_4" d="M4 10.2H20.2" stroke="#363636" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-</g>
-</g>
-</g>
-</svg>
+<svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#F5F5F5" d="M0 0h24v24H0z"/><rect x="-98.5" y="-8.5" width="134" height="41" rx="4.5" fill="#fff" stroke="#DBDBDB"/><path fill="#fff" d="M0 0h24v24H0z"/><g stroke="#363636" stroke-linecap="round" stroke-linejoin="round"><path d="M18.4 4.8H5.8A1.8 1.8 0 0 0 4 6.6v12.6A1.8 1.8 0 0 0 5.8 21h12.6a1.8 1.8 0 0 0 1.8-1.8V6.6a1.8 1.8 0 0 0-1.8-1.8ZM15.7 3v3.6M8.5 3v3.6M4 10.2h16.2"/></g></svg>
