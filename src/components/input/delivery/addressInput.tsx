@@ -10,7 +10,7 @@ import { deliveryInfoAtom } from '@/store/deliveryInfo';
 // AddressInput 컴포넌트
 interface AddressInputProps {
   isDefault: boolean;
-  addressLines: string[];
+  addressLines?: string[];
 }
 
 function AddressInput({ isDefault, addressLines }: AddressInputProps) {

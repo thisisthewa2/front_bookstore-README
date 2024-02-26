@@ -4,7 +4,7 @@ import { useAtom } from 'jotai';
 // 전화번호 입력 필드 컴포넌트
 interface PhoneNumberInputProps {
   isDefault: boolean;
-  value: string;
+  value?: string;
 }
 function PhoneNumberInput({ isDefault, value }: PhoneNumberInputProps) {
   const [phoneNumber, setPhoneNumber] = useState('');

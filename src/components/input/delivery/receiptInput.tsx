@@ -5,7 +5,7 @@ import { deliveryInfoAtom } from '@/store/deliveryInfo';
 // 받는 분 입력 필드 컴포넌트
 interface RecipientInputProps {
   isDefault: boolean;
-  value: string;
+  value?: string;
 }
 function RecipientInput({ isDefault, value }: RecipientInputProps) {
   const [recipient, setRecipient] = useState('');
