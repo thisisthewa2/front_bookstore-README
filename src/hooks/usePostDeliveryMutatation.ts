@@ -7,9 +7,8 @@ import { useAtom } from 'jotai';
 export function usePostDeliveryMutation(orderData: PostDeliveryOption) {
   const [deliveryId, setDeliveryId] = useAtom(deliveryIdAtom);
   const { mutate } = useMutation({
-    mutationFn: async (orderData: PostDeliveryOption) => {
-      await postDelivery(orderData);
-      return orderData;
+    mutationFn: (orderData: PostDeliveryOption) => {
+      return postDelivery(orderData);
     },
   });
   return mutate;

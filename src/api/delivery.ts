@@ -1,9 +1,12 @@
+import { DeliveryInfo } from './../types/deliveryInfo';
 import { QUERY_KEY } from '@/constants/queryKey';
 import { convertDateType } from '@/utils/convertDate';
 import { useFetch, useUpdate } from '@/utils/reactQuery';
 import { instance } from 'src/libs/instance';
+import { deliveryIdAtom } from '@/store/deliveryInfo';
 import { FormData } from '@/hooks/useFormControl';
-
+import axios from 'axios';
+import { useAtom, useSetAtom } from 'jotai';
 
 //배달상태조회
 const getDelivery = async (id: number) => {
@@ -29,11 +32,14 @@ export interface PostDeliveryOption {
   paymentMethod: string;
   paymentAmount: number;
   basketIds: (number | undefined)[];
-  OrderBooks: DeliveryOrderBook[];
-  isDefault: boolean;
+  orderBooks: DeliveryOrderBook[];
+  basicAddress: boolean;
   enabled?: any;
 }
 
+export interface DeliveryId {
+  deliveryId: number;
+}
 export const postDelivery = async (option: PostDeliveryOption) => {
   const result = await instance.post(`delivery/`, {
     option,
@@ -81,3 +87,25 @@ const putDeliveryStatus = async (data: DeliveryStatus) => {
   const result = await instance.put('delivery', data);
   return result.data;
 };
+
+export async function postAxiosDelivery(params: PostDeliveryOption) {
+  try {
+    const response = await instance.post(`/delivery`, params);
+    console.log('배송리얼res' + response.data?.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return 'error';
+  }
+}
+
+export async function getAxiosDelivery(params: DeliveryId) {
+  try {
+    const { data: response } = await instance.get(`/delivery/${params}`);
+    console.log('배송겟이다용 + res' + response.data.name);
+    return response;
+  } catch (error) {
+    console.error(error);
+    return 'error';
+  }
+}

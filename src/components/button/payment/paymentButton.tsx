@@ -6,10 +6,11 @@ import { useRouter } from 'next/router';
 import { deliveryInfoAtom } from '@/store/deliveryInfo';
 import { useAtom, useAtomValue } from 'jotai';
 import { basketItemList } from '@/store/state';
-import { DeliveryOrderBook } from '@/api/delivery';
+import { DeliveryOrderBook, postAxiosDelivery, postDelivery2 } from '@/api/delivery';
 import { PostDeliveryOption } from '@/api/delivery';
 import { usePostDeliveryMutation } from '@/hooks/usePostDeliveryMutatation';
 import { useGetOrderTitle } from '@/hooks/common/useGetOrderTitle';
+import { deliveryIdAtom } from '@/store/deliveryInfo';
 interface PaymentButtonProps {
   isAllChecked?: boolean;
 }
@@ -19,7 +20,7 @@ interface response {
 }
 function PaymentButton({ isAllChecked }: PaymentButtonProps) {
   const deliveryInfo = useAtomValue(deliveryInfoAtom);
-  // const [deliveryIdAtom, setDeliveryIdAtom] = useAtom(deliveryIdAtom);
+  const [deliveryId, setDeliveryId] = useAtom(deliveryIdAtom);
   const booksInfo = useAtomValue(basketItemList);
   const router = useRouter();
   const bookPrice = useCalculateProductsPrice();
@@ -44,7 +45,6 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
   });
 
   const orderTitle = useGetOrderTitle();
-  console.log('주문제목' + orderTitle);
   // 결제창 함수
   function kakaoPay(useremail: string, username: string) {
     if (typeof window !== 'undefined') {
@@ -87,7 +87,7 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
       );
     }
   }
-  const { data } = useGetMember();
+  //const { data } = useGetMember();
 
   const orderInfo: PostDeliveryOption = {
     name: deliveryInfo.name,
@@ -97,24 +97,27 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
     paymentMethod: 'KAKAO_PAY',
     paymentAmount: totalPrice,
     basketIds: basketIds,
-    OrderBooks: orderBooks,
-    isDefault: deliveryInfo?.isDefault || false,
+    orderBooks: orderBooks,
+    basicAddress: deliveryInfo?.isDefault || false,
     // enabled: clicked && isAllChecked,
   };
 
+  console.log('ORDER INFO' + orderInfo.phone);
   const isAllSubmitted: boolean =
     !!deliveryInfo.name && !!deliveryInfo.phone && !!deliveryInfo.address;
 
   const mutate = usePostDeliveryMutation(orderInfo);
-  function handlePaymentButtonClick() {
+  async function handlePaymentButtonClick() {
     clicked = !clicked;
     if (isAllChecked && isAllSubmitted) {
-      const user_email = data.email;
-      const username = data.nickname;
-      kakaoPay(user_email, username);
-      const deliveryData = mutate(orderInfo);
-      console.log('진짜 배송데이터' + deliveryData);
-      // setDeliveryIdAtom(data);
+      // const user_email = data.email;
+      // const username = data.nickname;
+      //kakaoPay(user_email, username);
+      setDeliveryId(await postAxiosDelivery(orderInfo));
+      //const deliveryData = mutate(orderInfo);
+      //console.log('진짜 배송데이터' + deliveryData);
+      router.push('/paymented');
+      //setDeliveryIdAtom(data);
     } else if (!isAllChecked) {
       notify({
         type: 'error',
