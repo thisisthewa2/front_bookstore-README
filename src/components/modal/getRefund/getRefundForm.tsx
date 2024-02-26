@@ -1,33 +1,42 @@
-// import TitleContentTable from '@/components/modal/addReview/titleContentTable';
-// import Image from 'next/image';
-// import LineIcon from '@/public/icons/Line.svg';
-// import Radio from '@/components/input/radio';
-// import RegisterButton from '@/components/button/register/registerButton';
-// import useFormControl from '@/hooks/useFormControl';
-// import DropDown from '@/components/dropDown/dropDown';
+import TitleContentTable from '@/components/modal/addReview/titleContentTable';
+import Image from 'next/image';
+import LineIcon from '@/public/icons/Line.svg';
+import Radio from '@/components/input/radio';
+import RegisterButton from '@/components/button/register/registerButton';
+import useFormControl from '@/hooks/useFormControl';
+import DropDown from '@/components/dropDown/dropDown';
 import { useState } from 'react';
 import { REFUND } from '@/constants/dropDownMenu';
-// import RefundPrice from '@/components/modal/getRefund/refundPrice';
-// import Input from '@/components/input/input';
+import RefundPrice from '@/components/modal/getRefund/refundPrice';
+import Input from '@/components/input/input';
+import { usePutDelivery } from '@/api/delivery';
+import { GetRefund } from '@/components/modal/getRefund/';
 
-function GetRefundForm() {
-//   const [selectedItem, setSelectedItem] = useState(REFUND[0]);
-//   const onSelectedItem = (menu: string) => {
-//     setSelectedItem(menu);
-//   };
-//   const option = selectedItem.length === 0 ? false : selectedItem;
-//   const { control, handleSubmit, isButtonActive, onSubmit } = useFormControl(option);
-      //TODO: 환불 api나오면 연결필요, 주석해제시 에러
+function GetRefundForm({onClick, deliveryId, bookTitle, authors} : GetRefund) {
+  const [selectedItem, setSelectedItem] = useState(REFUND[0]);
+  const onSelectedItem = (menu: string) => {
+    setSelectedItem(menu);
+  };
+  
+  const option = selectedItem.length === 0 ? undefined : selectedItem;
+  const { control, handleSubmit, isButtonActive, onSubmit } = useFormControl({
+    putFn: usePutDelivery,
+    id: deliveryId,
+    edit: true,
+    option: {required: option, optional: 'EXCHANGE_AND_REFUND'},
+    onClick: onClick,
+  });
+
   return (
     <>
-      {/* <form
+      <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-40 overflow-scroll">
         <TitleContentTable
           title1="책 제목"
-          content1="스물 아홉 생일, 1년 후 죽기로 결심하다"
+          content1={bookTitle}
           title2="저자"
-          content2="이제니"
+          content2={authors}
         />
         <Image src={LineIcon} alt="구분선" />
         <div className="flex">
@@ -67,10 +76,10 @@ function GetRefundForm() {
           }
         />
         <RefundPrice refundPrice="19,800" />
+        <RegisterButton type='submit' disabled={isButtonActive}>
+          교환/환불 신청하기
+        </RegisterButton>
       </form>
-      <RegisterButton disabled={isButtonActive}>
-        교환/환불 신청하기
-      </RegisterButton> */}
     </>
   );
 }

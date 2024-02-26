@@ -26,7 +26,7 @@ function AddCommunityCardForm({
     postFn: usePostCommunity,
     putFn: usePutCommunity,
     edit: edit,
-    bookId: chooseBookId,
+    id: chooseBookId,
     option: { required: session?.memberId, optional: communityId },
     onClick: onClick,
     initialValue: { content: review },
@@ -47,7 +47,7 @@ function AddCommunityCardForm({
 
   return (
     <form
-      className="flex w-full flex-col gap-40 overflow-scroll mobile:gap-20"
+      className="scrollbar-hide flex w-full flex-col gap-40 overflow-scroll mobile:gap-20"
       onSubmit={handleSubmit(onSubmit)}>
       <ModalSearchInput
         placeholder="책 제목, 작가 등을 검색해주세요"

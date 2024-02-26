@@ -1,4 +1,5 @@
 import { QUERY_KEY } from '@/constants/queryKey';
+import { FormData } from '@/hooks/useFormControl';
 import {  ReviewParams } from '@/types/api/review';
 import { useDelete, useFetch, useUpdate } from '@/utils/reactQuery';
 import { instance } from 'src/libs/instance';
@@ -19,31 +20,21 @@ export const useGetReview = (reviewId: number) => {
 };
 
 //리뷰 등록
-interface PostReviewOption {
-  option?: number;
-  content?: string;
-}
-
-export const postReview = async (data: PostReviewOption) => {
+export const postReview = async (data: FormData) => {
   const result = await instance.post('review', {
-    reviewRating: data.option,
-    ...data,
+    reviewRating: data.required,
+    bookId: data.id,
+    content: data.content,
   });
   return result.data;
 };
 
-export const usePostReview = (data: PostReviewOption) => {
+export const usePostReview = (data: FormData) => {
   return useUpdate(postReview, data);
 };
 
 //리뷰 수정
-//TODO : api 나오면 interface type 수정필요
-interface PutReviewOption {
-  option?: number;  //id
-  content?: string; //review 내용
-}
-
-const putReview = async (putFormData: PutReviewOption) => {
+const putReview = async (putFormData: FormData) => {
   const {option, content} = putFormData
   const result = await instance.put(`review/${option}`, {
     content,
@@ -51,7 +42,7 @@ const putReview = async (putFormData: PutReviewOption) => {
   return result.data;
 };
 
-export const usePutReview = (putFormData: PutReviewOption) => {
+export const usePutReview = (putFormData: FormData) => {
   return useUpdate(putReview, putFormData);
 };
 

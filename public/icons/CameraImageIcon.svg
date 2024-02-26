@@ -1,9 +1,1 @@
-<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Group 248">
-<rect id="Rectangle 179" x="0.5" y="0.5" width="41" height="41" rx="20.5" fill="white" stroke="#DBDBDB"/>
-<g id="Group 163">
-<path id="Vector" d="M32 28C32 28.5304 31.7893 29.0391 31.4142 29.4142C31.0391 29.7893 30.5304 30 30 30H12C11.4696 30 10.9609 29.7893 10.5858 29.4142C10.2107 29.0391 10 28.5304 10 28V17C10 16.4696 10.2107 15.9609 10.5858 15.5858C10.9609 15.2107 11.4696 15 12 15H16L18 12H24L26 15H30C30.5304 15 31.0391 15.2107 31.4142 15.5858C31.7893 15.9609 32 16.4696 32 17V28Z" stroke="#767676" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_2" d="M21 26C23.2091 26 25 24.2091 25 22C25 19.7909 23.2091 18 21 18C18.7909 18 17 19.7909 17 22C17 24.2091 18.7909 26 21 26Z" stroke="#767676" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-</g>
-</svg>
+<svg width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="41" height="41" rx="20.5" fill="#fff" stroke="#DBDBDB"/><g stroke="#767676" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 28a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V17a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2v11Z"/><path d="M21 26a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/></g></svg>

@@ -43,11 +43,11 @@ const config: Config = {
           '50%': { transform: 'rotate(180deg)' },
           '75%': { transform: 'rotate(270deg)' },
           '100%': { transform: 'rotate(360deg)' },
-        }
+        },
       },
       animation: {
-        rotating : 'rotating 5s infinite'
-      }
+        rotating: 'rotating 5s infinite',
+      },
     },
 
     fontSize: {
@@ -88,6 +88,6 @@ const config: Config = {
       secondary: 'rgb(var(--secondary) / <alpha-value>)',
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar-hide')],
 };
 export default config;

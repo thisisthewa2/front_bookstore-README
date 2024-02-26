@@ -1,10 +1,1 @@
-<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Group 187">
-<path id="Rectangle 187" d="M0 0H17V17H0V0Z" fill="white"/>
-<g id="Group 171">
-<circle id="Ellipse 15" cx="8.5" cy="2.5" r="1.5" fill="#A8A8A8"/>
-<circle id="Ellipse 16" cx="8.5" cy="8.5" r="1.5" fill="#A8A8A8"/>
-<circle id="Ellipse 17" cx="8.5" cy="14.5" r="1.5" fill="#A8A8A8"/>
-</g>
-</g>
-</svg>
+<svg width="17" height="17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h17v17H0V0Z" fill="#fff"/><g fill="#A8A8A8"><circle cx="8.5" cy="2.5" r="1.5"/><circle cx="8.5" cy="8.5" r="1.5"/><circle cx="8.5" cy="14.5" r="1.5"/></g></svg>

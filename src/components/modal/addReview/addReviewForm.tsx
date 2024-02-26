@@ -9,22 +9,31 @@ import { useState } from 'react';
 import { usePostReview, usePutReview } from '@/api/review';
 import { AddReviewProps } from '@/components/modal/addReview';
 
-function AddReviewForm({ onClick, bookId, bookTitle, authors, edit, reviewId, review, rating }: AddReviewProps ) {
+function AddReviewForm({
+  onClick,
+  bookId,
+  bookTitle,
+  authors,
+  edit,
+  reviewId,
+  review,
+  rating,
+}: AddReviewProps) {
   const [newRating, setNewRating] = useState(0);
   const { control, handleSubmit, isButtonActive, onSubmit } = useFormControl({
     postFn: usePostReview,
     putFn: usePutReview,
     edit: edit,
-    bookId: bookId,
+    id: bookId,
     option: { required: newRating, optional: reviewId },
     onClick: onClick,
-    initialValue: {content : review},
+    initialValue: { content: review },
   });
 
   return (
     <>
       <form
-        className="flex w-full flex-col gap-40 overflow-scroll mobile:gap-30"
+        className="scrollbar-hide flex w-full flex-col gap-40 overflow-scroll mobile:gap-30"
         onSubmit={handleSubmit(onSubmit)}>
         <TitleContentTable
           title1="책 제목"
