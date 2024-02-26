@@ -5,13 +5,13 @@ import RecipientInput from '@/components/input/delivery/receiptInput';
 import ShippingOptionRadio from '@/components/button/delivery/shippingOptionRadio';
 import SetDefaultAddressButton from '@/components/button/delivery/setDefaultAddressButton';
 import DeliveryDropDown from '@/components/dropDown/deliveryDropDown';
-import { MOCK_ADDRESS } from '@/constants/address';
-//import { useGetMember } from '@/api/member';
+import { useGetMember } from '@/api/member';
 import { deliveryInfoAtom } from '@/store/deliveryInfo';
 import { useAtom } from 'jotai';
+import useAddressSplitter from '@/hooks/common/useAddressSplitter';
 
 function ShippingAddressSection() {
-  //const { data } = useGetMember();
+  const { data } = useGetMember(); // data를 따로 추출합니다.
   const [isDefault, setIsDefault] = useState(true);
   const [, setDeliveryInfo] = useAtom(deliveryInfoAtom);
   const handleOptionChange = () => {
@@ -21,6 +21,9 @@ function ShippingAddressSection() {
     }));
   };
 
+  const addressLine = useAddressSplitter({
+    address: data?.deliveries?.slice(-1)[0]?.address,
+  });
   return (
     <div className="flex w-full flex-col gap-y-12 text-16 pc:mx-93">
       <div className="mb-28  mt-40 text-20 font-bold">결제</div>
@@ -28,18 +31,17 @@ function ShippingAddressSection() {
         isDefault={isDefault}
         handleOptionChange={handleOptionChange}
       />
-      <RecipientInput isDefault={isDefault} value={MOCK_ADDRESS.recipient} />
+      <RecipientInput
+        isDefault={isDefault}
+        value={data?.deliveries?.slice(-1)[0]?.name}
+      />
       <PhoneNumberInput
         isDefault={isDefault}
-        value={MOCK_ADDRESS.phoneNumber}
+        value={data?.deliveries?.slice(-1)[0]?.phone}
       />
       <AddressInput
         isDefault={isDefault}
-        addressLines={[
-          MOCK_ADDRESS.addressLine1,
-          MOCK_ADDRESS.addressLine2,
-          MOCK_ADDRESS.addressLine3,
-        ]}
+        addressLines={[addressLine[0], addressLine[1], addressLine[2]]}
       />
       <SetDefaultAddressButton />
       <DeliveryDropDown />
