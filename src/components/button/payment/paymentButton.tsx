@@ -9,6 +9,7 @@ import { basketItemList } from '@/store/state';
 import { DeliveryOrderBook } from '@/api/delivery';
 import { PostDeliveryOption } from '@/api/delivery';
 import { usePostDeliveryMutation } from '@/hooks/usePostDeliveryMutatation';
+import { useGetOrderTitle } from '@/hooks/common/useGetOrderTitle';
 interface PaymentButtonProps {
   isAllChecked?: boolean;
 }
@@ -42,6 +43,8 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
     basketIds.push(book?.basketId);
   });
 
+  const orderTitle = useGetOrderTitle();
+  console.log('주문제목' + orderTitle);
   // 결제창 함수
   function kakaoPay(useremail: string, username: string) {
     if (typeof window !== 'undefined') {
@@ -60,7 +63,7 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
           pg: 'kakaopay.TC0ONETIME', // PG사 코드표에서 선택
           pay_method: 'card', // 결제 방식
           merchant_uid: 'IMP' + makeMerchantUid, // 결제 고유 번호
-          name: '리드미', // 제품명
+          name: orderTitle, // 상품명
           amount: totalPrice, // 가격
           buyer_email: useremail,
           buyer_name: username,
@@ -108,7 +111,7 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
     if (isAllChecked && isAllSubmitted) {
       const user_email = data.email;
       const username = data.nickname;
-      // kakaoPay(user_email, username);
+      kakaoPay(user_email, username);
       const deliveryData = mutate(orderInfo);
       console.log('진짜 배송데이터' + deliveryData);
       // setDeliveryIdAtom(data);
