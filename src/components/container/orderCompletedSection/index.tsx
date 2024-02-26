@@ -16,8 +16,6 @@ function OrderCompletedSection({
 }) {
   const [deliveryId, setDeliveryId] = useAtom(deliveryIdAtom);
   const data = useGetDelivery(deliveryId?.data);
-  console.log('deliveryId' + deliveryId?.data);
-  console.log('배송결과다욧' + data?.data?.data?.name);
   const DcontentData = [
     data?.data?.data?.name,
     data?.data?.data?.phone,

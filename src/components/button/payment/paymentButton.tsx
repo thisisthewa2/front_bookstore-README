@@ -77,9 +77,7 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
         async function (rsp: response) {
           if (rsp.success) {
             //결제 성공시
-            console.log(rsp + '결제성공');
             router.push('/paymented');
-            //결제 성공시 프로젝트 DB저장 요청
           } else {
             // 결제 실패시
             alert('결제에 실패했습니다.');
@@ -105,8 +103,7 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
 
   const isAllSubmitted: boolean =
     !!deliveryInfo.name && !!deliveryInfo.phone && !!deliveryInfo.address;
-  console.log('디폴트다용' + deliveryInfo?.isDefault);
-  console.log(deliveryInfo.name);
+
   const mutate = usePostDeliveryMutation(orderInfo);
   async function handlePaymentButtonClick() {
     clicked = !clicked;

@@ -88,7 +88,6 @@ const putDeliveryStatus = async (data: DeliveryStatus) => {
 export async function postAxiosDelivery(params: PostDeliveryOption) {
   try {
     const response = await instance.post(`/delivery`, params);
-    console.log('배송리얼res' + response.data?.data);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -99,7 +98,6 @@ export async function postAxiosDelivery(params: PostDeliveryOption) {
 export async function getAxiosDelivery(params: DeliveryId) {
   try {
     const { data: response } = await instance.get(`/delivery/${params}`);
-    console.log('배송겟이다용 + res' + response.data.name);
     return response;
   } catch (error) {
     console.error(error);
