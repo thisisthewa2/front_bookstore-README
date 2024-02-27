@@ -17,6 +17,7 @@ function BookPaymentCardList({ bookData, label }: BookPaymentCardListProps) {
             key={id}
             bookId={data.orderBookId}
             imageUrl={data.bookImgUrl}
+            authors={data.authors}
             cost={data.price}
             count={data.quantity}
             title={data.bookTitle}
