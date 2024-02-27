@@ -90,6 +90,7 @@ export default function BookDetailPage() {
             reviewCount={bookData.reviewCount}
             orderCount={orderCount}
             setOrderCount={setOrderCount}
+            isDetail={true}
           />
         )}
       </section>

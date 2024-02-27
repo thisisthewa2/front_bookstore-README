@@ -1,26 +1,10 @@
 import NextAuth from 'next-auth/next';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import GoogleProvider from "next-auth/providers/google";
-import NaverProvider from "next-auth/providers/naver";
-import KakaoProvider from "next-auth/providers/kakao";
 
 import { postLogin } from '@/api/member';
 
 export default NextAuth({
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    }),
-    NaverProvider({
-      clientId: process.env.NAVER_CLIENT_ID!,
-      clientSecret: process.env.NAVER_CLIENT_SECRET!
-    }),
-    KakaoProvider({
-      clientId: process.env.KAKAO_CLIENT_ID!,
-      clientSecret: process.env.KAKAO_CLIENT_SECRET!
-  }),
-    
     CredentialsProvider({
       id: 'signin-credentials',
       name: 'credentials',
@@ -45,6 +29,24 @@ export default NextAuth({
           // 로그인 실패 시 처리
           throw new Error('Login failed!');
         }
+      },
+    }),
+    CredentialsProvider({
+      id: 'social-credentials',
+      name: 'credentials',
+      type: 'credentials',
+      credentials: {
+        email: { type: 'text' },
+        socialType: { type: 'text' },
+        memberId: { type: 'text' },
+        accessToken: {type: "text"},
+      },
+      async authorize(credentials): Promise<any> {
+        if (!credentials?.accessToken) { throw new Error('Wrong User');}
+        return {
+          accessToken: credentials?.accessToken,
+          memberId: credentials?.memberId, 
+        };
       },
     }),
   ],

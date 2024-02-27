@@ -14,6 +14,7 @@ import { useSetAtom } from 'jotai';
 import { PayMentAtom } from '@/types/cartType';
 import { basketItemList } from '@/store/state';
 import { useUpdateBookmark } from '@/hooks/api/useUpdateBookmark';
+import useEditAuthorsName from '@/hooks/common/useEditAuthorsName';
 
 function BookOverviewCard({ book, rank }: BookOverviewType2) {
   const [isBookmarked, setIsBookMarked] = useState(book.bookmarks?.marked);
@@ -23,7 +24,7 @@ function BookOverviewCard({ book, rank }: BookOverviewType2) {
   const { addToBasket, isAddToBasketPending } = useAddToBasket({
     bookId: book.bookId,
   });
-
+  const authors = useEditAuthorsName({ authors: book?.authors });
   const { updateBookmark, isBookmarkPending } = useUpdateBookmark({
     bookId: book.bookId,
     onChangeBookmarkCount: () => {
@@ -92,13 +93,7 @@ function BookOverviewCard({ book, rank }: BookOverviewType2) {
             role="book-author-publisher"
             className="pc:flex-center gap-4 mobile:flex mobile:flex-col tablet:flex tablet:w-150 tablet:flex-col">
             <div className="text-overflow1">
-              {book.authors?.map((author) => {
-                return (
-                  <span key={author} className="text-14 text-gray-3">
-                    {author}
-                  </span>
-                );
-              })}
+              <span className="text-14 text-gray-3">{authors}</span>
             </div>
             <div className="text-overflow1 mobile:hidden tablet:hidden">
               {book.publisher && (

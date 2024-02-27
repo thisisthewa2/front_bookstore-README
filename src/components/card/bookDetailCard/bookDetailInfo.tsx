@@ -8,6 +8,7 @@ import Spacing from '@/components/container/spacing/spacing';
 import BookAuthor from '@/components/book/bookAuthor/bookAuthor';
 import useFormatDate from '@/hooks/useFormatDate';
 import useCopyLink from '@/hooks/common/useCopyLink';
+import useEditAuthorsName from '@/hooks/common/useEditAuthorsName';
 
 interface BookDetailInfoProps {
   bookId: string;
@@ -16,13 +17,14 @@ interface BookDetailInfoProps {
   isBookmarked: boolean;
   handleBookmarkClick: () => void;
   bookmarkCount: number;
-  authors?: string[];
+  authors?: string[] | string;
   publisher?: string;
   publishedDate: string;
   averageRating: number;
   isBookmarkPending: boolean;
   reviewCount: number;
   price: number;
+  isDetail: boolean | undefined;
 }
 
 function BookDetailInfo({
@@ -39,10 +41,11 @@ function BookDetailInfo({
   averageRating,
   reviewCount,
   price,
+  isDetail,
 }: BookDetailInfoProps) {
   const customedPublishedDate = useFormatDate(publishedDate);
   const { copyURL } = useCopyLink();
-
+  const authorList = useEditAuthorsName({ authors, isDetail });
   return (
     <article
       role="info"
@@ -70,7 +73,7 @@ function BookDetailInfo({
         </div>
       </div>
       <Spacing height={[12, 12, 12]} />
-      <BookAuthor authorList={authors} />
+      <BookAuthor authorList={authorList} isDetail={isDetail} />
       <div className="my-20 h-[1px] w-full max-w-[525px] bg-gray-1 mobile:my-12"></div>
       <div className="text-14 text-gray-3">
         {publisher} | {customedPublishedDate}

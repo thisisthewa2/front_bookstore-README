@@ -1,5 +1,6 @@
 /** 책 상세페이지에 들어갈 카드 컴포넌트 */
 
+import useEditAuthorsName from '@/hooks/common/useEditAuthorsName';
 import BookDetailImg from './bookDetailImg';
 import BookDetailInfo from './bookDetailInfo';
 import StaticOrderNavigator from '@/components/orderNavigator/staticOrderNavigator';
@@ -21,6 +22,7 @@ interface BookDetailCardProps {
   reviewCount: number;
   orderCount: number;
   setOrderCount: (n: number) => void;
+  isDetail?: boolean | undefined;
 }
 
 function BookDetailCard({
@@ -40,7 +42,14 @@ function BookDetailCard({
   reviewCount,
   orderCount,
   setOrderCount,
+  isDetail,
 }: BookDetailCardProps) {
+  const authorList = useEditAuthorsName({
+    authors: authors,
+    isDetail: isDetail,
+  });
+
+  console.log('authors' + authorList);
   return (
     <section className="mobile:flex-center flex items-start justify-start gap-20 mobile:flex-col">
       <BookDetailImg imageUrl={bookImgUrl} />
@@ -51,7 +60,7 @@ function BookDetailCard({
           bookId={bookId}
           bookTitle={bookTitle}
           categories={categories}
-          authors={authors}
+          authors={authorList}
           isBookmarked={isBookmarked}
           isBookmarkPending={isBookmarkPending}
           handleBookmarkClick={handleBookmarkClick}
@@ -61,6 +70,7 @@ function BookDetailCard({
           averageRating={averageRating}
           reviewCount={reviewCount}
           price={price}
+          isDetail={isDetail}
         />
         <StaticOrderNavigator
           bookId={bookId}
