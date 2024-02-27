@@ -86,7 +86,7 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
       );
     }
   }
-  //const { data } = useGetMember();
+  const { data } = useGetMember();
 
   const orderInfo: PostDeliveryOption = {
     name: deliveryInfo.name,
@@ -108,8 +108,8 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
   async function handlePaymentButtonClick() {
     clicked = !clicked;
     if (isAllChecked && isAllSubmitted) {
-      const user_email = member?.email;
-      const username = member?.name;
+      const user_email = data?.email;
+      const username = data?.name;
       kakaoPay(user_email, username);
       setDeliveryId(await postAxiosDelivery(orderInfo));
     } else if (!isAllChecked) {
