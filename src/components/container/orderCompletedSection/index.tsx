@@ -15,19 +15,16 @@ function OrderCompletedSection({
   paymentDetail?: boolean;
 }) {
   const [deliveryId, setDeliveryId] = useAtom(deliveryIdAtom);
-  const data = useGetDelivery(deliveryId?.data);
+  const data = useGetDelivery(deliveryId?.data || null);
   const DcontentData = [
-    data?.data?.data?.name,
-    data?.data?.data?.phone,
-    data?.data?.data?.address,
-    data?.data?.data?.message,
+    data?.data?.name,
+    data?.data?.phone,
+    data?.data?.address,
+    data?.data?.message,
   ];
 
-  const PcontentData = [
-    data?.data?.data?.paymentMethod,
-    data?.data?.data?.paymentAmount,
-  ];
-  const orderDate = data?.data?.data?.createDate;
+  const PcontentData = [data?.data?.paymentMethod, data?.data?.paymentAmount];
+  const orderDate = data?.data?.createDate;
   return (
     <div className="flex w-[1084px] flex-col gap-60 mobile:w-330 tablet:w-[688px] ">
       {paymentDetail && (
@@ -50,7 +47,7 @@ function OrderCompletedSection({
             contentData={PcontentData}
           />
           <BookPaymentCardList
-            bookData={data?.data?.data?.orderDto.orderBook}
+            bookData={data?.data?.orderDto.orderBook}
             label="주문상품"
           />
           <div className="w-full pc:hidden">

@@ -21,7 +21,7 @@ function BookAuthor({
     : authorList;
   nameList += publisher ? ` | ${publisher}` : '';
   const authors = useEditAuthorsName({ authors: nameList, isDetail: isDetail });
-  console.log('author' + authorList);
+
   return (
     <div
       className={`${classNames ?? ``} text-14 text-gray-3`}

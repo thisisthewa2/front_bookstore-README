@@ -6,12 +6,14 @@ import { instance } from 'src/libs/instance';
 import { FormData } from '@/hooks/useFormControl';
 
 //배달상태조회
-export const getDelivery = async (id: number) => {
-  const result = await instance.get(`delivery/${id}`);
-  return result.data;
+export const getDelivery = async (id: number | null) => {
+  const path = id ? `/${id}` : '';
+  const result = await instance.get(`delivery${path}`);
+  console.log('data다요요요ㅛ요요욘' + result.data.data);
+  return result.data.data;
 };
 
-export const useGetDelivery = (id: number) => {
+export const useGetDelivery = (id: number | null) => {
   return useFetch(QUERY_KEY.delivery, getDelivery, id);
 };
 
