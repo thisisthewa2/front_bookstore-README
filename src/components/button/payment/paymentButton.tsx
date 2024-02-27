@@ -42,7 +42,7 @@ function PaymentButton({ isAllChecked }: PaymentButtonProps) {
       bookId: book.bookId,
       quantity: book.count,
     });
-    basketIds.push(book?.basketId);
+    if (book?.basketId) basketIds.push(book?.basketId);
   });
 
   const orderTitle = useGetOrderTitle();
