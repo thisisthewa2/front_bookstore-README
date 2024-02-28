@@ -16,7 +16,7 @@ function SidebarLayout({ pageName, children }: SidebarLayoutProps) {
       <MainLayout>
         <section
           role="contents"
-          className="flex h-full w-full flex-col items-start pl-245 pr-60 pt-20 mobile:px-15
+          className="flex h-full w-full flex-col items-start pl-245 pt-20 mobile:px-15
             mobile:pt-0 tablet:pl-217 tablet:pr-40">
           <aside
             className="absolute left-40 top-40 h-[994px] w-[163px] mobile:static mobile:h-35

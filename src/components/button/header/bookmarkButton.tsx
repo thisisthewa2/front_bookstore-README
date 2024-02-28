@@ -4,7 +4,7 @@ import HeartEmptyIcon from '@/public/icons/HeartEmptyIcon.svg';
 function BookmarkButton() {
   return (
     <Link href="/bookmarked">
-      <button className="relative flex h-14 w-14 items-center tablet:h-24 tablet:w-24 pc:h-24 pc:w-24">
+      <button className="relative flex h-14 w-16 items-center tablet:h-23 tablet:w-26 pc:h-23 pc:w-26">
         <Image src={HeartEmptyIcon} fill alt="찜 버튼" />
       </button>
     </Link>
