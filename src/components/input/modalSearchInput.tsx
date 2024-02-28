@@ -36,7 +36,7 @@ function ModalSearchInput({ placeholder, onSearch }: SearchInput) {
           onClick={handleEraserValue}
         />
       )}
-      <div className="relative h-18 w-18" onClick={handleSearch}>
+      <div className="relative h-18 w-20" onClick={handleSearch}>
         <Image src={SearchIcon} fill alt="검색 아이콘" />
       </div>
     </div>
