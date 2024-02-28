@@ -5,7 +5,7 @@ import SmallLogo from '@/public/icons/SmallLogo.svg';
 function ReadMeButton() {
   return (
     <Link
-      className="text-primary text-18 font-bold tablet:text-24 pc:text-24"
+      className="text-18 font-bold text-primary tablet:text-24 pc:text-24"
       href="/">
       <Image
         className="tablet:hidden pc:hidden"
