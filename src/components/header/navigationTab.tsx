@@ -39,7 +39,7 @@ function NavigationTab({ isLoggedIn }: NavigationTabProps) {
           <div className="mx-26 tablet:ml-40 pc:ml-70">
             <CategoryTabButton onClick={toggleCategoryTab} />
           </div>
-          <div className="ml-96 flex gap-18 tablet:gap-30 pc:gap-40">
+          <div className="ml-100 flex gap-18 tablet:gap-30 pc:gap-40">
             <Link href="/domestic/bestseller"> 베스트</Link>
             <Link href="/domestic/newest"> 신간</Link>
             <CustomBookButton isLoggedIn={isLoggedIn} />
