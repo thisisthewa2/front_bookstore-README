@@ -19,6 +19,8 @@ export default function ForeignPage() {
     params: {
       ...INITIAL_PARAMS,
     },
+    staleTime: 60,
+    gcTime: 120,
   });
 
   const { data: bestsellers } = useGetBook({
@@ -29,6 +31,8 @@ export default function ForeignPage() {
       sort: 'BESTSELLER',
       ascending: false,
     },
+    staleTime: 60,
+    gcTime: 120,
   });
   const bestList: Array<BookData> = bestsellers ? bestsellers.data.books : [];
   return (

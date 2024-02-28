@@ -19,6 +19,8 @@ function CategoryPage() {
     params: {
       ...INITIAL_PARAMS,
     },
+    staleTime: 60,
+    gcTime: 120,
   });
   const { data: bestsellers } = useGetBook({
     endpoint: `${categoryId}/sub`,
@@ -28,6 +30,8 @@ function CategoryPage() {
       sort: 'BESTSELLER',
       ascending: false,
     },
+    staleTime: 60,
+    gcTime: 120,
   });
   const bestList: Array<BookData> = bestsellers ? bestsellers.data.books : [];
 

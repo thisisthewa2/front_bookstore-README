@@ -33,7 +33,7 @@ function NavigationTab({ isLoggedIn }: NavigationTabProps) {
   return (
     <>
       <div
-        className="b flex h-40 min-w-fit max-w-full items-center tablet:h-70
+        className="mx-auto flex h-40 min-w-fit max-w-[1200px] items-center tablet:h-70
           pc:h-70">
         <div className="flex items-center justify-between text-14 tablet:text-16 pc:text-16">
           <div className="mx-16 tablet:mx-30 pc:mx-60">
@@ -54,6 +54,7 @@ function NavigationTab({ isLoggedIn }: NavigationTabProps) {
           </div>
         )}
       </div>
+      <hr className="h-1 border-0 bg-gray-1"></hr>
       {isCategoryTabVisible && <CategoryTab />}
       {isModalOpen && <AddCommunityCard onClick={handleModalOpen} />}
     </>

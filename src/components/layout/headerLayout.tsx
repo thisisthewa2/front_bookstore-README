@@ -17,10 +17,8 @@ function HeaderLayout({ isLoggedIn, children }: HeaderLayoutProps) {
       className={`sticky top-0 z-50 min-h-fit w-full min-w-fit flex-row bg-white ${isMypage ? 'min-h-fit' : 'h-110 tablet:h-170 pc:h-170'}`}>
       <div className="mx-auto max-w-[1200px]"> {children}</div>
       <hr className="h-1 border-0 bg-gray-1"></hr>
-      <div className="mx-auto max-w-[1200px]">
-        {isMypage ? <MyPageTab /> : <NavigationTab isLoggedIn={isLoggedIn} />}
-      </div>
-      <hr className="h-1 border-0 bg-gray-1"></hr>
+
+      {isMypage ? <MyPageTab /> : <NavigationTab isLoggedIn={isLoggedIn} />}
     </div>
   );
 }

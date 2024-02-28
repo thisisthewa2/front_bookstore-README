@@ -28,6 +28,8 @@ export default function DomesticPage() {
     params: {
       ...INITIAL_PARAMS,
     },
+    staleTime: 60,
+    gcTime: 120,
   });
 
   return (

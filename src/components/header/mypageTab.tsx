@@ -44,8 +44,8 @@ function MyPageTab() {
   };
 
   return (
-    <div>
-      <div className="flex-center h-70 gap-48 border-y border-gray-1 mobile:h-50 mobile:gap-20">
+    <div className="border-b border-gray-1">
+      <div className="flex-center h-70 min-w-fit max-w-[1200px] gap-48 mobile:h-50 mobile:gap-20">
         <TabButton
           selected={selectedTab === 'orderList'}
           onClick={() => handleButtonClick('orderList')}

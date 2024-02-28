@@ -13,6 +13,8 @@ function BestSellerPage() {
   const { data, isLoading } = useGetBook({
     endpoint: `${mainId}/main`,
     params: INITIAL_PARAMS,
+    staleTime: 60,
+    gcTime: 120,
   });
   const bookData: BookData[] = data?.data?.books ?? [];
 

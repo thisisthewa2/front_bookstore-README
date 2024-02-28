@@ -5,11 +5,15 @@ export const useFetch = <T>(
   queryFn: (option: T) => Promise<any>,
   params: T,
   enabled?: any,
+  staleTime?: number, // 초 단위로 받음
+  gcTime?: number, // 초 단위로 받음
 ) => {
   const context = useQuery({
     queryKey: [queryKey, params],
     queryFn: () => queryFn(params),
     enabled: enabled ? !!`${enabled}` : true,
+    staleTime: staleTime ? staleTime * 1000 : 0, // 기본값 0
+    gcTime: gcTime ? gcTime * 1000 : 300000, // 기본값 5분
   });
 
   return context;

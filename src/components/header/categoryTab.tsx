@@ -37,42 +37,44 @@ function CategoryTab() {
   };
 
   return (
-    <div className="z-100 relative mx-15 flex min-h-fit flex-wrap rounded-md border border-t-0 border-gray-1 bg-white opacity-100 mobile:w-280 tablet:mx-30 tablet:h-437 tablet:w-[600px] pc:mx-60 pc:h-437 pc:w-[600px]">
-      <div className="flex w-full justify-between border-b border-gray-1">
-        <div className="relative mx-30 flex h-60 items-center gap-60 mobile:mx-20 mobile:h-50 mobile:gap-35">
-          <CategoryButton
-            label="국내도서"
-            onClick={() => {
-              handleCategoryClick('domestic');
-            }}
-            selected={selectedCategory == 'domestic'}
-          />
+    <div className="mx-auto max-w-[1200px]">
+      <div className="z-100 relative mx-15 flex min-h-fit flex-wrap rounded-md border border-t-0 border-gray-1 bg-white opacity-100 mobile:w-280 tablet:mx-30 tablet:h-437 tablet:w-[600px] pc:mx-60 pc:h-437 pc:w-[600px]">
+        <div className="flex w-full justify-between border-b border-gray-1">
+          <div className="relative mx-30 flex h-60 items-center gap-60 mobile:mx-20 mobile:h-50 mobile:gap-35">
+            <CategoryButton
+              label="국내도서"
+              onClick={() => {
+                handleCategoryClick('domestic');
+              }}
+              selected={selectedCategory == 'domestic'}
+            />
 
-          <CategoryButton
-            label="외국도서"
-            onClick={() => {
-              handleCategoryClick('foreign');
-            }}
-            selected={selectedCategory == 'foreign'}
-          />
+            <CategoryButton
+              label="외국도서"
+              onClick={() => {
+                handleCategoryClick('foreign');
+              }}
+              selected={selectedCategory == 'foreign'}
+            />
+          </div>
+          <div className="flex-center mr-30">
+            <SelectedAllButton
+              selectedCategory={selectedCategory}
+              selectedAll={selectedAll}
+            />
+          </div>
         </div>
-        <div className="flex-center mr-30">
-          <SelectedAllButton
-            selectedCategory={selectedCategory}
-            selectedAll={selectedAll}
-          />
+        <div
+          className={`text-13 mx-30 my-20 flex flex-wrap mobile:mx-20 tablet:h-350 pc:h-350 ${getLinkLayoutClass()}`}>
+          {categoryList &&
+            categoryList[selectedCategory]?.map((el, ind) => (
+              <Link
+                href={`/${selectedCategory}${el.link}`}
+                key={el?.categoryId ?? ind}>
+                {el?.subName}
+              </Link>
+            ))}
         </div>
-      </div>
-      <div
-        className={`text-13 mx-30 my-20 flex flex-wrap mobile:mx-20 tablet:h-350 pc:h-350 ${getLinkLayoutClass()}`}>
-        {categoryList &&
-          categoryList[selectedCategory]?.map((el, ind) => (
-            <Link
-              href={`/${selectedCategory}${el.link}`}
-              key={el?.categoryId ?? ind}>
-              {el?.subName}
-            </Link>
-          ))}
       </div>
     </div>
   );
