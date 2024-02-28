@@ -44,7 +44,7 @@ function MyPageTab() {
   };
 
   return (
-    <div className="border-b border-gray-1">
+    <div className="flex-col justify-center border-b border-gray-1">
       <div className="flex-center h-70 min-w-fit max-w-[1200px] gap-48 mobile:h-50 mobile:gap-20">
         <TabButton
           selected={selectedTab === 'orderList'}

@@ -22,8 +22,8 @@ function SettingTab() {
   };
 
   return (
-    <div>
-      <div className="flex-center h-70 w-full gap-48 border-b border-gray-1 mobile:h-50">
+    <div className="border-t border-gray-1">
+      <div className="flex-center h-69 min-w-fit  max-w-[1200px] gap-48 mobile:h-50">
         <TabButton
           selected={selectedTab === 'editProfile'}
           onClick={() => handleButtonClick('editProfile')}
