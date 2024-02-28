@@ -14,7 +14,7 @@ function GenreSelection({
   setSelectedGenreId,
 }: GenreSelectionProps) {
   return (
-    <div className="flex-center flex w-260 flex-col gap-8 mobile:mb-3 mobile:mt-60 mobile:w-314 tablet:w-314">
+    <div className="flex-center flex w-260 flex-col gap-8 mobile:mb-3 mobile:mt-60 mobile:w-314 tablet:w-314 pc:mr-75">
       {genreList.length > 0 ? (
         <div className="flex-center mb-30 mt-22 flex h-75 w-full flex-wrap gap-8 ">
           <div className="text-24 font-bold mobile:text-20">

@@ -74,13 +74,13 @@ function CustomSection({ isLoggedIn }: CustomSectionProps) {
       ) : getRandomCustomBookList?.data?.length === 0 ? (
         <VacantCustomLayout />
       ) : (
-        <div className="flex-center w-full max-w-[1200px] mobile:h-[940px] mobile:flex-col tablet:h-[655px] tablet:flex-col pc:flex pc:h-500 pc:items-center">
+        <div className="flex-center w-full max-w-[1200px] mobile:h-[940px] mobile:flex-col tablet:h-[655px] tablet:flex-col pc:flex pc:h-500">
           <GenreSelection
             genreList={genreList}
             selectedGenreId={selectedGenreId}
             setSelectedGenreId={setSelectedGenreId}
           />
-          <div className="mobile:flex-center relative flex  flex-wrap gap-x-30 mobile:mx-15  mobile:mb-60 mobile:mt-40 mobile:w-360 mobile:gap-x-10 mobile:gap-y-35 mobile:pr-15 tablet:mt-63 tablet:gap-x-20 pc:ml-75 pc:mr-60 pc:justify-between">
+          <div className="mobile:flex-center relative flex  flex-wrap gap-x-30 mobile:mx-15  mobile:mb-60 mobile:mt-40 mobile:w-360 mobile:gap-x-10 mobile:gap-y-35 mobile:pr-15 tablet:mt-63 tablet:gap-x-20 pc:justify-between">
             {getRandomCustomBookList.isLoading ? (
               <div></div>
             ) : (
