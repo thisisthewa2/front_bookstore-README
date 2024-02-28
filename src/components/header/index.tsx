@@ -42,7 +42,7 @@ function LoggedInHeader() {
   const { data } = useGetBasKetQuery();
   return (
     <div
-      className="relative z-10 mx-15 flex h-50 items-center
+      className="relative z-10 mx-15 flex h-50 max-w-[1200px] items-center
         justify-between tablet:mx-30 tablet:h-100 pc:mx-60 pc:h-100">
       <ReadMeButton />
       <HeaderSearchInput />
