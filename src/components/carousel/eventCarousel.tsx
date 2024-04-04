@@ -49,13 +49,12 @@ function EventCarousel({
       const sensitivity = 50; // 터치 이벤트 감지 감도 (좌우 이동 거리)
       if (diff > sensitivity) {
         // 오른쪽으로 슬라이드
-        const newIndex =
-          currIndex === currList.length ? currIndex : currIndex + 1;
+        const newIndex = currIndex === currList.length ? 1 : currIndex + 1;
         setCurrIndex(newIndex);
         setButtonActiveIndex(newIndex - 1);
       } else if (diff < -sensitivity) {
         // 왼쪽으로 슬라이드
-        const newIndex = currIndex === 1 ? 1 : currIndex - 1;
+        const newIndex = currIndex === 1 ? currList.length : currIndex - 1;
         setCurrIndex(newIndex);
         setButtonActiveIndex(newIndex - 1);
       }
