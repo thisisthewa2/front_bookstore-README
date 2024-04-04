@@ -23,16 +23,50 @@ function EventCarousel({
   const [currList, setCurrList] = useState<(string | StaticImageData)[]>([]); // 화면에 표시될 이미지 리스트 (버퍼 이미지 제외)
   const [ButtonActiveIndex, setButtonActiveIndex] = useState(0);
   const carouselRef = useRef<HTMLUListElement>(null);
+  const touchStartRef = useRef<number | null>(null);
+  const touchEndRef = useRef<number | null>(null);
+
   let noEventImage: StaticImageData | string;
 
+  // 버튼 클릭시 보여줄 이미지와 button 상태 변경 함수
   const updateIndex = (index: number) => {
-    // 버튼 클릭시 보여줄 이미지와 button 상태 변경
     setCurrIndex(index + 1);
     setButtonActiveIndex(index);
   };
 
+  // 터치 이벤트 함수
+  const handleTouchStart = (e: React.TouchEvent<HTMLUListElement>) => {
+    touchStartRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLUListElement>) => {
+    touchEndRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartRef.current !== null && touchEndRef.current !== null) {
+      const diff = touchStartRef.current - touchEndRef.current;
+      const sensitivity = 50; // 터치 이벤트 감지 감도 (좌우 이동 거리)
+      if (diff > sensitivity) {
+        // 오른쪽으로 슬라이드
+        const newIndex =
+          currIndex === currList.length ? currIndex : currIndex + 1;
+        setCurrIndex(newIndex);
+        setButtonActiveIndex(newIndex - 1);
+      } else if (diff < -sensitivity) {
+        // 왼쪽으로 슬라이드
+        const newIndex = currIndex === 1 ? 1 : currIndex - 1;
+        setCurrIndex(newIndex);
+        setButtonActiveIndex(newIndex - 1);
+      }
+    }
+    // 터치 이벤트 초기화
+    touchStartRef.current = null;
+    touchEndRef.current = null;
+  };
+
+  // 브라우저 사이즈에 따라 pc/mobile용 이미지를 currList에 저장
   useEffect(() => {
-    // 브라우저 사이즈에 따라 pc/mobile용 이미지를 currList에 저장
     const updateImageLists = () => {
       const width = window.innerWidth;
       const isMobile = width < 768;
@@ -58,8 +92,8 @@ function EventCarousel({
     };
   }, [eventImages.mobile, eventImages.pc]);
 
+  // 이미지 슬라이드 기능
   useEffect(() => {
-    // 이미지 슬라이드 기능
     const carousel = carouselRef.current;
     if (carousel) {
       carousel.style.transition = 'transform 0.5s ease-in-out';
@@ -93,7 +127,10 @@ function EventCarousel({
       </div>
       <ul
         className="relative flex h-full w-full scroll-smooth transition-transform"
-        ref={carouselRef}>
+        ref={carouselRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}>
         {fullImageList.map((image, idx) => (
           <li key={idx} className="relative flex w-full flex-shrink-0">
             <Image
