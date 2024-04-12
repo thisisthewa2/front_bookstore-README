@@ -118,7 +118,7 @@ function EventCarousel({
       <div className="flex-center left-30% absolute bottom-20 z-10 h-20 w-100 gap-10 mobile:bottom-8">
         {currList.map((_, idx) => (
           <button
-            className={`h-10 w-10 rounded-full bg-gray-1 hover:bg-primary active:bg-primary ${ButtonActiveIndex === idx ? 'bg-primary' : ''} mobile:h-5 mobile:w-5`}
+            className={`h-10 w-10 rounded-full bg-gray-1 active:bg-primary ${ButtonActiveIndex === idx ? 'bg-primary' : ''} mobile:h-5 mobile:w-5`}
             onClick={() => updateIndex(idx)}
             key={idx}
           />
